@@ -1,0 +1,27 @@
+{
+  "config": {
+    "adapter_residual_before_ln": false,
+    "invertible_adapter": {
+      "block_type": "nice",
+      "non_linearity": "relu",
+      "reduction_factor": 2
+    },
+    "leave_out": [],
+    "ln_after": false,
+    "ln_before": false,
+    "mh_adapter": false,
+    "non_linearity": "relu",
+    "original_ln_after": true,
+    "original_ln_before": true,
+    "output_adapter": true,
+    "reduction_factor": 2,
+    "residual_before_ln": true
+  },
+  "config_id": "87954f0c97a780e3",
+  "hidden_size": 768,
+  "model_class": "XLMRobertaForTokenClassification",
+  "model_name": "xlm-roberta-base",
+  "model_type": "xlm-roberta",
+  "name": "en",
+  "type": "text_lang"
+}

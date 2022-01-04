@@ -1,0 +1,127 @@
+#!/bin/bash
+# Copyright 2020 Google and DeepMind.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+REPO=$PWD
+GPU=${1:-0}
+MODEL=${2:-bert-base-multilingual-cased}
+DATA_DIR=${3:-"$REPO/data/"}
+OUT_DIR=${4:-"$REPO/outputs/"}
+
+export CUDA_VISIBLE_DEVICES=$GPU
+TASK='udpos'
+# LANGS="be,bg,da,ta,fo,uk"
+LANGS="mr,bho,ta,fo,no,da,be,uk,bg,af,bm,yo"
+# LANGS="af,bm,yo"
+# LANGS="be"
+TRAIN_LANGS="en"
+
+NUM_EPOCHS=50
+MAX_LENGTH=128
+SEED=0
+
+#Just switch the commented out lines to change the adapters used
+#Languages with learned vectors
+# LANG_ADAPTER_NAME="am/wiki@ukp,bn/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,hi/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ko/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,pt/wiki@ukp,ru/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,zh/wiki@ukp"
+# ADAPTER_LANG="am,bn,cs,de,el,es,et,eu,fi,fr,hi,hu,hy,id,ja,jv,ko,la,lv,mi,my,pt,ru,tr,vi,zh"
+
+#All languages that have adapters
+# LANG_ADAPTER_NAME="am/wiki@ukp,ar/wiki@ukp,bxr/wiki@ukp,cdo/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,gn/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,kv/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,qu/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,sw/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp,xmf/wiki@ukp,zh/wiki@ukp,zh_yue/wiki@ukp"
+# ADAPTER_LANG="am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue"
+# AW="0.157615,0.029753,0.085959,0.002880,0.028345,0.001819,0.003429,0.082943,0.002554,0.000291,0.021874,0.097749,0.000952,0.002368,0.001009,0.012784,0.005627,0.027177,0.031707,0.013858,0.002880,0.001946,0.002283,0.031257,0.040636,0.001315,0.003986,0.016040,0.024003,0.002052,0.003921,0.013897,0.050376,0.034814,0.002193,0.000062,0.002111,0.001793,0.002684,0.042175,0.030112,0.045981,0.001643,0.001083,0.030067"
+
+#Top 10 based on english results
+LANG_ADAPTER_NAME="en/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,pt/wiki@ukp,ar/wiki@ukp,hu/wiki@ukp,am/wiki@ukp,cs/wiki@ukp,eu/wiki@ukp,id/wiki@ukp"
+ADAPTER_LANG="en,ka,vi,pt,ar,hu,am,cs,eu,id"
+
+#Top 10 based on english results for each seed
+LANG_ADAPTER_NAMES=( "en/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,pt/wiki@ukp,ar/wiki@ukp,hu/wiki@ukp,am/wiki@ukp,cs/wiki@ukp,eu/wiki@ukp,id/wiki@ukp" "en/wiki@ukp,pt/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,id/wiki@ukp,cs/wiki@ukp,tr/wiki@ukp,hu/wiki@ukp,ar/wiki@ukp,eu/wiki@ukp" "en/wiki@ukp,ka/wiki@ukp,pt/wiki@ukp,cs/wiki@ukp,id/wiki@ukp,vi/wiki@ukp,hu/wiki@ukp,tr/wiki@ukp,hy/wiki@ukp,fa/wiki@ukp" )
+ADAPTER_LANGS=( "en,ka,vi,pt,ar,hu,am,cs,eu,id" "en,pt,ka,vi,id,cs,tr,hu,ar,eu" "en,ka,pt,cs,id,vi,hu,tr,hy,fa" )
+SEEDS=( 1 2 3 )
+# LANG_ADAPTER_NAME="am/wiki@ukp,ar/wiki@ukp,en/wiki@ukp"
+# ADAPTER_LANG="am,ar,en"
+# AW="0.3333,0.3333,0.3333"
+
+#Languages with URIEL a
+# LANG_ADAPTER_NAME="am/wiki@ukp,bn/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp"
+# ADAPTER_LANG="am,bn,cs,de,el,en,es,et,eu,fi,fr,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,la,lv,mhr,mi,my,myv,pt,ru,se,tk,tr,vi,wo"
+TASK_ADAPTER_NAME="udpos"
+
+EN_WEIGHT="_uniform"
+DATA_DIR=$DATA_DIR/${TASK}/${TASK}_processed_maxlen${MAX_LENGTH}/
+# OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}_ensemble/"
+OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_ensemble_en_topk/"
+# TASK_ADAPTER="outputs/ner/"
+# TASK_ADAPTER="output/panx/bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s12/checkpoint-best/ner/"
+
+LC=""
+if [ $MODEL == "bert-base-multilingual-cased" ]; then
+  MODEL_TYPE="bert"
+elif [ $MODEL == "xlm-mlm-100-1280" ] || [ $MODEL == "xlm-mlm-tlm-xnli15-1024" ]; then
+  MODEL_TYPE="xlm"
+  LC=" --do_lower_case"
+elif [ $MODEL == "xlm-roberta-large" ] || [ $MODEL == "xlm-roberta-base" ]; then
+  MODEL_TYPE="xlmr"
+fi
+
+if [ $MODEL == "xlm-mlm-100-1280" ] || [ $MODEL == "xlm-roberta-large" ]; then
+  BATCH_SIZE=2
+  GRAD_ACC=16
+else
+  BATCH_SIZE=8
+  GRAD_ACC=4
+fi
+
+mkdir -p $OUTPUT_DIR
+
+for i in 0 1 2
+do
+SEED=${SEEDS[i]}
+ADAPTER_LANG=${ADAPTER_LANGS[i]}
+LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
+MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/${TASK_ADAPTER_NAME}/"
+
+nohup time python third_party/my_run_tag.py \
+  --predict_save_prefix "" \
+  --calc_weight_step 0 \
+  --per_gpu_eval_batch_size  32 \
+  --data_dir $DATA_DIR \
+  --task $TASK \
+  --model_type $MODEL_TYPE \
+  --labels $DATA_DIR/labels.txt \
+  --model_name_or_path $MODEL \
+  --output_dir $OUTPUT_DIR \
+  --max_seq_length  $MAX_LENGTH \
+  --num_train_epochs $NUM_EPOCHS \
+  --gradient_accumulation_steps $GRAD_ACC \
+  --per_gpu_train_batch_size $BATCH_SIZE \
+  --save_steps 1000 \
+  --seed $SEED \
+  --do_predict \
+  --predict_langs $LANGS \
+  --train_langs $TRAIN_LANGS \
+  --log_file $OUTPUT_DIR/train.log \
+  --eval_all_checkpoints \
+  --eval_patience -1 \
+  --overwrite_output_dir \
+  --test_adapter \
+  --adapter_config pfeiffer \
+  --task_name $TASK_ADAPTER_NAME \
+  --predict_task_adapter $MY_TASK_ADAPTER \
+  --lang_adapter_config pfeiffer \
+  --save_only_best_checkpoint $LC \
+  --load_lang_adapter $LANG_ADAPTER_NAME \
+  --adapter_weight "equal" \
+  --language $ADAPTER_LANG >> $OUTPUT_DIR/detailed_train.log 
+done

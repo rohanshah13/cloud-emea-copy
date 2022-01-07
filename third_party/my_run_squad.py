@@ -23,6 +23,7 @@ import logging
 import os
 import random
 import timeit
+import json
 
 import numpy as np
 import torch
@@ -57,7 +58,9 @@ from transformers import (
   XLNetForQuestionAnswering,
   XLNetTokenizer,
   get_linear_schedule_with_warmup,
-  XLMRobertaTokenizer
+  XLMRobertaTokenizer,
+  XLMRobertaForQuestionAnswering,
+  XLMRobertaConfig
 )
 
 from transformers.data.metrics.squad_metrics import (
@@ -104,7 +107,7 @@ MODEL_CLASSES = {
   "xlm": (XLMConfig, XLMForQuestionAnswering, XLMTokenizer),
   "distilbert": (DistilBertConfig, DistilBertForQuestionAnswering, DistilBertTokenizer),
   "albert": (AlbertConfig, AlbertForQuestionAnswering, AlbertTokenizer),
-  # "xlm-roberta": (XLMRobertaConfig, XLMRobertaForQuestionAnswering, XLMRobertaTokenizer)
+  "xlm-roberta": (XLMRobertaConfig, XLMRobertaForQuestionAnswering, XLMRobertaTokenizer)
 }
 
 
@@ -209,6 +212,7 @@ def train(args, train_dataset, model, tokenizer, lang2id=None):
       logger.info("  Starting fine-tuning.")
 
   tr_loss, logging_loss = 0.0, 0.0
+  best_score = 0.0
   model.zero_grad()
   train_iterator = trange(
     epochs_trained, int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0]
@@ -283,7 +287,7 @@ def train(args, train_dataset, model, tokenizer, lang2id=None):
         # Save model checkpoint
         if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:
           if args.save_only_best_checkpoint:
-            result, _ = evaluate(args, model, tokenizer, prefix=global_step, language=args.train_lang, lang2id=lang2id)
+            result = evaluate(args, model, tokenizer, prefix=global_step, language=args.train_lang, lang2id=lang2id)
             if result["f1"] > best_score:
               logger.info("result['f1']={} > best_score={}".format(result["f1"], best_score))
               best_score = result["f1"]
@@ -430,7 +434,7 @@ def calc_weight_multi(args, model, batch, lang_adapter_names, task_name, adapter
     for i, w in enumerate(adapter_weights):
       adapter_weights[i] = adapter_weights[i].data - 10*grads[i].data
 
-def evaluate(args, model, tokenizer, prefix="", language='en', lang2id=None, adapter_weight=None):
+def evaluate(args, model, tokenizer, prefix="", language='en', lang2id=None, adapter_weight=None, mode='train', lang_adapter_names=None, task_name=None, calc_weight_step=0):
   dataset, examples, features = load_and_cache_examples(args, tokenizer, evaluate=True, output_examples=True,
                               language=language, lang2id=lang2id)
 
@@ -462,12 +466,14 @@ def evaluate(args, model, tokenizer, prefix="", language='en', lang2id=None, ada
     model.eval()
     batch = tuple(t.to(args.device) for t in batch)
 
+    if calc_weight_step > 0:
+      adapter_weight = calc_weight_multi(args, model, batch, lang_adapter_names, task_name, adapter_weight, calc_weight_step, lang=language)
     with torch.no_grad():
       inputs = {
         "input_ids": batch[0],
         "attention_mask": batch[1],
         "token_type_ids": None if args.model_type in ["xlm", "distilbert", "xlm-roberta"] else batch[2],
-        "adapter_weights": adapter_weight,
+        # "adapter_weights": adapter_weight,
       }
       example_indices = batch[3]
 
@@ -560,11 +566,15 @@ def evaluate(args, model, tokenizer, prefix="", language='en', lang2id=None, ada
 
   # Compute the F1 and exact scores.
   results = squad_evaluate(examples, predictions)
+  logger.info(f'Results = {results}')
   return results
 
 
 def load_and_cache_examples(args, tokenizer, evaluate=False, output_examples=False,
               language='en', lang2id=None):
+  if args.do_predict:
+    args.predict_file = f'xquad.{language}.json'
+  logger.info(f'Predict File = {args.predict_file}')
   if args.local_rank not in [-1, 0] and not evaluate:
     # Make sure only the first process in distributed training process the dataset, and the others will use the cache
     torch.distributed.barrier()
@@ -701,7 +711,8 @@ class ModelArguments:
     local_rank: Optional[int] = field(default=-1)
     server_ip: Optional[str] = field(default="")
     server_port: Optional[str] = field(default="")
-    eval_lang: Optional[str] = field(default="en", metadata={"help": "The language of the test data"}) #!!!
+    eval_lang: Optional[str] = field(default="en", metadata={"help": "The language of the dev data"}) #!!!
+    predict_langs: Optional[str] = field(default="en", metadata={"help": "The language of the test data"})
     train_lang: Optional[str] = field(default="en", metadata={"help": "The language of the training data"})
     log_file: Optional[str] = field(default=None)
     eval_patience: Optional[int] = field(default=-1)
@@ -840,6 +851,71 @@ def setup_adapter(args, adapter_args, model, train_adapter=True, load_adapter=No
 
   return model, lang_adapter_names, task_name
 
+def predict_and_save(args, adapter_args, model, tokenizer, lang2id, lang_adapter_names, task_name, split):
+  output_test_results_file = os.path.join(args.output_dir, f'{split}_results.txt')
+  with open(output_test_results_file, 'a') as result_writer:
+    for lang in args.predict_langs.split(','):
+      
+      if not os.path.exists(os.path.join(args.data_dir, f'xquad.{lang}.json')):
+        logger.info(f"Language {lang}, Split {split} does not exist")
+        continue
+
+      #Activate the required language adapter
+      adapter_weight = None
+      if not args.adapter_weight and not args.lang_to_vec:
+        if (adapter_args.train_adapter or args.test_adapter) and not args.adapter_weight:
+          if lang in lang_adapter_names:
+            logger.info(f'Language adapter for {lang} found')
+            logger.info("Set active language adapter to {}".format(lang))
+            model.set_active_adapters([[lang], [task_name]])
+          else:
+            logger.info(f'Language adapter for {lang} not found, using {lang_adapter_names[0]} instead')
+            logger.info("Set active language adapter to {}".format(lang_adapter_names[0]))
+            model.set_active_adapters([[lang_adapter_names[0]], [task_name]])
+      else:
+        if args.adapter_weight == 'equal':
+          adapter_weight = [1/len(lang_adapter_names) for _ in lang_adapter_names]
+        elif args.adapter_weight == 'equal_en':
+          assert 'en' in lang_adapter_names, 'English language adapter not included'
+          adapter_weight = [(1-args.en_weight)/(len(lang_adapter_names)-1) for _ in lang_adapter_names]
+          en_index = lang_adapter_names.index('en')
+          adapter_weight[en_index] = args.en_weight
+        elif args.lang_to_vec:
+          if args.en_weight is not None:
+            logger.info(lang_adapter_names)
+            assert 'en' in lang_adapter_names, 'English language adapter not included'
+          adapter_weight = calc_l2v_weights(args, lang, lang_adapter_names)
+        elif args.adapter_weight == 'load':
+          filename = f'weights/{args.task}/{lang}/weights_s{args.seed}'
+          logger.info(f'Loading adapter weights from {filename}')
+          with open(filename) as f:
+            adapter_weight = json.loads(next(f))
+        elif args.adapter_weight != "0" and args.adapter_weight is not None:
+          adapter_weight = [float(w) for w in args.adapter_weight.split(",")]
+      logger.info('Args Adapter Weight = {}'.format(args.adapter_weight))
+      logger.info('Adapter Languages = {}'.format(lang_adapter_names))
+      if adapter_weight is not None:
+        logger.info("Adapter Weights = {}".format(adapter_weight))
+        logger.info('Sum of Adapter Weights = {}'.format(sum(adapter_weight)))
+        logger.info("Length of Adapter Weights = {}".format(len(adapter_weight))) 
+      model.set_active_adapters([ lang_adapter_names, [task_name]])
+
+      #Evaluate
+      results = evaluate(args, model, tokenizer, language=lang, lang2id=lang2id, adapter_weight=adapter_weight, mode=split)
+
+      result_json = {}
+      result_json['language'] = lang
+      result_json['seed'] = args.seed
+      result_json['language_adapters'] = lang_adapter_names
+      if args.adapter_weight:
+        result_json['adapter_weights'] = adapter_weight
+
+      for key in sorted(results.keys()):
+        result_json[key] = results[key]
+
+      result_writer.write(json.dumps(result_json) + '\n')
+
+
 def main():
 
   parser = HfArgumentParser((ModelArguments, MultiLingAdapterArguments))
@@ -900,6 +976,14 @@ def main():
     # Make sure only the first process in distributed training will download model & vocab
     torch.distributed.barrier()
 
+  args.do_save_full_model= (not adapter_args.train_adapter)
+  args.do_save_adapters=adapter_args.train_adapter
+  if args.do_save_adapters:
+      logging.info('save adapters')
+      logging.info(adapter_args.train_adapter)
+  if args.do_save_full_model:
+      logging.info('save model')
+      
   args.model_type = args.model_type.lower()
   model, tokenizer, lang2id, config_class, model_class, tokenizer_class = load_model(args)
 
@@ -1003,6 +1087,24 @@ def main():
       results.update(result)
 
   logger.info("Results: {}".format(results))
+
+  if args.do_predict:
+    model, tokenizer, lang2id, config_class, model_class, tokenizer_class = load_model(args)
+
+    logger.info('Evaluating the model on the test set of all languages specified')
+
+    if adapter_args.train_adapter or args.test_adapter:
+      load_adapter = args.predict_task_adapter
+
+      logger.info(f'Adapter will be loaded from this path: {load_adapter}')
+
+      load_lang_adapter = args.predict_lang_adapter
+      model.model_name = args.model_name_or_path
+      model, lang_adapter_names, task_name = setup_adapter(args, adapter_args, model, load_adapter=load_adapter, load_lang_adapter=load_lang_adapter)
+    model.to(args.device)
+
+    predict_and_save(args, adapter_args, model, tokenizer, lang2id, lang_adapter_names, task_name, 'test')
+
 
   return results
 

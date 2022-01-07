@@ -10,7 +10,7 @@ ALL_LANGS= "am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is
 URIEL_LANGS = "am,bn,cs,de,el,en,es,et,eu,fi,fr,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,la,lv,mhr,mi,my,myv,pt,ru,se,tk,tr,vi,wo"
 EN_LANGS_POS = "en,ka,vi,pt,ar,hu,am,cs,eu,id"
 EN_LANGS_NER = "en,pt,id,tr,cs,vi,eu,zh_yue,fa,es"
-INFILE = 'outputs/{}/my-bert-base-multilingual-cased-MaxLen128_{}_{}/{}_results.txt'
+INFILE = 'outputs/{}/my-{}-MaxLen{}_{}_{}/{}_results.txt'
 
 def main():
     parser = argparse.ArgumentParser()
@@ -28,6 +28,7 @@ def main():
     parser.add_argument('--topk', default=1)
     parser.add_argument('--seeds', default='1,2,3')
     parser.add_argument('--eval_lang', default=None)
+    parser.add_argument('--model', default='bert-base-multilingual-cased')
     parser.set_defaults(all_lang=False, lang2vec_lang=False)
     args = parser.parse_args()
     if args.all_lang:
@@ -46,33 +47,40 @@ def main():
 
     if args.task == 'ner':
         dataset = 'panx'
-    else:
+    elif args.task == 'udpos':
         dataset = 'udpos'
+    else:
+        dataset = 'squad'
     
+    if args.task == 'qna':
+        maxlen = 384
+    else:
+        maxlen = 128
+
     if args.method == 'en':
-        infile = INFILE.format(dataset, args.task, 'en', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, 'en', args.split)
     elif args.method == 'related':
-        infile = INFILE.format(dataset, args.task, args.languages, args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, args.languages, args.split)
     elif args.method == 'topk':
-        infile = INFILE.format(dataset, args.task, f'topk_{args.topk}', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'topk_{args.topk}', args.split)
     elif args.method == 'ensemble':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_ensemble', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_ensemble', args.split)
     elif args.method == 'ensemble_attribution':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_ensemble_attribution', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_ensemble_attribution', args.split)
     elif args.method == 'ensemble_en':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_ensemble_awequal_en_en{args.en_weight}', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_ensemble_awequal_en_en{args.en_weight}', args.split)
     elif args.method == 'emeas1':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_emea_s1', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_emea_s1', args.split)
     elif args.method == 'emeas10':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_emea_s10', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_emea_s10', args.split)
     elif args.method == 'syntax_ensemble':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_syntax_ensemble_en{args.en_weight}', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_syntax_ensemble_en{args.en_weight}', args.split)
     elif args.method == 'learned_ensemble':
-        infile = INFILE.format(dataset, args.task, f'{args.languages}_learned_ensemble_temp{args.temperature}', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'{args.languages}_learned_ensemble_temp{args.temperature}', args.split)
     elif args.method == 'en_topk':
-        infile = INFILE.format(dataset, args.task, f'ensemble_en_top{args.topk}', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'ensemble_en_top{args.topk}', args.split)
     elif args.method == 'ru_topk':
-        infile = INFILE.format(dataset, args.task, f'ensemble_ru_top{args.topk}', args.split)
+        infile = INFILE.format(dataset, args.model, maxlen, args.task, f'ensemble_ru_top{args.topk}', args.split)
     else:
         print('INVALID METHOD')
         exit()
@@ -92,7 +100,11 @@ def main():
     # print(results)
 
     for language in results.keys():
-        results[language] = [100*results[language][seed] for seed in results[language].keys()]
+        if args.task != 'qna':
+            results[language] = [100*results[language][seed] for seed in results[language].keys()]
+        else:
+            results[language] = [results[language][seed] for seed in results[language].keys()]
+
         num_seeds = len(results[language])
         # average_results[language] = average_results[language]/num_seeds
         # average_results[language] = np.mean([results[language][seed] for seed in results[language].keys()])

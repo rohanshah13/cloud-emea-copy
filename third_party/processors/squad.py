@@ -510,7 +510,7 @@ class SquadProcessor(DataProcessor):
 
         if self.train_file is None:
             raise ValueError("SquadProcessor should be instantiated via SquadV1Processor or SquadV2Processor")
-
+        
         with open(
             os.path.join(data_dir, self.train_file if filename is None else filename), "r", encoding="utf-8"
         ) as reader:

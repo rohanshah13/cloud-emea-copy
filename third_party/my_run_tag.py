@@ -955,6 +955,7 @@ def main():
   # Training
   if args.do_train:
     model, tokenizer, lang2id = load_model(args, num_labels)
+
     if adapter_args.train_adapter:
       model, lang_adapter_names, task_name = setup_adapter(args, adapter_args, model)
       logger.info("lang adapter names: {}".format(" ".join(lang_adapter_names)))
@@ -962,6 +963,9 @@ def main():
       lang_adatper_names = []
       task_name = None
     
+    for name, param in model.named_parameters():
+      logger.info(name)
+      logger.info(param.requires_grad)
     model.to(args.device)
 
     train_dataset = load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode="train", lang=args.train_langs, lang2id=lang2id, few_shot=args.few_shot)

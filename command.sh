@@ -1,2 +1,2 @@
 # python3 scripts/my_average_f1.py --split dev --task ner --method syntax_ensemble --uriel_lang --en_weight _uniform
-python3 scripts/my_average_f1.py --split test --task ner --method related --language bn
+python3 scripts/my_average_f1.py --split test --task qna --method related --language vi --model xlm-roberta-base

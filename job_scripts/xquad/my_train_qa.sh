@@ -28,7 +28,7 @@ TASK="squad"
 BATCH_SIZE=4
 GRAD_ACC=8
 
-SEED=1
+SEED=3
 
 MAXL=384
 LR=3e-4
@@ -44,11 +44,14 @@ elif [ $MODEL == "xlm-mlm-100-1280" ] || [ $MODEL == "xlm-mlm-tlm-xnli15-1024" ]
   MODEL_TYPE="xlm"
 elif [ $MODEL == "xlm-roberta-large" ] || [ $MODEL == "xlm-roberta-base" ]; then
   MODEL_TYPE="xlm-roberta"
+  LR=1e-4
+  GRAD_ACC=4
 fi
 
 # Model path where trained model should be stored
 MODEL_PATH=$OUT_DIR/$SRC/my_${MODEL}_LR${LR}_EPOCH${NUM_EPOCHS}_maxlen${MAXL}_batchsize${BATCH_SIZE}_gradacc${GRAD_ACC}_s${SEED}
 mkdir -p $MODEL_PATH
+
 # Train either on the SQuAD or TyDiQa-GoldP English train file
 if [ $SRC == 'squad' ]; then
   TASK_DATA_DIR=${DATA_DIR}/squad
@@ -65,7 +68,7 @@ CUDA_VISIBLE_DEVICES=$GPU
 nohup python third_party/my_run_squad.py \
   --model_type ${MODEL_TYPE} \
   --model_name_or_path ${MODEL} \
-  --seed 1 \
+  --seed $SEED \
   --do_train \
   --data_dir ${TASK_DATA_DIR} \
   --train_file ${TRAIN_FILE} \

@@ -1,0 +1,342 @@
+PyTorch version 1.10.0+cu111 available.
+01/06/2022 17:48:58 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/06/2022 17:48:58 - INFO - root -   save model
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:49:05 - INFO - __main__ -   lang2id = None
+01/06/2022 17:49:08 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/root/Desktop/cloud-emea-copy/data//xquad', output_dir='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_th/', max_seq_length=384, train_file='/root/Desktop/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/root/Desktop/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=8, learning_rate=0.0003, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='th', train_lang='en', log_file='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_th//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/06/2022 17:49:08 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:49:15 - INFO - __main__ -   lang2id = None
+01/06/2022 17:49:15 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/06/2022 17:49:15 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna
+01/06/2022 17:49:15 - INFO - root -   Trying to decide if add adapter
+01/06/2022 17:49:15 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/pytorch_model_head.bin
+01/06/2022 17:49:15 - INFO - root -   loading lang adpater th/wiki@ukp
+th th/wiki@ukp
+Traceback (most recent call last):
+  File "third_party/my_run_squad.py", line 1109, in <module>
+    main()
+  File "third_party/my_run_squad.py", line 1099, in main
+    model, lang_adapter_names, task_name = setup_adapter(args, adapter_args, model, load_adapter=load_adapter, load_lang_adapter=load_lang_adapter)
+  File "third_party/my_run_squad.py", line 814, in setup_adapter
+    lang_adapter_name = model.load_adapter(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 1172, in load_adapter
+    return super().load_adapter(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 999, in load_adapter
+    load_dir, load_name = loader.load(adapter_name_or_path, config, version, model_name, load_as, **kwargs)
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 385, in load
+    resolved_folder = resolve_adapter_path(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_utils.py", line 436, in resolve_adapter_path
+    return pull_from_hub(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_utils.py", line 367, in pull_from_hub
+    raise EnvironmentError("No adapter with name '{}' was found in the adapter index.".format(specifier))
+OSError: No adapter with name 'th/wiki@ukp' was found in the adapter index.
+PyTorch version 1.10.0+cu111 available.
+01/06/2022 17:49:18 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/06/2022 17:49:18 - INFO - root -   save model
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:49:24 - INFO - __main__ -   lang2id = None
+01/06/2022 17:49:28 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/root/Desktop/cloud-emea-copy/data//xquad', output_dir='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_th/', max_seq_length=384, train_file='/root/Desktop/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/root/Desktop/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=8, learning_rate=0.0003, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='th', train_lang='en', log_file='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_th//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/06/2022 17:49:28 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:49:34 - INFO - __main__ -   lang2id = None
+01/06/2022 17:49:34 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/06/2022 17:49:34 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna
+01/06/2022 17:49:34 - INFO - root -   Trying to decide if add adapter
+01/06/2022 17:49:34 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/pytorch_model_head.bin
+01/06/2022 17:49:34 - INFO - root -   loading lang adpater th/wiki@ukp
+th th/wiki@ukp
+Traceback (most recent call last):
+  File "third_party/my_run_squad.py", line 1109, in <module>
+    main()
+  File "third_party/my_run_squad.py", line 1099, in main
+    model, lang_adapter_names, task_name = setup_adapter(args, adapter_args, model, load_adapter=load_adapter, load_lang_adapter=load_lang_adapter)
+  File "third_party/my_run_squad.py", line 814, in setup_adapter
+    lang_adapter_name = model.load_adapter(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 1172, in load_adapter
+    return super().load_adapter(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 999, in load_adapter
+    load_dir, load_name = loader.load(adapter_name_or_path, config, version, model_name, load_as, **kwargs)
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 385, in load
+    resolved_folder = resolve_adapter_path(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_utils.py", line 436, in resolve_adapter_path
+    return pull_from_hub(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_utils.py", line 367, in pull_from_hub
+    raise EnvironmentError("No adapter with name '{}' was found in the adapter index.".format(specifier))
+OSError: No adapter with name 'th/wiki@ukp' was found in the adapter index.
+PyTorch version 1.10.0+cu111 available.
+01/06/2022 17:49:37 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/06/2022 17:49:37 - INFO - root -   save model
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:49:44 - INFO - __main__ -   lang2id = None
+01/06/2022 17:49:48 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/root/Desktop/cloud-emea-copy/data//xquad', output_dir='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_th/', max_seq_length=384, train_file='/root/Desktop/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/root/Desktop/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=8, learning_rate=0.0003, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='th', train_lang='en', log_file='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_th//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/06/2022 17:49:48 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:49:54 - INFO - __main__ -   lang2id = None
+01/06/2022 17:49:54 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/06/2022 17:49:54 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna
+01/06/2022 17:49:54 - INFO - root -   Trying to decide if add adapter
+01/06/2022 17:49:54 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/pytorch_model_head.bin
+01/06/2022 17:49:54 - INFO - root -   loading lang adpater th/wiki@ukp
+th th/wiki@ukp
+Traceback (most recent call last):
+  File "third_party/my_run_squad.py", line 1109, in <module>
+    main()
+  File "third_party/my_run_squad.py", line 1099, in main
+    model, lang_adapter_names, task_name = setup_adapter(args, adapter_args, model, load_adapter=load_adapter, load_lang_adapter=load_lang_adapter)
+  File "third_party/my_run_squad.py", line 814, in setup_adapter
+    lang_adapter_name = model.load_adapter(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 1172, in load_adapter
+    return super().load_adapter(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 999, in load_adapter
+    load_dir, load_name = loader.load(adapter_name_or_path, config, version, model_name, load_as, **kwargs)
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 385, in load
+    resolved_folder = resolve_adapter_path(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_utils.py", line 436, in resolve_adapter_path
+    return pull_from_hub(
+  File "/root/Desktop/cloud-emea-copy/src/transformers/adapter_utils.py", line 367, in pull_from_hub
+    raise EnvironmentError("No adapter with name '{}' was found in the adapter index.".format(specifier))
+OSError: No adapter with name 'th/wiki@ukp' was found in the adapter index.

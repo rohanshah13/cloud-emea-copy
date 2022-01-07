@@ -1,0 +1,946 @@
+PyTorch version 1.10.0+cu111 available.
+01/06/2022 17:52:05 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/06/2022 17:52:05 - INFO - root -   save model
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:52:11 - INFO - __main__ -   lang2id = None
+01/06/2022 17:52:15 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/root/Desktop/cloud-emea-copy/data//xquad', output_dir='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/', max_seq_length=384, train_file='/root/Desktop/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/root/Desktop/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=8, learning_rate=0.0003, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='vi', train_lang='en', log_file='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/06/2022 17:52:15 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:52:21 - INFO - __main__ -   lang2id = None
+01/06/2022 17:52:21 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/06/2022 17:52:21 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna
+01/06/2022 17:52:21 - INFO - root -   Trying to decide if add adapter
+01/06/2022 17:52:21 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s1/checkpoint-best/qna/pytorch_model_head.bin
+01/06/2022 17:52:21 - INFO - root -   loading lang adpater vi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip.
+https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip not found in cache or force_download set to True, downloading to /root/.cache/torch/adapters/tmp1qjn1reu
+vi vi/wiki@ukp
+Downloading:   0%|          | 0.00/400M [00:00<?, ?B/s]Downloading:   0%|          | 16.4k/400M [00:00<51:23, 130kB/s]Downloading:   0%|          | 49.2k/400M [00:00<40:58, 163kB/s]Downloading:   0%|          | 81.9k/400M [00:00<39:06, 170kB/s]Downloading:   0%|          | 115k/400M [00:00<38:25, 173kB/s] Downloading:   0%|          | 164k/400M [00:00<31:54, 209kB/s]Downloading:   0%|          | 213k/400M [00:01<29:06, 229kB/s]Downloading:   0%|          | 246k/400M [00:01<31:21, 212kB/s]Downloading:   0%|          | 279k/400M [00:01<32:59, 202kB/s]Downloading:   0%|          | 328k/400M [00:01<29:57, 222kB/s]Downloading:   0%|          | 377k/400M [00:01<28:11, 236kB/s]Downloading:   0%|          | 410k/400M [00:01<30:23, 219kB/s]Downloading:   0%|          | 459k/400M [00:02<28:26, 234kB/s]Downloading:   0%|          | 508k/400M [00:02<27:14, 244kB/s]Downloading:   0%|          | 557k/400M [00:02<26:29, 251kB/s]Downloading:   0%|          | 606k/400M [00:02<25:58, 256kB/s]Downloading:   0%|          | 672k/400M [00:02<23:15, 286kB/s]Downloading:   0%|          | 721k/400M [00:03<23:42, 280kB/s]Downloading:   0%|          | 770k/400M [00:03<24:02, 277kB/s]Downloading:   0%|          | 819k/400M [00:03<24:16, 274kB/s]Downloading:   0%|          | 868k/400M [00:03<24:25, 272kB/s]Downloading:   0%|          | 918k/400M [00:03<24:29, 271kB/s]Downloading:   0%|          | 983k/400M [00:03<22:27, 296kB/s]Downloading:   0%|          | 1.03M/400M [00:04<23:07, 287kB/s]Downloading:   0%|          | 1.08M/400M [00:04<23:35, 282kB/s]Downloading:   0%|          | 1.13M/400M [00:04<23:55, 278kB/s]Downloading:   0%|          | 1.18M/400M [00:04<24:10, 275kB/s]Downloading:   0%|          | 1.23M/400M [00:04<24:15, 274kB/s]Downloading:   0%|          | 1.29M/400M [00:05<22:21, 297kB/s]Downloading:   0%|          | 1.34M/400M [00:05<23:01, 288kB/s]Downloading:   0%|          | 1.39M/400M [00:05<23:31, 282kB/s]Downloading:   0%|          | 1.44M/400M [00:05<23:50, 278kB/s]Downloading:   0%|          | 1.49M/400M [00:05<24:00, 276kB/s]Downloading:   0%|          | 1.56M/400M [00:06<22:13, 298kB/s]Downloading:   0%|          | 1.61M/400M [00:06<22:51, 290kB/s]Downloading:   0%|          | 1.67M/400M [00:06<21:27, 309kB/s]Downloading:   0%|          | 1.72M/400M [00:06<22:15, 298kB/s]Downloading:   0%|          | 1.79M/400M [00:06<21:02, 315kB/s]Downloading:   0%|          | 1.85M/400M [00:06<20:15, 327kB/s]Downloading:   0%|          | 1.92M/400M [00:07<19:43, 336kB/s]Downloading:   0%|          | 1.98M/400M [00:07<19:20, 343kB/s]Downloading:   1%|          | 2.05M/400M [00:07<19:03, 348kB/s]Downloading:   1%|          | 2.13M/400M [00:07<17:37, 376kB/s]Downloading:   1%|          | 2.21M/400M [00:07<16:43, 396kB/s]Downloading:   1%|          | 2.29M/400M [00:08<16:04, 412kB/s]Downloading:   1%|          | 2.38M/400M [00:08<15:38, 423kB/s]Downloading:   1%|          | 2.46M/400M [00:08<15:16, 434kB/s]Downloading:   1%|          | 2.56M/400M [00:08<14:16, 463kB/s]Downloading:   1%|          | 2.65M/400M [00:08<13:37, 486kB/s]Downloading:   1%|          | 2.77M/400M [00:08<12:33, 527kB/s]Downloading:   1%|          | 2.88M/400M [00:09<11:52, 557kB/s]Downloading:   1%|          | 3.01M/400M [00:09<10:58, 602kB/s]Downloading:   1%|          | 3.15M/400M [00:09<10:22, 637kB/s]Downloading:   1%|          | 3.29M/400M [00:09<09:38, 685kB/s]Downloading:   1%|          | 3.44M/400M [00:09<09:08, 722kB/s]Downloading:   1%|          | 3.60M/400M [00:10<08:32, 773kB/s]Downloading:   1%|          | 3.77M/400M [00:10<08:08, 810kB/s]Downloading:   1%|          | 3.95M/400M [00:10<07:39, 862kB/s]Downloading:   1%|          | 4.15M/400M [00:10<07:07, 925kB/s]Downloading:   1%|          | 4.36M/400M [00:10<06:38, 993kB/s]Downloading:   1%|          | 4.59M/400M [00:10<06:10, 1.07MB/s]Downloading:   1%|          | 4.82M/400M [00:11<05:51, 1.12MB/s]Downloading:   1%|▏         | 5.06M/400M [00:11<05:30, 1.19MB/s]Downloading:   1%|▏         | 5.34M/400M [00:11<05:07, 1.28MB/s]Downloading:   1%|▏         | 5.62M/400M [00:11<04:50, 1.36MB/s]Downloading:   1%|▏         | 5.93M/400M [00:11<04:31, 1.45MB/s]Downloading:   2%|▏         | 6.24M/400M [00:12<04:18, 1.52MB/s]Downloading:   2%|▏         | 6.59M/400M [00:12<04:02, 1.62MB/s]Downloading:   2%|▏         | 6.95M/400M [00:12<03:47, 1.73MB/s]Downloading:   2%|▏         | 7.32M/400M [00:12<03:34, 1.83MB/s]Downloading:   2%|▏         | 7.72M/400M [00:12<03:22, 1.94MB/s]Downloading:   2%|▏         | 8.14M/400M [00:12<03:10, 2.05MB/s]Downloading:   2%|▏         | 8.59M/400M [00:13<02:58, 2.19MB/s]Downloading:   2%|▏         | 9.06M/400M [00:13<02:49, 2.31MB/s]Downloading:   2%|▏         | 9.55M/400M [00:13<02:29, 2.60MB/s]Downloading:   3%|▎         | 10.0M/400M [00:13<02:08, 3.02MB/s]Downloading:   3%|▎         | 10.4M/400M [00:13<02:20, 2.77MB/s]Downloading:   3%|▎         | 10.7M/400M [00:13<02:38, 2.45MB/s]Downloading:   3%|▎         | 11.2M/400M [00:14<02:23, 2.70MB/s]Downloading:   3%|▎         | 11.8M/400M [00:14<02:13, 2.90MB/s]Downloading:   3%|▎         | 12.5M/400M [00:14<02:05, 3.09MB/s]Downloading:   3%|▎         | 13.1M/400M [00:14<01:49, 3.53MB/s]Downloading:   3%|▎         | 13.8M/400M [00:14<01:34, 4.09MB/s]Downloading:   4%|▎         | 14.2M/400M [00:14<01:44, 3.70MB/s]Downloading:   4%|▎         | 14.6M/400M [00:14<01:55, 3.33MB/s]Downloading:   4%|▍         | 15.4M/400M [00:15<01:30, 4.24MB/s]Downloading:   4%|▍         | 15.8M/400M [00:15<01:30, 4.23MB/s]Downloading:   4%|▍         | 16.3M/400M [00:15<01:43, 3.71MB/s]Downloading:   4%|▍         | 17.1M/400M [00:15<01:29, 4.28MB/s]Downloading:   4%|▍         | 17.9M/400M [00:15<01:11, 5.32MB/s]Downloading:   5%|▍         | 18.5M/400M [00:15<01:19, 4.79MB/s]Downloading:   5%|▍         | 19.0M/400M [00:15<01:30, 4.21MB/s]Downloading:   5%|▍         | 19.9M/400M [00:16<01:24, 4.49MB/s]Downloading:   5%|▌         | 20.9M/400M [00:16<01:06, 5.70MB/s]Downloading:   5%|▌         | 21.5M/400M [00:16<01:07, 5.59MB/s]Downloading:   6%|▌         | 22.1M/400M [00:16<01:15, 4.97MB/s]Downloading:   6%|▌         | 23.1M/400M [00:16<01:06, 5.65MB/s]Downloading:   6%|▌         | 24.2M/400M [00:16<00:54, 6.89MB/s]Downloading:   6%|▌         | 24.9M/400M [00:16<01:01, 6.13MB/s]Downloading:   6%|▋         | 25.6M/400M [00:17<01:07, 5.50MB/s]Downloading:   7%|▋         | 26.7M/400M [00:17<00:58, 6.33MB/s]Downloading:   7%|▋         | 27.9M/400M [00:17<00:48, 7.72MB/s]Downloading:   7%|▋         | 28.8M/400M [00:17<00:53, 6.92MB/s]Downloading:   7%|▋         | 29.5M/400M [00:17<00:59, 6.19MB/s]Downloading:   8%|▊         | 30.8M/400M [00:17<00:51, 7.15MB/s]Downloading:   8%|▊         | 32.2M/400M [00:17<00:42, 8.68MB/s]Downloading:   8%|▊         | 33.1M/400M [00:17<00:47, 7.71MB/s]Downloading:   9%|▊         | 34.0M/400M [00:18<00:52, 6.98MB/s]Downloading:   9%|▉         | 35.5M/400M [00:18<00:45, 8.05MB/s]Downloading:   9%|▉         | 36.9M/400M [00:18<00:37, 9.65MB/s]Downloading:  10%|▉         | 38.0M/400M [00:18<00:42, 8.56MB/s]Downloading:  10%|▉         | 38.9M/400M [00:18<00:46, 7.76MB/s]Downloading:  10%|█         | 40.6M/400M [00:18<00:36, 9.88MB/s]Downloading:  10%|█         | 41.7M/400M [00:18<00:37, 9.65MB/s]Downloading:  11%|█         | 42.7M/400M [00:19<00:41, 8.63MB/s]Downloading:  11%|█         | 44.4M/400M [00:19<00:36, 9.76MB/s]Downloading:  12%|█▏        | 46.0M/400M [00:19<00:31, 11.2MB/s]Downloading:  12%|█▏        | 47.2M/400M [00:19<00:35, 9.99MB/s]Downloading:  12%|█▏        | 48.4M/400M [00:19<00:33, 10.4MB/s]Downloading:  13%|█▎        | 50.1M/400M [00:19<00:29, 11.9MB/s]Downloading:  13%|█▎        | 51.4M/400M [00:19<00:33, 10.4MB/s]Downloading:  13%|█▎        | 52.5M/400M [00:19<00:38, 9.13MB/s]Downloading:  14%|█▎        | 54.3M/400M [00:20<00:32, 10.7MB/s]Downloading:  14%|█▍        | 55.9M/400M [00:20<00:30, 11.1MB/s]Downloading:  14%|█▍        | 57.1M/400M [00:20<00:33, 10.4MB/s]Downloading:  15%|█▍        | 58.6M/400M [00:20<00:29, 11.6MB/s]Downloading:  15%|█▌        | 60.1M/400M [00:20<00:27, 12.4MB/s]Downloading:  15%|█▌        | 61.4M/400M [00:20<00:30, 11.0MB/s]Downloading:  16%|█▌        | 62.9M/400M [00:20<00:28, 11.6MB/s]Downloading:  16%|█▌        | 64.3M/400M [00:20<00:27, 12.2MB/s]Downloading:  16%|█▋        | 65.6M/400M [00:21<00:31, 10.8MB/s]Downloading:  17%|█▋        | 67.3M/400M [00:21<00:28, 11.8MB/s]Downloading:  17%|█▋        | 68.5M/400M [00:21<00:27, 11.9MB/s]Downloading:  17%|█▋        | 69.7M/400M [00:21<00:31, 10.6MB/s]Downloading:  18%|█▊        | 71.5M/400M [00:21<00:27, 12.1MB/s]Downloading:  18%|█▊        | 73.0M/400M [00:21<00:25, 12.6MB/s]Downloading:  19%|█▊        | 74.3M/400M [00:21<00:29, 10.9MB/s]Downloading:  19%|█▉        | 75.9M/400M [00:21<00:27, 11.9MB/s]Downloading:  19%|█▉        | 77.1M/400M [00:22<00:26, 12.1MB/s]Downloading:  20%|█▉        | 78.4M/400M [00:22<00:30, 10.6MB/s]Downloading:  20%|██        | 80.2M/400M [00:22<00:26, 12.1MB/s]Downloading:  20%|██        | 81.4M/400M [00:22<00:26, 11.9MB/s]Downloading:  21%|██        | 82.7M/400M [00:22<00:29, 10.8MB/s]Downloading:  21%|██        | 84.5M/400M [00:22<00:25, 12.3MB/s]Downloading:  21%|██▏       | 85.8M/400M [00:22<00:26, 12.0MB/s]Downloading:  22%|██▏       | 87.0M/400M [00:22<00:28, 10.8MB/s]Downloading:  22%|██▏       | 88.8M/400M [00:23<00:24, 12.6MB/s]Downloading:  23%|██▎       | 90.1M/400M [00:23<00:25, 12.0MB/s]Downloading:  23%|██▎       | 91.4M/400M [00:23<00:28, 10.8MB/s]Downloading:  23%|██▎       | 93.2M/400M [00:23<00:24, 12.3MB/s]Downloading:  24%|██▎       | 94.4M/400M [00:23<00:25, 12.0MB/s]Downloading:  24%|██▍       | 95.7M/400M [00:23<00:28, 10.8MB/s]Downloading:  24%|██▍       | 97.5M/400M [00:23<00:24, 12.4MB/s]Downloading:  25%|██▍       | 98.8M/400M [00:23<00:25, 11.8MB/s]Downloading:  25%|██▌       | 100M/400M [00:24<00:27, 10.9MB/s] Downloading:  25%|██▌       | 102M/400M [00:24<00:23, 12.8MB/s]Downloading:  26%|██▌       | 103M/400M [00:24<00:24, 12.1MB/s]Downloading:  26%|██▌       | 104M/400M [00:24<00:26, 11.0MB/s]Downloading:  27%|██▋       | 106M/400M [00:24<00:23, 12.6MB/s]Downloading:  27%|██▋       | 108M/400M [00:24<00:24, 12.1MB/s]Downloading:  27%|██▋       | 109M/400M [00:24<00:26, 11.1MB/s]Downloading:  28%|██▊       | 111M/400M [00:24<00:22, 12.9MB/s]Downloading:  28%|██▊       | 112M/400M [00:25<00:23, 12.1MB/s]Downloading:  28%|██▊       | 113M/400M [00:25<00:25, 11.1MB/s]Downloading:  29%|██▉       | 115M/400M [00:25<00:21, 13.0MB/s]Downloading:  29%|██▉       | 117M/400M [00:25<00:23, 12.1MB/s]Downloading:  29%|██▉       | 118M/400M [00:25<00:25, 11.2MB/s]Downloading:  30%|██▉       | 120M/400M [00:25<00:21, 13.1MB/s]Downloading:  30%|███       | 121M/400M [00:25<00:22, 12.3MB/s]Downloading:  31%|███       | 122M/400M [00:25<00:24, 11.3MB/s]Downloading:  31%|███       | 124M/400M [00:25<00:21, 13.1MB/s]Downloading:  31%|███▏      | 126M/400M [00:26<00:22, 12.3MB/s]Downloading:  32%|███▏      | 127M/400M [00:26<00:23, 11.4MB/s]Downloading:  32%|███▏      | 129M/400M [00:26<00:20, 13.2MB/s]Downloading:  33%|███▎      | 130M/400M [00:26<00:21, 12.5MB/s]Downloading:  33%|███▎      | 131M/400M [00:26<00:23, 11.5MB/s]Downloading:  33%|███▎      | 133M/400M [00:26<00:19, 13.5MB/s]Downloading:  34%|███▎      | 135M/400M [00:26<00:21, 12.6MB/s]Downloading:  34%|███▍      | 136M/400M [00:26<00:22, 11.6MB/s]Downloading:  35%|███▍      | 138M/400M [00:27<00:19, 13.2MB/s]Downloading:  35%|███▍      | 139M/400M [00:27<00:21, 12.0MB/s]Downloading:  35%|███▌      | 141M/400M [00:27<00:21, 12.0MB/s]Downloading:  36%|███▌      | 143M/400M [00:27<00:18, 14.2MB/s]Downloading:  36%|███▌      | 144M/400M [00:27<00:20, 12.5MB/s]Downloading:  36%|███▋      | 145M/400M [00:27<00:21, 11.9MB/s]Downloading:  37%|███▋      | 148M/400M [00:27<00:17, 14.6MB/s]Downloading:  37%|███▋      | 149M/400M [00:27<00:19, 12.9MB/s]Downloading:  38%|███▊      | 151M/400M [00:28<00:20, 12.2MB/s]Downloading:  38%|███▊      | 153M/400M [00:28<00:17, 14.1MB/s]Downloading:  39%|███▊      | 154M/400M [00:28<00:18, 13.3MB/s]Downloading:  39%|███▉      | 155M/400M [00:28<00:19, 12.5MB/s]Downloading:  39%|███▉      | 158M/400M [00:28<00:16, 14.6MB/s]Downloading:  40%|███▉      | 159M/400M [00:28<00:17, 13.4MB/s]Downloading:  40%|████      | 160M/400M [00:28<00:19, 12.6MB/s]Downloading:  41%|████      | 163M/400M [00:28<00:16, 14.6MB/s]Downloading:  41%|████      | 164M/400M [00:29<00:17, 13.3MB/s]Downloading:  41%|████▏     | 165M/400M [00:29<00:18, 12.8MB/s]Downloading:  42%|████▏     | 168M/400M [00:29<00:15, 15.2MB/s]Downloading:  42%|████▏     | 169M/400M [00:29<00:16, 14.0MB/s]Downloading:  43%|████▎     | 171M/400M [00:29<00:17, 13.1MB/s]Downloading:  43%|████▎     | 173M/400M [00:29<00:14, 15.4MB/s]Downloading:  44%|████▎     | 175M/400M [00:29<00:16, 13.9MB/s]Downloading:  44%|████▍     | 176M/400M [00:29<00:16, 13.4MB/s]Downloading:  45%|████▍     | 178M/400M [00:30<00:14, 15.8MB/s]Downloading:  45%|████▌     | 180M/400M [00:30<00:15, 14.4MB/s]Downloading:  45%|████▌     | 182M/400M [00:30<00:15, 13.7MB/s]Downloading:  46%|████▌     | 184M/400M [00:30<00:13, 16.2MB/s]Downloading:  46%|████▋     | 186M/400M [00:30<00:14, 14.4MB/s]Downloading:  47%|████▋     | 187M/400M [00:30<00:15, 14.0MB/s]Downloading:  47%|████▋     | 190M/400M [00:30<00:13, 15.2MB/s]Downloading:  48%|████▊     | 191M/400M [00:30<00:13, 14.9MB/s]Downloading:  48%|████▊     | 193M/400M [00:31<00:14, 14.5MB/s]Downloading:  49%|████▉     | 195M/400M [00:31<00:12, 16.8MB/s]Downloading:  49%|████▉     | 197M/400M [00:31<00:13, 15.0MB/s]Downloading:  50%|████▉     | 198M/400M [00:31<00:13, 15.3MB/s]Downloading:  50%|█████     | 200M/400M [00:31<00:13, 15.0MB/s]Downloading:  50%|█████     | 202M/400M [00:31<00:12, 15.3MB/s]Downloading:  51%|█████     | 204M/400M [00:31<00:12, 15.3MB/s]Downloading:  51%|█████▏    | 205M/400M [00:31<00:12, 15.3MB/s]Downloading:  52%|█████▏    | 207M/400M [00:31<00:12, 15.7MB/s]Downloading:  52%|█████▏    | 208M/400M [00:32<00:12, 15.0MB/s]Downloading:  53%|█████▎    | 211M/400M [00:32<00:12, 15.6MB/s]Downloading:  53%|█████▎    | 212M/400M [00:32<00:12, 15.1MB/s]Downloading:  54%|█████▎    | 214M/400M [00:32<00:12, 15.1MB/s]Downloading:  54%|█████▍    | 217M/400M [00:32<00:10, 17.0MB/s]Downloading:  55%|█████▍    | 218M/400M [00:32<00:11, 16.3MB/s]Downloading:  55%|█████▌    | 220M/400M [00:32<00:11, 15.7MB/s]Downloading:  56%|█████▌    | 222M/400M [00:32<00:10, 17.6MB/s]Downloading:  56%|█████▌    | 224M/400M [00:33<00:10, 16.1MB/s]Downloading:  57%|█████▋    | 226M/400M [00:33<00:10, 16.2MB/s]Downloading:  57%|█████▋    | 228M/400M [00:33<00:10, 16.4MB/s]Downloading:  58%|█████▊    | 230M/400M [00:33<00:11, 15.1MB/s]Downloading:  58%|█████▊    | 233M/400M [00:33<00:09, 16.9MB/s]Downloading:  59%|█████▊    | 234M/400M [00:33<00:10, 16.4MB/s]Downloading:  59%|█████▉    | 236M/400M [00:33<00:10, 16.1MB/s]Downloading:  60%|█████▉    | 238M/400M [00:33<00:09, 17.6MB/s]Downloading:  60%|██████    | 240M/400M [00:33<00:10, 15.6MB/s]Downloading:  61%|██████    | 242M/400M [00:34<00:10, 15.2MB/s]Downloading:  61%|██████    | 244M/400M [00:34<00:09, 16.5MB/s]Downloading:  62%|██████▏   | 246M/400M [00:34<00:09, 15.8MB/s]Downloading:  62%|██████▏   | 248M/400M [00:34<00:09, 15.6MB/s]Downloading:  63%|██████▎   | 250M/400M [00:34<00:09, 16.6MB/s]Downloading:  63%|██████▎   | 252M/400M [00:34<00:09, 15.7MB/s]Downloading:  63%|██████▎   | 254M/400M [00:34<00:09, 15.7MB/s]Downloading:  64%|██████▍   | 256M/400M [00:34<00:08, 17.1MB/s]Downloading:  64%|██████▍   | 258M/400M [00:35<00:09, 15.3MB/s]Downloading:  65%|██████▍   | 260M/400M [00:35<00:08, 15.7MB/s]Downloading:  65%|██████▌   | 262M/400M [00:35<00:08, 15.6MB/s]Downloading:  66%|██████▌   | 263M/400M [00:35<00:08, 15.2MB/s]Downloading:  66%|██████▋   | 266M/400M [00:35<00:08, 16.5MB/s]Downloading:  67%|██████▋   | 268M/400M [00:35<00:08, 16.4MB/s]Downloading:  67%|██████▋   | 269M/400M [00:35<00:08, 15.8MB/s]Downloading:  68%|██████▊   | 272M/400M [00:35<00:07, 16.2MB/s]Downloading:  68%|██████▊   | 273M/400M [00:36<00:07, 15.8MB/s]Downloading:  69%|██████▉   | 275M/400M [00:36<00:07, 15.8MB/s]Downloading:  69%|██████▉   | 277M/400M [00:36<00:07, 15.7MB/s]Downloading:  70%|██████▉   | 279M/400M [00:36<00:07, 16.7MB/s]Downloading:  70%|███████   | 281M/400M [00:36<00:07, 16.5MB/s]Downloading:  71%|███████   | 283M/400M [00:36<00:07, 15.5MB/s]Downloading:  71%|███████   | 285M/400M [00:36<00:06, 16.6MB/s]Downloading:  72%|███████▏  | 286M/400M [00:36<00:07, 15.3MB/s]Downloading:  72%|███████▏  | 288M/400M [00:37<00:07, 15.5MB/s]Downloading:  73%|███████▎  | 290M/400M [00:37<00:07, 15.3MB/s]Downloading:  73%|███████▎  | 291M/400M [00:37<00:07, 14.4MB/s]Downloading:  74%|███████▎  | 294M/400M [00:37<00:06, 17.3MB/s]Downloading:  74%|███████▍  | 296M/400M [00:37<00:06, 15.4MB/s]Downloading:  74%|███████▍  | 297M/400M [00:37<00:07, 14.4MB/s]Downloading:  75%|███████▌  | 300M/400M [00:37<00:06, 15.1MB/s]Downloading:  76%|███████▌  | 303M/400M [00:37<00:05, 17.8MB/s]Downloading:  76%|███████▋  | 305M/400M [00:38<00:05, 16.1MB/s]Downloading:  77%|███████▋  | 306M/400M [00:38<00:06, 15.0MB/s]Downloading:  77%|███████▋  | 309M/400M [00:38<00:06, 14.4MB/s]Downloading:  78%|███████▊  | 312M/400M [00:38<00:06, 14.5MB/s]Downloading:  79%|███████▊  | 314M/400M [00:38<00:05, 16.9MB/s]Downloading:  79%|███████▉  | 316M/400M [00:38<00:05, 15.7MB/s]Downloading:  79%|███████▉  | 318M/400M [00:38<00:05, 14.8MB/s]Downloading:  80%|████████  | 320M/400M [00:39<00:05, 15.1MB/s]Downloading:  81%|████████  | 323M/400M [00:39<00:04, 17.0MB/s]Downloading:  81%|████████  | 325M/400M [00:39<00:04, 15.7MB/s]Downloading:  82%|████████▏ | 326M/400M [00:39<00:04, 15.0MB/s]Downloading:  82%|████████▏ | 329M/400M [00:39<00:03, 17.9MB/s]Downloading:  83%|████████▎ | 331M/400M [00:39<00:04, 16.5MB/s]Downloading:  83%|████████▎ | 333M/400M [00:39<00:04, 15.3MB/s]Downloading:  84%|████████▍ | 335M/400M [00:40<00:04, 15.4MB/s]Downloading:  85%|████████▍ | 338M/400M [00:40<00:03, 17.5MB/s]Downloading:  85%|████████▌ | 340M/400M [00:40<00:03, 16.3MB/s]Downloading:  85%|████████▌ | 341M/400M [00:40<00:03, 15.0MB/s]Downloading:  86%|████████▌ | 344M/400M [00:40<00:03, 15.3MB/s]Downloading:  87%|████████▋ | 347M/400M [00:40<00:02, 18.5MB/s]Downloading:  87%|████████▋ | 349M/400M [00:40<00:03, 16.6MB/s]Downloading:  88%|████████▊ | 351M/400M [00:40<00:03, 15.4MB/s]Downloading:  88%|████████▊ | 353M/400M [00:41<00:03, 15.3MB/s]Downloading:  89%|████████▉ | 356M/400M [00:41<00:02, 18.0MB/s]Downloading:  90%|████████▉ | 358M/400M [00:41<00:02, 16.2MB/s]Downloading:  90%|████████▉ | 360M/400M [00:41<00:02, 15.0MB/s]Downloading:  91%|█████████ | 362M/400M [00:41<00:02, 16.2MB/s]Downloading:  91%|█████████ | 364M/400M [00:41<00:02, 15.5MB/s]Downloading:  91%|█████████▏| 365M/400M [00:41<00:02, 15.1MB/s]Downloading:  92%|█████████▏| 368M/400M [00:42<00:01, 16.1MB/s]Downloading:  92%|█████████▏| 369M/400M [00:42<00:01, 16.4MB/s]Downloading:  93%|█████████▎| 371M/400M [00:42<00:01, 16.1MB/s]Downloading:  93%|█████████▎| 373M/400M [00:42<00:01, 16.2MB/s]Downloading:  94%|█████████▎| 375M/400M [00:42<00:01, 15.5MB/s]Downloading:  94%|█████████▍| 377M/400M [00:42<00:01, 16.6MB/s]Downloading:  95%|█████████▍| 378M/400M [00:42<00:01, 16.7MB/s]Downloading:  95%|█████████▌| 380M/400M [00:42<00:01, 16.9MB/s]Downloading:  96%|█████████▌| 382M/400M [00:42<00:01, 16.2MB/s]Downloading:  96%|█████████▌| 384M/400M [00:43<00:01, 15.4MB/s]Downloading:  96%|█████████▋| 385M/400M [00:43<00:00, 15.6MB/s]Downloading:  97%|█████████▋| 387M/400M [00:43<00:00, 15.8MB/s]Downloading:  97%|█████████▋| 390M/400M [00:43<00:00, 17.9MB/s]Downloading:  98%|█████████▊| 391M/400M [00:43<00:00, 17.3MB/s]Downloading:  98%|█████████▊| 393M/400M [00:43<00:00, 16.5MB/s]Downloading:  99%|█████████▉| 395M/400M [00:43<00:00, 16.2MB/s]Downloading:  99%|█████████▉| 397M/400M [00:43<00:00, 15.3MB/s]Downloading: 100%|█████████▉| 399M/400M [00:43<00:00, 16.0MB/s]Downloading: 100%|██████████| 400M/400M [00:43<00:00, 9.09MB/s]
+storing https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip in cache at /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141.b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70
+creating metadata file for /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141.b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70
+Loading module configuration from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/adapter_config.json
+Adding adapter 'vi' of type 'text_lang'.
+Loading module weights from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/pytorch_adapter.bin
+Loading module configuration from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/head_config.json
+01/06/2022 17:53:09 - INFO - __main__ -   Language adapter for vi found
+01/06/2022 17:53:09 - INFO - __main__ -   Set active language adapter to vi
+01/06/2022 17:53:09 - INFO - __main__ -   Args Adapter Weight = None
+01/06/2022 17:53:09 - INFO - __main__ -   Adapter Languages = ['vi']
+01/06/2022 17:53:09 - INFO - __main__ -   Creating features from dataset file at /root/Desktop/cloud-emea-copy/data//xquad
+  0%|          | 0/48 [00:00<?, ?it/s] 33%|███▎      | 16/48 [00:00<00:00, 127.02it/s] 60%|██████    | 29/48 [00:00<00:00, 119.23it/s] 90%|████████▉ | 43/48 [00:00<00:00, 125.78it/s]100%|██████████| 48/48 [00:00<00:00, 127.09it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<06:40,  2.97it/s]convert squad examples to features:  22%|██▏       | 257/1190 [00:00<00:01, 575.60it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:01<00:02, 334.78it/s]convert squad examples to features:  89%|████████▉ | 1057/1190 [00:01<00:00, 1083.53it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:01<00:00, 811.82it/s] /root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 711101.55it/s]
+01/06/2022 17:53:11 - INFO - __main__ -   Local Rank = -1
+01/06/2022 17:53:11 - INFO - __main__ -   Saving features into cached file /root/Desktop/cloud-emea-copy/data//xquad/cached_xquad.vi.json_bert-base-multilingual-cased_384_vi
+01/06/2022 17:53:12 - INFO - __main__ -   ***** Running evaluation  *****
+01/06/2022 17:53:12 - INFO - __main__ -     Num examples = 1325
+01/06/2022 17:53:12 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/166 [00:00<?, ?it/s]01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 1
+01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 2
+01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/166 [00:00<00:06, 26.10it/s]01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 4
+01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 5
+01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 6
+01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 7
+Evaluating:   4%|▍         | 7/166 [00:00<00:05, 30.69it/s]01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 8
+01/06/2022 17:53:12 - INFO - __main__ -   Batch Number = 9
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 10
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 11
+Evaluating:   7%|▋         | 11/166 [00:00<00:04, 32.78it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 12
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 13
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 14
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 15
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 16
+Evaluating:  10%|▉         | 16/166 [00:00<00:04, 36.62it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 17
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 18
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 19
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 20
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 21
+Evaluating:  13%|█▎        | 21/166 [00:00<00:03, 39.09it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 22
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 23
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 24
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 25
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 26
+Evaluating:  16%|█▌        | 26/166 [00:00<00:03, 40.57it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 27
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 28
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 29
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 30
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 31
+Evaluating:  19%|█▊        | 31/166 [00:00<00:03, 40.02it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 32
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 33
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 34
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 35
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 36
+Evaluating:  22%|██▏       | 36/166 [00:00<00:03, 40.97it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 37
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 38
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 39
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 40
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 41
+Evaluating:  25%|██▍       | 41/166 [00:01<00:03, 41.57it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 42
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 43
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 44
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 45
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 46
+Evaluating:  28%|██▊       | 46/166 [00:01<00:02, 42.05it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 47
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 48
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 49
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 50
+01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 51
+Evaluating:  31%|███       | 51/166 [00:01<00:02, 42.54it/s]01/06/2022 17:53:13 - INFO - __main__ -   Batch Number = 52
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 53
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 54
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 55
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 56
+Evaluating:  34%|███▎      | 56/166 [00:01<00:02, 42.86it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 57
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 58
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 59
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 60
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 61
+Evaluating:  37%|███▋      | 61/166 [00:01<00:02, 42.96it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 62
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 63
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 64
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 65
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 66
+Evaluating:  40%|███▉      | 66/166 [00:01<00:02, 43.06it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 67
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 68
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 69
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 70
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 71
+Evaluating:  43%|████▎     | 71/166 [00:01<00:02, 43.13it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 72
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 73
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 74
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 75
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 76
+Evaluating:  46%|████▌     | 76/166 [00:01<00:02, 43.15it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 77
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 78
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 79
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 80
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 81
+Evaluating:  49%|████▉     | 81/166 [00:01<00:01, 43.30it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 82
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 83
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 84
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 85
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 86
+Evaluating:  52%|█████▏    | 86/166 [00:02<00:01, 43.39it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 87
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 88
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 89
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 90
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 91
+Evaluating:  55%|█████▍    | 91/166 [00:02<00:01, 43.35it/s]01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 92
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 93
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 94
+01/06/2022 17:53:14 - INFO - __main__ -   Batch Number = 95
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 96
+Evaluating:  58%|█████▊    | 96/166 [00:02<00:01, 43.40it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 97
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 98
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 99
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 100
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 101
+Evaluating:  61%|██████    | 101/166 [00:02<00:01, 43.58it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 102
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 103
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 104
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 105
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 106
+Evaluating:  64%|██████▍   | 106/166 [00:02<00:01, 43.50it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 107
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 108
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 109
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 110
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 111
+Evaluating:  67%|██████▋   | 111/166 [00:02<00:01, 43.39it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 112
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 113
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 114
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 115
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 116
+Evaluating:  70%|██████▉   | 116/166 [00:02<00:01, 43.37it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 117
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 118
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 119
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 120
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 121
+Evaluating:  73%|███████▎  | 121/166 [00:02<00:01, 43.24it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 122
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 123
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 124
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 125
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 126
+Evaluating:  76%|███████▌  | 126/166 [00:03<00:00, 43.40it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 127
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 128
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 129
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 130
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 131
+Evaluating:  79%|███████▉  | 131/166 [00:03<00:00, 43.53it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 132
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 133
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 134
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 135
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 136
+Evaluating:  82%|████████▏ | 136/166 [00:03<00:00, 43.46it/s]01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 137
+01/06/2022 17:53:15 - INFO - __main__ -   Batch Number = 138
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 139
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 140
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 141
+Evaluating:  85%|████████▍ | 141/166 [00:03<00:00, 43.47it/s]01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 142
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 143
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 144
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 145
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 146
+Evaluating:  88%|████████▊ | 146/166 [00:03<00:00, 43.59it/s]01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 147
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 148
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 149
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 150
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 151
+Evaluating:  91%|█████████ | 151/166 [00:03<00:00, 43.53it/s]01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 152
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 153
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 154
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 155
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 156
+Evaluating:  94%|█████████▍| 156/166 [00:03<00:00, 43.44it/s]01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 157
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 158
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 159
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 160
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 161
+Evaluating:  97%|█████████▋| 161/166 [00:03<00:00, 43.47it/s]01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 162
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 163
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 164
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 165
+01/06/2022 17:53:16 - INFO - __main__ -   Batch Number = 166
+Evaluating: 100%|██████████| 166/166 [00:03<00:00, 44.10it/s]Evaluating: 100%|██████████| 166/166 [00:03<00:00, 42.27it/s]
+01/06/2022 17:53:16 - INFO - __main__ -     Evaluation done in total 3.928048 secs (0.002965 sec per example)
+Writing predictions to: /root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/predictions_vi_.json
+Writing nbest to: /root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/nbest_predictions_vi_.json
+01/06/2022 17:53:20 - INFO - __main__ -   Results = OrderedDict([('exact', 49.747899159663866), ('f1', 68.53701826074733), ('total', 1190), ('HasAns_exact', 49.747899159663866), ('HasAns_f1', 68.53701826074733), ('HasAns_total', 1190), ('best_exact', 49.747899159663866), ('best_exact_thresh', 0.0), ('best_f1', 68.53701826074733), ('best_f1_thresh', 0.0)])
+PyTorch version 1.10.0+cu111 available.
+01/06/2022 17:53:23 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/06/2022 17:53:23 - INFO - root -   save model
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:53:29 - INFO - __main__ -   lang2id = None
+01/06/2022 17:53:32 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/root/Desktop/cloud-emea-copy/data//xquad', output_dir='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/', max_seq_length=384, train_file='/root/Desktop/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/root/Desktop/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=8, learning_rate=0.0003, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='vi', train_lang='en', log_file='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/06/2022 17:53:32 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:53:39 - INFO - __main__ -   lang2id = None
+01/06/2022 17:53:39 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/06/2022 17:53:39 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna
+01/06/2022 17:53:39 - INFO - root -   Trying to decide if add adapter
+01/06/2022 17:53:39 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s2/checkpoint-best/qna/pytorch_model_head.bin
+01/06/2022 17:53:39 - INFO - root -   loading lang adpater vi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip.
+Loading module configuration from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/adapter_config.json
+Adding adapter 'vi' of type 'text_lang'.
+Loading module weights from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/pytorch_adapter.bin
+Loading module configuration from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/head_config.json
+01/06/2022 17:53:41 - INFO - __main__ -   Language adapter for vi found
+01/06/2022 17:53:41 - INFO - __main__ -   Set active language adapter to vi
+01/06/2022 17:53:41 - INFO - __main__ -   Args Adapter Weight = None
+01/06/2022 17:53:41 - INFO - __main__ -   Adapter Languages = ['vi']
+01/06/2022 17:53:41 - INFO - __main__ -   Creating features from dataset file at /root/Desktop/cloud-emea-copy/data//xquad
+vi vi/wiki@ukp
+  0%|          | 0/48 [00:00<?, ?it/s] 33%|███▎      | 16/48 [00:00<00:00, 126.09it/s] 60%|██████    | 29/48 [00:00<00:00, 118.84it/s] 90%|████████▉ | 43/48 [00:00<00:00, 125.98it/s]100%|██████████| 48/48 [00:00<00:00, 127.75it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<08:27,  2.34it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:01<00:02, 387.66it/s]convert squad examples to features:  75%|███████▌  | 897/1190 [00:01<00:00, 961.89it/s]convert squad examples to features:  94%|█████████▍| 1121/1190 [00:01<00:00, 1003.58it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:01<00:00, 807.36it/s] /root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 472027.78it/s]
+01/06/2022 17:53:44 - INFO - __main__ -   Local Rank = -1
+01/06/2022 17:53:44 - INFO - __main__ -   Saving features into cached file /root/Desktop/cloud-emea-copy/data//xquad/cached_xquad.vi.json_bert-base-multilingual-cased_384_vi
+01/06/2022 17:53:45 - INFO - __main__ -   ***** Running evaluation  *****
+01/06/2022 17:53:45 - INFO - __main__ -     Num examples = 1325
+01/06/2022 17:53:45 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/166 [00:00<?, ?it/s]01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 1
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 2
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/166 [00:00<00:06, 26.27it/s]01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 4
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 5
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 6
+Evaluating:   4%|▎         | 6/166 [00:00<00:05, 27.89it/s]01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 7
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 8
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 9
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 10
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 11
+Evaluating:   7%|▋         | 11/166 [00:00<00:04, 34.98it/s]01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 12
+01/06/2022 17:53:45 - INFO - __main__ -   Batch Number = 13
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 14
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 15
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 16
+Evaluating:  10%|▉         | 16/166 [00:00<00:03, 38.22it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 17
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 18
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 19
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 20
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 21
+Evaluating:  13%|█▎        | 21/166 [00:00<00:03, 40.11it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 22
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 23
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 24
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 25
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 26
+Evaluating:  16%|█▌        | 26/166 [00:00<00:03, 40.71it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 27
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 28
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 29
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 30
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 31
+Evaluating:  19%|█▊        | 31/166 [00:00<00:03, 38.68it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 32
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 33
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 34
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 35
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 36
+Evaluating:  22%|██▏       | 36/166 [00:00<00:03, 39.42it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 37
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 38
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 39
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 40
+Evaluating:  24%|██▍       | 40/166 [00:01<00:03, 39.33it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 41
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 42
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 43
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 44
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 45
+Evaluating:  27%|██▋       | 45/166 [00:01<00:03, 39.55it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 46
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 47
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 48
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 49
+Evaluating:  30%|██▉       | 49/166 [00:01<00:02, 39.51it/s]01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 50
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 51
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 52
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 53
+01/06/2022 17:53:46 - INFO - __main__ -   Batch Number = 54
+Evaluating:  33%|███▎      | 54/166 [00:01<00:02, 40.32it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 55
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 56
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 57
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 58
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 59
+Evaluating:  36%|███▌      | 59/166 [00:01<00:02, 41.31it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 60
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 61
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 62
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 63
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 64
+Evaluating:  39%|███▊      | 64/166 [00:01<00:02, 42.04it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 65
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 66
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 67
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 68
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 69
+Evaluating:  42%|████▏     | 69/166 [00:01<00:02, 42.51it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 70
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 71
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 72
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 73
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 74
+Evaluating:  45%|████▍     | 74/166 [00:01<00:02, 42.85it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 75
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 76
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 77
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 78
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 79
+Evaluating:  48%|████▊     | 79/166 [00:01<00:02, 42.88it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 80
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 81
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 82
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 83
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 84
+Evaluating:  51%|█████     | 84/166 [00:02<00:01, 43.14it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 85
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 86
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 87
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 88
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 89
+Evaluating:  54%|█████▎    | 89/166 [00:02<00:01, 43.32it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 90
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 91
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 92
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 93
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 94
+Evaluating:  57%|█████▋    | 94/166 [00:02<00:01, 43.38it/s]01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 95
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 96
+01/06/2022 17:53:47 - INFO - __main__ -   Batch Number = 97
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 98
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 99
+Evaluating:  60%|█████▉    | 99/166 [00:02<00:01, 43.48it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 100
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 101
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 102
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 103
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 104
+Evaluating:  63%|██████▎   | 104/166 [00:02<00:01, 43.52it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 105
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 106
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 107
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 108
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 109
+Evaluating:  66%|██████▌   | 109/166 [00:02<00:01, 43.56it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 110
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 111
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 112
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 113
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 114
+Evaluating:  69%|██████▊   | 114/166 [00:02<00:01, 43.69it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 115
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 116
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 117
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 118
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 119
+Evaluating:  72%|███████▏  | 119/166 [00:02<00:01, 43.57it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 120
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 121
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 122
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 123
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 124
+Evaluating:  75%|███████▍  | 124/166 [00:03<00:00, 43.38it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 125
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 126
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 127
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 128
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 129
+Evaluating:  78%|███████▊  | 129/166 [00:03<00:00, 41.56it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 130
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 131
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 132
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 133
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 134
+Evaluating:  81%|████████  | 134/166 [00:03<00:00, 41.93it/s]01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 135
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 136
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 137
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 138
+01/06/2022 17:53:48 - INFO - __main__ -   Batch Number = 139
+Evaluating:  84%|████████▎ | 139/166 [00:03<00:00, 38.91it/s]01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 140
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 141
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 142
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 143
+Evaluating:  86%|████████▌ | 143/166 [00:03<00:00, 39.08it/s]01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 144
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 145
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 146
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 147
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 148
+Evaluating:  89%|████████▉ | 148/166 [00:03<00:00, 38.92it/s]01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 149
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 150
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 151
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 152
+Evaluating:  92%|█████████▏| 152/166 [00:03<00:00, 35.67it/s]01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 153
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 154
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 155
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 156
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 157
+Evaluating:  95%|█████████▍| 157/166 [00:03<00:00, 37.57it/s]01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 158
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 159
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 160
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 161
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 162
+Evaluating:  98%|█████████▊| 162/166 [00:04<00:00, 39.02it/s]01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 163
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 164
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 165
+01/06/2022 17:53:49 - INFO - __main__ -   Batch Number = 166
+Evaluating: 100%|██████████| 166/166 [00:04<00:00, 40.53it/s]
+01/06/2022 17:53:49 - INFO - __main__ -     Evaluation done in total 4.096218 secs (0.003091 sec per example)
+Writing predictions to: /root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/predictions_vi_.json
+Writing nbest to: /root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/nbest_predictions_vi_.json
+01/06/2022 17:53:53 - INFO - __main__ -   Results = OrderedDict([('exact', 49.49579831932773), ('f1', 68.28986349007423), ('total', 1190), ('HasAns_exact', 49.49579831932773), ('HasAns_f1', 68.28986349007423), ('HasAns_total', 1190), ('best_exact', 49.49579831932773), ('best_exact_thresh', 0.0), ('best_f1', 68.28986349007423), ('best_f1_thresh', 0.0)])
+PyTorch version 1.10.0+cu111 available.
+01/06/2022 17:53:56 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/06/2022 17:53:56 - INFO - root -   save model
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:54:03 - INFO - __main__ -   lang2id = None
+01/06/2022 17:54:06 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/root/Desktop/cloud-emea-copy/data//xquad', output_dir='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/', max_seq_length=384, train_file='/root/Desktop/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/root/Desktop/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=8, learning_rate=0.0003, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='vi', train_lang='en', log_file='/root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/06/2022 17:54:06 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /root/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /root/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /root/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForQuestionAnswering: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForQuestionAnswering were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/06/2022 17:54:13 - INFO - __main__ -   lang2id = None
+01/06/2022 17:54:13 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/06/2022 17:54:13 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna
+01/06/2022 17:54:13 - INFO - root -   Trying to decide if add adapter
+01/06/2022 17:54:13 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_bert-base-multilingual-cased_LR3e-4_EPOCH15_maxlen384_batchsize4_gradacc8_s3/checkpoint-best/qna/pytorch_model_head.bin
+01/06/2022 17:54:13 - INFO - root -   loading lang adpater vi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip.
+Loading module configuration from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/adapter_config.json
+Adding adapter 'vi' of type 'text_lang'.
+Loading module weights from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/pytorch_adapter.bin
+Loading module configuration from /root/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/head_config.json
+01/06/2022 17:54:15 - INFO - __main__ -   Language adapter for vi found
+01/06/2022 17:54:15 - INFO - __main__ -   Set active language adapter to vi
+01/06/2022 17:54:15 - INFO - __main__ -   Args Adapter Weight = None
+01/06/2022 17:54:15 - INFO - __main__ -   Adapter Languages = ['vi']
+01/06/2022 17:54:15 - INFO - __main__ -   Creating features from dataset file at /root/Desktop/cloud-emea-copy/data//xquad
+vi vi/wiki@ukp
+  0%|          | 0/48 [00:00<?, ?it/s] 27%|██▋       | 13/48 [00:00<00:00, 124.55it/s] 54%|█████▍    | 26/48 [00:00<00:00, 98.28it/s]  77%|███████▋  | 37/48 [00:00<00:00, 96.44it/s]100%|██████████| 48/48 [00:00<00:00, 106.23it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<07:45,  2.55it/s]convert squad examples to features:  22%|██▏       | 257/1190 [00:00<00:01, 560.65it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:01<00:02, 282.19it/s]convert squad examples to features:  75%|███████▌  | 897/1190 [00:01<00:00, 821.02it/s]convert squad examples to features:  92%|█████████▏| 1094/1190 [00:01<00:00, 854.67it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:01<00:00, 668.40it/s]/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1421: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  warnings.warn(
+/root/Desktop/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2016: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  warnings.warn(
+
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 623668.84it/s]
+01/06/2022 17:54:18 - INFO - __main__ -   Local Rank = -1
+01/06/2022 17:54:18 - INFO - __main__ -   Saving features into cached file /root/Desktop/cloud-emea-copy/data//xquad/cached_xquad.vi.json_bert-base-multilingual-cased_384_vi
+01/06/2022 17:54:19 - INFO - __main__ -   ***** Running evaluation  *****
+01/06/2022 17:54:19 - INFO - __main__ -     Num examples = 1325
+01/06/2022 17:54:19 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/166 [00:00<?, ?it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 1
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 2
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/166 [00:00<00:06, 26.15it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 4
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 5
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 6
+Evaluating:   4%|▎         | 6/166 [00:00<00:05, 27.72it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 7
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 8
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 9
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 10
+Evaluating:   6%|▌         | 10/166 [00:00<00:05, 31.15it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 11
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 12
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 13
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 14
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 15
+Evaluating:   9%|▉         | 15/166 [00:00<00:04, 35.50it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 16
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 17
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 18
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 19
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 20
+Evaluating:  12%|█▏        | 20/166 [00:00<00:03, 38.45it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 21
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 22
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 23
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 24
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 25
+Evaluating:  15%|█▌        | 25/166 [00:00<00:03, 38.93it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 26
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 27
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 28
+01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 29
+Evaluating:  17%|█▋        | 29/166 [00:00<00:03, 37.37it/s]01/06/2022 17:54:19 - INFO - __main__ -   Batch Number = 30
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 31
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 32
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 33
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 34
+Evaluating:  20%|██        | 34/166 [00:00<00:03, 38.41it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 35
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 36
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 37
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 38
+Evaluating:  23%|██▎       | 38/166 [00:01<00:03, 38.63it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 39
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 40
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 41
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 42
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 43
+Evaluating:  26%|██▌       | 43/166 [00:01<00:03, 39.63it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 44
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 45
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 46
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 47
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 48
+Evaluating:  29%|██▉       | 48/166 [00:01<00:02, 40.78it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 49
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 50
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 51
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 52
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 53
+Evaluating:  32%|███▏      | 53/166 [00:01<00:02, 40.97it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 54
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 55
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 56
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 57
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 58
+Evaluating:  35%|███▍      | 58/166 [00:01<00:02, 40.69it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 59
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 60
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 61
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 62
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 63
+Evaluating:  38%|███▊      | 63/166 [00:01<00:02, 40.46it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 64
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 65
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 66
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 67
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 68
+Evaluating:  41%|████      | 68/166 [00:01<00:02, 40.81it/s]01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 69
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 70
+01/06/2022 17:54:20 - INFO - __main__ -   Batch Number = 71
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 72
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 73
+Evaluating:  44%|████▍     | 73/166 [00:01<00:02, 40.70it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 74
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 75
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 76
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 77
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 78
+Evaluating:  47%|████▋     | 78/166 [00:02<00:02, 40.56it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 79
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 80
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 81
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 82
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 83
+Evaluating:  50%|█████     | 83/166 [00:02<00:02, 39.67it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 84
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 85
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 86
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 87
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 88
+Evaluating:  53%|█████▎    | 88/166 [00:02<00:01, 39.85it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 89
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 90
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 91
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 92
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 93
+Evaluating:  56%|█████▌    | 93/166 [00:02<00:01, 40.56it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 94
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 95
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 96
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 97
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 98
+Evaluating:  59%|█████▉    | 98/166 [00:02<00:01, 41.58it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 99
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 100
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 101
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 102
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 103
+Evaluating:  62%|██████▏   | 103/166 [00:02<00:01, 42.26it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 104
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 105
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 106
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 107
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 108
+Evaluating:  65%|██████▌   | 108/166 [00:02<00:01, 42.69it/s]01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 109
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 110
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 111
+01/06/2022 17:54:21 - INFO - __main__ -   Batch Number = 112
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 113
+Evaluating:  68%|██████▊   | 113/166 [00:02<00:01, 43.07it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 114
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 115
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 116
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 117
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 118
+Evaluating:  71%|███████   | 118/166 [00:02<00:01, 43.29it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 119
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 120
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 121
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 122
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 123
+Evaluating:  74%|███████▍  | 123/166 [00:03<00:00, 43.40it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 124
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 125
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 126
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 127
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 128
+Evaluating:  77%|███████▋  | 128/166 [00:03<00:00, 43.54it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 129
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 130
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 131
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 132
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 133
+Evaluating:  80%|████████  | 133/166 [00:03<00:00, 43.68it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 134
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 135
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 136
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 137
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 138
+Evaluating:  83%|████████▎ | 138/166 [00:03<00:00, 43.73it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 139
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 140
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 141
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 142
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 143
+Evaluating:  86%|████████▌ | 143/166 [00:03<00:00, 43.70it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 144
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 145
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 146
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 147
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 148
+Evaluating:  89%|████████▉ | 148/166 [00:03<00:00, 43.71it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 149
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 150
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 151
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 152
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 153
+Evaluating:  92%|█████████▏| 153/166 [00:03<00:00, 43.55it/s]01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 154
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 155
+01/06/2022 17:54:22 - INFO - __main__ -   Batch Number = 156
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 157
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 158
+Evaluating:  95%|█████████▌| 158/166 [00:03<00:00, 43.54it/s]01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 159
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 160
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 161
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 162
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 163
+Evaluating:  98%|█████████▊| 163/166 [00:03<00:00, 43.29it/s]01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 164
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 165
+01/06/2022 17:54:23 - INFO - __main__ -   Batch Number = 166
+Evaluating: 100%|██████████| 166/166 [00:04<00:00, 41.00it/s]
+01/06/2022 17:54:23 - INFO - __main__ -     Evaluation done in total 4.049445 secs (0.003056 sec per example)
+Writing predictions to: /root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/predictions_vi_.json
+Writing nbest to: /root/Desktop/cloud-emea-copy/outputs//squad/my_bert-base-multilingual-cased_maxlen384_qna_vi/nbest_predictions_vi_.json
+01/06/2022 17:54:26 - INFO - __main__ -   Results = OrderedDict([('exact', 46.554621848739494), ('f1', 65.9697089238735), ('total', 1190), ('HasAns_exact', 46.554621848739494), ('HasAns_f1', 65.9697089238735), ('HasAns_total', 1190), ('best_exact', 46.554621848739494), ('best_exact_thresh', 0.0), ('best_f1', 65.9697089238735), ('best_f1_thresh', 0.0)])

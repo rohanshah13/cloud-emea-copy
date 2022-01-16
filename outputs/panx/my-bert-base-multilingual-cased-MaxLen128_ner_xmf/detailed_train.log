@@ -1,0 +1,810 @@
+PyTorch version 1.10.0+cu102 available.
+12/26/2021 23:42:27 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:42:27 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:42:27 - INFO - __main__ -   Seed = 1
+12/26/2021 23:42:27 - INFO - root -   save model
+12/26/2021 23:42:27 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:42:27 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/26/2021 23:42:31 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/26/2021 23:42:37 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:42:37 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:42:37 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+12/26/2021 23:42:37 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:42:37 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_model_head.bin
+12/26/2021 23:42:37 - INFO - root -   loading lang adpater xmf/wiki@ukp
+12/26/2021 23:42:37 - INFO - __main__ -   Adapter Languages : ['xmf'], Length : 1
+12/26/2021 23:42:37 - INFO - __main__ -   Adapter Names ['xmf/wiki@ukp'], Length : 1
+12/26/2021 23:42:37 - INFO - __main__ -   Language = xmf
+12/26/2021 23:42:37 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/xmf/bert-base-multilingual-cased/pfeiffer/xmf_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/adapter_config.json
+Adding adapter 'xmf' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted'
+12/26/2021 23:42:44 - INFO - __main__ -   Language xmf, split test does not exist
+PyTorch version 1.10.0+cu102 available.
+12/26/2021 23:42:47 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:42:47 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:42:47 - INFO - __main__ -   Seed = 2
+12/26/2021 23:42:47 - INFO - root -   save model
+12/26/2021 23:42:47 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:42:47 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/26/2021 23:42:51 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/26/2021 23:42:57 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:42:57 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:42:57 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+12/26/2021 23:42:57 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:42:57 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_model_head.bin
+12/26/2021 23:42:57 - INFO - root -   loading lang adpater xmf/wiki@ukp
+12/26/2021 23:42:57 - INFO - __main__ -   Adapter Languages : ['xmf'], Length : 1
+12/26/2021 23:42:57 - INFO - __main__ -   Adapter Names ['xmf/wiki@ukp'], Length : 1
+12/26/2021 23:42:57 - INFO - __main__ -   Language = xmf
+12/26/2021 23:42:57 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/xmf/bert-base-multilingual-cased/pfeiffer/xmf_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/adapter_config.json
+Adding adapter 'xmf' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted'
+12/26/2021 23:43:04 - INFO - __main__ -   Language xmf, split test does not exist
+PyTorch version 1.10.0+cu102 available.
+12/26/2021 23:43:07 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:43:07 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:43:07 - INFO - __main__ -   Seed = 3
+12/26/2021 23:43:07 - INFO - root -   save model
+12/26/2021 23:43:07 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:43:07 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/26/2021 23:43:11 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/26/2021 23:43:18 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:43:18 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:43:18 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+12/26/2021 23:43:18 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:43:18 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_model_head.bin
+12/26/2021 23:43:18 - INFO - root -   loading lang adpater xmf/wiki@ukp
+12/26/2021 23:43:18 - INFO - __main__ -   Adapter Languages : ['xmf'], Length : 1
+12/26/2021 23:43:18 - INFO - __main__ -   Adapter Names ['xmf/wiki@ukp'], Length : 1
+12/26/2021 23:43:18 - INFO - __main__ -   Language = xmf
+12/26/2021 23:43:18 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/xmf/bert-base-multilingual-cased/pfeiffer/xmf_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/adapter_config.json
+Adding adapter 'xmf' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted'
+12/26/2021 23:43:23 - INFO - __main__ -   Language xmf, split test does not exist
+PyTorch version 1.10.0+cu102 available.
+12/26/2021 23:49:56 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:49:56 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:49:56 - INFO - __main__ -   Seed = 1
+12/26/2021 23:49:56 - INFO - root -   save model
+12/26/2021 23:49:56 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:49:56 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/26/2021 23:50:00 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/26/2021 23:50:06 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:50:06 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:50:06 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+12/26/2021 23:50:06 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:50:06 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_model_head.bin
+12/26/2021 23:50:06 - INFO - root -   loading lang adpater xmf/wiki@ukp
+12/26/2021 23:50:06 - INFO - __main__ -   Adapter Languages : ['xmf'], Length : 1
+12/26/2021 23:50:06 - INFO - __main__ -   Adapter Names ['xmf/wiki@ukp'], Length : 1
+12/26/2021 23:50:06 - INFO - __main__ -   Language = xmf
+12/26/2021 23:50:06 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/xmf/bert-base-multilingual-cased/pfeiffer/xmf_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/adapter_config.json
+Adding adapter 'xmf' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted'
+12/26/2021 23:50:13 - INFO - __main__ -   Language adapter for xmf found
+12/26/2021 23:50:13 - INFO - __main__ -   Set active language adapter to xmf
+12/26/2021 23:50:13 - INFO - __main__ -   Args Adapter Weight = None
+12/26/2021 23:50:13 - INFO - __main__ -   Adapter Languages = ['xmf']
+12/26/2021 23:50:13 - INFO - __main__ -   all languages = xmf
+12/26/2021 23:50:13 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/xmf/test.bert-base-multilingual-cased in language xmf
+12/26/2021 23:50:13 - INFO - utils_tag -   lang_id=0, lang=xmf, lang2id=None
+12/26/2021 23:50:13 - INFO - utils_tag -   Writing example 0 of 100
+12/26/2021 23:50:13 - INFO - utils_tag -   *** Example ***
+12/26/2021 23:50:13 - INFO - utils_tag -   guid: xmf-1
+12/26/2021 23:50:13 - INFO - utils_tag -   tokens: [CLS] გ ##ევა ##რა , მ ##უ ##ჭ ##ო ##თ ა ##კა კ ##ა ##კა ##ლია კ ##ო ##მა ##ნდა ##ნ ##ტ ##ე ფ ##ი ##დე ##ლ კ ##ას ##ტ ##რო ##შ უ ##კული , კ ##ონ ##წ ##არი პ ##ე ##დან ##ტი [UNK] , მ ##ით კ ##ან ##კა ##ლე ##შა გ ##ან ##შე უ ##ლი ##რე ##ფ ##ს ქ ##ო ##თ [UNK] . [SEP]
+12/26/2021 23:50:13 - INFO - utils_tag -   input_ids: 101 1566 105001 28596 117 1575 32961 111521 15812 13900 1564 35348 1573 11577 35348 38623 1573 15812 17566 66728 17974 27536 17076 1584 13266 94559 17397 1573 30536 27536 28068 111517 1583 75654 117 1573 44171 111520 38203 1578 17076 20628 20320 100 117 1575 27398 1573 32626 35348 36295 79194 1566 32626 105759 1583 15317 31047 71362 11321 1585 15812 13900 100 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   label_ids: -100 6 -100 -100 6 6 -100 -100 -100 -100 6 -100 6 -100 -100 -100 6 -100 -100 -100 -100 -100 -100 2 -100 -100 -100 5 -100 -100 -100 -100 6 -100 6 6 -100 -100 -100 6 -100 -100 -100 6 6 6 -100 6 -100 -100 -100 -100 6 -100 -100 6 -100 -100 -100 -100 6 -100 -100 6 6 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+12/26/2021 23:50:13 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+12/26/2021 23:50:13 - INFO - utils_tag -   *** Example ***
+12/26/2021 23:50:13 - INFO - utils_tag -   guid: xmf-2
+12/26/2021 23:50:13 - INFO - utils_tag -   tokens: [CLS] გ ##ად ##ამ ##ისა ##მა ##რ ##თ ##ება პ ##რე ##დე ##ლ ##ტი ##შ ე ##რ ##უ ##ან ##ული პ ##არ ##კი [SEP]
+12/26/2021 23:50:13 - INFO - utils_tag -   input_ids: 101 1566 23871 58859 81159 17566 20062 13900 18644 1578 31047 94559 17397 20320 111517 1568 20062 32961 32626 15466 1578 97383 37183 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   label_ids: -100 6 -100 -100 -100 -100 -100 -100 -100 1 -100 -100 -100 -100 -100 4 -100 -100 -100 -100 4 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+12/26/2021 23:50:13 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+12/26/2021 23:50:13 - INFO - utils_tag -   *** Example ***
+12/26/2021 23:50:13 - INFO - utils_tag -   guid: xmf-3
+12/26/2021 23:50:13 - INFO - utils_tag -   tokens: [CLS] ] ] უ ##კ ##რა ##ინა [UNK] არ ##თო ) [SEP]
+12/26/2021 23:50:13 - INFO - utils_tag -   input_ids: 101 166 166 1583 35642 28596 66791 100 23085 59414 114 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   label_ids: -100 6 -100 0 -100 -100 -100 6 6 -100 6 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+12/26/2021 23:50:13 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+12/26/2021 23:50:13 - INFO - utils_tag -   *** Example ***
+12/26/2021 23:50:13 - INFO - utils_tag -   guid: xmf-4
+12/26/2021 23:50:13 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] მე ##ნ ##ცა ##რული ნ ##ა ##ხა ##ნ ##დი ო ##თა ##რ ჭ ##ილ ##ა ##ძე ##შ , , გ ##ოდ ##ორი ##შე ##ნი [UNK] . [SEP]
+12/26/2021 23:50:13 - INFO - utils_tag -   input_ids: 101 100 100 68662 17974 35271 37146 1576 11577 55144 17974 23551 1577 18520 20062 1593 107230 11577 32414 111517 117 117 1566 47166 71700 105759 17625 100 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   label_ids: -100 6 6 6 -100 -100 -100 6 -100 -100 -100 -100 2 -100 -100 5 -100 -100 -100 -100 6 6 -100 -100 -100 -100 -100 -100 6 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+12/26/2021 23:50:13 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+12/26/2021 23:50:13 - INFO - utils_tag -   *** Example ***
+12/26/2021 23:50:13 - INFO - utils_tag -   guid: xmf-5
+12/26/2021 23:50:13 - INFO - utils_tag -   tokens: [CLS] გ ##ად ##ამ ##ისა ##მა ##რ ##თ ##ება ი ##უ ##ნეს ##კო ##შ მ ##ოს ##ო ##ფ ##ელი ##შ მ ##ონ ##ძ ##ა ##ლა ##შ ო ##ბი ##ე ##ქ ##ტ ##ე ##ფი ე ##გ ##ვი ##პ ##ტ ##ეს [SEP]
+12/26/2021 23:50:13 - INFO - utils_tag -   input_ids: 101 1566 23871 58859 81159 17566 20062 13900 18644 1572 32961 47863 108894 111517 1575 31539 15812 71362 20940 111517 1575 44171 111519 11577 25559 111517 1577 29299 17076 89426 27536 17076 52357 1568 44970 27560 111513 27536 22912 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+12/26/2021 23:50:13 - INFO - utils_tag -   label_ids: -100 6 -100 -100 -100 -100 -100 -100 -100 1 -100 -100 -100 -100 4 -100 -100 -100 -100 -100 4 -100 -100 -100 -100 -100 4 -100 -100 -100 -100 -100 -100 4 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+12/26/2021 23:50:13 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+12/26/2021 23:50:13 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_xmf_bert-base-multilingual-cased_128, len(features)=100
+12/26/2021 23:50:13 - INFO - __main__ -   ***** Running evaluation  in xmf *****
+12/26/2021 23:50:13 - INFO - __main__ -     Num examples = 100
+12/26/2021 23:50:13 - INFO - __main__ -     Batch size = 32
+[<utils_tag.InputExample object at 0x7f3d264461d0>, <utils_tag.InputExample object at 0x7f3d26446350>, <utils_tag.InputExample object at 0x7f3d26446610>, <utils_tag.InputExample object at 0x7f3d26446810>, <utils_tag.InputExample object at 0x7f3d26446c10>, <utils_tag.InputExample object at 0x7f3d26446dd0>, <utils_tag.InputExample object at 0x7f3d2644f110>, <utils_tag.InputExample object at 0x7f3d2644f3d0>, <utils_tag.InputExample object at 0x7f3d2644f890>, <utils_tag.InputExample object at 0x7f3d2644f9d0>, <utils_tag.InputExample object at 0x7f3d2644fd90>, <utils_tag.InputExample object at 0x7f3d2644fe90>, <utils_tag.InputExample object at 0x7f3d264533d0>, <utils_tag.InputExample object at 0x7f3d26453690>, <utils_tag.InputExample object at 0x7f3d26453910>, <utils_tag.InputExample object at 0x7f3d26453c10>, <utils_tag.InputExample object at 0x7f3d26453f10>, <utils_tag.InputExample object at 0x7f3d26456450>, <utils_tag.InputExample object at 0x7f3d264566d0>, <utils_tag.InputExample object at 0x7f3d26456990>, <utils_tag.InputExample object at 0x7f3d26456c50>, <utils_tag.InputExample object at 0x7f3d26456f90>, <utils_tag.InputExample object at 0x7f3d26457290>, <utils_tag.InputExample object at 0x7f3d26457410>, <utils_tag.InputExample object at 0x7f3d26457910>, <utils_tag.InputExample object at 0x7f3d26457cd0>, <utils_tag.InputExample object at 0x7f3d26457e10>, <utils_tag.InputExample object at 0x7f3d264596d0>, <utils_tag.InputExample object at 0x7f3d26459950>, <utils_tag.InputExample object at 0x7f3d26459ad0>, <utils_tag.InputExample object at 0x7f3d26459dd0>, <utils_tag.InputExample object at 0x7f3d2645b090>, <utils_tag.InputExample object at 0x7f3d2645b210>, <utils_tag.InputExample object at 0x7f3d2645b390>, <utils_tag.InputExample object at 0x7f3d2645b510>, <utils_tag.InputExample object at 0x7f3d2645b690>, <utils_tag.InputExample object at 0x7f3d2645bb50>, <utils_tag.InputExample object at 0x7f3d2645bd10>, <utils_tag.InputExample object at 0x7f3d2645c050>, <utils_tag.InputExample object at 0x7f3d2645c1d0>, <utils_tag.InputExample object at 0x7f3d2645c590>, <utils_tag.InputExample object at 0x7f3d2645c810>, <utils_tag.InputExample object at 0x7f3d2645c990>, <utils_tag.InputExample object at 0x7f3d2645cc90>, <utils_tag.InputExample object at 0x7f3d2645ce10>, <utils_tag.InputExample object at 0x7f3d2645cf90>, <utils_tag.InputExample object at 0x7f3d2645e310>, <utils_tag.InputExample object at 0x7f3d2645e550>, <utils_tag.InputExample object at 0x7f3d2645e750>, <utils_tag.InputExample object at 0x7f3d2645ea10>, <utils_tag.InputExample object at 0x7f3d2645ed50>, <utils_tag.InputExample object at 0x7f3d26460050>, <utils_tag.InputExample object at 0x7f3d264601d0>, <utils_tag.InputExample object at 0x7f3d26460350>, <utils_tag.InputExample object at 0x7f3d264605d0>, <utils_tag.InputExample object at 0x7f3d26460750>, <utils_tag.InputExample object at 0x7f3d26460a10>, <utils_tag.InputExample object at 0x7f3d26460d10>, <utils_tag.InputExample object at 0x7f3d26460f90>, <utils_tag.InputExample object at 0x7f3d263e32d0>, <utils_tag.InputExample object at 0x7f3d263e35d0>, <utils_tag.InputExample object at 0x7f3d263e38d0>, <utils_tag.InputExample object at 0x7f3d263e3a50>, <utils_tag.InputExample object at 0x7f3d263e3dd0>, <utils_tag.InputExample object at 0x7f3d263e5310>, <utils_tag.InputExample object at 0x7f3d263e5750>, <utils_tag.InputExample object at 0x7f3d263e5b10>, <utils_tag.InputExample object at 0x7f3d263e5c90>, <utils_tag.InputExample object at 0x7f3d263e5fd0>, <utils_tag.InputExample object at 0x7f3d263e7310>, <utils_tag.InputExample object at 0x7f3d263e7550>, <utils_tag.InputExample object at 0x7f3d263e7850>, <utils_tag.InputExample object at 0x7f3d263e7d10>, <utils_tag.InputExample object at 0x7f3d263e7f90>, <utils_tag.InputExample object at 0x7f3d263e9150>, <utils_tag.InputExample object at 0x7f3d263e94d0>, <utils_tag.InputExample object at 0x7f3d263e9750>, <utils_tag.InputExample object at 0x7f3d263e9a50>, <utils_tag.InputExample object at 0x7f3d263e9bd0>, <utils_tag.InputExample object at 0x7f3d263e9f10>, <utils_tag.InputExample object at 0x7f3d263eb0d0>, <utils_tag.InputExample object at 0x7f3d263eb410>, <utils_tag.InputExample object at 0x7f3d263eb890>, <utils_tag.InputExample object at 0x7f3d263eba10>, <utils_tag.InputExample object at 0x7f3d263ebc90>, <utils_tag.InputExample object at 0x7f3d263ee110>, <utils_tag.InputExample object at 0x7f3d263ee2d0>, <utils_tag.InputExample object at 0x7f3d263ee550>, <utils_tag.InputExample object at 0x7f3d263ee7d0>, <utils_tag.InputExample object at 0x7f3d263eea50>, <utils_tag.InputExample object at 0x7f3d263eeed0>, <utils_tag.InputExample object at 0x7f3d263f0210>, <utils_tag.InputExample object at 0x7f3d263f04d0>, <utils_tag.InputExample object at 0x7f3d263f0810>, <utils_tag.InputExample object at 0x7f3d263f0b50>, <utils_tag.InputExample object at 0x7f3d263f0cd0>, <utils_tag.InputExample object at 0x7f3d263f0f50>, <utils_tag.InputExample object at 0x7f3d263f2250>, <utils_tag.InputExample object at 0x7f3d263f26d0>, <utils_tag.InputExample object at 0x7f3d263f2810>]
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]12/26/2021 23:50:13 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  6.41it/s]12/26/2021 23:50:13 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  6.72it/s]12/26/2021 23:50:13 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  6.98it/s]12/26/2021 23:50:13 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  8.69it/s]
+12/26/2021 23:50:13 - INFO - __main__ -   ***** Evaluation result  in xmf *****
+12/26/2021 23:50:13 - INFO - __main__ -     f1 = 0.33224755700325725
+12/26/2021 23:50:13 - INFO - __main__ -     loss = 1.695942610502243
+12/26/2021 23:50:13 - INFO - __main__ -     precision = 0.2727272727272727
+12/26/2021 23:50:13 - INFO - __main__ -     recall = 0.425
+PyTorch version 1.10.0+cu102 available.
+12/26/2021 23:50:16 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:50:16 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:50:16 - INFO - __main__ -   Seed = 2
+12/26/2021 23:50:16 - INFO - root -   save model
+12/26/2021 23:50:16 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:50:16 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/26/2021 23:50:20 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/26/2021 23:50:26 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:50:26 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:50:26 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+12/26/2021 23:50:26 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:50:26 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_model_head.bin
+12/26/2021 23:50:26 - INFO - root -   loading lang adpater xmf/wiki@ukp
+12/26/2021 23:50:26 - INFO - __main__ -   Adapter Languages : ['xmf'], Length : 1
+12/26/2021 23:50:26 - INFO - __main__ -   Adapter Names ['xmf/wiki@ukp'], Length : 1
+12/26/2021 23:50:26 - INFO - __main__ -   Language = xmf
+12/26/2021 23:50:26 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/xmf/bert-base-multilingual-cased/pfeiffer/xmf_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/adapter_config.json
+Adding adapter 'xmf' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted'
+12/26/2021 23:50:30 - INFO - __main__ -   Language adapter for xmf found
+12/26/2021 23:50:30 - INFO - __main__ -   Set active language adapter to xmf
+12/26/2021 23:50:30 - INFO - __main__ -   Args Adapter Weight = None
+12/26/2021 23:50:30 - INFO - __main__ -   Adapter Languages = ['xmf']
+12/26/2021 23:50:30 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_xmf_bert-base-multilingual-cased_128
+12/26/2021 23:50:30 - INFO - __main__ -   ***** Running evaluation  in xmf *****
+12/26/2021 23:50:30 - INFO - __main__ -     Num examples = 100
+12/26/2021 23:50:30 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]12/26/2021 23:50:30 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  6.35it/s]12/26/2021 23:50:30 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  6.71it/s]12/26/2021 23:50:30 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  7.00it/s]12/26/2021 23:50:30 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  8.71it/s]
+12/26/2021 23:50:30 - INFO - __main__ -   ***** Evaluation result  in xmf *****
+12/26/2021 23:50:30 - INFO - __main__ -     f1 = 0.419672131147541
+12/26/2021 23:50:30 - INFO - __main__ -     loss = 1.6727453470230103
+12/26/2021 23:50:30 - INFO - __main__ -     precision = 0.34594594594594597
+12/26/2021 23:50:30 - INFO - __main__ -     recall = 0.5333333333333333
+PyTorch version 1.10.0+cu102 available.
+12/26/2021 23:50:32 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:50:32 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:50:32 - INFO - __main__ -   Seed = 3
+12/26/2021 23:50:32 - INFO - root -   save model
+12/26/2021 23:50:32 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='xmf', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_xmf//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:50:32 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/26/2021 23:50:37 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/26/2021 23:50:43 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:50:43 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:50:43 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+12/26/2021 23:50:43 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:50:43 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_model_head.bin
+12/26/2021 23:50:43 - INFO - root -   loading lang adpater xmf/wiki@ukp
+12/26/2021 23:50:43 - INFO - __main__ -   Adapter Languages : ['xmf'], Length : 1
+12/26/2021 23:50:43 - INFO - __main__ -   Adapter Names ['xmf/wiki@ukp'], Length : 1
+12/26/2021 23:50:43 - INFO - __main__ -   Language = xmf
+12/26/2021 23:50:43 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/xmf/bert-base-multilingual-cased/pfeiffer/xmf_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/adapter_config.json
+Adding adapter 'xmf' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/de4cf7ebb957cc647355066066df3562022bd36d5e1fb267b268c73c885ba1b8-059cec88a14bf5e4aa255942ab8a6b7e4e2aefebfbf02361c648b5817e3184df-extracted'
+12/26/2021 23:50:47 - INFO - __main__ -   Language adapter for xmf found
+12/26/2021 23:50:47 - INFO - __main__ -   Set active language adapter to xmf
+12/26/2021 23:50:47 - INFO - __main__ -   Args Adapter Weight = None
+12/26/2021 23:50:47 - INFO - __main__ -   Adapter Languages = ['xmf']
+12/26/2021 23:50:47 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_xmf_bert-base-multilingual-cased_128
+12/26/2021 23:50:47 - INFO - __main__ -   ***** Running evaluation  in xmf *****
+12/26/2021 23:50:47 - INFO - __main__ -     Num examples = 100
+12/26/2021 23:50:47 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]12/26/2021 23:50:47 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  7.21it/s]12/26/2021 23:50:47 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  7.23it/s]12/26/2021 23:50:47 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  7.27it/s]12/26/2021 23:50:47 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  9.10it/s]
+12/26/2021 23:50:48 - INFO - __main__ -   ***** Evaluation result  in xmf *****
+12/26/2021 23:50:48 - INFO - __main__ -     f1 = 0.4444444444444444
+12/26/2021 23:50:48 - INFO - __main__ -     loss = 2.645640015602112
+12/26/2021 23:50:48 - INFO - __main__ -     precision = 0.3655913978494624
+12/26/2021 23:50:48 - INFO - __main__ -     recall = 0.5666666666666667

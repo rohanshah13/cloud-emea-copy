@@ -23,7 +23,7 @@ export CUDA_VISIBLE_DEVICES=$GPU
 TASK='udpos'
 # LANGS="bho,mr,ta,fo,no,da,be,uk,bg"
 # ALL_LANGS="mr,ta,bho,fo,no,da,bg,uk,be"
-ALL_LANGS="ar"
+ALL_LANGS="hi"
 # REM_LANGS="be"
 TRAIN_LANGS="en"
 
@@ -31,8 +31,8 @@ NUM_EPOCHS=50
 MAX_LENGTH=128
 # SEED=12
 #hi
-LANG_ADAPTER_NAME="ar/wiki@ukp,hi/wiki@ukp" 
-ADAPTER_LANG="ar,hi"
+LANG_ADAPTER_NAME="hi/wiki@ukp" 
+ADAPTER_LANG="hi"
 
 TASK_ADAPTER_NAME="udpos"
 
@@ -63,9 +63,10 @@ mkdir -p $OUTPUT_DIR
 
 for SEED in 1 2 3
 do
+# MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/udpos/"
 MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/udpos/"
 
-nohup time python third_party/my_run_tag.py \
+nohup time python third_party/ridayesh_run_tag_unmodified.py \
   --predict_save_prefix "" \
   --calc_weight_step 0 \
   --per_gpu_eval_batch_size  32 \
@@ -94,6 +95,6 @@ nohup time python third_party/my_run_tag.py \
   --lang_adapter_config pfeiffer \
   --save_only_best_checkpoint $LC \
   --load_lang_adapter $LANG_ADAPTER_NAME \
-  --adapter_weight "0.5,0.5" \
+  --adapter_weight "1" \
   --language $ADAPTER_LANG >> $OUTPUT_DIR/detailed_train.log
 done

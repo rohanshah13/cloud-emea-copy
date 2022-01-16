@@ -1,0 +1,343 @@
+Fatal Python error: Py_Initialize: can't initialize sys standard streams
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/io.py", line 52, in <module>
+    import abc
+  File "/usr/lib/python3.6/abc.py", line 6, in <module>
+    from _weakrefset import WeakSet
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 833, in get_data
+KeyboardInterrupt
+Command terminated by signal 6
+0.00user 0.00system 0:00.15elapsed 8%CPU (0avgtext+0avgdata 7600maxresident)k
+0inputs+8outputs (0major+669minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 11:18:49 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo//train_en.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 11:18:49 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 11:18:49 - INFO - __main__ -   Seed = 2
+01/13/2022 11:18:49 - INFO - root -   save model
+01/13/2022 11:18:49 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo//train_en.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 11:18:49 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 11:18:52 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 1123, in <module>
+    main()
+  File "third_party/my_run_tag.py", line 1050, in main
+    model, tokenizer, lang2id = load_model(args, num_labels)
+  File "third_party/my_run_tag.py", line 803, in load_model
+    cache_dir=args.cache_dir,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/modeling_auto.py", line 1590, in from_pretrained
+    pretrained_model_name_or_path, *model_args, config=config, **kwargs
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/modeling_utils.py", line 949, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/modeling_bert.py", line 1710, in __init__
+    self.bert = BertModel(config, add_pooling_layer=False)
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/modeling_bert.py", line 840, in __init__
+    self.init_weights()
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/modeling_utils.py", line 673, in init_weights
+    self.apply(self._init_weights)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/torch/nn/modules/module.py", line 659, in apply
+    module.apply(fn)
+  [Previous line repeated 3 more times]
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/torch/nn/modules/module.py", line 660, in apply
+    fn(self)
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/modeling_bert.py", line 701, in _init_weights
+    module.weight.data.normal_(mean=0.0, std=self.config.initializer_range)
+KeyboardInterrupt
+Command exited with non-zero status 1
+7.33user 6.26system 0:08.06elapsed 168%CPU (0avgtext+0avgdata 1029468maxresident)k
+0inputs+24outputs (0major+363539minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 11:18:57 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo//train_en.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 11:18:57 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 11:18:57 - INFO - __main__ -   Seed = 3
+01/13/2022 11:18:57 - INFO - root -   save model
+01/13/2022 11:18:57 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_cdo//train_en.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 11:18:57 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 1123, in <module>
+    main()
+  File "third_party/my_run_tag.py", line 1050, in main
+    model, tokenizer, lang2id = load_model(args, num_labels)
+  File "third_party/my_run_tag.py", line 788, in load_model
+    use_fast=False,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_auto.py", line 306, in from_pretrained
+    config = AutoConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/configuration_auto.py", line 333, in from_pretrained
+    config_dict, _ = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/configuration_utils.py", line 389, in get_config_dict
+    local_files_only=local_files_only,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/file_utils.py", line 955, in cached_path
+    local_files_only=local_files_only,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/file_utils.py", line 1075, in get_from_cache
+    r = requests.head(url, headers=headers, allow_redirects=False, proxies=proxies, timeout=etag_timeout)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/requests/api.py", line 102, in head
+    return request('head', url, **kwargs)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/requests/adapters.py", line 450, in send
+    timeout=timeout
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.6/http/client.py", line 1356, in getresponse
+    response.begin()
+  File "/usr/lib/python3.6/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.6/http/client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.6/socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.6/ssl.py", line 1012, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.6/ssl.py", line 874, in read
+    return self._sslobj.read(len, buffer)
+  File "/usr/lib/python3.6/ssl.py", line 631, in read
+    v = self._sslobj.read(len, buffer)
+KeyboardInterrupt
+Command exited with non-zero status 1
+4.74user 5.72system 0:03.45elapsed 303%CPU (0avgtext+0avgdata 305620maxresident)k
+32inputs+24outputs (0major+64092minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python3.6/types.py", line 171, in <module>
+    import functools as _functools
+  File "/usr/lib/python3.6/functools.py", line 21, in <module>
+    from collections import namedtuple
+  File "/usr/lib/python3.6/collections/__init__.py", line 71, in <module>
+    class OrderedDict(dict):
+  File "/usr/lib/python3.6/collections/__init__.py", line 106, in OrderedDict
+    dict_setitem=dict.__setitem__, proxy=_proxy, Link=_Link):
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.01user 0.01system 0:00.03elapsed 96%CPU (0avgtext+0avgdata 8984maxresident)k
+0inputs+16outputs (0major+964minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 563, in main
+    execsitecustomize()
+  File "/usr/lib/python3.6/site.py", line 507, in execsitecustomize
+    import sitecustomize
+  File "/usr/lib/python3.6/sitecustomize.py", line 3, in <module>
+    import apport_python_hook
+  File "<frozen importlib._bootstrap>", line 968, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 143, in __init__
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.01system 0:00.03elapsed 94%CPU (0avgtext+0avgdata 9504maxresident)k
+0inputs+0outputs (0major+1096minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 17, in <module>
+    """Fine-tuning models for NER and POS tagging."""
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.04user 0.00system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 12516maxresident)k
+0inputs+0outputs (0major+1868minor)pagefaults 0swaps

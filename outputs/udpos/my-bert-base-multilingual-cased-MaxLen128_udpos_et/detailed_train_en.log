@@ -1,0 +1,138 @@
+Command terminated by signal 2
+0.00user 0.00system 0:00.01elapsed 90%CPU (0avgtext+0avgdata 6924maxresident)k
+0inputs+0outputs (0major+559minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 557, in main
+    known_paths = addsitepackages(known_paths)
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "<frozen importlib._bootstrap_external>", line 1157, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1129, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1259, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 60, in _path_join
+  File "<frozen importlib._bootstrap_external>", line 60, in <listcomp>
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.03user 0.00system 0:00.03elapsed 97%CPU (0avgtext+0avgdata 9484maxresident)k
+0inputs+0outputs (0major+1096minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 652, in <module>
+    from _collections_abc import MutableMapping
+  File "/usr/lib/python3.6/_collections_abc.py", line 240, in <module>
+    AsyncGenerator.register(async_generator)
+  File "/usr/lib/python3.6/abc.py", line 158, in register
+    if issubclass(subclass, cls):
+  File "/usr/lib/python3.6/abc.py", line 209, in __subclasscheck__
+    ok = cls.__subclasshook__(subclass)
+  File "/usr/lib/python3.6/_collections_abc.py", line 236, in __subclasshook__
+    'asend', 'athrow', 'aclose')
+  File "/usr/lib/python3.6/_collections_abc.py", line 73, in _check_methods
+    mro = C.__mro__
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8388maxresident)k
+0inputs+0outputs (0major+804minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/logging/__init__.py", line 1945, in shutdown
+    h.flush()
+  File "/usr/lib/python3.6/logging/__init__.py", line 978, in flush
+    self.stream.flush()
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.90user 1.34system 0:00.10elapsed 2083%CPU (0avgtext+0avgdata 20180maxresident)k
+0inputs+8outputs (0major+3039minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 7, in <module>
+    from numpy.core._multiarray_umath import (
+ImportError: PyCapsule_Import could not import module "datetime"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 48, in <module>
+    raise ImportError(msg)
+ImportError: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python3.6 from "/home/abhijeet/rohan/venvs/cloud-emea-copy/bin/python"
+  * The NumPy version is: "1.19.5"
+
+and make sure that they are the versions you expect.
+Please carefully study the documentation linked above for further help.
+
+Original error was: PyCapsule_Import could not import module "datetime"
+
+Command exited with non-zero status 1
+0.30user 0.40system 0:00.07elapsed 915%CPU (0avgtext+0avgdata 19128maxresident)k
+0inputs+8outputs (0major+2874minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 9, in <module>
+    from numpy.compat._inspect import getargspec
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/__init__.py", line 12, in <module>
+    from . import py3k
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/py3k.py", line 21, in <module>
+    from pathlib import Path, PurePath
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 779, in get_code
+  File "<frozen importlib._bootstrap_external>", line 487, in _compile_bytecode
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 321, in __exit__
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.59user 0.86system 0:00.10elapsed 1415%CPU (0avgtext+0avgdata 20052maxresident)k
+0inputs+0outputs (0major+3028minor)pagefaults 0swaps

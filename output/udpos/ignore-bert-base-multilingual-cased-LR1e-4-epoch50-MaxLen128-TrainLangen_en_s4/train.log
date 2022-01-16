@@ -1,0 +1,254 @@
+11/24/2021 13:57:57 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/output//udpos/ignore-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s4/', max_seq_length=128, do_train=True, do_eval=True, do_predict=True, do_adapter_predict=False, do_predict_dev=True, do_predict_train=True, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=4, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en,fo,no,da,is,mr,bn,ta,hi,bg,be,uk,ru', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/output//udpos/ignore-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s4//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter=None, predict_lang_adapter=None, test_adapter=False, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/24/2021 13:57:57 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/24/2021 13:57:57 - INFO - __main__ -   Seed = 4
+11/24/2021 13:57:57 - INFO - root -   save adapters
+11/24/2021 13:57:57 - INFO - root -   True
+11/24/2021 13:57:57 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/output//udpos/ignore-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s4/', max_seq_length=128, do_train=True, do_eval=True, do_predict=True, do_adapter_predict=False, do_predict_dev=True, do_predict_train=True, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=4, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en,fo,no,da,is,mr,bn,ta,hi,bg,be,uk,ru', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/output//udpos/ignore-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s4//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter=None, predict_lang_adapter=None, test_adapter=False, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/24/2021 13:57:57 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/24/2021 13:57:59 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/24/2021 13:58:05 - INFO - __main__ -   Using lang2id = None
+11/24/2021 13:58:05 - INFO - root -   Trying to decide if add adapter
+11/24/2021 13:58:05 - INFO - root -   Adding task adapter
+11/24/2021 13:58:05 - INFO - root -   loading lang adpater en/wiki@ukp
+11/24/2021 13:58:05 - INFO - __main__ -   Adapter Languages : ['en'], Length : 1
+11/24/2021 13:58:05 - INFO - __main__ -   Adapter Names ['en/wiki@ukp'], Length : 1
+11/24/2021 13:58:05 - INFO - __main__ -   Language = en
+11/24/2021 13:58:05 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+11/24/2021 13:58:07 - INFO - __main__ -   lang adapter names: en
+11/24/2021 13:58:10 - INFO - __main__ -   all languages = en
+11/24/2021 13:58:10 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/en/train.bert-base-multilingual-cased in language en
+11/24/2021 13:58:10 - INFO - utils_tag -   lang_id=0, lang=en, lang2id=None
+11/24/2021 13:58:11 - INFO - utils_tag -   Writing example 0 of 21798
+11/24/2021 13:58:11 - INFO - utils_tag -   *** Example ***
+11/24/2021 13:58:11 - INFO - utils_tag -   guid: en-1
+11/24/2021 13:58:11 - INFO - utils_tag -   tokens: [CLS] Al - Zaman : American forces killed Sha ##ikh Abdullah al - Ani , the pre ##acher at the mosque in the town of Q ##ai ##m , near the Syrian border . [SEP]
+11/24/2021 13:58:11 - INFO - utils_tag -   input_ids: 101 10883 118 71374 131 10536 13729 15875 106583 76993 32200 10164 118 90796 117 10105 12229 58093 10160 10105 95493 10106 10105 12221 10108 154 11542 10147 117 12883 10105 44152 20949 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   label_ids: -100 12 13 12 13 1 8 16 12 -100 12 12 13 12 13 6 8 -100 2 6 8 2 6 8 2 12 -100 -100 13 2 6 1 8 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 13:58:11 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 13:58:11 - INFO - utils_tag -   *** Example ***
+11/24/2021 13:58:11 - INFO - utils_tag -   guid: en-2
+11/24/2021 13:58:11 - INFO - utils_tag -   tokens: [CLS] [ This killing of a respected c ##leri ##c will be causing us trouble for years to come . ] [SEP]
+11/24/2021 13:58:11 - INFO - utils_tag -   input_ids: 101 164 10747 34248 10108 169 102427 171 12538 10350 11337 10347 34705 19626 58285 10142 10855 10114 10678 119 166 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   label_ids: -100 13 6 8 2 6 1 8 -100 -100 4 4 16 11 8 2 8 10 16 13 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 13:58:11 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 13:58:11 - INFO - utils_tag -   *** Example ***
+11/24/2021 13:58:11 - INFO - utils_tag -   guid: en-3
+11/24/2021 13:58:11 - INFO - utils_tag -   tokens: [CLS] DP ##A : Iraqi authorities announced that they had bus ##ted up 3 terrorist cells operating in Baghdad . [SEP]
+11/24/2021 13:58:11 - INFO - utils_tag -   input_ids: 101 68659 10738 131 57806 28308 13854 10189 10689 10374 19369 11912 10741 124 76482 23182 24210 10106 73055 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   label_ids: -100 12 -100 13 1 8 16 14 11 4 16 -100 2 9 1 8 16 2 12 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 13:58:11 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 13:58:11 - INFO - utils_tag -   *** Example ***
+11/24/2021 13:58:11 - INFO - utils_tag -   guid: en-4
+11/24/2021 13:58:11 - INFO - utils_tag -   tokens: [CLS] Two of them were being run by 2 officials of the Ministry of the Interior ! [SEP]
+11/24/2021 13:58:11 - INFO - utils_tag -   input_ids: 101 13214 10108 11345 10309 11223 14095 10155 123 27730 10108 10105 19170 10108 10105 33667 106 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   label_ids: -100 9 2 11 4 4 16 2 9 8 2 6 12 2 6 12 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 13:58:11 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 13:58:11 - INFO - utils_tag -   *** Example ***
+11/24/2021 13:58:11 - INFO - utils_tag -   guid: en-5
+11/24/2021 13:58:11 - INFO - utils_tag -   tokens: [CLS] The Mo ##I in Iraq is equivalent to the US FBI , so this would be like having J . Edgar Hoover un ##wit ##ting ##ly em ##ploy at a high level members of the Weather ##men bombers back in the 1960s . [SEP]
+11/24/2021 13:58:11 - INFO - utils_tag -   input_ids: 101 10117 34987 11281 10106 21455 10124 30647 10114 10105 10808 27254 117 10380 10531 10894 10347 11850 13677 147 119 21002 70519 10119 56082 12141 10454 10266 91823 10160 169 11846 13277 12464 10108 10105 48843 11418 109594 12014 10106 10105 22818 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 13:58:11 - INFO - utils_tag -   label_ids: -100 6 12 -100 2 12 4 1 2 6 12 12 13 3 11 4 16 14 16 12 -100 12 12 3 -100 -100 -100 16 -100 2 6 1 8 8 2 6 12 -100 8 3 2 6 8 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 13:58:11 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 13:58:18 - INFO - utils_tag -   Writing example 10000 of 21798
+11/24/2021 13:58:26 - INFO - utils_tag -   Writing example 20000 of 21798
+11/24/2021 13:58:28 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/cached_train_en_bert-base-multilingual-cased_128, len(features)=21798
+11/24/2021 13:58:33 - INFO - root -   ['bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_up.bias', 'classifier.weight', 'classifier.bias']
+11/24/2021 13:58:33 - INFO - __main__ -   ***** Running training *****
+11/24/2021 13:58:33 - INFO - __main__ -     Num examples = 21798
+11/24/2021 13:58:33 - INFO - __main__ -     Num Epochs = 50
+11/24/2021 13:58:33 - INFO - __main__ -     Instantaneous batch size per GPU = 8
+11/24/2021 13:58:33 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+11/24/2021 13:58:33 - INFO - __main__ -     Gradient Accumulation steps = 4
+11/24/2021 13:58:33 - INFO - __main__ -     Total optimization steps = 34050
+11/24/2021 13:58:33 - INFO - __main__ -   Seed = 4
+11/24/2021 14:03:57 - INFO - __main__ -   all languages = en
+11/24/2021 14:03:57 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/en/dev.bert-base-multilingual-cased in language en
+11/24/2021 14:03:57 - INFO - utils_tag -   lang_id=0, lang=en, lang2id=None
+11/24/2021 14:03:57 - INFO - utils_tag -   Writing example 0 of 3974
+11/24/2021 14:03:57 - INFO - utils_tag -   *** Example ***
+11/24/2021 14:03:57 - INFO - utils_tag -   guid: en-1
+11/24/2021 14:03:57 - INFO - utils_tag -   tokens: [CLS] From the AP comes this story : [SEP]
+11/24/2021 14:03:57 - INFO - utils_tag -   input_ids: 101 12222 10105 30909 21405 10531 13617 131 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   label_ids: -100 2 6 12 16 6 8 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 14:03:57 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 14:03:57 - INFO - utils_tag -   *** Example ***
+11/24/2021 14:03:57 - INFO - utils_tag -   guid: en-2
+11/24/2021 14:03:57 - INFO - utils_tag -   tokens: [CLS] President Bush on Tuesday nominated two individuals to replace retiring jurist ##s on federal courts in the Washington area . [SEP]
+11/24/2021 14:03:57 - INFO - utils_tag -   input_ids: 101 12811 21145 10135 70245 25906 10551 20143 10114 37156 75933 65327 10107 10135 16293 32860 10106 10105 11586 11168 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   label_ids: -100 12 12 2 12 16 9 8 10 16 16 8 -100 2 1 8 2 6 12 8 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 14:03:57 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 14:03:57 - INFO - utils_tag -   *** Example ***
+11/24/2021 14:03:57 - INFO - utils_tag -   guid: en-3
+11/24/2021 14:03:57 - INFO - utils_tag -   tokens: [CLS] Bush nominated Jennifer M . Anderson for a 15 - year term as associate judge of the Superior Court of the District of Columbia , replacing Steffen W . G ##raa ##e . [SEP]
+11/24/2021 14:03:57 - INFO - utils_tag -   input_ids: 101 21145 25906 21362 150 119 15007 10142 169 10208 118 10924 13719 10146 46175 31624 10108 10105 25244 14100 10108 10105 11958 10108 13469 117 45857 105873 160 119 144 96964 10112 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   label_ids: -100 12 16 12 12 -100 12 2 6 9 13 8 8 2 1 8 2 6 12 12 2 6 12 2 12 13 16 12 12 -100 12 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 14:03:57 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 14:03:57 - INFO - utils_tag -   *** Example ***
+11/24/2021 14:03:57 - INFO - utils_tag -   guid: en-4
+11/24/2021 14:03:57 - INFO - utils_tag -   tokens: [CLS] * * * [SEP]
+11/24/2021 14:03:57 - INFO - utils_tag -   input_ids: 101 115 115 115 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   input_mask: 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   label_ids: -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 14:03:57 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 14:03:57 - INFO - utils_tag -   *** Example ***
+11/24/2021 14:03:57 - INFO - utils_tag -   guid: en-5
+11/24/2021 14:03:57 - INFO - utils_tag -   tokens: [CLS] Bush also nominated A . Noel An ##ket ##ell Kramer for a 15 - year term as associate judge of the District of Columbia Court of Appeals , replacing John Mont ##agu ##e St ##ead ##man . [SEP]
+11/24/2021 14:03:57 - INFO - utils_tag -   input_ids: 101 21145 10379 25906 138 119 38588 10313 13650 13503 44724 10142 169 10208 118 10924 13719 10146 46175 31624 10108 10105 11958 10108 13469 14100 10108 108553 117 45857 10421 19472 47540 10112 10838 30297 10589 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+11/24/2021 14:03:57 - INFO - utils_tag -   label_ids: -100 12 3 16 12 -100 12 12 -100 -100 12 2 6 9 13 8 8 2 1 8 2 6 12 2 12 12 2 12 13 16 12 12 -100 -100 12 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+11/24/2021 14:03:57 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+11/24/2021 14:04:00 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/cached_dev_en_bert-base-multilingual-cased_128, len(features)=3974
+11/24/2021 14:04:01 - INFO - __main__ -   ***** Running evaluation 1000 in en *****
+11/24/2021 14:04:01 - INFO - __main__ -     Num examples = 3974
+11/24/2021 14:04:01 - INFO - __main__ -     Batch size = 32
+11/24/2021 14:04:01 - INFO - __main__ -   Batch number = 1
+11/24/2021 14:04:01 - INFO - __main__ -   Batch number = 2
+11/24/2021 14:04:01 - INFO - __main__ -   Batch number = 3
+11/24/2021 14:04:01 - INFO - __main__ -   Batch number = 4
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 5
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 6
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 7
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 8
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 9
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 10
+11/24/2021 14:04:02 - INFO - __main__ -   Batch number = 11
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 12
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 13
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 14
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 15
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 16
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 17
+11/24/2021 14:04:03 - INFO - __main__ -   Batch number = 18
+11/24/2021 14:04:04 - INFO - __main__ -   Batch number = 19
+11/24/2021 14:04:04 - INFO - __main__ -   Batch number = 20
+11/24/2021 14:04:04 - INFO - __main__ -   Batch number = 21
+11/24/2021 14:04:04 - INFO - __main__ -   Batch number = 22
+11/24/2021 14:04:04 - INFO - __main__ -   Batch number = 23
+11/24/2021 14:04:04 - INFO - __main__ -   Batch number = 24
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 25
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 26
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 27
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 28
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 29
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 30
+11/24/2021 14:04:05 - INFO - __main__ -   Batch number = 31
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 32
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 33
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 34
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 35
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 36
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 37
+11/24/2021 14:04:06 - INFO - __main__ -   Batch number = 38
+11/24/2021 14:04:07 - INFO - __main__ -   Batch number = 39
+11/24/2021 14:04:07 - INFO - __main__ -   Batch number = 40
+11/24/2021 14:04:07 - INFO - __main__ -   Batch number = 41
+11/24/2021 14:04:07 - INFO - __main__ -   Batch number = 42
+11/24/2021 14:04:07 - INFO - __main__ -   Batch number = 43
+11/24/2021 14:04:07 - INFO - __main__ -   Batch number = 44
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 45
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 46
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 47
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 48
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 49
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 50
+11/24/2021 14:04:08 - INFO - __main__ -   Batch number = 51
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 52
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 53
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 54
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 55
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 56
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 57
+11/24/2021 14:04:09 - INFO - __main__ -   Batch number = 58
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 59
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 60
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 61
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 62
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 63
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 64
+11/24/2021 14:04:10 - INFO - __main__ -   Batch number = 65
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 66
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 67
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 68
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 69
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 70
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 71
+11/24/2021 14:04:11 - INFO - __main__ -   Batch number = 72
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 73
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 74
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 75
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 76
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 77
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 78
+11/24/2021 14:04:12 - INFO - __main__ -   Batch number = 79
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 80
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 81
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 82
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 83
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 84
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 85
+11/24/2021 14:04:13 - INFO - __main__ -   Batch number = 86
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 87
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 88
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 89
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 90
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 91
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 92
+11/24/2021 14:04:14 - INFO - __main__ -   Batch number = 93
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 94
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 95
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 96
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 97
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 98
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 99
+11/24/2021 14:04:15 - INFO - __main__ -   Batch number = 100
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 101
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 102
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 103
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 104
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 105
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 106
+11/24/2021 14:04:16 - INFO - __main__ -   Batch number = 107
+11/24/2021 14:04:17 - INFO - __main__ -   Batch number = 108
+11/24/2021 14:04:17 - INFO - __main__ -   Batch number = 109
+11/24/2021 14:04:17 - INFO - __main__ -   Batch number = 110
+11/24/2021 14:04:17 - INFO - __main__ -   Batch number = 111
+11/24/2021 14:04:17 - INFO - __main__ -   Batch number = 112
+11/24/2021 14:04:17 - INFO - __main__ -   Batch number = 113
+11/24/2021 14:04:18 - INFO - __main__ -   Batch number = 114
+11/24/2021 14:04:18 - INFO - __main__ -   Batch number = 115
+11/24/2021 14:04:18 - INFO - __main__ -   Batch number = 116
+11/24/2021 14:04:18 - INFO - __main__ -   Batch number = 117
+11/24/2021 14:04:18 - INFO - __main__ -   Batch number = 118
+11/24/2021 14:04:18 - INFO - __main__ -   Batch number = 119
+11/24/2021 14:04:19 - INFO - __main__ -   Batch number = 120
+11/24/2021 14:04:19 - INFO - __main__ -   Batch number = 121
+11/24/2021 14:04:19 - INFO - __main__ -   Batch number = 122
+11/24/2021 14:04:19 - INFO - __main__ -   Batch number = 123
+11/24/2021 14:04:19 - INFO - __main__ -   Batch number = 124
+11/24/2021 14:04:19 - INFO - __main__ -   Batch number = 125
+11/24/2021 14:04:21 - INFO - __main__ -   ***** Evaluation result 1000 in en *****
+11/24/2021 14:04:21 - INFO - __main__ -     f1 = 0.9437565294832931
+11/24/2021 14:04:21 - INFO - __main__ -     loss = 0.15833393430709838
+11/24/2021 14:04:21 - INFO - __main__ -     precision = 0.9435949245706262
+11/24/2021 14:04:21 - INFO - __main__ -     recall = 0.9439181897600164
+11/24/2021 14:04:21 - INFO - __main__ -   result['f1']=0.9437565294832931 > best_score=0.0
+11/24/2021 14:04:21 - INFO - __main__ -   Saving the best model checkpoint to /home/abhijeet/rohan/cloud-emea/output//udpos/ignore-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s4/checkpoint-best
+11/24/2021 14:04:21 - INFO - __main__ -   Reset patience to 0

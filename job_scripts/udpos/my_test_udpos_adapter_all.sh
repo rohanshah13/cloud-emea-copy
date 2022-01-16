@@ -21,10 +21,10 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 
 export CUDA_VISIBLE_DEVICES=$GPU
 TASK='udpos'
-LANGS="hu"
+LANGS="am"
 # ALL_LANGS="ar,bn,mr,ta,bh,hi,is,fo,no,da,ru,bg,uk,be"
 # REM_LANGS="be"
-TRAIN_LANGS="hi"
+TRAIN_LANGS="en"
 
 # LANGS_ARRAY=( "mr,bho,ta" "fo,no,da" "be,uk,bg" )
 
@@ -68,8 +68,10 @@ for i in ${!ADAPTERS_LANGS[@]}
 do
 LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
 ADAPTER_LANG=${ADAPTERS_LANGS[i]}
-OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}_train_${TRAIN_LANGS}/"
+OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
 mkdir -p $OUTPUT_DIR
+echo $LANGS
+echo $OUTPUT_DIR
 for SEED in 1 2 3
 do
 MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLang${TRAIN_LANGS}_${TRAIN_LANGS}_s${SEED}/checkpoint-best/${TASK}/"
@@ -92,7 +94,7 @@ nohup time python third_party/my_run_tag.py \
   --do_predict \
   --predict_langs $LANGS \
   --train_langs $TRAIN_LANGS \
-  --log_file $OUTPUT_DIR/train_en.log \
+  --log_file $OUTPUT_DIR/train_$LANGS.log \
   --eval_all_checkpoints \
   --eval_patience -1 \
   --overwrite_output_dir \
@@ -103,6 +105,6 @@ nohup time python third_party/my_run_tag.py \
   --lang_adapter_config pfeiffer \
   --save_only_best_checkpoint $LC \
   --load_lang_adapter $LANG_ADAPTER_NAME \
-  --language $ADAPTER_LANG >> $OUTPUT_DIR/detailed_train_en.log
+  --language $ADAPTER_LANG >> $OUTPUT_DIR/detailed_train_$LANGS.log
 done
 done

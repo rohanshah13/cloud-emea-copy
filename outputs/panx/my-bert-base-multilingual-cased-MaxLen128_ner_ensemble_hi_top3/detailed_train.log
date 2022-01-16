@@ -1,0 +1,834 @@
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 02:56:08 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bn,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 02:56:08 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 02:56:08 - INFO - __main__ -   Seed = 1
+01/15/2022 02:56:08 - INFO - root -   save model
+01/15/2022 02:56:08 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bn,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 02:56:08 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 02:56:10 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 02:56:16 - INFO - __main__ -   Using lang2id = None
+01/15/2022 02:56:16 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 02:56:16 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+01/15/2022 02:56:16 - INFO - root -   Trying to decide if add adapter
+01/15/2022 02:56:16 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_model_head.bin
+01/15/2022 02:56:16 - INFO - root -   loading lang adpater hi/wiki@ukp,zh_yue/wiki@ukp,hu/wiki@uk
+01/15/2022 02:56:16 - INFO - __main__ -   Adapter Languages : ['hi', 'zh_yue', 'hu'], Length : 3
+01/15/2022 02:56:16 - INFO - __main__ -   Adapter Names ['hi/wiki@ukp', 'zh_yue/wiki@ukp', 'hu/wiki@uk'], Length : 3
+01/15/2022 02:56:16 - INFO - __main__ -   Language = hi
+01/15/2022 02:56:16 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hi/bert-base-multilingual-cased/pfeiffer/hi_pfeiffer_gelu_nd_200k.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/adapter_config.json
+Adding adapter 'hi' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted'
+01/15/2022 02:56:17 - INFO - __main__ -   Language = zh_yue
+01/15/2022 02:56:17 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'zh_yue' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/15/2022 02:56:19 - INFO - __main__ -   Language = hu
+01/15/2022 02:56:19 - INFO - __main__ -   Adapter Name = hu/wiki@uk
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/adapter_config.json
+Adding adapter 'hu' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/head_config.json
+01/15/2022 02:56:24 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:56:24 - INFO - __main__ -   Adapter Languages = ['hi', 'zh_yue', 'hu']
+01/15/2022 02:56:24 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:56:24 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:56:24 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:56:24 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/15/2022 02:56:24 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/15/2022 02:56:24 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:56:24 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:56:24 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.19it/s]01/15/2022 02:56:25 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.43it/s]01/15/2022 02:56:25 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:05,  5.52it/s]01/15/2022 02:56:25 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.68it/s]01/15/2022 02:56:25 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.77it/s]01/15/2022 02:56:25 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.82it/s]01/15/2022 02:56:25 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.85it/s]01/15/2022 02:56:26 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.87it/s]01/15/2022 02:56:26 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.89it/s]01/15/2022 02:56:26 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.90it/s]01/15/2022 02:56:26 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:04,  5.10it/s]01/15/2022 02:56:26 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.33it/s]01/15/2022 02:56:27 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.49it/s]01/15/2022 02:56:27 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.61it/s]01/15/2022 02:56:27 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.70it/s]01/15/2022 02:56:27 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.75it/s]01/15/2022 02:56:27 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:03<00:02,  5.78it/s]01/15/2022 02:56:27 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.82it/s]01/15/2022 02:56:28 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.84it/s]01/15/2022 02:56:28 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.86it/s]01/15/2022 02:56:28 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.87it/s]01/15/2022 02:56:28 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.87it/s]01/15/2022 02:56:28 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:04<00:01,  5.88it/s]01/15/2022 02:56:28 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.87it/s]01/15/2022 02:56:29 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.88it/s]01/15/2022 02:56:29 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.88it/s]01/15/2022 02:56:29 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.88it/s]01/15/2022 02:56:29 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.89it/s]01/15/2022 02:56:29 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  5.89it/s]01/15/2022 02:56:29 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.88it/s]01/15/2022 02:56:30 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.85it/s]01/15/2022 02:56:30 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.89it/s]
+01/15/2022 02:56:30 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/15/2022 02:56:30 - INFO - __main__ -     f1 = 0.5185964912280702
+01/15/2022 02:56:30 - INFO - __main__ -     loss = 2.0659925043582916
+01/15/2022 02:56:30 - INFO - __main__ -     precision = 0.46595208070617905
+01/15/2022 02:56:30 - INFO - __main__ -     recall = 0.5846518987341772
+01/15/2022 02:56:30 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:56:30 - INFO - __main__ -   Adapter Languages = ['hi', 'zh_yue', 'hu']
+01/15/2022 02:56:30 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:56:30 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:56:30 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:56:30 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_bn_bert-base-multilingual-cased_128
+01/15/2022 02:56:30 - INFO - __main__ -   ***** Running evaluation  in bn *****
+01/15/2022 02:56:30 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:56:30 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:56:30 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.96it/s]01/15/2022 02:56:30 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.93it/s]01/15/2022 02:56:30 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:04,  5.92it/s]01/15/2022 02:56:31 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.92it/s]01/15/2022 02:56:31 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.91it/s]01/15/2022 02:56:31 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.91it/s]01/15/2022 02:56:31 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.90it/s]01/15/2022 02:56:31 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:05,  4.74it/s]01/15/2022 02:56:32 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:04,  5.06it/s]01/15/2022 02:56:32 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:04,  5.28it/s]01/15/2022 02:56:32 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.45it/s]01/15/2022 02:56:32 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.57it/s]01/15/2022 02:56:32 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.66it/s]01/15/2022 02:56:32 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.72it/s]01/15/2022 02:56:33 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.78it/s]01/15/2022 02:56:33 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.80it/s]01/15/2022 02:56:33 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:03<00:02,  5.82it/s]01/15/2022 02:56:33 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.84it/s]01/15/2022 02:56:33 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.85it/s]01/15/2022 02:56:33 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.86it/s]01/15/2022 02:56:34 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.86it/s]01/15/2022 02:56:34 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.84it/s]01/15/2022 02:56:34 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:04<00:01,  5.85it/s]01/15/2022 02:56:34 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.85it/s]01/15/2022 02:56:34 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.84it/s]01/15/2022 02:56:34 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.81it/s]01/15/2022 02:56:35 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.83it/s]01/15/2022 02:56:35 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.84it/s]01/15/2022 02:56:35 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  5.84it/s]01/15/2022 02:56:35 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.84it/s]01/15/2022 02:56:35 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.84it/s]01/15/2022 02:56:35 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.86it/s]
+01/15/2022 02:56:36 - INFO - __main__ -   ***** Evaluation result  in bn *****
+01/15/2022 02:56:36 - INFO - __main__ -     f1 = 0.5996457041629761
+01/15/2022 02:56:36 - INFO - __main__ -     loss = 3.479101996868849
+01/15/2022 02:56:36 - INFO - __main__ -     precision = 0.5791274593669803
+01/15/2022 02:56:36 - INFO - __main__ -     recall = 0.6216712580348944
+01/15/2022 02:56:36 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:56:36 - INFO - __main__ -   Adapter Languages = ['hi', 'zh_yue', 'hu']
+01/15/2022 02:56:36 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:56:36 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:56:36 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:56:36 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/15/2022 02:56:36 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/15/2022 02:56:36 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:56:36 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:56:36 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.95it/s]01/15/2022 02:56:36 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.92it/s]01/15/2022 02:56:36 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:04,  5.91it/s]01/15/2022 02:56:36 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.90it/s]01/15/2022 02:56:36 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:05,  5.40it/s]01/15/2022 02:56:37 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.54it/s]01/15/2022 02:56:37 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.64it/s]01/15/2022 02:56:37 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.70it/s]01/15/2022 02:56:37 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.75it/s]01/15/2022 02:56:37 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.79it/s]01/15/2022 02:56:37 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.81it/s]01/15/2022 02:56:38 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.82it/s]01/15/2022 02:56:38 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.83it/s]01/15/2022 02:56:38 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.84it/s]01/15/2022 02:56:38 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.84it/s]01/15/2022 02:56:38 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.84it/s]01/15/2022 02:56:38 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:02<00:02,  5.84it/s]01/15/2022 02:56:39 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.85it/s]01/15/2022 02:56:39 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.85it/s]01/15/2022 02:56:39 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.85it/s]01/15/2022 02:56:39 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.84it/s]01/15/2022 02:56:39 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.83it/s]01/15/2022 02:56:40 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:03<00:01,  5.83it/s]01/15/2022 02:56:40 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.84it/s]01/15/2022 02:56:40 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.84it/s]01/15/2022 02:56:40 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.84it/s]01/15/2022 02:56:40 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.84it/s]01/15/2022 02:56:40 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.83it/s]01/15/2022 02:56:41 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:04<00:00,  5.83it/s]01/15/2022 02:56:41 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.83it/s]01/15/2022 02:56:41 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.82it/s]01/15/2022 02:56:41 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.93it/s]
+01/15/2022 02:56:41 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/15/2022 02:56:41 - INFO - __main__ -     f1 = 0.3203923171230078
+01/15/2022 02:56:41 - INFO - __main__ -     loss = 3.423083834350109
+01/15/2022 02:56:41 - INFO - __main__ -     precision = 0.3250414593698176
+01/15/2022 02:56:41 - INFO - __main__ -     recall = 0.3158742949234488
+32.94user 13.95system 0:35.67elapsed 131%CPU (0avgtext+0avgdata 4021276maxresident)k
+0inputs+304outputs (0major+1520746minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 02:56:44 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bn,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 02:56:44 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 02:56:44 - INFO - __main__ -   Seed = 2
+01/15/2022 02:56:44 - INFO - root -   save model
+01/15/2022 02:56:44 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bn,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 02:56:44 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 02:56:46 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 02:56:52 - INFO - __main__ -   Using lang2id = None
+01/15/2022 02:56:52 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 02:56:52 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+01/15/2022 02:56:52 - INFO - root -   Trying to decide if add adapter
+01/15/2022 02:56:52 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_model_head.bin
+01/15/2022 02:56:52 - INFO - root -   loading lang adpater hi/wiki@ukp,fa/wiki@ukp,tr/wiki@ukp
+01/15/2022 02:56:52 - INFO - __main__ -   Adapter Languages : ['hi', 'fa', 'tr'], Length : 3
+01/15/2022 02:56:52 - INFO - __main__ -   Adapter Names ['hi/wiki@ukp', 'fa/wiki@ukp', 'tr/wiki@ukp'], Length : 3
+01/15/2022 02:56:52 - INFO - __main__ -   Language = hi
+01/15/2022 02:56:52 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hi/bert-base-multilingual-cased/pfeiffer/hi_pfeiffer_gelu_nd_200k.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/adapter_config.json
+Adding adapter 'hi' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted'
+01/15/2022 02:56:53 - INFO - __main__ -   Language = fa
+01/15/2022 02:56:53 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fa/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_fa_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/adapter_config.json
+Adding adapter 'fa' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/head_config.json
+01/15/2022 02:56:55 - INFO - __main__ -   Language = tr
+01/15/2022 02:56:55 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/tr/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_tr_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/adapter_config.json
+Adding adapter 'tr' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/head_config.json
+01/15/2022 02:57:01 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:57:01 - INFO - __main__ -   Adapter Languages = ['hi', 'fa', 'tr']
+01/15/2022 02:57:01 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:57:01 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:57:01 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:57:01 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/15/2022 02:57:01 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/15/2022 02:57:01 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:57:01 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:57:01 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.18it/s]01/15/2022 02:57:02 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.44it/s]01/15/2022 02:57:02 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:05,  5.54it/s]01/15/2022 02:57:02 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.65it/s]01/15/2022 02:57:02 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.72it/s]01/15/2022 02:57:02 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.77it/s]01/15/2022 02:57:02 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.79it/s]01/15/2022 02:57:03 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.81it/s]01/15/2022 02:57:03 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.82it/s]01/15/2022 02:57:03 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.83it/s]01/15/2022 02:57:03 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.83it/s]01/15/2022 02:57:03 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.84it/s]01/15/2022 02:57:03 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.84it/s]01/15/2022 02:57:04 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.85it/s]01/15/2022 02:57:04 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.84it/s]01/15/2022 02:57:04 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.83it/s]01/15/2022 02:57:04 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:02<00:02,  5.83it/s]01/15/2022 02:57:04 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.83it/s]01/15/2022 02:57:05 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.83it/s]01/15/2022 02:57:05 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:05 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.82it/s]01/15/2022 02:57:05 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.81it/s]01/15/2022 02:57:05 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:03<00:01,  5.80it/s]01/15/2022 02:57:05 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.81it/s]01/15/2022 02:57:06 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.82it/s]01/15/2022 02:57:06 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.81it/s]01/15/2022 02:57:06 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.81it/s]01/15/2022 02:57:06 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.82it/s]01/15/2022 02:57:06 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  5.81it/s]01/15/2022 02:57:06 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.81it/s]01/15/2022 02:57:07 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.82it/s]01/15/2022 02:57:07 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  6.12it/s]Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.82it/s]
+01/15/2022 02:57:07 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/15/2022 02:57:07 - INFO - __main__ -     f1 = 0.5132181882270004
+01/15/2022 02:57:07 - INFO - __main__ -     loss = 2.0954918675124645
+01/15/2022 02:57:07 - INFO - __main__ -     precision = 0.4628099173553719
+01/15/2022 02:57:07 - INFO - __main__ -     recall = 0.5759493670886076
+01/15/2022 02:57:07 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:57:07 - INFO - __main__ -   Adapter Languages = ['hi', 'fa', 'tr']
+01/15/2022 02:57:07 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:57:07 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:57:07 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:57:07 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_bn_bert-base-multilingual-cased_128
+01/15/2022 02:57:07 - INFO - __main__ -   ***** Running evaluation  in bn *****
+01/15/2022 02:57:07 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:57:07 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:57:07 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.92it/s]01/15/2022 02:57:07 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.88it/s]01/15/2022 02:57:08 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:04,  5.87it/s]01/15/2022 02:57:08 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.87it/s]01/15/2022 02:57:08 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.87it/s]01/15/2022 02:57:08 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.86it/s]01/15/2022 02:57:08 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.85it/s]01/15/2022 02:57:08 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.85it/s]01/15/2022 02:57:09 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.84it/s]01/15/2022 02:57:09 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.85it/s]01/15/2022 02:57:09 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.84it/s]01/15/2022 02:57:09 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.84it/s]01/15/2022 02:57:09 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.84it/s]01/15/2022 02:57:09 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.82it/s]01/15/2022 02:57:10 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.82it/s]01/15/2022 02:57:10 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.82it/s]01/15/2022 02:57:10 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:02<00:02,  5.83it/s]01/15/2022 02:57:10 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.83it/s]01/15/2022 02:57:10 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:10 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:11 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.82it/s]01/15/2022 02:57:11 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.81it/s]01/15/2022 02:57:11 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:03<00:01,  5.81it/s]01/15/2022 02:57:11 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.81it/s]01/15/2022 02:57:11 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.82it/s]01/15/2022 02:57:11 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.81it/s]01/15/2022 02:57:12 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.82it/s]01/15/2022 02:57:12 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:05<00:01,  3.43it/s]01/15/2022 02:57:12 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  3.91it/s]01/15/2022 02:57:13 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  4.34it/s]01/15/2022 02:57:13 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  4.70it/s]01/15/2022 02:57:13 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.55it/s]
+01/15/2022 02:57:13 - INFO - __main__ -   ***** Evaluation result  in bn *****
+01/15/2022 02:57:13 - INFO - __main__ -     f1 = 0.6356043956043955
+01/15/2022 02:57:13 - INFO - __main__ -     loss = 3.2567830868065357
+01/15/2022 02:57:13 - INFO - __main__ -     precision = 0.6096121416526138
+01/15/2022 02:57:13 - INFO - __main__ -     recall = 0.6639118457300276
+01/15/2022 02:57:13 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:57:13 - INFO - __main__ -   Adapter Languages = ['hi', 'fa', 'tr']
+01/15/2022 02:57:13 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:57:13 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:57:13 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:57:13 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/15/2022 02:57:13 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/15/2022 02:57:13 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:57:13 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:57:13 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.88it/s]01/15/2022 02:57:13 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.88it/s]01/15/2022 02:57:14 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:04,  5.86it/s]01/15/2022 02:57:14 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.86it/s]01/15/2022 02:57:14 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.86it/s]01/15/2022 02:57:14 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.86it/s]01/15/2022 02:57:14 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.85it/s]01/15/2022 02:57:14 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.85it/s]01/15/2022 02:57:15 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.84it/s]01/15/2022 02:57:15 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.84it/s]01/15/2022 02:57:15 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.84it/s]01/15/2022 02:57:15 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.84it/s]01/15/2022 02:57:15 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.83it/s]01/15/2022 02:57:15 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.83it/s]01/15/2022 02:57:16 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.83it/s]01/15/2022 02:57:16 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.83it/s]01/15/2022 02:57:16 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:02<00:02,  5.83it/s]01/15/2022 02:57:16 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:16 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:16 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.70it/s]01/15/2022 02:57:17 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.68it/s]01/15/2022 02:57:17 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.72it/s]01/15/2022 02:57:17 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:03<00:01,  5.45it/s]01/15/2022 02:57:17 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.54it/s]01/15/2022 02:57:17 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.62it/s]01/15/2022 02:57:18 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.67it/s]01/15/2022 02:57:18 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.71it/s]01/15/2022 02:57:18 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.74it/s]01/15/2022 02:57:18 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  5.75it/s]01/15/2022 02:57:18 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.77it/s]01/15/2022 02:57:18 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.78it/s]01/15/2022 02:57:19 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.90it/s]
+01/15/2022 02:57:19 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/15/2022 02:57:19 - INFO - __main__ -     f1 = 0.3983464862833521
+01/15/2022 02:57:19 - INFO - __main__ -     loss = 3.175545707345009
+01/15/2022 02:57:19 - INFO - __main__ -     precision = 0.3732394366197183
+01/15/2022 02:57:19 - INFO - __main__ -     recall = 0.42707493956486703
+33.66user 14.29system 0:37.28elapsed 128%CPU (0avgtext+0avgdata 4021204maxresident)k
+0inputs+328outputs (0major+1570245minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 02:57:21 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bn,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 02:57:21 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 02:57:21 - INFO - __main__ -   Seed = 3
+01/15/2022 02:57:21 - INFO - root -   save model
+01/15/2022 02:57:21 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bn,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_hi_top3//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 02:57:21 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 02:57:23 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 02:57:29 - INFO - __main__ -   Using lang2id = None
+01/15/2022 02:57:29 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 02:57:29 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+01/15/2022 02:57:29 - INFO - root -   Trying to decide if add adapter
+01/15/2022 02:57:29 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_model_head.bin
+01/15/2022 02:57:29 - INFO - root -   loading lang adpater hi/wiki@ukp,id/wiki@ukp,cs/wiki@ukp
+01/15/2022 02:57:29 - INFO - __main__ -   Adapter Languages : ['hi', 'id', 'cs'], Length : 3
+01/15/2022 02:57:29 - INFO - __main__ -   Adapter Names ['hi/wiki@ukp', 'id/wiki@ukp', 'cs/wiki@ukp'], Length : 3
+01/15/2022 02:57:29 - INFO - __main__ -   Language = hi
+01/15/2022 02:57:29 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hi/bert-base-multilingual-cased/pfeiffer/hi_pfeiffer_gelu_nd_200k.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/adapter_config.json
+Adding adapter 'hi' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted'
+01/15/2022 02:57:30 - INFO - __main__ -   Language = id
+01/15/2022 02:57:30 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/id/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_wiki_id_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/adapter_config.json
+Adding adapter 'id' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/head_config.json
+01/15/2022 02:57:31 - INFO - __main__ -   Language = cs
+01/15/2022 02:57:31 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/cs/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_cs_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/adapter_config.json
+Adding adapter 'cs' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/head_config.json
+01/15/2022 02:57:36 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:57:36 - INFO - __main__ -   Adapter Languages = ['hi', 'id', 'cs']
+01/15/2022 02:57:36 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:57:36 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:57:36 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:57:36 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/15/2022 02:57:37 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/15/2022 02:57:37 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:57:37 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:57:37 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.77it/s]01/15/2022 02:57:37 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.83it/s]01/15/2022 02:57:37 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:06,  4.36it/s]01/15/2022 02:57:37 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:05,  4.85it/s]01/15/2022 02:57:37 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:05,  5.18it/s]01/15/2022 02:57:38 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.39it/s]01/15/2022 02:57:38 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.53it/s]01/15/2022 02:57:38 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.63it/s]01/15/2022 02:57:38 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:04,  5.69it/s]01/15/2022 02:57:38 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.73it/s]01/15/2022 02:57:38 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:02<00:03,  5.76it/s]01/15/2022 02:57:39 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.79it/s]01/15/2022 02:57:39 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.80it/s]01/15/2022 02:57:39 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.81it/s]01/15/2022 02:57:39 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.81it/s]01/15/2022 02:57:39 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.81it/s]01/15/2022 02:57:39 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:40 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:40 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.81it/s]01/15/2022 02:57:40 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.82it/s]01/15/2022 02:57:40 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.81it/s]01/15/2022 02:57:40 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.80it/s]01/15/2022 02:57:40 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:04<00:01,  5.79it/s]01/15/2022 02:57:41 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.80it/s]01/15/2022 02:57:41 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.81it/s]01/15/2022 02:57:41 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.80it/s]01/15/2022 02:57:41 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.80it/s]01/15/2022 02:57:41 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.80it/s]01/15/2022 02:57:41 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  5.80it/s]01/15/2022 02:57:42 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.81it/s]01/15/2022 02:57:42 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.81it/s]01/15/2022 02:57:42 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  6.16it/s]Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.72it/s]
+01/15/2022 02:57:42 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/15/2022 02:57:42 - INFO - __main__ -     f1 = 0.5177905794645882
+01/15/2022 02:57:42 - INFO - __main__ -     loss = 2.3670630678534508
+01/15/2022 02:57:42 - INFO - __main__ -     precision = 0.45287492590397155
+01/15/2022 02:57:42 - INFO - __main__ -     recall = 0.6044303797468354
+01/15/2022 02:57:42 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:57:42 - INFO - __main__ -   Adapter Languages = ['hi', 'id', 'cs']
+01/15/2022 02:57:42 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:57:42 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:57:42 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:57:42 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_bn_bert-base-multilingual-cased_128
+01/15/2022 02:57:42 - INFO - __main__ -   ***** Running evaluation  in bn *****
+01/15/2022 02:57:42 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:57:42 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:57:42 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.89it/s]01/15/2022 02:57:43 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.86it/s]01/15/2022 02:57:43 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:04,  5.85it/s]01/15/2022 02:57:43 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.83it/s]01/15/2022 02:57:43 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.83it/s]01/15/2022 02:57:43 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.83it/s]01/15/2022 02:57:43 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.83it/s]01/15/2022 02:57:44 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.82it/s]01/15/2022 02:57:44 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.82it/s]01/15/2022 02:57:44 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.82it/s]01/15/2022 02:57:44 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.81it/s]01/15/2022 02:57:44 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.81it/s]01/15/2022 02:57:44 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.81it/s]01/15/2022 02:57:45 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.81it/s]01/15/2022 02:57:45 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.81it/s]01/15/2022 02:57:45 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.81it/s]01/15/2022 02:57:45 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:02<00:02,  5.80it/s]01/15/2022 02:57:45 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.80it/s]01/15/2022 02:57:45 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.80it/s]01/15/2022 02:57:46 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.80it/s]01/15/2022 02:57:46 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.78it/s]01/15/2022 02:57:46 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.78it/s]01/15/2022 02:57:46 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:03<00:01,  5.78it/s]01/15/2022 02:57:46 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.79it/s]01/15/2022 02:57:47 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.78it/s]01/15/2022 02:57:47 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.77it/s]01/15/2022 02:57:47 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.77it/s]01/15/2022 02:57:47 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.78it/s]01/15/2022 02:57:47 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:04<00:00,  5.77it/s]01/15/2022 02:57:47 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.78it/s]01/15/2022 02:57:48 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.77it/s]01/15/2022 02:57:48 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.93it/s]
+01/15/2022 02:57:48 - INFO - __main__ -   ***** Evaluation result  in bn *****
+01/15/2022 02:57:48 - INFO - __main__ -     f1 = 0.5897103329009944
+01/15/2022 02:57:48 - INFO - __main__ -     loss = 3.0729089938104153
+01/15/2022 02:57:48 - INFO - __main__ -     precision = 0.5571895424836601
+01/15/2022 02:57:48 - INFO - __main__ -     recall = 0.6262626262626263
+01/15/2022 02:57:48 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 02:57:48 - INFO - __main__ -   Adapter Languages = ['hi', 'id', 'cs']
+01/15/2022 02:57:48 - INFO - __main__ -   Adapter Weights = [0.3333333333333333, 0.3333333333333333, 0.3333333333333333]
+01/15/2022 02:57:48 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 02:57:48 - INFO - __main__ -   Length of Adapter Weights = 3
+01/15/2022 02:57:48 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/15/2022 02:57:48 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/15/2022 02:57:48 - INFO - __main__ -     Num examples = 1000
+01/15/2022 02:57:48 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/15/2022 02:57:48 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:05,  5.84it/s]01/15/2022 02:57:48 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:05,  5.81it/s]01/15/2022 02:57:48 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:04,  5.81it/s]01/15/2022 02:57:48 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:00<00:04,  5.80it/s]01/15/2022 02:57:49 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:00<00:04,  5.80it/s]01/15/2022 02:57:49 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:04,  5.80it/s]01/15/2022 02:57:49 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:04,  5.79it/s]01/15/2022 02:57:49 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:01<00:04,  5.79it/s]01/15/2022 02:57:49 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:01<00:03,  5.79it/s]01/15/2022 02:57:50 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:01<00:03,  5.80it/s]01/15/2022 02:57:50 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:01<00:03,  5.80it/s]01/15/2022 02:57:50 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:02<00:03,  5.80it/s]01/15/2022 02:57:50 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:02<00:03,  5.79it/s]01/15/2022 02:57:50 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:02<00:03,  5.79it/s]01/15/2022 02:57:50 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:02<00:02,  5.79it/s]01/15/2022 02:57:51 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:02<00:02,  5.79it/s]01/15/2022 02:57:51 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:02<00:02,  5.78it/s]01/15/2022 02:57:51 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:03<00:02,  5.78it/s]01/15/2022 02:57:51 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:03<00:02,  5.78it/s]01/15/2022 02:57:51 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:03<00:02,  5.78it/s]01/15/2022 02:57:51 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:03<00:01,  5.78it/s]01/15/2022 02:57:52 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:03<00:01,  5.78it/s]01/15/2022 02:57:52 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:03<00:01,  5.77it/s]01/15/2022 02:57:52 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:04<00:01,  5.77it/s]01/15/2022 02:57:52 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:04<00:01,  5.78it/s]01/15/2022 02:57:52 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:04<00:01,  5.77it/s]01/15/2022 02:57:52 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:04<00:00,  5.77it/s]01/15/2022 02:57:53 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:04<00:00,  5.77it/s]01/15/2022 02:57:53 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:05<00:00,  5.76it/s]01/15/2022 02:57:53 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:05<00:00,  5.76it/s]01/15/2022 02:57:53 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:05<00:00,  5.76it/s]01/15/2022 02:57:53 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:05<00:00,  5.91it/s]
+01/15/2022 02:57:54 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/15/2022 02:57:54 - INFO - __main__ -     f1 = 0.40609523809523806
+01/15/2022 02:57:54 - INFO - __main__ -     loss = 3.201461747288704
+01/15/2022 02:57:54 - INFO - __main__ -     precision = 0.38511560693641617
+01/15/2022 02:57:54 - INFO - __main__ -     recall = 0.42949234488315874
+30.77user 14.11system 0:34.78elapsed 129%CPU (0avgtext+0avgdata 4020444maxresident)k
+0inputs+320outputs (0major+1575426minor)pagefaults 0swaps

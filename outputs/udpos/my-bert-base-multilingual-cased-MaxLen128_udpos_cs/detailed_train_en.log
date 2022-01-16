@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 143, in <module>
+    from . import lib
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/lib/__init__.py", line 37, in <module>
+    from .npyio import *
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/lib/npyio.py", line 19, in <module>
+    from ._iotools import (
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 779, in get_code
+  File "<frozen importlib._bootstrap_external>", line 487, in _compile_bytecode
+KeyboardInterrupt
+Command exited with non-zero status 1
+1.44user 2.34system 0:00.19elapsed 1912%CPU (0avgtext+0avgdata 25820maxresident)k
+0inputs+8outputs (0major+4514minor)pagefaults 0swaps
+Command terminated by signal 2
+0.00user 0.00system 0:00.00elapsed 100%CPU (0avgtext+0avgdata 7404maxresident)k
+0inputs+0outputs (0major+626minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 556, in main
+    known_paths = addusersitepackages(known_paths)
+  File "/usr/lib/python3.6/site.py", line 288, in addusersitepackages
+    user_site = getusersitepackages()
+  File "/usr/lib/python3.6/site.py", line 264, in getusersitepackages
+    user_base = getuserbase() # this will also set USER_BASE
+  File "/usr/lib/python3.6/site.py", line 254, in getuserbase
+    USER_BASE = get_config_var('userbase')
+  File "/usr/lib/python3.6/sysconfig.py", line 607, in get_config_var
+    return get_config_vars().get(name)
+  File "/usr/lib/python3.6/sysconfig.py", line 580, in get_config_vars
+    srcdir = os.path.dirname(get_makefile_filename())
+  File "/usr/lib/python3.6/sysconfig.py", line 342, in get_makefile_filename
+    return os.path.join(get_path('stdlib'), config_dir_name, 'Makefile')
+  File "/usr/lib/python3.6/sysconfig.py", line 512, in get_path
+    return get_paths(scheme, vars, expand)[name]
+  File "/usr/lib/python3.6/sysconfig.py", line 502, in get_paths
+    return _expand_vars(scheme, vars)
+  File "/usr/lib/python3.6/sysconfig.py", line 164, in _expand_vars
+    _extend_dict(vars, get_config_vars())
+  File "/usr/lib/python3.6/sysconfig.py", line 155, in _extend_dict
+    if key in target_keys:
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 9492maxresident)k
+0inputs+0outputs (0major+1088minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 779, in get_code
+  File "<frozen importlib._bootstrap_external>", line 487, in _compile_bytecode
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.03elapsed 93%CPU (0avgtext+0avgdata 9192maxresident)k
+0inputs+8outputs (0major+1019minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 57, in <module>
+    import posixpath as path
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 833, in get_data
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.00user 0.00system 0:00.01elapsed 100%CPU (0avgtext+0avgdata 7980maxresident)k
+0inputs+0outputs (0major+723minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 208, in addsitedir
+    names = os.listdir(sitedir)
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8624maxresident)k
+0inputs+0outputs (0major+843minor)pagefaults 0swaps

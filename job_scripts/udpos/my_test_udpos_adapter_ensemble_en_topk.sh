@@ -22,25 +22,29 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 export CUDA_VISIBLE_DEVICES=$GPU
 TASK='udpos'
 # LANGS="be,bg,da,ta,fo,uk"
-LANGS="mr,bho,ta,fo,no,da,be,uk,bg,af,bm,yo"
+LANGS="mr,bho,ta"
 # LANGS="af,bm,yo"
 # LANGS="be"
-TRAIN_LANGS="en"
+TRAIN_LANGS="hi"
 
 NUM_EPOCHS=50
 MAX_LENGTH=128
 SEED=0
 
 SEEDS=( 1 2 3 )
-K=1
+K=10
 #Just switch the commented out lines to change the adapters used
 #Top 10 based on english results
 # LANG_ADAPTER_NAME="en/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,pt/wiki@ukp,ar/wiki@ukp,hu/wiki@ukp,am/wiki@ukp,cs/wiki@ukp,eu/wiki@ukp,id/wiki@ukp"
 # ADAPTER_LANG="en,ka,vi,pt,ar,hu,am,cs,eu,id"
 
-#Top 10 based on english results for each seed
+#Top 10 based on english results for each seed (english task adapter)
 # LANG_ADAPTER_NAMES=( "en/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,pt/wiki@ukp,ar/wiki@ukp,hu/wiki@ukp,am/wiki@ukp,cs/wiki@ukp,eu/wiki@ukp,id/wiki@ukp" "en/wiki@ukp,pt/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,id/wiki@ukp,cs/wiki@ukp,tr/wiki@ukp,hu/wiki@ukp,ar/wiki@ukp,eu/wiki@ukp" "en/wiki@ukp,ka/wiki@ukp,pt/wiki@ukp,cs/wiki@ukp,id/wiki@ukp,vi/wiki@ukp,hu/wiki@ukp,tr/wiki@ukp,hy/wiki@ukp,fa/wiki@ukp" )
 # ADAPTER_LANGS=( "en,ka,vi,pt,ar,hu,am,cs,eu,id" "en,pt,ka,vi,id,cs,tr,hu,ar,eu" "en,ka,pt,cs,id,vi,hu,tr,hy,fa" )
+
+#Top 10 based on english results for each seed (hindi task adapter)
+LANG_ADAPTER_NAMES=( "hi/wiki@ukp,zh/wiki@ukp,cs/wiki@ukp,my/wiki@ukp,tr/wiki@ukp,ka/wiki@ukp,de/wiki@ukp,ru/wiki@ukp,en/wiki@ukp,jv/wiki@ukp" "hi/wiki@ukp,ko/wiki@ukp,zh/wiki@ukp,cs/wiki@ukp,en/wiki@ukp,hy/wiki@ukp,ka/wiki@ukp,ar/wiki@ukp,el/wiki@ukp,ru/wiki@ukp" "ka/wiki@ukp,en/wiki@ukp,hu/wiki@ukp,tr/wiki@ukp,pt/wiki@ukp,cs/wiki@ukp,hi/wiki@ukp,la/wiki@ukp,ar/wiki@ukp,my/wiki@ukp" )
+ADAPTER_LANGS=( "hi,zh,cs,my,tr,ka,de,ru,en,jv" "hi,ko,zh,cs,en,hy,ka,ar,el,ru" "ka,en,hu,tr,pt,cs,hi,la,ar,my" )
 
 #Top 5 based on english results for each seed
 # LANG_ADAPTER_NAMES=( "en/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,pt/wiki@ukp,ar/wiki@ukp" "en/wiki@ukp,pt/wiki@ukp,ka/wiki@ukp,vi/wiki@ukp,id/wiki@ukp" "en/wiki@ukp,ka/wiki@ukp,pt/wiki@ukp,cs/wiki@ukp,id/wiki@ukp" )
@@ -51,8 +55,8 @@ K=1
 # ADAPTER_LANGS=( "en,ka,vi" "en,pt,ka" "en,ka,pt" )
 
 #Top 1 based on english results for each seed
-LANG_ADAPTER_NAMES=( "ka/wiki@ukp" "pt/wiki@ukp" "ka/wiki@ukp" )
-ADAPTER_LANGS=( "ka" "pt" "ka" )
+# LANG_ADAPTER_NAMES=( "ka/wiki@ukp" "pt/wiki@ukp" "ka/wiki@ukp" )
+# ADAPTER_LANGS=( "ka" "pt" "ka" )
 # LANG_ADAPTER_NAME="am/wiki@ukp,ar/wiki@ukp,en/wiki@ukp"
 # ADAPTER_LANG="am,ar,en"
 # AW="0.3333,0.3333,0.3333"
@@ -64,7 +68,7 @@ TASK_ADAPTER_NAME="udpos"
 
 EN_WEIGHT="_uniform"
 DATA_DIR=$DATA_DIR/${TASK}/${TASK}_processed_maxlen${MAX_LENGTH}/
-OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_ensemble_en_top${K}/"
+OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_ensemble_en_top${K}_hi/"
 # TASK_ADAPTER="outputs/ner/"
 # TASK_ADAPTER="output/panx/bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s12/checkpoint-best/ner/"
 
@@ -87,13 +91,14 @@ else
 fi
 
 mkdir -p $OUTPUT_DIR
+echo $OUTPUT_DIR
 
 for i in 0 1 2
 do
 SEED=${SEEDS[i]}
 ADAPTER_LANG=${ADAPTER_LANGS[i]}
 LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
-MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/${TASK_ADAPTER_NAME}/"
+MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLang${TRAIN_LANGS}_${TRAIN_LANGS}_s${SEED}/checkpoint-best/${TASK_ADAPTER_NAME}/"
 
 nohup time python third_party/my_run_tag.py \
   --predict_save_prefix "" \

@@ -793,6 +793,7 @@ class RobertaModelWithHeads(BertModelHeadsMixin, RobertaPreTrainedModel):
         output_attentions=None,
         output_hidden_states=None,
         adapter_names=None,
+        adapter_weights=None,
         head=None,
         return_dict=None,
         **kwargs
@@ -1433,6 +1434,7 @@ class RobertaForQuestionAnswering(ModelWithHeadsAdaptersMixin, RobertaPreTrained
         output_attentions=None,
         output_hidden_states=None,
         adapter_names=None,
+        adapter_weights=None,
         return_dict=None,
     ):
         r"""
@@ -1457,6 +1459,7 @@ class RobertaForQuestionAnswering(ModelWithHeadsAdaptersMixin, RobertaPreTrained
             output_attentions=output_attentions,
             output_hidden_states=output_hidden_states,
             adapter_names=adapter_names,
+            adapter_weights=adapter_weights,
             return_dict=return_dict,
         )
 

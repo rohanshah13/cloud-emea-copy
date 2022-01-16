@@ -26,7 +26,7 @@ TASK='panx'
 # REM_LANGS="be"
 TRAIN_LANGS="en"
 
-LANGS_ARRAY=(  "bn" "zh" "ar" "jv" "sw" "is" "my" )
+LANGS_ARRAY=(  "rw" "zh" "ar" "jv" "sw" "is" "my" )
 
 NUM_EPOCHS=100
 MAX_LENGTH=128
@@ -35,8 +35,8 @@ MAX_LENGTH=128
 # LANG_ADAPTER_NAME="is/wiki@ukp"
 # ADAPTER_LANG="is"
 
-LANG_ADAPTER_NAMES=( "bn/wiki@ukp" "zh/wiki@ukp"  "ar/wiki@ukp" "jv/wiki@ukp" "sw/wiki@ukp" "is/wiki@ukp" "my/wiki@ukp" )
-ADAPTERS_LANGS=( "bn" "zh" "ar" "jv" "sw" "is" "my" )
+LANG_ADAPTER_NAMES=( "hu/wiki@ukp" "zh/wiki@ukp"  "ar/wiki@ukp" "jv/wiki@ukp" "sw/wiki@ukp" "is/wiki@ukp" "my/wiki@ukp" )
+ADAPTERS_LANGS=( "hu" "zh" "ar" "jv" "sw" "is" "my" )
 
 TASK_ADAPTER_NAME="ner"
 
@@ -70,7 +70,7 @@ ADAPTER_LANG=${ADAPTERS_LANGS[i]}
 OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
 echo ${OUTPUT_DIR}
 mkdir -p $OUTPUT_DIR
-for SEED in 2 3
+for SEED in 1 2 3
 do
 MY_TASK_ADAPTER="output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/ner/"
 nohup python third_party/my_run_tag.py \

@@ -1,0 +1,96 @@
+Command terminated by signal 2
+0.00user 0.00system 0:00.01elapsed 90%CPU (0avgtext+0avgdata 6896maxresident)k
+0inputs+0outputs (0major+552minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 556, in main
+    known_paths = addusersitepackages(known_paths)
+  File "/usr/lib/python3.6/site.py", line 288, in addusersitepackages
+    user_site = getusersitepackages()
+  File "/usr/lib/python3.6/site.py", line 264, in getusersitepackages
+    user_base = getuserbase() # this will also set USER_BASE
+  File "/usr/lib/python3.6/site.py", line 254, in getuserbase
+    USER_BASE = get_config_var('userbase')
+  File "/usr/lib/python3.6/sysconfig.py", line 607, in get_config_var
+    return get_config_vars().get(name)
+  File "/usr/lib/python3.6/sysconfig.py", line 580, in get_config_vars
+    srcdir = os.path.dirname(get_makefile_filename())
+  File "/usr/lib/python3.6/sysconfig.py", line 342, in get_makefile_filename
+    return os.path.join(get_path('stdlib'), config_dir_name, 'Makefile')
+  File "/usr/lib/python3.6/sysconfig.py", line 512, in get_path
+    return get_paths(scheme, vars, expand)[name]
+  File "/usr/lib/python3.6/sysconfig.py", line 502, in get_paths
+    return _expand_vars(scheme, vars)
+  File "/usr/lib/python3.6/sysconfig.py", line 164, in _expand_vars
+    _extend_dict(vars, get_config_vars())
+  File "/usr/lib/python3.6/sysconfig.py", line 155, in _extend_dict
+    if key in target_keys:
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.03elapsed 97%CPU (0avgtext+0avgdata 9472maxresident)k
+0inputs+0outputs (0major+1084minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 833, in get_data
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.03elapsed 96%CPU (0avgtext+0avgdata 9196maxresident)k
+0inputs+0outputs (0major+1017minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 652, in <module>
+    from _collections_abc import MutableMapping
+  File "/usr/lib/python3.6/_collections_abc.py", line 932, in <module>
+    class ByteString(Sequence):
+  File "/usr/lib/python3.6/abc.py", line 133, in __new__
+    cls = super().__new__(mcls, name, bases, namespace, **kwargs)
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8540maxresident)k
+0inputs+8outputs (0major+828minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python3.6/importlib/util.py", line 207, in <module>
+    class _LazyModule(types.ModuleType):
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.03elapsed 100%CPU (0avgtext+0avgdata 9336maxresident)k
+0inputs+8outputs (0major+1045minor)pagefaults 0swaps
+Command terminated by signal 2
+0.00user 0.00system 0:00.01elapsed 100%CPU (0avgtext+0avgdata 6780maxresident)k
+0inputs+0outputs (0major+524minor)pagefaults 0swaps

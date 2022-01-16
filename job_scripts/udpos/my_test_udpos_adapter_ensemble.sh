@@ -24,7 +24,7 @@ TASK='udpos'
 # LANGS="bn,ta,bho"
 TRAIN_LANGS="en"
 
-LANGS_ARRAY=( "mr,bho,ta" "fo,no,da" "be,uk,bg" "af,bm,yo")
+LANGS_ARRAY=( "mr" "fo,no,da" "be,uk,bg" "af,bm,yo")
 
 
 NUM_EPOCHS=50
@@ -62,7 +62,7 @@ else
   GRAD_ACC=4
 fi
 
-for i in 3
+for i in 1
 do
 LANGS=${LANGS_ARRAY[i]}
 LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
@@ -70,6 +70,7 @@ ADAPTER_LANG=${ADAPTERS_LANGS[i]}
 AW=${AWS[i]}
 OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}_ensemble/"
 mkdir -p $OUTPUT_DIR
+echo $OUTPUT_DIR
 for SEED in 1 2 3
 do
 MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/${TASK}/"

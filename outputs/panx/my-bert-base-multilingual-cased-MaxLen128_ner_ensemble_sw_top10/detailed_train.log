@@ -1,0 +1,1668 @@
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 16:07:21 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 16:07:21 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 16:07:21 - INFO - __main__ -   Seed = 1
+01/13/2022 16:07:21 - INFO - root -   save model
+01/13/2022 16:07:21 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 16:07:21 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 16:07:24 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 16:07:29 - INFO - __main__ -   Using lang2id = None
+01/13/2022 16:07:29 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 16:07:29 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+01/13/2022 16:07:29 - INFO - root -   Trying to decide if add adapter
+01/13/2022 16:07:29 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_model_head.bin
+01/13/2022 16:07:29 - INFO - root -   loading lang adpater is/wiki@ukp,fa/wiki@ukp,pt/wiki@ukp,ka/wiki@ukp,en/wiki@ukp,zh_yue/wiki@ukp,de/wiki@ukp,cs/wiki@ukp,hu/wiki@ukp,fr/wiki@ukp
+01/13/2022 16:07:29 - INFO - __main__ -   Adapter Languages : ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'eu/wiki@ukp', 'de/wiki@ukp', 'fa/wiki@ukp', 'vi/wiki@ukp', 'hu/wiki@ukp', 'sw/wiki@ukp', 'id/wiki@ukp', 'pt/wiki@ukp'], Length : 10
+01/13/2022 16:07:29 - INFO - __main__ -   Adapter Names ['is/wiki@ukp', 'fa/wiki@ukp', 'pt/wiki@ukp', 'ka/wiki@ukp', 'en/wiki@ukp', 'zh_yue/wiki@ukp', 'de/wiki@ukp', 'cs/wiki@ukp', 'hu/wiki@ukp', 'fr/wiki@ukp'], Length : 10
+01/13/2022 16:07:29 - INFO - __main__ -   Language = en/wiki@ukp
+01/13/2022 16:07:29 - INFO - __main__ -   Adapter Name = is/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/is/bert-base-multilingual-cased/pfeiffer/is_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted/adapter_config.json
+Adding adapter 'en/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted'
+01/13/2022 16:07:31 - INFO - __main__ -   Language = zh_yue/wiki@ukp
+01/13/2022 16:07:31 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fa/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_fa_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/adapter_config.json
+Adding adapter 'zh_yue/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/head_config.json
+01/13/2022 16:07:33 - INFO - __main__ -   Language = eu/wiki@ukp
+01/13/2022 16:07:33 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/pt/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_pt_pt_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/adapter_config.json
+Adding adapter 'eu/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/head_config.json
+01/13/2022 16:07:35 - INFO - __main__ -   Language = de/wiki@ukp
+01/13/2022 16:07:35 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_ka_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/ka/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_ka_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/adapter_config.json
+Adding adapter 'de/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/head_config.json
+01/13/2022 16:07:37 - INFO - __main__ -   Language = fa/wiki@ukp
+01/13/2022 16:07:37 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'fa/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/13/2022 16:07:38 - INFO - __main__ -   Language = vi/wiki@ukp
+01/13/2022 16:07:38 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'vi/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/13/2022 16:07:40 - INFO - __main__ -   Language = hu/wiki@ukp
+01/13/2022 16:07:40 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/de/bert-base-multilingual-cased/pfeiffer/de_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/adapter_config.json
+Adding adapter 'hu/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted'
+01/13/2022 16:07:41 - INFO - __main__ -   Language = sw/wiki@ukp
+01/13/2022 16:07:41 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/cs/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_cs_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/adapter_config.json
+Adding adapter 'sw/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/head_config.json
+01/13/2022 16:07:43 - INFO - __main__ -   Language = id/wiki@ukp
+01/13/2022 16:07:43 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/adapter_config.json
+Adding adapter 'id/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/head_config.json
+01/13/2022 16:07:46 - INFO - __main__ -   Language = pt/wiki@ukp
+01/13/2022 16:07:46 - INFO - __main__ -   Adapter Name = fr/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fr/bert-base-multilingual-cased/pfeiffer/fr_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/649821e7de439acb880a8e9d0322d00abd445c9de655cee124a4e03fef557a86-fc313c35adda41f0a19ce896c640341c8d3e4ed589cdb94a38da05472df87a8f-extracted/adapter_config.json
+Adding adapter 'pt/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/649821e7de439acb880a8e9d0322d00abd445c9de655cee124a4e03fef557a86-fc313c35adda41f0a19ce896c640341c8d3e4ed589cdb94a38da05472df87a8f-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/649821e7de439acb880a8e9d0322d00abd445c9de655cee124a4e03fef557a86-fc313c35adda41f0a19ce896c640341c8d3e4ed589cdb94a38da05472df87a8f-extracted'
+01/13/2022 16:07:50 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:07:50 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'eu/wiki@ukp', 'de/wiki@ukp', 'fa/wiki@ukp', 'vi/wiki@ukp', 'hu/wiki@ukp', 'sw/wiki@ukp', 'id/wiki@ukp', 'pt/wiki@ukp']
+01/13/2022 16:07:50 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:07:50 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:07:50 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:07:50 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/13/2022 16:07:50 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/13/2022 16:07:50 - INFO - __main__ -     Num examples = 1000
+01/13/2022 16:07:50 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/13/2022 16:07:50 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:09,  3.35it/s]01/13/2022 16:07:50 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:08,  3.52it/s]01/13/2022 16:07:51 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:07,  3.63it/s]01/13/2022 16:07:51 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:01<00:07,  3.68it/s]01/13/2022 16:07:51 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:01<00:07,  3.71it/s]01/13/2022 16:07:52 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:06,  3.73it/s]01/13/2022 16:07:52 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:06,  3.74it/s]01/13/2022 16:07:52 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:02<00:06,  3.75it/s]01/13/2022 16:07:52 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:02<00:06,  3.74it/s]01/13/2022 16:07:53 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:02<00:05,  3.74it/s]01/13/2022 16:07:53 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:02<00:05,  3.74it/s]01/13/2022 16:07:53 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:03<00:05,  3.74it/s]01/13/2022 16:07:53 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:03<00:05,  3.74it/s]01/13/2022 16:07:54 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:03<00:04,  3.74it/s]01/13/2022 16:07:54 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:04<00:04,  3.75it/s]01/13/2022 16:07:54 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:04<00:04,  3.75it/s]01/13/2022 16:07:54 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:04<00:04,  3.75it/s]01/13/2022 16:07:55 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:04<00:03,  3.75it/s]01/13/2022 16:07:55 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:05<00:03,  3.75it/s]01/13/2022 16:07:55 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:05<00:03,  3.74it/s]01/13/2022 16:07:56 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:05<00:02,  3.75it/s]01/13/2022 16:07:56 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:05<00:02,  3.74it/s]01/13/2022 16:07:56 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:06<00:02,  3.73it/s]01/13/2022 16:07:56 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:06<00:02,  3.73it/s]01/13/2022 16:07:57 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:06<00:01,  3.73it/s]01/13/2022 16:07:57 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:06<00:01,  3.74it/s]01/13/2022 16:07:57 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:07<00:01,  3.72it/s]01/13/2022 16:07:57 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:07<00:01,  3.51it/s]01/13/2022 16:07:58 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:07<00:00,  3.57it/s]01/13/2022 16:07:58 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:08<00:00,  3.62it/s]01/13/2022 16:07:58 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:08<00:00,  3.66it/s]01/13/2022 16:07:59 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:08<00:00,  3.79it/s]
+01/13/2022 16:07:59 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/13/2022 16:07:59 - INFO - __main__ -     f1 = 0.7291343468817871
+01/13/2022 16:07:59 - INFO - __main__ -     loss = 0.9921519821509719
+01/13/2022 16:07:59 - INFO - __main__ -     precision = 0.6768433179723502
+01/13/2022 16:07:59 - INFO - __main__ -     recall = 0.7901815736381977
+01/13/2022 16:07:59 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:07:59 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'eu/wiki@ukp', 'de/wiki@ukp', 'fa/wiki@ukp', 'vi/wiki@ukp', 'hu/wiki@ukp', 'sw/wiki@ukp', 'id/wiki@ukp', 'pt/wiki@ukp']
+01/13/2022 16:07:59 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:07:59 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:07:59 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:07:59 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/13/2022 16:07:59 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/13/2022 16:07:59 - INFO - __main__ -     Num examples = 100
+01/13/2022 16:07:59 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 16:07:59 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.76it/s]01/13/2022 16:07:59 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.74it/s]01/13/2022 16:07:59 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.74it/s]01/13/2022 16:08:00 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.74it/s]
+01/13/2022 16:08:00 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/13/2022 16:08:00 - INFO - __main__ -     f1 = 0.6133333333333333
+01/13/2022 16:08:00 - INFO - __main__ -     loss = 2.7989596724510193
+01/13/2022 16:08:00 - INFO - __main__ -     precision = 0.5702479338842975
+01/13/2022 16:08:00 - INFO - __main__ -     recall = 0.6634615384615384
+01/13/2022 16:08:00 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:08:00 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'eu/wiki@ukp', 'de/wiki@ukp', 'fa/wiki@ukp', 'vi/wiki@ukp', 'hu/wiki@ukp', 'sw/wiki@ukp', 'id/wiki@ukp', 'pt/wiki@ukp']
+01/13/2022 16:08:00 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:08:00 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:08:00 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:08:00 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/13/2022 16:08:00 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/13/2022 16:08:00 - INFO - __main__ -     Num examples = 100
+01/13/2022 16:08:00 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 16:08:00 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.75it/s]01/13/2022 16:08:00 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.73it/s]01/13/2022 16:08:00 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.74it/s]01/13/2022 16:08:00 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.74it/s]
+01/13/2022 16:08:01 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/13/2022 16:08:01 - INFO - __main__ -     f1 = 0.5258620689655172
+01/13/2022 16:08:01 - INFO - __main__ -     loss = 4.2154019474983215
+01/13/2022 16:08:01 - INFO - __main__ -     precision = 0.5041322314049587
+01/13/2022 16:08:01 - INFO - __main__ -     recall = 0.5495495495495496
+37.71user 15.27system 0:41.92elapsed 126%CPU (0avgtext+0avgdata 4201820maxresident)k
+0inputs+224outputs (0major+1989391minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 16:08:03 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 16:08:03 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 16:08:03 - INFO - __main__ -   Seed = 2
+01/13/2022 16:08:03 - INFO - root -   save model
+01/13/2022 16:08:03 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 16:08:03 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 16:08:05 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 16:08:11 - INFO - __main__ -   Using lang2id = None
+01/13/2022 16:08:11 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 16:08:11 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+01/13/2022 16:08:11 - INFO - root -   Trying to decide if add adapter
+01/13/2022 16:08:11 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_model_head.bin
+01/13/2022 16:08:11 - INFO - root -   loading lang adpater is/wiki@ukp,ka/wiki@ukp,pt/wiki@ukp,hu/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,en/wiki@ukp,hy/wiki@ukp,tr/wiki@ukp,zh_yue/wiki@ukp
+01/13/2022 16:08:11 - INFO - __main__ -   Adapter Languages : ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'cs/wiki@ukp', 'vi/wiki@ukp', 'ka/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'es/wiki@ukp', 'eu/wiki@ukp', 'hy/wiki@ukp'], Length : 10
+01/13/2022 16:08:11 - INFO - __main__ -   Adapter Names ['is/wiki@ukp', 'ka/wiki@ukp', 'pt/wiki@ukp', 'hu/wiki@ukp', 'cs/wiki@ukp', 'de/wiki@ukp', 'en/wiki@ukp', 'hy/wiki@ukp', 'tr/wiki@ukp', 'zh_yue/wiki@ukp'], Length : 10
+01/13/2022 16:08:11 - INFO - __main__ -   Language = en/wiki@ukp
+01/13/2022 16:08:11 - INFO - __main__ -   Adapter Name = is/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/is/bert-base-multilingual-cased/pfeiffer/is_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted/adapter_config.json
+Adding adapter 'en/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted'
+01/13/2022 16:08:12 - INFO - __main__ -   Language = zh_yue/wiki@ukp
+01/13/2022 16:08:12 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_ka_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/ka/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_ka_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/adapter_config.json
+Adding adapter 'zh_yue/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/head_config.json
+01/13/2022 16:08:14 - INFO - __main__ -   Language = cs/wiki@ukp
+01/13/2022 16:08:14 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/pt/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_pt_pt_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/adapter_config.json
+Adding adapter 'cs/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/head_config.json
+01/13/2022 16:08:16 - INFO - __main__ -   Language = vi/wiki@ukp
+01/13/2022 16:08:16 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/adapter_config.json
+Adding adapter 'vi/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/head_config.json
+01/13/2022 16:08:18 - INFO - __main__ -   Language = ka/wiki@ukp
+01/13/2022 16:08:18 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/cs/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_cs_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/adapter_config.json
+Adding adapter 'ka/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/head_config.json
+01/13/2022 16:08:20 - INFO - __main__ -   Language = id/wiki@ukp
+01/13/2022 16:08:20 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/de/bert-base-multilingual-cased/pfeiffer/de_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/adapter_config.json
+Adding adapter 'id/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted'
+01/13/2022 16:08:21 - INFO - __main__ -   Language = fa/wiki@ukp
+01/13/2022 16:08:21 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'fa/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/13/2022 16:08:22 - INFO - __main__ -   Language = es/wiki@ukp
+01/13/2022 16:08:22 - INFO - __main__ -   Adapter Name = hy/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hy/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hy_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dcfa928221935a0d179ee455a9f9ec15eafa62c663bce582f3ab569eb98d5753-0534cd4affbbb60875815f028d0f1bb25f8c2864552f29df80a9931ccff1fd01-extracted/adapter_config.json
+Adding adapter 'es/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/dcfa928221935a0d179ee455a9f9ec15eafa62c663bce582f3ab569eb98d5753-0534cd4affbbb60875815f028d0f1bb25f8c2864552f29df80a9931ccff1fd01-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dcfa928221935a0d179ee455a9f9ec15eafa62c663bce582f3ab569eb98d5753-0534cd4affbbb60875815f028d0f1bb25f8c2864552f29df80a9931ccff1fd01-extracted/head_config.json
+01/13/2022 16:08:25 - INFO - __main__ -   Language = eu/wiki@ukp
+01/13/2022 16:08:25 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/tr/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_tr_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/adapter_config.json
+Adding adapter 'eu/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/head_config.json
+01/13/2022 16:08:27 - INFO - __main__ -   Language = hy/wiki@ukp
+01/13/2022 16:08:27 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'hy/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/13/2022 16:08:32 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:08:32 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'cs/wiki@ukp', 'vi/wiki@ukp', 'ka/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'es/wiki@ukp', 'eu/wiki@ukp', 'hy/wiki@ukp']
+01/13/2022 16:08:32 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:08:32 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:08:32 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:08:32 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/13/2022 16:08:33 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/13/2022 16:08:33 - INFO - __main__ -     Num examples = 1000
+01/13/2022 16:08:33 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/13/2022 16:08:33 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:08,  3.53it/s]01/13/2022 16:08:33 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:08,  3.66it/s]01/13/2022 16:08:33 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:07,  3.69it/s]01/13/2022 16:08:33 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:01<00:07,  3.72it/s]01/13/2022 16:08:34 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:01<00:07,  3.72it/s]01/13/2022 16:08:34 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:06,  3.72it/s]01/13/2022 16:08:34 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:06,  3.73it/s]01/13/2022 16:08:34 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:02<00:06,  3.73it/s]01/13/2022 16:08:35 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:02<00:06,  3.73it/s]01/13/2022 16:08:35 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:02<00:05,  3.72it/s]01/13/2022 16:08:35 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:02<00:05,  3.73it/s]01/13/2022 16:08:36 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:03<00:05,  3.72it/s]01/13/2022 16:08:36 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:03<00:05,  3.73it/s]01/13/2022 16:08:36 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:03<00:04,  3.73it/s]01/13/2022 16:08:36 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:04<00:04,  3.73it/s]01/13/2022 16:08:37 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:04<00:04,  3.72it/s]01/13/2022 16:08:37 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:04<00:04,  3.73it/s]01/13/2022 16:08:37 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:04<00:03,  3.73it/s]01/13/2022 16:08:38 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:05<00:04,  3.22it/s]01/13/2022 16:08:38 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:05<00:03,  3.35it/s]01/13/2022 16:08:38 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:05<00:03,  3.46it/s]01/13/2022 16:08:38 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:06<00:02,  3.53it/s]01/13/2022 16:08:39 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:06<00:02,  3.58it/s]01/13/2022 16:08:39 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:06<00:02,  3.62it/s]01/13/2022 16:08:39 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:06<00:01,  3.64it/s]01/13/2022 16:08:39 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:07<00:01,  3.66it/s]01/13/2022 16:08:40 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:07<00:01,  3.68it/s]01/13/2022 16:08:40 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:07<00:01,  3.69it/s]01/13/2022 16:08:40 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:07<00:00,  3.70it/s]01/13/2022 16:08:41 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:08<00:00,  3.70it/s]01/13/2022 16:08:41 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:08<00:00,  3.71it/s]01/13/2022 16:08:41 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:08<00:00,  3.74it/s]
+01/13/2022 16:08:41 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/13/2022 16:08:41 - INFO - __main__ -     f1 = 0.7412630288166768
+01/13/2022 16:08:41 - INFO - __main__ -     loss = 0.9524871427565813
+01/13/2022 16:08:41 - INFO - __main__ -     precision = 0.6811267605633803
+01/13/2022 16:08:41 - INFO - __main__ -     recall = 0.8130464021519839
+01/13/2022 16:08:41 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:08:41 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'cs/wiki@ukp', 'vi/wiki@ukp', 'ka/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'es/wiki@ukp', 'eu/wiki@ukp', 'hy/wiki@ukp']
+01/13/2022 16:08:41 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:08:41 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:08:41 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:08:41 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/13/2022 16:08:41 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/13/2022 16:08:41 - INFO - __main__ -     Num examples = 100
+01/13/2022 16:08:41 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 16:08:41 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.72it/s]01/13/2022 16:08:42 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.73it/s]01/13/2022 16:08:42 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.74it/s]01/13/2022 16:08:42 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.73it/s]
+01/13/2022 16:08:42 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/13/2022 16:08:42 - INFO - __main__ -     f1 = 0.6086956521739131
+01/13/2022 16:08:42 - INFO - __main__ -     loss = 3.0710915811359882
+01/13/2022 16:08:42 - INFO - __main__ -     precision = 0.5555555555555556
+01/13/2022 16:08:42 - INFO - __main__ -     recall = 0.6730769230769231
+01/13/2022 16:08:42 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:08:42 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'cs/wiki@ukp', 'vi/wiki@ukp', 'ka/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'es/wiki@ukp', 'eu/wiki@ukp', 'hy/wiki@ukp']
+01/13/2022 16:08:42 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:08:42 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:08:42 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:08:42 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/13/2022 16:08:42 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/13/2022 16:08:42 - INFO - __main__ -     Num examples = 100
+01/13/2022 16:08:42 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 16:08:42 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.74it/s]01/13/2022 16:08:43 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  2.97it/s]01/13/2022 16:08:43 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.27it/s]01/13/2022 16:08:43 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.15it/s]
+01/13/2022 16:08:43 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/13/2022 16:08:43 - INFO - __main__ -     f1 = 0.5423728813559323
+01/13/2022 16:08:43 - INFO - __main__ -     loss = 4.516688704490662
+01/13/2022 16:08:43 - INFO - __main__ -     precision = 0.512
+01/13/2022 16:08:43 - INFO - __main__ -     recall = 0.5765765765765766
+40.48user 15.19system 0:42.56elapsed 130%CPU (0avgtext+0avgdata 4212320maxresident)k
+0inputs+224outputs (0major+2143507minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 16:08:45 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 16:08:45 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 16:08:45 - INFO - __main__ -   Seed = 3
+01/13/2022 16:08:45 - INFO - root -   save model
+01/13/2022 16:08:45 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 16:08:45 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 16:08:48 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 16:08:54 - INFO - __main__ -   Using lang2id = None
+01/13/2022 16:08:54 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 16:08:54 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+01/13/2022 16:08:54 - INFO - root -   Trying to decide if add adapter
+01/13/2022 16:08:54 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_model_head.bin
+01/13/2022 16:08:54 - INFO - root -   loading lang adpater is/wiki@ukp,cs/wiki@ukp,pt/wiki@ukp,zh_yue/wiki@ukp,en/wiki@ukp,fa/wiki@ukp,es/wiki@ukp,de/wiki@ukp,ka/wiki@ukp,id/wiki@ukp
+01/13/2022 16:08:54 - INFO - __main__ -   Adapter Languages : ['en/wiki@ukp', 'cs/wiki@ukp', 'hu/wiki@ukp', 'es/wiki@ukp', 'pt/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'la/wiki@ukp', 'eu/wiki@ukp', 'zh_yue/wiki@ukp'], Length : 10
+01/13/2022 16:08:54 - INFO - __main__ -   Adapter Names ['is/wiki@ukp', 'cs/wiki@ukp', 'pt/wiki@ukp', 'zh_yue/wiki@ukp', 'en/wiki@ukp', 'fa/wiki@ukp', 'es/wiki@ukp', 'de/wiki@ukp', 'ka/wiki@ukp', 'id/wiki@ukp'], Length : 10
+01/13/2022 16:08:54 - INFO - __main__ -   Language = en/wiki@ukp
+01/13/2022 16:08:54 - INFO - __main__ -   Adapter Name = is/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/is/bert-base-multilingual-cased/pfeiffer/is_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted/adapter_config.json
+Adding adapter 'en/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/9e33d05df2faefa3bc0c9362c76f6d832a092fa705c554c913660889d25971bd-ca498748f27d97f5ac394ca8b673871d44c30209e39a0678c92f272435c2e7db-extracted'
+01/13/2022 16:08:55 - INFO - __main__ -   Language = cs/wiki@ukp
+01/13/2022 16:08:55 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/cs/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_cs_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/adapter_config.json
+Adding adapter 'cs/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/head_config.json
+01/13/2022 16:08:57 - INFO - __main__ -   Language = hu/wiki@ukp
+01/13/2022 16:08:57 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/pt/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_pt_pt_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/adapter_config.json
+Adding adapter 'hu/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/head_config.json
+01/13/2022 16:08:59 - INFO - __main__ -   Language = es/wiki@ukp
+01/13/2022 16:08:59 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'es/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/13/2022 16:09:01 - INFO - __main__ -   Language = pt/wiki@ukp
+01/13/2022 16:09:01 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'pt/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/13/2022 16:09:02 - INFO - __main__ -   Language = id/wiki@ukp
+01/13/2022 16:09:02 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fa/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_fa_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/adapter_config.json
+Adding adapter 'id/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/head_config.json
+01/13/2022 16:09:04 - INFO - __main__ -   Language = fa/wiki@ukp
+01/13/2022 16:09:04 - INFO - __main__ -   Adapter Name = es/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/es/bert-base-multilingual-cased/pfeiffer/es_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted/adapter_config.json
+Adding adapter 'fa/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted'
+01/13/2022 16:09:06 - INFO - __main__ -   Language = la/wiki@ukp
+01/13/2022 16:09:06 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/de/bert-base-multilingual-cased/pfeiffer/de_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/adapter_config.json
+Adding adapter 'la/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted'
+01/13/2022 16:09:07 - INFO - __main__ -   Language = eu/wiki@ukp
+01/13/2022 16:09:07 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_ka_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/ka/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_ka_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/adapter_config.json
+Adding adapter 'eu/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/head_config.json
+01/13/2022 16:09:08 - INFO - __main__ -   Language = zh_yue/wiki@ukp
+01/13/2022 16:09:08 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/id/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_wiki_id_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/adapter_config.json
+Adding adapter 'zh_yue/wiki@ukp' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/head_config.json
+01/13/2022 16:09:14 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:09:14 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'cs/wiki@ukp', 'hu/wiki@ukp', 'es/wiki@ukp', 'pt/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'la/wiki@ukp', 'eu/wiki@ukp', 'zh_yue/wiki@ukp']
+01/13/2022 16:09:14 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:09:14 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:09:14 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:09:14 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/13/2022 16:09:14 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/13/2022 16:09:14 - INFO - __main__ -     Num examples = 1000
+01/13/2022 16:09:14 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/13/2022 16:09:14 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:09,  3.36it/s]01/13/2022 16:09:15 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:08,  3.54it/s]01/13/2022 16:09:15 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:08,  3.62it/s]01/13/2022 16:09:15 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:01<00:07,  3.66it/s]01/13/2022 16:09:15 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:01<00:07,  3.69it/s]01/13/2022 16:09:16 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:07,  3.71it/s]01/13/2022 16:09:16 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:06,  3.71it/s]01/13/2022 16:09:16 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:02<00:06,  3.71it/s]01/13/2022 16:09:16 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:02<00:06,  3.71it/s]01/13/2022 16:09:17 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:02<00:05,  3.71it/s]01/13/2022 16:09:17 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:02<00:05,  3.72it/s]01/13/2022 16:09:17 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:03<00:05,  3.72it/s]01/13/2022 16:09:18 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:03<00:05,  3.71it/s]01/13/2022 16:09:18 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:03<00:05,  3.50it/s]01/13/2022 16:09:18 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:04<00:04,  3.56it/s]01/13/2022 16:09:18 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:04<00:04,  3.61it/s]01/13/2022 16:09:19 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:04<00:04,  3.63it/s]01/13/2022 16:09:19 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:04<00:03,  3.66it/s]01/13/2022 16:09:19 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:05<00:03,  3.67it/s]01/13/2022 16:09:19 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:05<00:03,  3.69it/s]01/13/2022 16:09:20 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:05<00:02,  3.68it/s]01/13/2022 16:09:20 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:06<00:02,  3.69it/s]01/13/2022 16:09:20 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:06<00:02,  3.68it/s]01/13/2022 16:09:21 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:06<00:02,  3.69it/s]01/13/2022 16:09:21 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:06<00:01,  3.70it/s]01/13/2022 16:09:21 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:07<00:01,  3.70it/s]01/13/2022 16:09:21 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:07<00:01,  3.70it/s]01/13/2022 16:09:22 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:07<00:01,  3.70it/s]01/13/2022 16:09:22 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:07<00:00,  3.70it/s]01/13/2022 16:09:22 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:08<00:00,  3.71it/s]01/13/2022 16:09:22 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:08<00:00,  3.71it/s]01/13/2022 16:09:23 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:08<00:00,  4.32it/s]Evaluating: 100%|██████████| 32/32 [00:08<00:00,  3.73it/s]
+01/13/2022 16:09:23 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/13/2022 16:09:23 - INFO - __main__ -     f1 = 0.728048780487805
+01/13/2022 16:09:23 - INFO - __main__ -     loss = 1.0526592396199703
+01/13/2022 16:09:23 - INFO - __main__ -     precision = 0.6659230340211936
+01/13/2022 16:09:23 - INFO - __main__ -     recall = 0.8029589778076665
+01/13/2022 16:09:23 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:09:23 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'cs/wiki@ukp', 'hu/wiki@ukp', 'es/wiki@ukp', 'pt/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'la/wiki@ukp', 'eu/wiki@ukp', 'zh_yue/wiki@ukp']
+01/13/2022 16:09:23 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:09:23 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:09:23 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:09:23 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/13/2022 16:09:23 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/13/2022 16:09:23 - INFO - __main__ -     Num examples = 100
+01/13/2022 16:09:23 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 16:09:23 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.70it/s]01/13/2022 16:09:23 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.71it/s]01/13/2022 16:09:24 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.70it/s]01/13/2022 16:09:24 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.69it/s]
+01/13/2022 16:09:24 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/13/2022 16:09:24 - INFO - __main__ -     f1 = 0.5210084033613446
+01/13/2022 16:09:24 - INFO - __main__ -     loss = 3.1015118757879208
+01/13/2022 16:09:24 - INFO - __main__ -     precision = 0.4626865671641791
+01/13/2022 16:09:24 - INFO - __main__ -     recall = 0.5961538461538461
+01/13/2022 16:09:24 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 16:09:24 - INFO - __main__ -   Adapter Languages = ['en/wiki@ukp', 'cs/wiki@ukp', 'hu/wiki@ukp', 'es/wiki@ukp', 'pt/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'la/wiki@ukp', 'eu/wiki@ukp', 'zh_yue/wiki@ukp']
+01/13/2022 16:09:24 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 16:09:24 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 16:09:24 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 16:09:24 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/13/2022 16:09:24 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/13/2022 16:09:24 - INFO - __main__ -     Num examples = 100
+01/13/2022 16:09:24 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 16:09:24 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.72it/s]01/13/2022 16:09:24 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.70it/s]01/13/2022 16:09:24 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.71it/s]01/13/2022 16:09:25 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.70it/s]
+01/13/2022 16:09:25 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/13/2022 16:09:25 - INFO - __main__ -     f1 = 0.4471544715447154
+01/13/2022 16:09:25 - INFO - __main__ -     loss = 4.605590581893921
+01/13/2022 16:09:25 - INFO - __main__ -     precision = 0.4074074074074074
+01/13/2022 16:09:25 - INFO - __main__ -     recall = 0.4954954954954955
+40.68user 15.54system 0:41.63elapsed 135%CPU (0avgtext+0avgdata 4200880maxresident)k
+0inputs+208outputs (0major+2023145minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 18:04:44 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 18:04:44 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 18:04:44 - INFO - __main__ -   Seed = 1
+01/13/2022 18:04:44 - INFO - root -   save model
+01/13/2022 18:04:44 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 18:04:44 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 18:04:47 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 18:04:53 - INFO - __main__ -   Using lang2id = None
+01/13/2022 18:04:53 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 18:04:53 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+01/13/2022 18:04:53 - INFO - root -   Trying to decide if add adapter
+01/13/2022 18:04:53 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_model_head.bin
+01/13/2022 18:04:53 - INFO - root -   loading lang adpater en/wiki@ukp,zh_yue/wiki@ukp,eu/wiki@ukp,de/wiki@ukp,fa/wiki@ukp,vi/wiki@ukp,hu/wiki@ukp,sw/wiki@ukp,id/wiki@ukp,pt/wiki@ukp
+01/13/2022 18:04:53 - INFO - __main__ -   Adapter Languages : ['en', 'zh_yue', 'eu', 'de', 'fa', 'vi', 'hu', 'sw', 'id', 'pt'], Length : 10
+01/13/2022 18:04:53 - INFO - __main__ -   Adapter Names ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'eu/wiki@ukp', 'de/wiki@ukp', 'fa/wiki@ukp', 'vi/wiki@ukp', 'hu/wiki@ukp', 'sw/wiki@ukp', 'id/wiki@ukp', 'pt/wiki@ukp'], Length : 10
+01/13/2022 18:04:53 - INFO - __main__ -   Language = en
+01/13/2022 18:04:53 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/13/2022 18:04:54 - INFO - __main__ -   Language = zh_yue
+01/13/2022 18:04:54 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'zh_yue' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/13/2022 18:04:56 - INFO - __main__ -   Language = eu
+01/13/2022 18:04:56 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/eu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_eu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/adapter_config.json
+Adding adapter 'eu' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/head_config.json
+01/13/2022 18:04:58 - INFO - __main__ -   Language = de
+01/13/2022 18:04:58 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/de/bert-base-multilingual-cased/pfeiffer/de_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/adapter_config.json
+Adding adapter 'de' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/08ef10ebc1fdaef8ab51afedb140cb376629ba3d6d003ebb84d671fc6c449137-323d2b3cb18cc775356074e7ae17939f1dbe46a8adb8d13e3929f68b0c67e907-extracted'
+01/13/2022 18:04:59 - INFO - __main__ -   Language = fa
+01/13/2022 18:04:59 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fa/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_fa_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/adapter_config.json
+Adding adapter 'fa' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/head_config.json
+01/13/2022 18:05:01 - INFO - __main__ -   Language = vi
+01/13/2022 18:05:01 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/adapter_config.json
+Adding adapter 'vi' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/head_config.json
+01/13/2022 18:05:03 - INFO - __main__ -   Language = hu
+01/13/2022 18:05:03 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/adapter_config.json
+Adding adapter 'hu' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/head_config.json
+01/13/2022 18:05:06 - INFO - __main__ -   Language = sw
+01/13/2022 18:05:06 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/sw/bert-base-multilingual-cased/pfeiffer/sw_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/17b77d35afc2862c3a75535ade7c98533ed192d237a964c90622e66bf62a83e3-7835ea52f96f9a9f1c234507ef57ba5deef9c86e97aa05ab96de4f6504051475-extracted/adapter_config.json
+Adding adapter 'sw' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/17b77d35afc2862c3a75535ade7c98533ed192d237a964c90622e66bf62a83e3-7835ea52f96f9a9f1c234507ef57ba5deef9c86e97aa05ab96de4f6504051475-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/17b77d35afc2862c3a75535ade7c98533ed192d237a964c90622e66bf62a83e3-7835ea52f96f9a9f1c234507ef57ba5deef9c86e97aa05ab96de4f6504051475-extracted'
+01/13/2022 18:05:07 - INFO - __main__ -   Language = id
+01/13/2022 18:05:07 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/id/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_wiki_id_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/adapter_config.json
+Adding adapter 'id' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/head_config.json
+01/13/2022 18:05:09 - INFO - __main__ -   Language = pt
+01/13/2022 18:05:09 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/pt/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_pt_pt_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/adapter_config.json
+Adding adapter 'pt' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/head_config.json
+01/13/2022 18:05:14 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:05:14 - INFO - __main__ -   Adapter Languages = ['en', 'zh_yue', 'eu', 'de', 'fa', 'vi', 'hu', 'sw', 'id', 'pt']
+01/13/2022 18:05:14 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:05:14 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:05:14 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:05:14 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/13/2022 18:05:14 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/13/2022 18:05:14 - INFO - __main__ -     Num examples = 1000
+01/13/2022 18:05:14 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/13/2022 18:05:14 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:09,  3.31it/s]01/13/2022 18:05:14 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:08,  3.48it/s]01/13/2022 18:05:15 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:08,  3.54it/s]01/13/2022 18:05:15 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:01<00:07,  3.56it/s]01/13/2022 18:05:15 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:01<00:08,  3.19it/s]01/13/2022 18:05:16 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:07,  3.32it/s]01/13/2022 18:05:16 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:02<00:07,  3.41it/s]01/13/2022 18:05:16 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:02<00:06,  3.47it/s]01/13/2022 18:05:16 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:02<00:06,  3.51it/s]01/13/2022 18:05:17 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:02<00:06,  3.54it/s]01/13/2022 18:05:17 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:03<00:05,  3.56it/s]01/13/2022 18:05:17 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:03<00:05,  3.57it/s]01/13/2022 18:05:17 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:03<00:05,  3.57it/s]01/13/2022 18:05:18 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:04<00:05,  3.58it/s]01/13/2022 18:05:18 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:04<00:04,  3.58it/s]01/13/2022 18:05:18 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:04<00:04,  3.59it/s]01/13/2022 18:05:19 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:04<00:04,  3.58it/s]01/13/2022 18:05:19 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:05<00:03,  3.59it/s]01/13/2022 18:05:19 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:05<00:03,  3.59it/s]01/13/2022 18:05:19 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:05<00:03,  3.59it/s]01/13/2022 18:05:20 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:05<00:03,  3.59it/s]01/13/2022 18:05:20 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:06<00:02,  3.59it/s]01/13/2022 18:05:20 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:06<00:02,  3.59it/s]01/13/2022 18:05:21 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:06<00:02,  3.59it/s]01/13/2022 18:05:21 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:07<00:01,  3.59it/s]01/13/2022 18:05:21 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:07<00:01,  3.59it/s]01/13/2022 18:05:21 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:07<00:01,  3.59it/s]01/13/2022 18:05:22 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:07<00:01,  3.59it/s]01/13/2022 18:05:22 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:08<00:00,  3.59it/s]01/13/2022 18:05:22 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:08<00:00,  3.59it/s]01/13/2022 18:05:22 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:08<00:00,  3.58it/s]01/13/2022 18:05:23 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:08<00:00,  3.63it/s]
+01/13/2022 18:05:23 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/13/2022 18:05:23 - INFO - __main__ -     f1 = 0.7312830071450761
+01/13/2022 18:05:23 - INFO - __main__ -     loss = 0.9882618542760611
+01/13/2022 18:05:23 - INFO - __main__ -     precision = 0.6795612009237876
+01/13/2022 18:05:23 - INFO - __main__ -     recall = 0.7915265635507733
+01/13/2022 18:05:23 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:05:23 - INFO - __main__ -   Adapter Languages = ['en', 'zh_yue', 'eu', 'de', 'fa', 'vi', 'hu', 'sw', 'id', 'pt']
+01/13/2022 18:05:23 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:05:23 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:05:23 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:05:23 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/13/2022 18:05:23 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/13/2022 18:05:23 - INFO - __main__ -     Num examples = 100
+01/13/2022 18:05:23 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 18:05:23 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.60it/s]01/13/2022 18:05:23 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.60it/s]01/13/2022 18:05:24 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.61it/s]01/13/2022 18:05:24 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.57it/s]
+01/13/2022 18:05:24 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/13/2022 18:05:24 - INFO - __main__ -     f1 = 0.587719298245614
+01/13/2022 18:05:24 - INFO - __main__ -     loss = 3.194532096385956
+01/13/2022 18:05:24 - INFO - __main__ -     precision = 0.5403225806451613
+01/13/2022 18:05:24 - INFO - __main__ -     recall = 0.6442307692307693
+01/13/2022 18:05:24 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:05:24 - INFO - __main__ -   Adapter Languages = ['en', 'zh_yue', 'eu', 'de', 'fa', 'vi', 'hu', 'sw', 'id', 'pt']
+01/13/2022 18:05:24 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:05:24 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:05:24 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:05:24 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/13/2022 18:05:24 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/13/2022 18:05:24 - INFO - __main__ -     Num examples = 100
+01/13/2022 18:05:24 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 18:05:24 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.60it/s]01/13/2022 18:05:24 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.58it/s]01/13/2022 18:05:25 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.59it/s]01/13/2022 18:05:25 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.55it/s]
+01/13/2022 18:05:25 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/13/2022 18:05:25 - INFO - __main__ -     f1 = 0.5304347826086956
+01/13/2022 18:05:25 - INFO - __main__ -     loss = 4.287677705287933
+01/13/2022 18:05:25 - INFO - __main__ -     precision = 0.5126050420168067
+01/13/2022 18:05:25 - INFO - __main__ -     recall = 0.5495495495495496
+37.91user 15.26system 0:43.27elapsed 122%CPU (0avgtext+0avgdata 4230864maxresident)k
+0inputs+224outputs (0major+2151332minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 18:05:27 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 18:05:27 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 18:05:27 - INFO - __main__ -   Seed = 2
+01/13/2022 18:05:27 - INFO - root -   save model
+01/13/2022 18:05:27 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 18:05:27 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 18:05:30 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 18:05:36 - INFO - __main__ -   Using lang2id = None
+01/13/2022 18:05:36 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 18:05:36 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+01/13/2022 18:05:36 - INFO - root -   Trying to decide if add adapter
+01/13/2022 18:05:36 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_model_head.bin
+01/13/2022 18:05:36 - INFO - root -   loading lang adpater en/wiki@ukp,zh_yue/wiki@ukp,cs/wiki@ukp,vi/wiki@ukp,ka/wiki@ukp,id/wiki@ukp,fa/wiki@ukp,es/wiki@ukp,eu/wiki@ukp,hy/wiki@ukp
+01/13/2022 18:05:36 - INFO - __main__ -   Adapter Languages : ['en', 'zh_yue', 'cs', 'vi', 'ka', 'id', 'fa', 'es', 'eu', 'hy'], Length : 10
+01/13/2022 18:05:36 - INFO - __main__ -   Adapter Names ['en/wiki@ukp', 'zh_yue/wiki@ukp', 'cs/wiki@ukp', 'vi/wiki@ukp', 'ka/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'es/wiki@ukp', 'eu/wiki@ukp', 'hy/wiki@ukp'], Length : 10
+01/13/2022 18:05:36 - INFO - __main__ -   Language = en
+01/13/2022 18:05:36 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/13/2022 18:05:37 - INFO - __main__ -   Language = zh_yue
+01/13/2022 18:05:37 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'zh_yue' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/13/2022 18:05:38 - INFO - __main__ -   Language = cs
+01/13/2022 18:05:38 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/cs/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_cs_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/adapter_config.json
+Adding adapter 'cs' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/head_config.json
+01/13/2022 18:05:40 - INFO - __main__ -   Language = vi
+01/13/2022 18:05:40 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/vi/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_vi_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/adapter_config.json
+Adding adapter 'vi' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/18756bce53f4786e3b4268b7f126da58449c5e39e04f36061090367d5f501141-b616bc9c3a27cc7cbd87bedefeafdcc534657ee68d76d194d6ad040c4f425f70-extracted/head_config.json
+01/13/2022 18:05:42 - INFO - __main__ -   Language = ka
+01/13/2022 18:05:42 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_ka_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/ka/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_ka_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/adapter_config.json
+Adding adapter 'ka' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/aa02653c11f947d33a6fbda9ca26df2e87b26edf522f6641754238580b6e29cc-9e071283e8b0e30d7c18f6466800264db846fa4270983732130add1d82f52794-extracted/head_config.json
+01/13/2022 18:05:44 - INFO - __main__ -   Language = id
+01/13/2022 18:05:44 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/id/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_wiki_id_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/adapter_config.json
+Adding adapter 'id' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/head_config.json
+01/13/2022 18:05:45 - INFO - __main__ -   Language = fa
+01/13/2022 18:05:45 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fa/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_fa_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/adapter_config.json
+Adding adapter 'fa' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/head_config.json
+01/13/2022 18:05:47 - INFO - __main__ -   Language = es
+01/13/2022 18:05:47 - INFO - __main__ -   Adapter Name = es/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/es/bert-base-multilingual-cased/pfeiffer/es_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted/adapter_config.json
+Adding adapter 'es' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted'
+01/13/2022 18:05:48 - INFO - __main__ -   Language = eu
+01/13/2022 18:05:48 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/eu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_eu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/adapter_config.json
+Adding adapter 'eu' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/head_config.json
+01/13/2022 18:05:49 - INFO - __main__ -   Language = hy
+01/13/2022 18:05:49 - INFO - __main__ -   Adapter Name = hy/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hy/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hy_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dcfa928221935a0d179ee455a9f9ec15eafa62c663bce582f3ab569eb98d5753-0534cd4affbbb60875815f028d0f1bb25f8c2864552f29df80a9931ccff1fd01-extracted/adapter_config.json
+Adding adapter 'hy' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/dcfa928221935a0d179ee455a9f9ec15eafa62c663bce582f3ab569eb98d5753-0534cd4affbbb60875815f028d0f1bb25f8c2864552f29df80a9931ccff1fd01-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dcfa928221935a0d179ee455a9f9ec15eafa62c663bce582f3ab569eb98d5753-0534cd4affbbb60875815f028d0f1bb25f8c2864552f29df80a9931ccff1fd01-extracted/head_config.json
+01/13/2022 18:05:55 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:05:55 - INFO - __main__ -   Adapter Languages = ['en', 'zh_yue', 'cs', 'vi', 'ka', 'id', 'fa', 'es', 'eu', 'hy']
+01/13/2022 18:05:55 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:05:55 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:05:55 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:05:55 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/13/2022 18:05:55 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/13/2022 18:05:55 - INFO - __main__ -     Num examples = 1000
+01/13/2022 18:05:55 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/13/2022 18:05:55 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:09,  3.35it/s]01/13/2022 18:05:55 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:08,  3.53it/s]01/13/2022 18:05:55 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:08,  3.28it/s]01/13/2022 18:05:56 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:01<00:08,  3.45it/s]01/13/2022 18:05:56 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:01<00:07,  3.55it/s]01/13/2022 18:05:56 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:07,  3.61it/s]01/13/2022 18:05:56 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:06,  3.65it/s]01/13/2022 18:05:57 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:02<00:06,  3.67it/s]01/13/2022 18:05:57 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:02<00:06,  3.68it/s]01/13/2022 18:05:57 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:02<00:05,  3.69it/s]01/13/2022 18:05:58 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:03<00:05,  3.69it/s]01/13/2022 18:05:58 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:03<00:05,  3.70it/s]01/13/2022 18:05:58 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:03<00:05,  3.71it/s]01/13/2022 18:05:58 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:03<00:04,  3.71it/s]01/13/2022 18:05:59 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:04<00:04,  3.70it/s]01/13/2022 18:05:59 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:04<00:04,  3.70it/s]01/13/2022 18:05:59 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:04<00:04,  3.70it/s]01/13/2022 18:05:59 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:04<00:03,  3.70it/s]01/13/2022 18:06:00 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:05<00:03,  3.69it/s]01/13/2022 18:06:00 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:05<00:03,  3.70it/s]01/13/2022 18:06:00 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:05<00:03,  3.43it/s]01/13/2022 18:06:01 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:06<00:02,  3.49it/s]01/13/2022 18:06:01 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:06<00:02,  3.55it/s]01/13/2022 18:06:01 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:06<00:02,  3.59it/s]01/13/2022 18:06:01 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:06<00:01,  3.62it/s]01/13/2022 18:06:02 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:07<00:01,  3.64it/s]01/13/2022 18:06:02 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:07<00:01,  3.66it/s]01/13/2022 18:06:02 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:07<00:01,  3.66it/s]01/13/2022 18:06:02 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:07<00:00,  3.66it/s]01/13/2022 18:06:03 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:08<00:00,  3.68it/s]01/13/2022 18:06:03 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:08<00:00,  3.67it/s]01/13/2022 18:06:03 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:08<00:00,  3.71it/s]
+01/13/2022 18:06:04 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/13/2022 18:06:04 - INFO - __main__ -     f1 = 0.7310175222871197
+01/13/2022 18:06:04 - INFO - __main__ -     loss = 0.9509915318340063
+01/13/2022 18:06:04 - INFO - __main__ -     precision = 0.6732729331823329
+01/13/2022 18:06:04 - INFO - __main__ -     recall = 0.7995965030262273
+01/13/2022 18:06:04 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:06:04 - INFO - __main__ -   Adapter Languages = ['en', 'zh_yue', 'cs', 'vi', 'ka', 'id', 'fa', 'es', 'eu', 'hy']
+01/13/2022 18:06:04 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:06:04 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:06:04 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:06:04 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/13/2022 18:06:04 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/13/2022 18:06:04 - INFO - __main__ -     Num examples = 100
+01/13/2022 18:06:04 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 18:06:04 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.72it/s]01/13/2022 18:06:04 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.70it/s]01/13/2022 18:06:04 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.70it/s]01/13/2022 18:06:04 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.69it/s]
+01/13/2022 18:06:04 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/13/2022 18:06:04 - INFO - __main__ -     f1 = 0.5714285714285714
+01/13/2022 18:06:04 - INFO - __main__ -     loss = 3.2109473645687103
+01/13/2022 18:06:04 - INFO - __main__ -     precision = 0.5196850393700787
+01/13/2022 18:06:04 - INFO - __main__ -     recall = 0.6346153846153846
+01/13/2022 18:06:05 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:06:05 - INFO - __main__ -   Adapter Languages = ['en', 'zh_yue', 'cs', 'vi', 'ka', 'id', 'fa', 'es', 'eu', 'hy']
+01/13/2022 18:06:05 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:06:05 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:06:05 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:06:05 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/13/2022 18:06:05 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/13/2022 18:06:05 - INFO - __main__ -     Num examples = 100
+01/13/2022 18:06:05 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 18:06:05 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.71it/s]01/13/2022 18:06:05 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.71it/s]01/13/2022 18:06:05 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.70it/s]01/13/2022 18:06:05 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.69it/s]
+01/13/2022 18:06:05 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/13/2022 18:06:05 - INFO - __main__ -     f1 = 0.5555555555555555
+01/13/2022 18:06:05 - INFO - __main__ -     loss = 4.699841916561127
+01/13/2022 18:06:05 - INFO - __main__ -     precision = 0.5284552845528455
+01/13/2022 18:06:05 - INFO - __main__ -     recall = 0.5855855855855856
+38.21user 16.08system 0:40.40elapsed 134%CPU (0avgtext+0avgdata 4208612maxresident)k
+0inputs+224outputs (0major+2362925minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 18:06:08 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 18:06:08 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 18:06:08 - INFO - __main__ -   Seed = 3
+01/13/2022 18:06:08 - INFO - root -   save model
+01/13/2022 18:06:08 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_ensemble_sw_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 18:06:08 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 18:06:10 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 18:06:16 - INFO - __main__ -   Using lang2id = None
+01/13/2022 18:06:16 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 18:06:16 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+01/13/2022 18:06:16 - INFO - root -   Trying to decide if add adapter
+01/13/2022 18:06:16 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_model_head.bin
+01/13/2022 18:06:16 - INFO - root -   loading lang adpater en/wiki@ukp,cs/wiki@ukp,hu/wiki@ukp,es/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,fa/wiki@ukp,la/wiki@ukp,eu/wiki@ukp,zh_yue/wiki@ukp
+01/13/2022 18:06:16 - INFO - __main__ -   Adapter Languages : ['en', 'cs', 'hu', 'es', 'pt', 'id', 'fa', 'la', 'eu', 'zh_yue'], Length : 10
+01/13/2022 18:06:16 - INFO - __main__ -   Adapter Names ['en/wiki@ukp', 'cs/wiki@ukp', 'hu/wiki@ukp', 'es/wiki@ukp', 'pt/wiki@ukp', 'id/wiki@ukp', 'fa/wiki@ukp', 'la/wiki@ukp', 'eu/wiki@ukp', 'zh_yue/wiki@ukp'], Length : 10
+01/13/2022 18:06:16 - INFO - __main__ -   Language = en
+01/13/2022 18:06:16 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/13/2022 18:06:17 - INFO - __main__ -   Language = cs
+01/13/2022 18:06:17 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/cs/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_cs_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/adapter_config.json
+Adding adapter 'cs' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6a2960229867d3f920b674d6f4f23e22c511f9f66431f4c2acf0a6019df19734-875886ddc9f7d0a0874b9a5219b12097e915aeb85831d0b6fd4686917d5bd0c6-extracted/head_config.json
+01/13/2022 18:06:19 - INFO - __main__ -   Language = hu
+01/13/2022 18:06:19 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_hu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/adapter_config.json
+Adding adapter 'hu' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/594e082d6ffaf701f390cc4dca13ecf97b6e8c4ae422da2d2bbbd5c15585df3f-bf8b59301260e62cd543c6d584c6ddb0186aa348a4d98d62e248ea562a66df13-extracted/head_config.json
+01/13/2022 18:06:20 - INFO - __main__ -   Language = es
+01/13/2022 18:06:20 - INFO - __main__ -   Adapter Name = es/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/es/bert-base-multilingual-cased/pfeiffer/es_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted/adapter_config.json
+Adding adapter 'es' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/dd7f82adfc858ea8dac201406d816536ef8a9522e957986a7ab28979f97ea744-1aa6d86fde73736f6b030a0fc54c77da507159374be3610e78575fab4fef8d10-extracted'
+01/13/2022 18:06:21 - INFO - __main__ -   Language = pt
+01/13/2022 18:06:21 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/pt/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_pt_pt_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/adapter_config.json
+Adding adapter 'pt' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/4924e01fe99a0caebf1981f06377a5104fb3796cf7ec3b246e6315cfbefd695e-babbbc708158370b57817d59165808788458aebba22ae543528550fc8eeb099c-extracted/head_config.json
+01/13/2022 18:06:23 - INFO - __main__ -   Language = id
+01/13/2022 18:06:23 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/id/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_wiki_id_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/adapter_config.json
+Adding adapter 'id' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a35790907fed08fbe8567ddb42eaf99029e1b389458b3fa71f34d0dfcbde11ec-d5193b80938046db7118bf0fe97da3f8ae720f067ac22d0df16c9a965fa594d5-extracted/head_config.json
+01/13/2022 18:06:24 - INFO - __main__ -   Language = fa
+01/13/2022 18:06:24 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/fa/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_fa_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/adapter_config.json
+Adding adapter 'fa' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/296f12627758121353725aa5f652a1491e3085c15bdba1cbe63935c15744d934-a4aab0ed1e4f1435381e633ff51d9a2d3b6cf6f5731935ba176e044672e7aae9-extracted/head_config.json
+01/13/2022 18:06:26 - INFO - __main__ -   Language = la
+01/13/2022 18:06:26 - INFO - __main__ -   Adapter Name = la/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/la/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_la_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/d3b23280ff00ff70a45ec1c57020ca6d8b712db63ee734969fbcc3ba2e7d7b36-7fba132ee79e16cb9edf3f16754596c2ad5a9b8118700d0583d23312a89fee9b-extracted/adapter_config.json
+Adding adapter 'la' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/d3b23280ff00ff70a45ec1c57020ca6d8b712db63ee734969fbcc3ba2e7d7b36-7fba132ee79e16cb9edf3f16754596c2ad5a9b8118700d0583d23312a89fee9b-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/d3b23280ff00ff70a45ec1c57020ca6d8b712db63ee734969fbcc3ba2e7d7b36-7fba132ee79e16cb9edf3f16754596c2ad5a9b8118700d0583d23312a89fee9b-extracted/head_config.json
+01/13/2022 18:06:28 - INFO - __main__ -   Language = eu
+01/13/2022 18:06:28 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/eu/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_eu_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/adapter_config.json
+Adding adapter 'eu' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/65a27bf4da01232353a8402b95c6e5b7d3e20fb0dc68a5262cfcbf375ecd754c-2c2a9a4b8e6f627345c66f9e3cfb257248b855395d028bb9ef4aaaa999d24fd4-extracted/head_config.json
+01/13/2022 18:06:29 - INFO - __main__ -   Language = zh_yue
+01/13/2022 18:06:29 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh_yue/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_zh_yue_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/adapter_config.json
+Adding adapter 'zh_yue' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/bdf309fcf20afdf362a0c84276d8c0d0bde57872471ead4b73b49052f83b2a62-ce3eaa437644e4429f49eace36520e0c60129360bbb862d279447d82b25d7dcc-extracted/head_config.json
+01/13/2022 18:06:34 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:06:34 - INFO - __main__ -   Adapter Languages = ['en', 'cs', 'hu', 'es', 'pt', 'id', 'fa', 'la', 'eu', 'zh_yue']
+01/13/2022 18:06:34 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:06:34 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:06:34 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:06:34 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/13/2022 18:06:34 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/13/2022 18:06:34 - INFO - __main__ -     Num examples = 1000
+01/13/2022 18:06:34 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]01/13/2022 18:06:34 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/32 [00:00<00:09,  3.36it/s]01/13/2022 18:06:35 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▋         | 2/32 [00:00<00:08,  3.49it/s]01/13/2022 18:06:35 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/32 [00:00<00:08,  3.54it/s]01/13/2022 18:06:35 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▎        | 4/32 [00:01<00:07,  3.55it/s]01/13/2022 18:06:35 - INFO - __main__ -   Batch number = 5
+Evaluating:  16%|█▌        | 5/32 [00:01<00:07,  3.56it/s]01/13/2022 18:06:36 - INFO - __main__ -   Batch number = 6
+Evaluating:  19%|█▉        | 6/32 [00:01<00:07,  3.56it/s]01/13/2022 18:06:36 - INFO - __main__ -   Batch number = 7
+Evaluating:  22%|██▏       | 7/32 [00:01<00:07,  3.57it/s]01/13/2022 18:06:36 - INFO - __main__ -   Batch number = 8
+Evaluating:  25%|██▌       | 8/32 [00:02<00:06,  3.57it/s]01/13/2022 18:06:37 - INFO - __main__ -   Batch number = 9
+Evaluating:  28%|██▊       | 9/32 [00:02<00:06,  3.57it/s]01/13/2022 18:06:37 - INFO - __main__ -   Batch number = 10
+Evaluating:  31%|███▏      | 10/32 [00:02<00:06,  3.57it/s]01/13/2022 18:06:37 - INFO - __main__ -   Batch number = 11
+Evaluating:  34%|███▍      | 11/32 [00:03<00:05,  3.57it/s]01/13/2022 18:06:37 - INFO - __main__ -   Batch number = 12
+Evaluating:  38%|███▊      | 12/32 [00:03<00:05,  3.57it/s]01/13/2022 18:06:38 - INFO - __main__ -   Batch number = 13
+Evaluating:  41%|████      | 13/32 [00:03<00:05,  3.57it/s]01/13/2022 18:06:38 - INFO - __main__ -   Batch number = 14
+Evaluating:  44%|████▍     | 14/32 [00:03<00:05,  3.57it/s]01/13/2022 18:06:38 - INFO - __main__ -   Batch number = 15
+Evaluating:  47%|████▋     | 15/32 [00:04<00:04,  3.57it/s]01/13/2022 18:06:39 - INFO - __main__ -   Batch number = 16
+Evaluating:  50%|█████     | 16/32 [00:04<00:04,  3.57it/s]01/13/2022 18:06:39 - INFO - __main__ -   Batch number = 17
+Evaluating:  53%|█████▎    | 17/32 [00:04<00:04,  3.55it/s]01/13/2022 18:06:39 - INFO - __main__ -   Batch number = 18
+Evaluating:  56%|█████▋    | 18/32 [00:05<00:03,  3.56it/s]01/13/2022 18:06:39 - INFO - __main__ -   Batch number = 19
+Evaluating:  59%|█████▉    | 19/32 [00:05<00:03,  3.57it/s]01/13/2022 18:06:40 - INFO - __main__ -   Batch number = 20
+Evaluating:  62%|██████▎   | 20/32 [00:05<00:03,  3.56it/s]01/13/2022 18:06:40 - INFO - __main__ -   Batch number = 21
+Evaluating:  66%|██████▌   | 21/32 [00:05<00:03,  3.56it/s]01/13/2022 18:06:40 - INFO - __main__ -   Batch number = 22
+Evaluating:  69%|██████▉   | 22/32 [00:06<00:02,  3.37it/s]01/13/2022 18:06:41 - INFO - __main__ -   Batch number = 23
+Evaluating:  72%|███████▏  | 23/32 [00:06<00:02,  3.42it/s]01/13/2022 18:06:41 - INFO - __main__ -   Batch number = 24
+Evaluating:  75%|███████▌  | 24/32 [00:06<00:02,  3.46it/s]01/13/2022 18:06:41 - INFO - __main__ -   Batch number = 25
+Evaluating:  78%|███████▊  | 25/32 [00:07<00:02,  3.49it/s]01/13/2022 18:06:41 - INFO - __main__ -   Batch number = 26
+Evaluating:  81%|████████▏ | 26/32 [00:07<00:01,  3.51it/s]01/13/2022 18:06:42 - INFO - __main__ -   Batch number = 27
+Evaluating:  84%|████████▍ | 27/32 [00:07<00:01,  3.53it/s]01/13/2022 18:06:42 - INFO - __main__ -   Batch number = 28
+Evaluating:  88%|████████▊ | 28/32 [00:07<00:01,  3.53it/s]01/13/2022 18:06:42 - INFO - __main__ -   Batch number = 29
+Evaluating:  91%|█████████ | 29/32 [00:08<00:00,  3.53it/s]01/13/2022 18:06:43 - INFO - __main__ -   Batch number = 30
+Evaluating:  94%|█████████▍| 30/32 [00:08<00:00,  3.54it/s]01/13/2022 18:06:43 - INFO - __main__ -   Batch number = 31
+Evaluating:  97%|█████████▋| 31/32 [00:08<00:00,  3.54it/s]01/13/2022 18:06:43 - INFO - __main__ -   Batch number = 32
+Evaluating: 100%|██████████| 32/32 [00:08<00:00,  3.62it/s]
+01/13/2022 18:06:43 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/13/2022 18:06:43 - INFO - __main__ -     f1 = 0.7391304347826086
+01/13/2022 18:06:43 - INFO - __main__ -     loss = 1.0520030297338963
+01/13/2022 18:06:43 - INFO - __main__ -     precision = 0.6784710511523327
+01/13/2022 18:06:43 - INFO - __main__ -     recall = 0.8117014122394082
+01/13/2022 18:06:43 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:06:43 - INFO - __main__ -   Adapter Languages = ['en', 'cs', 'hu', 'es', 'pt', 'id', 'fa', 'la', 'eu', 'zh_yue']
+01/13/2022 18:06:43 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:06:43 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:06:43 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:06:43 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/13/2022 18:06:43 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/13/2022 18:06:43 - INFO - __main__ -     Num examples = 100
+01/13/2022 18:06:43 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 18:06:43 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.58it/s]01/13/2022 18:06:44 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.57it/s]01/13/2022 18:06:44 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.58it/s]01/13/2022 18:06:44 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.53it/s]
+01/13/2022 18:06:44 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/13/2022 18:06:44 - INFO - __main__ -     f1 = 0.5446808510638298
+01/13/2022 18:06:44 - INFO - __main__ -     loss = 3.057727396455334
+01/13/2022 18:06:44 - INFO - __main__ -     precision = 0.48854961832061067
+01/13/2022 18:06:44 - INFO - __main__ -     recall = 0.6153846153846154
+01/13/2022 18:06:44 - INFO - __main__ -   Args Adapter Weight = equal
+01/13/2022 18:06:44 - INFO - __main__ -   Adapter Languages = ['en', 'cs', 'hu', 'es', 'pt', 'id', 'fa', 'la', 'eu', 'zh_yue']
+01/13/2022 18:06:44 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/13/2022 18:06:44 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/13/2022 18:06:44 - INFO - __main__ -   Length of Adapter Weights = 10
+01/13/2022 18:06:44 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/13/2022 18:06:44 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/13/2022 18:06:44 - INFO - __main__ -     Num examples = 100
+01/13/2022 18:06:44 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]01/13/2022 18:06:44 - INFO - __main__ -   Batch number = 1
+Evaluating:  25%|██▌       | 1/4 [00:00<00:00,  3.59it/s]01/13/2022 18:06:45 - INFO - __main__ -   Batch number = 2
+Evaluating:  50%|█████     | 2/4 [00:00<00:00,  3.58it/s]01/13/2022 18:06:45 - INFO - __main__ -   Batch number = 3
+Evaluating:  75%|███████▌  | 3/4 [00:00<00:00,  3.58it/s]01/13/2022 18:06:45 - INFO - __main__ -   Batch number = 4
+Evaluating: 100%|██████████| 4/4 [00:00<00:00,  4.53it/s]
+01/13/2022 18:06:45 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/13/2022 18:06:45 - INFO - __main__ -     f1 = 0.4666666666666667
+01/13/2022 18:06:45 - INFO - __main__ -     loss = 4.693272709846497
+01/13/2022 18:06:45 - INFO - __main__ -     precision = 0.43410852713178294
+01/13/2022 18:06:45 - INFO - __main__ -     recall = 0.5045045045045045
+36.80user 14.65system 0:39.90elapsed 128%CPU (0avgtext+0avgdata 4228972maxresident)k
+0inputs+224outputs (0major+2324145minor)pagefaults 0swaps

@@ -24,7 +24,7 @@ TASK='panx'
 # LANGS="fo,no,da"
 TRAIN_LANGS="en"
 
-LANGS_ARRAY=( "mr,bn,ta" "fo,no,da" "be,uk,bg" "af,yo" )
+LANGS_ARRAY=( "mr,bn,ta" "fo,no,da" "be,uk,bg" "rw" )
 
 NUM_EPOCHS=100
 MAX_LENGTH=128

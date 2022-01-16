@@ -26,7 +26,8 @@ TASK='udpos'
 # REM_LANGS="be"
 TRAIN_LANGS="en"
 
-LANGS_ARRAY=( "mr,bho,ta" "fo,no,da" "be,uk,bg" )
+# LANGS_ARRAY=( "ar" "fo,no,da" "be,uk,bg" )
+LANGS_ARRAY=( "mr,bho,ta" "el" "es" "hi" "ru" "th" "tr" "vi" "zh" )
 
 NUM_EPOCHS=50
 MAX_LENGTH=128
@@ -35,8 +36,11 @@ MAX_LENGTH=128
 # LANG_ADAPTER_NAME="is/wiki@ukp"
 # ADAPTER_LANG="is"
 
-LANG_ADAPTER_NAMES=( "am/wiki@ukp"  "is/wiki@ukp" "ru/wiki@ukp" )
-ADAPTERS_LANGS=( "am" "is" "ru" )
+# LANG_ADAPTER_NAMES=( "ar/wiki@ukp"  "is/wiki@ukp" "ru/wiki@ukp" )
+# ADAPTERS_LANGS=( "ar" "is" "ru" )
+
+ADAPTERS_LANGS=( "hi" "el" "es" "hi" "ru" "th" "tr" "vi" "zh" )
+LANG_ADAPTER_NAMES=( "hi/wiki@ukp" "el/wiki@ukp" "es/wiki@ukp" "hi/wiki@ukp" "ru/wiki@ukp" "th/wiki@ukp" "tr/wiki@ukp" "vi/wiki@ukp" "zh/wiki@ukp" )
 
 TASK_ADAPTER_NAME="udpos"
 
@@ -69,6 +73,7 @@ LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
 ADAPTER_LANG=${ADAPTERS_LANGS[i]}
 OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
 mkdir -p $OUTPUT_DIR
+echo $OUTPUT_DIR
 for SEED in 1 2 3
 do
 MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/${TASK}/"

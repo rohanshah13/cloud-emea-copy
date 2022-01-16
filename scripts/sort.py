@@ -6,7 +6,7 @@ parser.add_argument('--language', default='en')
 parser.add_argument('--task', default='pos')
 args = parser.parse_args()
 
-OUTFILES = [f'scripts/{args.task}/hi/{args.language}.json', f'scripts/{args.task}/hi/{args.language}_s1.json', f'scripts/{args.task}/hi/{args.language}_s2.json', f'scripts/{args.task}/hi/{args.language}_s3.json']
+OUTFILES = [f'scripts/{args.task}/en/{args.language}.json', f'scripts/{args.task}/en/{args.language}_s1.json', f'scripts/{args.task}/en/{args.language}_s2.json', f'scripts/{args.task}/en/{args.language}_s3.json']
 # outfile = 'scripts/mr_ner_s1.json'
 for outfile in OUTFILES:
     json_lines = []

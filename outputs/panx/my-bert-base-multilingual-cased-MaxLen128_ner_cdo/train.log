@@ -1,0 +1,102 @@
+12/26/2021 23:40:53 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='cdo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:40:53 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:40:53 - INFO - __main__ -   Seed = 1
+12/26/2021 23:40:53 - INFO - root -   save model
+12/26/2021 23:40:53 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='cdo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:40:53 - INFO - __main__ -   Loading pretrained model and tokenizer
+12/26/2021 23:40:57 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+12/26/2021 23:41:04 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:41:04 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:41:04 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+12/26/2021 23:41:04 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:41:04 - INFO - root -   loading task adapter
+12/26/2021 23:41:04 - INFO - root -   loading lang adpater cdo/wiki@ukp
+12/26/2021 23:41:04 - INFO - __main__ -   Adapter Languages : ['cdo'], Length : 1
+12/26/2021 23:41:04 - INFO - __main__ -   Adapter Names ['cdo/wiki@ukp'], Length : 1
+12/26/2021 23:41:04 - INFO - __main__ -   Language = cdo
+12/26/2021 23:41:04 - INFO - __main__ -   Adapter Name = cdo/wiki@ukp
+12/26/2021 23:41:11 - INFO - __main__ -   Language adapter for cdo found
+12/26/2021 23:41:11 - INFO - __main__ -   Set active language adapter to cdo
+12/26/2021 23:41:11 - INFO - __main__ -   Args Adapter Weight = None
+12/26/2021 23:41:11 - INFO - __main__ -   Adapter Languages = ['cdo']
+12/26/2021 23:41:11 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_cdo_bert-base-multilingual-cased_128
+12/26/2021 23:41:11 - INFO - __main__ -   ***** Running evaluation  in cdo *****
+12/26/2021 23:41:11 - INFO - __main__ -     Num examples = 101
+12/26/2021 23:41:11 - INFO - __main__ -     Batch size = 32
+12/26/2021 23:41:11 - INFO - __main__ -   Batch number = 1
+12/26/2021 23:41:12 - INFO - __main__ -   Batch number = 2
+12/26/2021 23:41:12 - INFO - __main__ -   Batch number = 3
+12/26/2021 23:41:12 - INFO - __main__ -   Batch number = 4
+12/26/2021 23:41:12 - INFO - __main__ -   ***** Evaluation result  in cdo *****
+12/26/2021 23:41:12 - INFO - __main__ -     f1 = 0.23684210526315788
+12/26/2021 23:41:12 - INFO - __main__ -     loss = 1.5004074275493622
+12/26/2021 23:41:12 - INFO - __main__ -     precision = 0.1935483870967742
+12/26/2021 23:41:12 - INFO - __main__ -     recall = 0.3050847457627119
+12/26/2021 23:41:15 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='cdo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:41:15 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:41:15 - INFO - __main__ -   Seed = 2
+12/26/2021 23:41:15 - INFO - root -   save model
+12/26/2021 23:41:15 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='cdo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:41:15 - INFO - __main__ -   Loading pretrained model and tokenizer
+12/26/2021 23:41:19 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+12/26/2021 23:41:25 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:41:25 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:41:25 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+12/26/2021 23:41:25 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:41:25 - INFO - root -   loading task adapter
+12/26/2021 23:41:25 - INFO - root -   loading lang adpater cdo/wiki@ukp
+12/26/2021 23:41:25 - INFO - __main__ -   Adapter Languages : ['cdo'], Length : 1
+12/26/2021 23:41:25 - INFO - __main__ -   Adapter Names ['cdo/wiki@ukp'], Length : 1
+12/26/2021 23:41:25 - INFO - __main__ -   Language = cdo
+12/26/2021 23:41:25 - INFO - __main__ -   Adapter Name = cdo/wiki@ukp
+12/26/2021 23:41:32 - INFO - __main__ -   Language adapter for cdo found
+12/26/2021 23:41:32 - INFO - __main__ -   Set active language adapter to cdo
+12/26/2021 23:41:32 - INFO - __main__ -   Args Adapter Weight = None
+12/26/2021 23:41:32 - INFO - __main__ -   Adapter Languages = ['cdo']
+12/26/2021 23:41:32 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_cdo_bert-base-multilingual-cased_128
+12/26/2021 23:41:32 - INFO - __main__ -   ***** Running evaluation  in cdo *****
+12/26/2021 23:41:32 - INFO - __main__ -     Num examples = 101
+12/26/2021 23:41:32 - INFO - __main__ -     Batch size = 32
+12/26/2021 23:41:32 - INFO - __main__ -   Batch number = 1
+12/26/2021 23:41:33 - INFO - __main__ -   Batch number = 2
+12/26/2021 23:41:33 - INFO - __main__ -   Batch number = 3
+12/26/2021 23:41:33 - INFO - __main__ -   Batch number = 4
+12/26/2021 23:41:34 - INFO - __main__ -   ***** Evaluation result  in cdo *****
+12/26/2021 23:41:34 - INFO - __main__ -     f1 = 0.24749163879598662
+12/26/2021 23:41:34 - INFO - __main__ -     loss = 1.6522976607084274
+12/26/2021 23:41:34 - INFO - __main__ -     precision = 0.20441988950276244
+12/26/2021 23:41:34 - INFO - __main__ -     recall = 0.3135593220338983
+12/26/2021 23:41:36 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='cdo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:41:36 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/26/2021 23:41:36 - INFO - __main__ -   Seed = 3
+12/26/2021 23:41:36 - INFO - root -   save model
+12/26/2021 23:41:36 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='cdo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_cdo//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/26/2021 23:41:36 - INFO - __main__ -   Loading pretrained model and tokenizer
+12/26/2021 23:41:40 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+12/26/2021 23:41:47 - INFO - __main__ -   Using lang2id = None
+12/26/2021 23:41:47 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/26/2021 23:41:47 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+12/26/2021 23:41:47 - INFO - root -   Trying to decide if add adapter
+12/26/2021 23:41:47 - INFO - root -   loading task adapter
+12/26/2021 23:41:47 - INFO - root -   loading lang adpater cdo/wiki@ukp
+12/26/2021 23:41:47 - INFO - __main__ -   Adapter Languages : ['cdo'], Length : 1
+12/26/2021 23:41:47 - INFO - __main__ -   Adapter Names ['cdo/wiki@ukp'], Length : 1
+12/26/2021 23:41:47 - INFO - __main__ -   Language = cdo
+12/26/2021 23:41:47 - INFO - __main__ -   Adapter Name = cdo/wiki@ukp
+12/26/2021 23:41:53 - INFO - __main__ -   Language adapter for cdo found
+12/26/2021 23:41:53 - INFO - __main__ -   Set active language adapter to cdo
+12/26/2021 23:41:53 - INFO - __main__ -   Args Adapter Weight = None
+12/26/2021 23:41:53 - INFO - __main__ -   Adapter Languages = ['cdo']
+12/26/2021 23:41:53 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_cdo_bert-base-multilingual-cased_128
+12/26/2021 23:41:53 - INFO - __main__ -   ***** Running evaluation  in cdo *****
+12/26/2021 23:41:53 - INFO - __main__ -     Num examples = 101
+12/26/2021 23:41:53 - INFO - __main__ -     Batch size = 32
+12/26/2021 23:41:53 - INFO - __main__ -   Batch number = 1
+12/26/2021 23:41:54 - INFO - __main__ -   Batch number = 2
+12/26/2021 23:41:54 - INFO - __main__ -   Batch number = 3
+12/26/2021 23:41:54 - INFO - __main__ -   Batch number = 4
+12/26/2021 23:41:55 - INFO - __main__ -   ***** Evaluation result  in cdo *****
+12/26/2021 23:41:55 - INFO - __main__ -     f1 = 0.18731117824773413
+12/26/2021 23:41:55 - INFO - __main__ -     loss = 1.8332010209560394
+12/26/2021 23:41:55 - INFO - __main__ -     precision = 0.14553990610328638
+12/26/2021 23:41:55 - INFO - __main__ -     recall = 0.2627118644067797

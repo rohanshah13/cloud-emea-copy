@@ -1,0 +1,314 @@
+PyTorch version 1.10.0+cu102 available.
+12/02/2021 23:27:23 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/output//udpos/ignoref-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/', max_seq_length=128, do_train=True, do_eval=True, do_predict=False, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en,fo,no,da,is,mr,bn,ta,hi,bg,be,uk,ru', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/output//udpos/ignoref-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter=None, predict_lang_adapter=None, test_adapter=False, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/02/2021 23:27:23 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/02/2021 23:27:23 - INFO - __main__ -   Seed = 1
+12/02/2021 23:27:23 - INFO - root -   save adapters
+12/02/2021 23:27:23 - INFO - root -   True
+12/02/2021 23:27:23 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/output//udpos/ignoref-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/', max_seq_length=128, do_train=True, do_eval=True, do_predict=False, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en,fo,no,da,is,mr,bn,ta,hi,bg,be,uk,ru', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/output//udpos/ignoref-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter=None, predict_lang_adapter=None, test_adapter=False, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/02/2021 23:27:23 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/02/2021 23:27:26 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/02/2021 23:27:31 - INFO - __main__ -   Using lang2id = None
+12/02/2021 23:27:31 - INFO - root -   Trying to decide if add adapter
+12/02/2021 23:27:31 - INFO - root -   Adding task adapter
+Adding adapter 'udpos' of type 'text_task'.
+12/02/2021 23:27:31 - INFO - root -   loading lang adpater en/wiki@ukp
+12/02/2021 23:27:31 - INFO - __main__ -   Adapter Languages : ['en'], Length : 1
+12/02/2021 23:27:31 - INFO - __main__ -   Adapter Names ['en/wiki@ukp'], Length : 1
+12/02/2021 23:27:31 - INFO - __main__ -   Language = en
+12/02/2021 23:27:31 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+12/02/2021 23:27:33 - INFO - __main__ -   lang adapter names: en
+12/02/2021 23:27:36 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/cached_train_en_bert-base-multilingual-cased_128
+12/02/2021 23:27:39 - INFO - root -   ['bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.0.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.1.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.2.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.3.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.4.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.5.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.6.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.7.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.8.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.9.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.10.output.layer_text_task_adapters.udpos.adapter_up.bias', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_down.0.weight', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_down.0.bias', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_up.weight', 'bert.encoder.layer.11.output.layer_text_task_adapters.udpos.adapter_up.bias', 'classifier.weight', 'classifier.bias']
+12/02/2021 23:27:39 - INFO - __main__ -   ***** Running training *****
+12/02/2021 23:27:39 - INFO - __main__ -     Num examples = 21798
+12/02/2021 23:27:39 - INFO - __main__ -     Num Epochs = 50
+12/02/2021 23:27:39 - INFO - __main__ -     Instantaneous batch size per GPU = 8
+12/02/2021 23:27:39 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 32
+12/02/2021 23:27:39 - INFO - __main__ -     Gradient Accumulation steps = 4
+12/02/2021 23:27:39 - INFO - __main__ -     Total optimization steps = 34050
+Local Rank = -1
+21798
+Epoch:   0%|          | 0/50 [00:00<?, ?it/s]12/02/2021 23:27:39 - INFO - __main__ -   Seed = 1
+
+Iteration:   0%|          | 0/2725 [00:00<?, ?it/s][A
+Iteration:   0%|          | 2/2725 [00:00<03:55, 11.58it/s][A/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:134: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
+
+Iteration:   0%|          | 4/2725 [00:00<03:46, 11.99it/s][A
+Iteration:   0%|          | 6/2725 [00:00<03:33, 12.71it/s][A
+Iteration:   0%|          | 8/2725 [00:00<03:32, 12.81it/s][A
+Iteration:   0%|          | 10/2725 [00:00<03:26, 13.13it/s][A
+Iteration:   0%|          | 12/2725 [00:00<03:27, 13.10it/s][A
+Iteration:   1%|          | 14/2725 [00:01<03:23, 13.29it/s][A
+Iteration:   1%|          | 16/2725 [00:01<03:26, 13.13it/s][A
+Iteration:   1%|          | 18/2725 [00:01<03:23, 13.32it/s][A
+Iteration:   1%|          | 20/2725 [00:01<03:24, 13.20it/s][A
+Iteration:   1%|          | 22/2725 [00:01<03:22, 13.36it/s][A
+Iteration:   1%|          | 24/2725 [00:01<03:24, 13.23it/s][A
+Iteration:   1%|          | 26/2725 [00:01<03:21, 13.38it/s][A
+Iteration:   1%|          | 28/2725 [00:02<03:23, 13.26it/s][A
+Iteration:   1%|          | 30/2725 [00:02<03:20, 13.42it/s][A
+Iteration:   1%|          | 32/2725 [00:02<03:22, 13.28it/s][A
+Iteration:   1%|          | 34/2725 [00:02<03:20, 13.41it/s][A
+Iteration:   1%|▏         | 36/2725 [00:02<03:22, 13.26it/s][A
+Iteration:   1%|▏         | 38/2725 [00:02<03:20, 13.38it/s][A
+Iteration:   1%|▏         | 40/2725 [00:03<03:22, 13.29it/s][A
+Iteration:   2%|▏         | 42/2725 [00:03<03:20, 13.41it/s][A
+Iteration:   2%|▏         | 44/2725 [00:03<03:21, 13.29it/s][A
+Iteration:   2%|▏         | 46/2725 [00:03<03:19, 13.44it/s][A
+Iteration:   2%|▏         | 48/2725 [00:03<03:20, 13.34it/s][A
+Iteration:   2%|▏         | 50/2725 [00:03<03:18, 13.45it/s][A
+Iteration:   2%|▏         | 52/2725 [00:03<03:20, 13.31it/s][A
+Iteration:   2%|▏         | 54/2725 [00:04<03:18, 13.43it/s][A
+Iteration:   2%|▏         | 56/2725 [00:04<03:20, 13.29it/s][A
+Iteration:   2%|▏         | 58/2725 [00:04<03:18, 13.41it/s][A
+Iteration:   2%|▏         | 60/2725 [00:04<03:21, 13.26it/s][A
+Iteration:   2%|▏         | 62/2725 [00:04<03:18, 13.41it/s][A
+Iteration:   2%|▏         | 64/2725 [00:04<03:20, 13.25it/s][A
+Iteration:   2%|▏         | 66/2725 [00:04<03:18, 13.39it/s][A
+Iteration:   2%|▏         | 68/2725 [00:05<03:20, 13.27it/s][A
+Iteration:   3%|▎         | 70/2725 [00:05<03:18, 13.39it/s][A
+Iteration:   3%|▎         | 72/2725 [00:05<03:19, 13.27it/s][A
+Iteration:   3%|▎         | 74/2725 [00:05<03:17, 13.41it/s][A
+Iteration:   3%|▎         | 76/2725 [00:05<03:19, 13.27it/s][A
+Iteration:   3%|▎         | 78/2725 [00:05<03:17, 13.40it/s][A
+Iteration:   3%|▎         | 80/2725 [00:06<03:19, 13.25it/s][A
+Iteration:   3%|▎         | 82/2725 [00:06<03:17, 13.39it/s][A
+Iteration:   3%|▎         | 84/2725 [00:06<03:18, 13.28it/s][A
+Iteration:   3%|▎         | 86/2725 [00:06<03:16, 13.42it/s][A
+Iteration:   3%|▎         | 88/2725 [00:06<03:18, 13.27it/s][A
+Iteration:   3%|▎         | 90/2725 [00:06<03:16, 13.39it/s][A
+Iteration:   3%|▎         | 92/2725 [00:06<03:18, 13.28it/s][A
+Iteration:   3%|▎         | 94/2725 [00:07<03:15, 13.43it/s][A
+Iteration:   4%|▎         | 96/2725 [00:07<03:17, 13.28it/s][A
+Iteration:   4%|▎         | 98/2725 [00:07<03:15, 13.41it/s][A
+Iteration:   4%|▎         | 100/2725 [00:07<03:17, 13.28it/s][A
+Iteration:   4%|▎         | 102/2725 [00:07<03:15, 13.41it/s][A
+Iteration:   4%|▍         | 104/2725 [00:07<03:17, 13.24it/s][A
+Iteration:   4%|▍         | 106/2725 [00:07<03:15, 13.36it/s][A
+Iteration:   4%|▍         | 108/2725 [00:08<03:17, 13.26it/s][A
+Iteration:   4%|▍         | 110/2725 [00:08<03:15, 13.39it/s][A
+Iteration:   4%|▍         | 112/2725 [00:08<03:16, 13.27it/s][A
+Iteration:   4%|▍         | 114/2725 [00:08<03:14, 13.40it/s][A
+Iteration:   4%|▍         | 116/2725 [00:08<03:17, 13.23it/s][A
+Iteration:   4%|▍         | 118/2725 [00:08<03:15, 13.32it/s][A
+Iteration:   4%|▍         | 120/2725 [00:09<03:17, 13.20it/s][A
+Iteration:   4%|▍         | 122/2725 [00:09<03:15, 13.34it/s][A
+Iteration:   5%|▍         | 124/2725 [00:09<03:17, 13.20it/s][A
+Iteration:   5%|▍         | 126/2725 [00:09<03:14, 13.34it/s][A
+Iteration:   5%|▍         | 128/2725 [00:09<03:16, 13.22it/s][A
+Iteration:   5%|▍         | 130/2725 [00:09<03:14, 13.35it/s][A
+Iteration:   5%|▍         | 132/2725 [00:09<03:24, 12.69it/s][A
+Iteration:   5%|▍         | 134/2725 [00:10<03:19, 12.96it/s][A
+Iteration:   5%|▍         | 136/2725 [00:10<03:20, 12.94it/s][A
+Iteration:   5%|▌         | 138/2725 [00:10<03:16, 13.16it/s][A
+Iteration:   5%|▌         | 140/2725 [00:10<03:17, 13.07it/s][A
+Iteration:   5%|▌         | 142/2725 [00:10<03:14, 13.25it/s][A
+Iteration:   5%|▌         | 144/2725 [00:10<03:16, 13.17it/s][A
+Iteration:   5%|▌         | 146/2725 [00:11<03:13, 13.32it/s][A
+Iteration:   5%|▌         | 148/2725 [00:11<03:15, 13.17it/s][A
+Iteration:   6%|▌         | 150/2725 [00:11<03:13, 13.32it/s][A
+Iteration:   6%|▌         | 152/2725 [00:11<03:14, 13.22it/s][A
+Iteration:   6%|▌         | 154/2725 [00:11<03:12, 13.35it/s][A
+Iteration:   6%|▌         | 156/2725 [00:11<03:14, 13.21it/s][A
+Iteration:   6%|▌         | 158/2725 [00:11<03:12, 13.34it/s][A
+Iteration:   6%|▌         | 160/2725 [00:12<03:13, 13.23it/s][A
+Iteration:   6%|▌         | 162/2725 [00:12<03:11, 13.37it/s][A
+Iteration:   6%|▌         | 164/2725 [00:12<03:13, 13.24it/s][A
+Iteration:   6%|▌         | 166/2725 [00:12<03:11, 13.39it/s][A
+Iteration:   6%|▌         | 168/2725 [00:12<03:12, 13.27it/s][A
+Iteration:   6%|▌         | 170/2725 [00:12<03:10, 13.40it/s][A
+Iteration:   6%|▋         | 172/2725 [00:12<03:12, 13.26it/s][A
+Iteration:   6%|▋         | 174/2725 [00:13<03:10, 13.36it/s][A
+Iteration:   6%|▋         | 176/2725 [00:13<03:12, 13.22it/s][A
+Iteration:   7%|▋         | 178/2725 [00:13<03:10, 13.35it/s][A
+Iteration:   7%|▋         | 180/2725 [00:13<03:12, 13.25it/s][A
+Iteration:   7%|▋         | 182/2725 [00:13<03:10, 13.36it/s][A
+Iteration:   7%|▋         | 184/2725 [00:13<03:12, 13.20it/s][A
+Iteration:   7%|▋         | 186/2725 [00:14<03:10, 13.32it/s][A
+Iteration:   7%|▋         | 188/2725 [00:14<03:13, 13.14it/s][A
+Iteration:   7%|▋         | 190/2725 [00:14<03:10, 13.28it/s][A
+Iteration:   7%|▋         | 192/2725 [00:14<03:12, 13.18it/s][A
+Iteration:   7%|▋         | 194/2725 [00:14<03:09, 13.33it/s][A
+Iteration:   7%|▋         | 196/2725 [00:14<03:11, 13.19it/s][A
+Iteration:   7%|▋         | 198/2725 [00:14<03:17, 12.77it/s][A/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:247: UserWarning: To get the last learning rate computed by the scheduler, please use `get_last_lr()`.
+  warnings.warn("To get the last learning rate computed by the scheduler, "
+
+Iteration:   7%|▋         | 200/2725 [00:15<03:18, 12.74it/s][A
+Iteration:   7%|▋         | 202/2725 [00:15<03:14, 12.96it/s][A
+Iteration:   7%|▋         | 204/2725 [00:15<03:15, 12.90it/s][A
+Iteration:   8%|▊         | 206/2725 [00:15<03:11, 13.13it/s][A
+Iteration:   8%|▊         | 208/2725 [00:15<03:12, 13.06it/s][A
+Iteration:   8%|▊         | 210/2725 [00:15<03:10, 13.24it/s][A
+Iteration:   8%|▊         | 212/2725 [00:16<03:11, 13.12it/s][A
+Iteration:   8%|▊         | 214/2725 [00:16<03:09, 13.27it/s][A
+Iteration:   8%|▊         | 216/2725 [00:16<03:10, 13.14it/s][A
+Iteration:   8%|▊         | 218/2725 [00:16<03:08, 13.30it/s][A
+Iteration:   8%|▊         | 220/2725 [00:16<03:09, 13.19it/s][A
+Iteration:   8%|▊         | 222/2725 [00:16<03:08, 13.30it/s][A
+Iteration:   8%|▊         | 224/2725 [00:16<03:09, 13.19it/s][A
+Iteration:   8%|▊         | 226/2725 [00:17<03:07, 13.33it/s][A
+Iteration:   8%|▊         | 228/2725 [00:17<03:09, 13.19it/s][A
+Iteration:   8%|▊         | 230/2725 [00:17<03:07, 13.32it/s][A
+Iteration:   9%|▊         | 232/2725 [00:17<03:08, 13.19it/s][A
+Iteration:   9%|▊         | 234/2725 [00:17<03:06, 13.33it/s][A
+Iteration:   9%|▊         | 236/2725 [00:17<03:08, 13.21it/s][A
+Iteration:   9%|▊         | 238/2725 [00:17<03:06, 13.34it/s][A
+Iteration:   9%|▉         | 240/2725 [00:18<03:08, 13.17it/s][A
+Iteration:   9%|▉         | 242/2725 [00:18<03:06, 13.30it/s][A
+Iteration:   9%|▉         | 244/2725 [00:18<03:08, 13.18it/s][A
+Iteration:   9%|▉         | 246/2725 [00:18<03:06, 13.31it/s][A
+Iteration:   9%|▉         | 248/2725 [00:18<03:07, 13.20it/s][A
+Iteration:   9%|▉         | 250/2725 [00:18<03:05, 13.32it/s][A
+Iteration:   9%|▉         | 252/2725 [00:19<03:07, 13.21it/s][A
+Iteration:   9%|▉         | 254/2725 [00:19<03:05, 13.33it/s][A
+Iteration:   9%|▉         | 256/2725 [00:19<03:07, 13.16it/s][A
+Iteration:   9%|▉         | 258/2725 [00:19<03:05, 13.29it/s][A
+Iteration:  10%|▉         | 260/2725 [00:19<03:07, 13.14it/s][A
+Iteration:  10%|▉         | 262/2725 [00:19<03:05, 13.28it/s][A
+Iteration:  10%|▉         | 264/2725 [00:19<03:10, 12.91it/s][A
+Iteration:  10%|▉         | 266/2725 [00:20<03:07, 13.13it/s][A
+Iteration:  10%|▉         | 268/2725 [00:20<03:08, 13.06it/s][A
+Iteration:  10%|▉         | 270/2725 [00:20<03:05, 13.21it/s][A
+Iteration:  10%|▉         | 272/2725 [00:20<03:07, 13.10it/s][A
+Iteration:  10%|█         | 274/2725 [00:20<03:04, 13.26it/s][A
+Iteration:  10%|█         | 276/2725 [00:20<03:06, 13.11it/s][A
+Iteration:  10%|█         | 278/2725 [00:21<03:04, 13.26it/s][A
+Iteration:  10%|█         | 280/2725 [00:21<03:06, 13.14it/s][A
+Iteration:  10%|█         | 282/2725 [00:21<03:04, 13.27it/s][A
+Iteration:  10%|█         | 284/2725 [00:21<03:05, 13.13it/s][A
+Iteration:  10%|█         | 286/2725 [00:21<03:03, 13.27it/s][A
+Iteration:  11%|█         | 288/2725 [00:21<03:05, 13.14it/s][A
+Iteration:  11%|█         | 290/2725 [00:21<03:03, 13.29it/s][A
+Iteration:  11%|█         | 292/2725 [00:22<03:04, 13.16it/s][A
+Iteration:  11%|█         | 294/2725 [00:22<03:03, 13.28it/s][A
+Iteration:  11%|█         | 296/2725 [00:22<03:04, 13.15it/s][A
+Iteration:  11%|█         | 298/2725 [00:22<03:03, 13.25it/s][A
+Iteration:  11%|█         | 300/2725 [00:22<03:05, 13.07it/s][A
+Iteration:  11%|█         | 302/2725 [00:22<03:03, 13.20it/s][A
+Iteration:  11%|█         | 304/2725 [00:22<03:05, 13.04it/s][A
+Iteration:  11%|█         | 306/2725 [00:23<03:03, 13.18it/s][A
+Iteration:  11%|█▏        | 308/2725 [00:23<03:05, 13.04it/s][A
+Iteration:  11%|█▏        | 310/2725 [00:23<03:02, 13.20it/s][A
+Iteration:  11%|█▏        | 312/2725 [00:23<03:04, 13.06it/s][A
+Iteration:  12%|█▏        | 314/2725 [00:23<03:02, 13.21it/s][A
+Iteration:  12%|█▏        | 316/2725 [00:23<03:04, 13.06it/s][A
+Iteration:  12%|█▏        | 318/2725 [00:24<03:02, 13.20it/s][A
+Iteration:  12%|█▏        | 320/2725 [00:24<03:04, 13.07it/s][A

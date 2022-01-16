@@ -59,13 +59,13 @@ def compute_f1(a_gold, a_pred):
     num_same = sum(common.values())
     if len(gold_toks) == 0 or len(pred_toks) == 0:
         # If either is no-answer, then F1 is 1 if they agree, 0 otherwise
-        return int(gold_toks == pred_toks)
+        return int(gold_toks == pred_toks), int(gold_toks == pred_toks), int(gold_toks == pred_toks)
     if num_same == 0:
-        return 0
+        return 0, 0, 0
     precision = 1.0 * num_same / len(pred_toks)
     recall = 1.0 * num_same / len(gold_toks)
     f1 = (2 * precision * recall) / (precision + recall)
-    return f1
+    return f1, precision, recall
 
 
 def get_raw_scores(examples, preds):
@@ -74,7 +74,8 @@ def get_raw_scores(examples, preds):
     """
     exact_scores = {}
     f1_scores = {}
-
+    precision_scores = {}
+    recall_scores = {}
     for example in examples:
         qas_id = example.qas_id
         gold_answers = [answer["text"] for answer in example.answers if normalize_answer(answer["text"])]
@@ -89,9 +90,17 @@ def get_raw_scores(examples, preds):
 
         prediction = preds[qas_id]
         exact_scores[qas_id] = max(compute_exact(a, prediction) for a in gold_answers)
-        f1_scores[qas_id] = max(compute_f1(a, prediction) for a in gold_answers)
 
-    return exact_scores, f1_scores
+        best_f1, best_precision, best_recall = 0.0, 0.0, 0.0
+        for a in gold_answers:
+            f1, precision, recall = compute_f1(a, prediction)
+            if f1 > best_f1:
+                best_f1 = f1
+                best_precision = precision
+                best_recall = recall
+        f1_scores[qas_id], precision_scores[qas_id], recall_scores[qas_id] = best_f1, best_precision, best_recall
+
+    return exact_scores, f1_scores, precision_scores, recall_scores
 
 
 def apply_no_ans_threshold(scores, na_probs, qid_to_has_ans, na_prob_thresh):
@@ -105,16 +114,27 @@ def apply_no_ans_threshold(scores, na_probs, qid_to_has_ans, na_prob_thresh):
     return new_scores
 
 
-def make_eval_dict(exact_scores, f1_scores, qid_list=None):
+def make_eval_dict(exact_scores, f1_scores, qid_list=None, precision=None, recall=None):
     if not qid_list:
         total = len(exact_scores)
-        return collections.OrderedDict(
-            [
-                ("exact", 100.0 * sum(exact_scores.values()) / total),
-                ("f1", 100.0 * sum(f1_scores.values()) / total),
-                ("total", total),
-            ]
-        )
+        if precision is None:
+            return collections.OrderedDict(
+                [
+                    ("exact", 100.0 * sum(exact_scores.values()) / total),
+                    ("f1", 100.0 * sum(f1_scores.values()) / total),
+                    ("total", total),
+                ]
+            )
+        else:
+            return collections.OrderedDict(
+                [
+                    ("exact", 100.0 * sum(exact_scores.values()) / total),
+                    ("f1", 100.0 * sum(f1_scores.values()) / total),
+                    ("precision", 100.0 * sum(precision.values()) / total),
+                    ("recall", 100.0 * sum(recall.values()) / total),
+                    ("total", total),
+                ]
+            )
     else:
         total = len(qid_list)
         return collections.OrderedDict(
@@ -217,14 +237,14 @@ def squad_evaluate(examples, preds, no_answer_probs=None, no_answer_probability_
     if no_answer_probs is None:
         no_answer_probs = {k: 0.0 for k in preds}
 
-    exact, f1 = get_raw_scores(examples, preds)
+    exact, f1, precision, recall = get_raw_scores(examples, preds)
 
     exact_threshold = apply_no_ans_threshold(
         exact, no_answer_probs, qas_id_to_has_answer, no_answer_probability_threshold
     )
     f1_threshold = apply_no_ans_threshold(f1, no_answer_probs, qas_id_to_has_answer, no_answer_probability_threshold)
 
-    evaluation = make_eval_dict(exact_threshold, f1_threshold)
+    evaluation = make_eval_dict(exact_threshold, f1_threshold, qid_list=None, precision=precision, recall=recall)
 
     if has_answer_qids:
         has_ans_eval = make_eval_dict(exact_threshold, f1_threshold, qid_list=has_answer_qids)

@@ -36,7 +36,6 @@ NUM_EPOCHS=15
 
 TRAIN_LANG="en"
 LANGS_ARRAY=( "ar" "de" "el" "es" "hi" "ru" "th" "tr" "vi" "zh" )
-PREDICT_LANGS="ar,de,el,es,hi,ru,th,tr,vi,zh"
 
 TASK_ADAPTER_NAME="qna"
 
@@ -76,7 +75,7 @@ do
 ADAPTER_NAME=${ADAPTER_NAMES[i]}
 ADAPTER_LANG=${ADAPTER_LANGS[i]}
 PREDICT_LANGS=${LANGS_ARRAY[i]}
-OUTPUT_DIR="$OUT_DIR/$TASK/my_${MODEL}_maxlen${MAXL}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
+OUTPUT_DIR="$OUT_DIR/$TASK/my-${MODEL}-MaxLen${MAXL}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
 mkdir -p $OUTPUT_DIR
 for SEED in 1 2 3
 do

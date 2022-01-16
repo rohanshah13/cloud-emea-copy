@@ -1,0 +1,112 @@
+Fatal Python error: Py_Initialize: can't initialize sys standard streams
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/io.py", line 52, in <module>
+    import abc
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 951, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 894, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1157, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1129, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1271, in find_spec
+KeyboardInterrupt
+Command terminated by signal 6
+0.01user 0.00system 0:00.14elapsed 10%CPU (0avgtext+0avgdata 7576maxresident)k
+0inputs+8outputs (0major+668minor)pagefaults 0swaps
+Command terminated by signal 2
+0.00user 0.00system 0:00.01elapsed 100%CPU (0avgtext+0avgdata 6572maxresident)k
+0inputs+0outputs (0major+503minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python3.6/types.py", line 171, in <module>
+    import functools as _functools
+  File "/usr/lib/python3.6/functools.py", line 21, in <module>
+    from collections import namedtuple
+  File "/usr/lib/python3.6/collections/__init__.py", line 31, in <module>
+    from itertools import repeat as _repeat, chain as _chain, starmap as _starmap
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8900maxresident)k
+0inputs+0outputs (0major+956minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 72, in <module>
+    from . import numeric
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/numeric.py", line 76, in <module>
+    def zeros_like(a, dtype=None, order='K', subok=True, shape=None):
+KeyboardInterrupt
+Command exited with non-zero status 1
+1.14user 1.66system 0:00.12elapsed 2297%CPU (0avgtext+0avgdata 21440maxresident)k
+0inputs+8outputs (0major+3370minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 9, in <module>
+    from numpy.compat._inspect import getargspec
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/__init__.py", line 12, in <module>
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+
+Command exited with non-zero status 1
+1.10user 1.57system 0:00.11elapsed 2266%CPU (0avgtext+0avgdata 20468maxresident)k
+0inputs+0outputs (0major+3141minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 7, in <module>
+    from numpy.core._multiarray_umath import (
+ImportError: PyCapsule_Import could not import module "datetime"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 48, in <module>
+    raise ImportError(msg)
+ImportError: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python3.6 from "/home/abhijeet/rohan/venvs/cloud-emea-copy/bin/python"
+  * The NumPy version is: "1.19.5"
+
+and make sure that they are the versions you expect.
+Please carefully study the documentation linked above for further help.
+
+Original error was: PyCapsule_Import could not import module "datetime"
+
+Command exited with non-zero status 1
+0.46user 0.65system 0:00.09elapsed 1217%CPU (0avgtext+0avgdata 19072maxresident)k
+0inputs+8outputs (0major+2898minor)pagefaults 0swaps

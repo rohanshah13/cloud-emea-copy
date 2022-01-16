@@ -22,7 +22,7 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 export CUDA_VISIBLE_DEVICES=$GPU
 TASK='panx'
 # LANGS="ta,fo,da,be,uk,bg,af,yo"
-LANGS="mr,bn,no"
+LANGS="af,rw,yo"
 # LANGS="af,bm,yo"
 # LANGS="bn"
 TRAIN_LANGS="en"
@@ -34,8 +34,8 @@ SEED=0
 # LANG_ADAPTER_NAME="am/wiki@ukp,bn/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,hi/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ko/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,pt/wiki@ukp,ru/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,zh/wiki@ukp"
 # ADAPTER_LANG="am,bn,cs,de,el,es,et,eu,fi,fr,hi,hu,hy,id,ja,jv,ko,la,lv,mi,my,pt,ru,tr,vi,zh"
 
-# LANG_ADAPTER_NAME="am/wiki@ukp,ar/wiki@ukp,bxr/wiki@ukp,cdo/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,gn/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,kv/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,qu/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,sw/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp,xmf/wiki@ukp,zh/wiki@ukp,zh_yue/wiki@ukp"
-# ADAPTER_LANG="am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue"
+LANG_ADAPTER_NAME="am/wiki@ukp,ar/wiki@ukp,bxr/wiki@ukp,cdo/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,gn/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,kv/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,qu/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,sw/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp,xmf/wiki@ukp,zh/wiki@ukp,zh_yue/wiki@ukp"
+ADAPTER_LANG="am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue"
 # AW="0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464,0.038461538461538464"
 
 # LANG_ADAPTER_NAME="am/wiki@ukp,bn/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp"
@@ -69,13 +69,13 @@ fi
 
 mkdir -p $OUTPUT_DIR
 
-for i in 0 1 2
+for SEED in 1 2 3
 do
-SEED=${SEEDS[i]}
-LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
-ADAPTER_LANG=${ADAPTER_LANGS[i]}
+# SEED=${SEEDS[i]}
+# LANG_ADAPTER_NAME=${LANG_ADAPTER_NAMES[i]}
+# ADAPTER_LANG=${ADAPTER_LANGS[i]}
 MY_TASK_ADAPTER="output/${TASK}/my-bert-base-multilingual-cased-LR1e-4-epoch${NUM_EPOCHS}-MaxLen128-TrainLangen_en_s${SEED}/checkpoint-best/${TASK_ADAPTER_NAME}/"
-
+echo $OUTPUT_DIR
 nohup time python third_party/my_run_tag.py \
   --predict_save_prefix "" \
   --calc_weight_step 0 \

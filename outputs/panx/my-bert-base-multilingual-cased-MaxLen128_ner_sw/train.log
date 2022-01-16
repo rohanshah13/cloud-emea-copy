@@ -1,0 +1,762 @@
+11/26/2021 08:20:32 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=False, do_adapter_predict=False, do_predict_dev=True, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:20:32 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/26/2021 08:20:32 - INFO - __main__ -   Seed = 1
+11/26/2021 08:20:32 - INFO - root -   save model
+11/26/2021 08:20:32 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=False, do_adapter_predict=False, do_predict_dev=True, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:20:32 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/26/2021 08:20:35 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/26/2021 08:20:42 - INFO - __main__ -   Using lang2id = None
+11/26/2021 08:20:42 - INFO - __main__ -   Evaluating on the dev sets of all the specified languages
+11/26/2021 08:20:42 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+11/26/2021 08:20:42 - INFO - root -   Trying to decide if add adapter
+11/26/2021 08:20:42 - INFO - root -   loading task adapter
+11/26/2021 08:20:42 - INFO - root -   loading lang adpater sw/wiki@ukp
+11/26/2021 08:20:42 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+11/26/2021 08:20:42 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+11/26/2021 08:20:42 - INFO - __main__ -   Language = sw
+11/26/2021 08:20:42 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+11/26/2021 08:20:48 - INFO - __main__ -   Language adapter for af not found, using sw instead
+11/26/2021 08:20:48 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:20:48 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:20:48 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:20:48 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_dev_af_bert-base-multilingual-cased_128
+11/26/2021 08:20:49 - INFO - __main__ -   ***** Running evaluation  in af *****
+11/26/2021 08:20:49 - INFO - __main__ -     Num examples = 1001
+11/26/2021 08:20:49 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:20:49 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:20:49 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:20:49 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:20:49 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:20:49 - INFO - __main__ -   Batch number = 5
+11/26/2021 08:20:49 - INFO - __main__ -   Batch number = 6
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 7
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 8
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 9
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 10
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 11
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 12
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 13
+11/26/2021 08:20:50 - INFO - __main__ -   Batch number = 14
+11/26/2021 08:20:51 - INFO - __main__ -   Batch number = 15
+11/26/2021 08:20:51 - INFO - __main__ -   Batch number = 16
+11/26/2021 08:20:51 - INFO - __main__ -   Batch number = 17
+11/26/2021 08:20:51 - INFO - __main__ -   Batch number = 18
+11/26/2021 08:20:51 - INFO - __main__ -   Batch number = 19
+11/26/2021 08:20:51 - INFO - __main__ -   Batch number = 20
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 21
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 22
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 23
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 24
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 25
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 26
+11/26/2021 08:20:52 - INFO - __main__ -   Batch number = 27
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 28
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 29
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 30
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 31
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 32
+11/26/2021 08:20:53 - INFO - __main__ -   ***** Evaluation result  in af *****
+11/26/2021 08:20:53 - INFO - __main__ -     f1 = 0.6689873417721519
+11/26/2021 08:20:53 - INFO - __main__ -     loss = 0.8739175004884601
+11/26/2021 08:20:53 - INFO - __main__ -     precision = 0.6299165673420739
+11/26/2021 08:20:53 - INFO - __main__ -     recall = 0.713225371120108
+11/26/2021 08:20:53 - INFO - __main__ -   Language adapter for yo not found, using sw instead
+11/26/2021 08:20:53 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:20:53 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:20:53 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:20:53 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_dev_yo_bert-base-multilingual-cased_128
+11/26/2021 08:20:53 - INFO - __main__ -   ***** Running evaluation  in yo *****
+11/26/2021 08:20:53 - INFO - __main__ -     Num examples = 100
+11/26/2021 08:20:53 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:20:53 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:20:54 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:20:54 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:20:54 - INFO - __main__ -   ***** Evaluation result  in yo *****
+11/26/2021 08:20:54 - INFO - __main__ -     f1 = 0.22026431718061673
+11/26/2021 08:20:54 - INFO - __main__ -     loss = 5.165326237678528
+11/26/2021 08:20:54 - INFO - __main__ -     precision = 0.20833333333333334
+11/26/2021 08:20:54 - INFO - __main__ -     recall = 0.2336448598130841
+11/26/2021 08:20:57 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=False, do_adapter_predict=False, do_predict_dev=True, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:20:57 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/26/2021 08:20:57 - INFO - __main__ -   Seed = 2
+11/26/2021 08:20:57 - INFO - root -   save model
+11/26/2021 08:20:57 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=False, do_adapter_predict=False, do_predict_dev=True, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:20:57 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/26/2021 08:20:59 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/26/2021 08:21:06 - INFO - __main__ -   Using lang2id = None
+11/26/2021 08:21:06 - INFO - __main__ -   Evaluating on the dev sets of all the specified languages
+11/26/2021 08:21:06 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+11/26/2021 08:21:06 - INFO - root -   Trying to decide if add adapter
+11/26/2021 08:21:06 - INFO - root -   loading task adapter
+11/26/2021 08:21:06 - INFO - root -   loading lang adpater sw/wiki@ukp
+11/26/2021 08:21:06 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+11/26/2021 08:21:06 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+11/26/2021 08:21:06 - INFO - __main__ -   Language = sw
+11/26/2021 08:21:06 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+11/26/2021 08:21:12 - INFO - __main__ -   Language adapter for af not found, using sw instead
+11/26/2021 08:21:12 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:21:12 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:21:12 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:21:12 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_dev_af_bert-base-multilingual-cased_128
+11/26/2021 08:21:12 - INFO - __main__ -   ***** Running evaluation  in af *****
+11/26/2021 08:21:12 - INFO - __main__ -     Num examples = 1001
+11/26/2021 08:21:12 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:21:12 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:21:12 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 5
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 6
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 7
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 8
+11/26/2021 08:21:13 - INFO - __main__ -   Batch number = 9
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 10
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 11
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 12
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 13
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 14
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 15
+11/26/2021 08:21:14 - INFO - __main__ -   Batch number = 16
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 17
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 18
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 19
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 20
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 21
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 22
+11/26/2021 08:21:15 - INFO - __main__ -   Batch number = 23
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 24
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 25
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 26
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 27
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 28
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 29
+11/26/2021 08:21:16 - INFO - __main__ -   Batch number = 30
+11/26/2021 08:21:17 - INFO - __main__ -   Batch number = 31
+11/26/2021 08:21:17 - INFO - __main__ -   Batch number = 32
+11/26/2021 08:21:17 - INFO - __main__ -   ***** Evaluation result  in af *****
+11/26/2021 08:21:17 - INFO - __main__ -     f1 = 0.6758917589175891
+11/26/2021 08:21:17 - INFO - __main__ -     loss = 0.7430239301174879
+11/26/2021 08:21:17 - INFO - __main__ -     precision = 0.6209039548022599
+11/26/2021 08:21:17 - INFO - __main__ -     recall = 0.7415654520917678
+11/26/2021 08:21:17 - INFO - __main__ -   Language adapter for yo not found, using sw instead
+11/26/2021 08:21:17 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:21:17 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:21:17 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:21:17 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_dev_yo_bert-base-multilingual-cased_128
+11/26/2021 08:21:17 - INFO - __main__ -   ***** Running evaluation  in yo *****
+11/26/2021 08:21:17 - INFO - __main__ -     Num examples = 100
+11/26/2021 08:21:17 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:21:17 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:21:17 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:21:17 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:21:17 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:21:17 - INFO - __main__ -   ***** Evaluation result  in yo *****
+11/26/2021 08:21:17 - INFO - __main__ -     f1 = 0.29596412556053814
+11/26/2021 08:21:17 - INFO - __main__ -     loss = 3.8707690238952637
+11/26/2021 08:21:17 - INFO - __main__ -     precision = 0.28448275862068967
+11/26/2021 08:21:17 - INFO - __main__ -     recall = 0.308411214953271
+11/26/2021 08:21:20 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=False, do_adapter_predict=False, do_predict_dev=True, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:21:20 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/26/2021 08:21:20 - INFO - __main__ -   Seed = 3
+11/26/2021 08:21:20 - INFO - root -   save model
+11/26/2021 08:21:20 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=False, do_adapter_predict=False, do_predict_dev=True, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:21:20 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/26/2021 08:21:23 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/26/2021 08:21:30 - INFO - __main__ -   Using lang2id = None
+11/26/2021 08:21:30 - INFO - __main__ -   Evaluating on the dev sets of all the specified languages
+11/26/2021 08:21:30 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+11/26/2021 08:21:30 - INFO - root -   Trying to decide if add adapter
+11/26/2021 08:21:30 - INFO - root -   loading task adapter
+11/26/2021 08:21:30 - INFO - root -   loading lang adpater sw/wiki@ukp
+11/26/2021 08:21:30 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+11/26/2021 08:21:30 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+11/26/2021 08:21:30 - INFO - __main__ -   Language = sw
+11/26/2021 08:21:30 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+11/26/2021 08:21:35 - INFO - __main__ -   Language adapter for af not found, using sw instead
+11/26/2021 08:21:35 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:21:35 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:21:35 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:21:35 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_dev_af_bert-base-multilingual-cased_128
+11/26/2021 08:21:35 - INFO - __main__ -   ***** Running evaluation  in af *****
+11/26/2021 08:21:35 - INFO - __main__ -     Num examples = 1001
+11/26/2021 08:21:35 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:21:35 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:21:35 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:21:35 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 5
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 6
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 7
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 8
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 9
+11/26/2021 08:21:36 - INFO - __main__ -   Batch number = 10
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 11
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 12
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 13
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 14
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 15
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 16
+11/26/2021 08:21:37 - INFO - __main__ -   Batch number = 17
+11/26/2021 08:21:38 - INFO - __main__ -   Batch number = 18
+11/26/2021 08:21:38 - INFO - __main__ -   Batch number = 19
+11/26/2021 08:21:38 - INFO - __main__ -   Batch number = 20
+11/26/2021 08:21:38 - INFO - __main__ -   Batch number = 21
+11/26/2021 08:21:38 - INFO - __main__ -   Batch number = 22
+11/26/2021 08:21:38 - INFO - __main__ -   Batch number = 23
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 24
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 25
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 26
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 27
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 28
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 29
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 30
+11/26/2021 08:21:39 - INFO - __main__ -   Batch number = 31
+11/26/2021 08:21:40 - INFO - __main__ -   Batch number = 32
+11/26/2021 08:21:40 - INFO - __main__ -   ***** Evaluation result  in af *****
+11/26/2021 08:21:40 - INFO - __main__ -     f1 = 0.6574932695183966
+11/26/2021 08:21:40 - INFO - __main__ -     loss = 0.8185192076489329
+11/26/2021 08:21:40 - INFO - __main__ -     precision = 0.5905427189682966
+11/26/2021 08:21:40 - INFO - __main__ -     recall = 0.7415654520917678
+11/26/2021 08:21:40 - INFO - __main__ -   Language adapter for yo not found, using sw instead
+11/26/2021 08:21:40 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:21:40 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:21:40 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:21:40 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_dev_yo_bert-base-multilingual-cased_128
+11/26/2021 08:21:40 - INFO - __main__ -   ***** Running evaluation  in yo *****
+11/26/2021 08:21:40 - INFO - __main__ -     Num examples = 100
+11/26/2021 08:21:40 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:21:40 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:21:40 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:21:40 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:21:40 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:21:40 - INFO - __main__ -   ***** Evaluation result  in yo *****
+11/26/2021 08:21:40 - INFO - __main__ -     f1 = 0.22784810126582278
+11/26/2021 08:21:40 - INFO - __main__ -     loss = 4.823109865188599
+11/26/2021 08:21:40 - INFO - __main__ -     precision = 0.2076923076923077
+11/26/2021 08:21:40 - INFO - __main__ -     recall = 0.2523364485981308
+11/26/2021 08:30:33 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:30:33 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/26/2021 08:30:33 - INFO - __main__ -   Seed = 1
+11/26/2021 08:30:33 - INFO - root -   save model
+11/26/2021 08:30:33 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:30:33 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/26/2021 08:30:36 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/26/2021 08:30:43 - INFO - __main__ -   Using lang2id = None
+11/26/2021 08:30:43 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+11/26/2021 08:30:43 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+11/26/2021 08:30:43 - INFO - root -   Trying to decide if add adapter
+11/26/2021 08:30:43 - INFO - root -   loading task adapter
+11/26/2021 08:30:43 - INFO - root -   loading lang adpater sw/wiki@ukp
+11/26/2021 08:30:43 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+11/26/2021 08:30:43 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+11/26/2021 08:30:43 - INFO - __main__ -   Language = sw
+11/26/2021 08:30:43 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+11/26/2021 08:30:48 - INFO - __main__ -   Language adapter for af not found, using sw instead
+11/26/2021 08:30:48 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:30:48 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:30:48 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:30:48 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+11/26/2021 08:30:48 - INFO - __main__ -   ***** Running evaluation  in af *****
+11/26/2021 08:30:48 - INFO - __main__ -     Num examples = 1000
+11/26/2021 08:30:48 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:30:48 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:30:48 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 5
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 6
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 7
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 8
+11/26/2021 08:30:49 - INFO - __main__ -   Batch number = 9
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 10
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 11
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 12
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 13
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 14
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 15
+11/26/2021 08:30:50 - INFO - __main__ -   Batch number = 16
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 17
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 18
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 19
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 20
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 21
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 22
+11/26/2021 08:30:51 - INFO - __main__ -   Batch number = 23
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 24
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 25
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 26
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 27
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 28
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 29
+11/26/2021 08:30:52 - INFO - __main__ -   Batch number = 30
+11/26/2021 08:30:53 - INFO - __main__ -   Batch number = 31
+11/26/2021 08:30:53 - INFO - __main__ -   Batch number = 32
+11/26/2021 08:30:53 - INFO - __main__ -   ***** Evaluation result  in af *****
+11/26/2021 08:30:53 - INFO - __main__ -     f1 = 0.678388746803069
+11/26/2021 08:30:53 - INFO - __main__ -     loss = 0.7899359930306673
+11/26/2021 08:30:53 - INFO - __main__ -     precision = 0.6465569774527727
+11/26/2021 08:30:53 - INFO - __main__ -     recall = 0.7135171486213854
+11/26/2021 08:30:53 - INFO - __main__ -   Language adapter for yo not found, using sw instead
+11/26/2021 08:30:53 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:30:53 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:30:53 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:30:53 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+11/26/2021 08:30:53 - INFO - __main__ -   ***** Running evaluation  in yo *****
+11/26/2021 08:30:53 - INFO - __main__ -     Num examples = 100
+11/26/2021 08:30:53 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:30:53 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:30:53 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:30:53 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:30:53 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:30:53 - INFO - __main__ -   ***** Evaluation result  in yo *****
+11/26/2021 08:30:53 - INFO - __main__ -     f1 = 0.2702702702702703
+11/26/2021 08:30:53 - INFO - __main__ -     loss = 3.9592384099960327
+11/26/2021 08:30:53 - INFO - __main__ -     precision = 0.2702702702702703
+11/26/2021 08:30:53 - INFO - __main__ -     recall = 0.2702702702702703
+11/26/2021 08:30:57 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:30:57 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/26/2021 08:30:57 - INFO - __main__ -   Seed = 2
+11/26/2021 08:30:57 - INFO - root -   save model
+11/26/2021 08:30:57 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:30:57 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/26/2021 08:31:00 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/26/2021 08:31:07 - INFO - __main__ -   Using lang2id = None
+11/26/2021 08:31:07 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+11/26/2021 08:31:07 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+11/26/2021 08:31:07 - INFO - root -   Trying to decide if add adapter
+11/26/2021 08:31:07 - INFO - root -   loading task adapter
+11/26/2021 08:31:07 - INFO - root -   loading lang adpater sw/wiki@ukp
+11/26/2021 08:31:07 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+11/26/2021 08:31:07 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+11/26/2021 08:31:07 - INFO - __main__ -   Language = sw
+11/26/2021 08:31:07 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+11/26/2021 08:31:13 - INFO - __main__ -   Language adapter for af not found, using sw instead
+11/26/2021 08:31:13 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:31:13 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:31:13 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:31:13 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+11/26/2021 08:31:13 - INFO - __main__ -   ***** Running evaluation  in af *****
+11/26/2021 08:31:13 - INFO - __main__ -     Num examples = 1000
+11/26/2021 08:31:13 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:31:13 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:31:13 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:31:13 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:31:13 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 5
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 6
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 7
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 8
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 9
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 10
+11/26/2021 08:31:14 - INFO - __main__ -   Batch number = 11
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 12
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 13
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 14
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 15
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 16
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 17
+11/26/2021 08:31:15 - INFO - __main__ -   Batch number = 18
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 19
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 20
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 21
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 22
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 23
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 24
+11/26/2021 08:31:16 - INFO - __main__ -   Batch number = 25
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 26
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 27
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 28
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 29
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 30
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 31
+11/26/2021 08:31:17 - INFO - __main__ -   Batch number = 32
+11/26/2021 08:31:18 - INFO - __main__ -   ***** Evaluation result  in af *****
+11/26/2021 08:31:18 - INFO - __main__ -     f1 = 0.6908977943460702
+11/26/2021 08:31:18 - INFO - __main__ -     loss = 0.7003881223499775
+11/26/2021 08:31:18 - INFO - __main__ -     precision = 0.6420323325635104
+11/26/2021 08:31:18 - INFO - __main__ -     recall = 0.7478143913920645
+11/26/2021 08:31:18 - INFO - __main__ -   Language adapter for yo not found, using sw instead
+11/26/2021 08:31:18 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:31:18 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:31:18 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:31:18 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+11/26/2021 08:31:18 - INFO - __main__ -   ***** Running evaluation  in yo *****
+11/26/2021 08:31:18 - INFO - __main__ -     Num examples = 100
+11/26/2021 08:31:18 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:31:18 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:31:18 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:31:18 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:31:18 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:31:18 - INFO - __main__ -   ***** Evaluation result  in yo *****
+11/26/2021 08:31:18 - INFO - __main__ -     f1 = 0.3946188340807175
+11/26/2021 08:31:18 - INFO - __main__ -     loss = 3.041683703660965
+11/26/2021 08:31:18 - INFO - __main__ -     precision = 0.39285714285714285
+11/26/2021 08:31:18 - INFO - __main__ -     recall = 0.3963963963963964
+11/26/2021 08:31:21 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:31:21 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+11/26/2021 08:31:21 - INFO - __main__ -   Seed = 3
+11/26/2021 08:31:21 - INFO - root -   save model
+11/26/2021 08:31:21 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+11/26/2021 08:31:21 - INFO - __main__ -   Loading pretrained model and tokenizer
+11/26/2021 08:31:24 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+11/26/2021 08:31:31 - INFO - __main__ -   Using lang2id = None
+11/26/2021 08:31:31 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+11/26/2021 08:31:31 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+11/26/2021 08:31:31 - INFO - root -   Trying to decide if add adapter
+11/26/2021 08:31:31 - INFO - root -   loading task adapter
+11/26/2021 08:31:31 - INFO - root -   loading lang adpater sw/wiki@ukp
+11/26/2021 08:31:31 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+11/26/2021 08:31:31 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+11/26/2021 08:31:31 - INFO - __main__ -   Language = sw
+11/26/2021 08:31:31 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+11/26/2021 08:31:37 - INFO - __main__ -   Language adapter for af not found, using sw instead
+11/26/2021 08:31:37 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:31:37 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:31:37 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:31:37 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+11/26/2021 08:31:37 - INFO - __main__ -   ***** Running evaluation  in af *****
+11/26/2021 08:31:37 - INFO - __main__ -     Num examples = 1000
+11/26/2021 08:31:37 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:31:37 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:31:37 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:31:37 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:31:37 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:31:37 - INFO - __main__ -   Batch number = 5
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 6
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 7
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 8
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 9
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 10
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 11
+11/26/2021 08:31:38 - INFO - __main__ -   Batch number = 12
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 13
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 14
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 15
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 16
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 17
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 18
+11/26/2021 08:31:39 - INFO - __main__ -   Batch number = 19
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 20
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 21
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 22
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 23
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 24
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 25
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 26
+11/26/2021 08:31:40 - INFO - __main__ -   Batch number = 27
+11/26/2021 08:31:41 - INFO - __main__ -   Batch number = 28
+11/26/2021 08:31:41 - INFO - __main__ -   Batch number = 29
+11/26/2021 08:31:41 - INFO - __main__ -   Batch number = 30
+11/26/2021 08:31:41 - INFO - __main__ -   Batch number = 31
+11/26/2021 08:31:41 - INFO - __main__ -   Batch number = 32
+11/26/2021 08:31:42 - INFO - __main__ -   ***** Evaluation result  in af *****
+11/26/2021 08:31:42 - INFO - __main__ -     f1 = 0.6640364188163884
+11/26/2021 08:31:42 - INFO - __main__ -     loss = 0.7858522031456232
+11/26/2021 08:31:42 - INFO - __main__ -     precision = 0.6050884955752213
+11/26/2021 08:31:42 - INFO - __main__ -     recall = 0.7357094821788837
+11/26/2021 08:31:42 - INFO - __main__ -   Language adapter for yo not found, using sw instead
+11/26/2021 08:31:42 - INFO - __main__ -   Set active language adapter to sw
+11/26/2021 08:31:42 - INFO - __main__ -   Args Adapter Weight = None
+11/26/2021 08:31:42 - INFO - __main__ -   Adapter Languages = ['sw']
+11/26/2021 08:31:42 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+11/26/2021 08:31:42 - INFO - __main__ -   ***** Running evaluation  in yo *****
+11/26/2021 08:31:42 - INFO - __main__ -     Num examples = 100
+11/26/2021 08:31:42 - INFO - __main__ -     Batch size = 32
+11/26/2021 08:31:42 - INFO - __main__ -   Batch number = 1
+11/26/2021 08:31:42 - INFO - __main__ -   Batch number = 2
+11/26/2021 08:31:42 - INFO - __main__ -   Batch number = 3
+11/26/2021 08:31:42 - INFO - __main__ -   Batch number = 4
+11/26/2021 08:31:42 - INFO - __main__ -   ***** Evaluation result  in yo *****
+11/26/2021 08:31:42 - INFO - __main__ -     f1 = 0.272
+11/26/2021 08:31:42 - INFO - __main__ -     loss = 4.614583432674408
+11/26/2021 08:31:42 - INFO - __main__ -     precision = 0.2446043165467626
+11/26/2021 08:31:42 - INFO - __main__ -     recall = 0.3063063063063063
+12/27/2021 00:10:23 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:10:23 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/27/2021 00:10:23 - INFO - __main__ -   Seed = 1
+12/27/2021 00:10:23 - INFO - root -   save model
+12/27/2021 00:10:23 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:10:23 - INFO - __main__ -   Loading pretrained model and tokenizer
+12/27/2021 00:10:27 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+12/27/2021 00:10:33 - INFO - __main__ -   Using lang2id = None
+12/27/2021 00:10:33 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/27/2021 00:10:33 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+12/27/2021 00:10:33 - INFO - root -   Trying to decide if add adapter
+12/27/2021 00:10:33 - INFO - root -   loading task adapter
+12/27/2021 00:10:33 - INFO - root -   loading lang adpater sw/wiki@ukp
+12/27/2021 00:10:33 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+12/27/2021 00:10:33 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+12/27/2021 00:10:33 - INFO - __main__ -   Language = sw
+12/27/2021 00:10:33 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+12/27/2021 00:10:37 - INFO - __main__ -   Language adapter for sw found
+12/27/2021 00:10:37 - INFO - __main__ -   Set active language adapter to sw
+12/27/2021 00:10:37 - INFO - __main__ -   Args Adapter Weight = None
+12/27/2021 00:10:37 - INFO - __main__ -   Adapter Languages = ['sw']
+12/27/2021 00:10:37 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_sw_bert-base-multilingual-cased_128
+12/27/2021 00:10:37 - INFO - __main__ -   ***** Running evaluation  in sw *****
+12/27/2021 00:10:37 - INFO - __main__ -     Num examples = 1000
+12/27/2021 00:10:37 - INFO - __main__ -     Batch size = 32
+12/27/2021 00:10:37 - INFO - __main__ -   Batch number = 1
+12/27/2021 00:10:37 - INFO - __main__ -   Batch number = 2
+12/27/2021 00:10:37 - INFO - __main__ -   Batch number = 3
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 4
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 5
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 6
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 7
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 8
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 9
+12/27/2021 00:10:38 - INFO - __main__ -   Batch number = 10
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 11
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 12
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 13
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 14
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 15
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 16
+12/27/2021 00:10:39 - INFO - __main__ -   Batch number = 17
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 18
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 19
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 20
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 21
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 22
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 23
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 24
+12/27/2021 00:10:40 - INFO - __main__ -   Batch number = 25
+12/27/2021 00:10:41 - INFO - __main__ -   Batch number = 26
+12/27/2021 00:10:41 - INFO - __main__ -   Batch number = 27
+12/27/2021 00:10:41 - INFO - __main__ -   Batch number = 28
+12/27/2021 00:10:42 - INFO - __main__ -   Batch number = 29
+12/27/2021 00:10:42 - INFO - __main__ -   Batch number = 30
+12/27/2021 00:10:42 - INFO - __main__ -   Batch number = 31
+12/27/2021 00:10:42 - INFO - __main__ -   Batch number = 32
+12/27/2021 00:10:42 - INFO - __main__ -   ***** Evaluation result  in sw *****
+12/27/2021 00:10:42 - INFO - __main__ -     f1 = 0.5611237661351556
+12/27/2021 00:10:42 - INFO - __main__ -     loss = 1.4472705442458391
+12/27/2021 00:10:42 - INFO - __main__ -     precision = 0.5131944444444444
+12/27/2021 00:10:42 - INFO - __main__ -     recall = 0.61892797319933
+12/27/2021 00:10:44 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:10:44 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/27/2021 00:10:44 - INFO - __main__ -   Seed = 2
+12/27/2021 00:10:44 - INFO - root -   save model
+12/27/2021 00:10:44 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:10:44 - INFO - __main__ -   Loading pretrained model and tokenizer
+12/27/2021 00:10:49 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+12/27/2021 00:10:54 - INFO - __main__ -   Using lang2id = None
+12/27/2021 00:10:54 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/27/2021 00:10:54 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+12/27/2021 00:10:54 - INFO - root -   Trying to decide if add adapter
+12/27/2021 00:10:54 - INFO - root -   loading task adapter
+12/27/2021 00:10:54 - INFO - root -   loading lang adpater sw/wiki@ukp
+12/27/2021 00:10:54 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+12/27/2021 00:10:54 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+12/27/2021 00:10:54 - INFO - __main__ -   Language = sw
+12/27/2021 00:10:54 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+12/27/2021 00:10:58 - INFO - __main__ -   Language adapter for sw found
+12/27/2021 00:10:58 - INFO - __main__ -   Set active language adapter to sw
+12/27/2021 00:10:58 - INFO - __main__ -   Args Adapter Weight = None
+12/27/2021 00:10:58 - INFO - __main__ -   Adapter Languages = ['sw']
+12/27/2021 00:10:58 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_sw_bert-base-multilingual-cased_128
+12/27/2021 00:10:58 - INFO - __main__ -   ***** Running evaluation  in sw *****
+12/27/2021 00:10:58 - INFO - __main__ -     Num examples = 1000
+12/27/2021 00:10:58 - INFO - __main__ -     Batch size = 32
+12/27/2021 00:10:58 - INFO - __main__ -   Batch number = 1
+12/27/2021 00:10:58 - INFO - __main__ -   Batch number = 2
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 3
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 4
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 5
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 6
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 7
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 8
+12/27/2021 00:10:59 - INFO - __main__ -   Batch number = 9
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 10
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 11
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 12
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 13
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 14
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 15
+12/27/2021 00:11:00 - INFO - __main__ -   Batch number = 16
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 17
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 18
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 19
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 20
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 21
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 22
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 23
+12/27/2021 00:11:01 - INFO - __main__ -   Batch number = 24
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 25
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 26
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 27
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 28
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 29
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 30
+12/27/2021 00:11:02 - INFO - __main__ -   Batch number = 31
+12/27/2021 00:11:03 - INFO - __main__ -   Batch number = 32
+12/27/2021 00:11:03 - INFO - __main__ -   ***** Evaluation result  in sw *****
+12/27/2021 00:11:03 - INFO - __main__ -     f1 = 0.5623362036690378
+12/27/2021 00:11:03 - INFO - __main__ -     loss = 1.3583929985761642
+12/27/2021 00:11:03 - INFO - __main__ -     precision = 0.5084631008801624
+12/27/2021 00:11:03 - INFO - __main__ -     recall = 0.6289782244556114
+12/27/2021 00:11:05 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:11:05 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/27/2021 00:11:05 - INFO - __main__ -   Seed = 3
+12/27/2021 00:11:05 - INFO - root -   save model
+12/27/2021 00:11:05 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='sw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:11:05 - INFO - __main__ -   Loading pretrained model and tokenizer
+12/27/2021 00:11:09 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+12/27/2021 00:11:15 - INFO - __main__ -   Using lang2id = None
+12/27/2021 00:11:15 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/27/2021 00:11:15 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+12/27/2021 00:11:15 - INFO - root -   Trying to decide if add adapter
+12/27/2021 00:11:15 - INFO - root -   loading task adapter
+12/27/2021 00:11:15 - INFO - root -   loading lang adpater sw/wiki@ukp
+12/27/2021 00:11:15 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+12/27/2021 00:11:15 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+12/27/2021 00:11:15 - INFO - __main__ -   Language = sw
+12/27/2021 00:11:15 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+12/27/2021 00:11:19 - INFO - __main__ -   Language adapter for sw found
+12/27/2021 00:11:19 - INFO - __main__ -   Set active language adapter to sw
+12/27/2021 00:11:19 - INFO - __main__ -   Args Adapter Weight = None
+12/27/2021 00:11:19 - INFO - __main__ -   Adapter Languages = ['sw']
+12/27/2021 00:11:19 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_sw_bert-base-multilingual-cased_128
+12/27/2021 00:11:19 - INFO - __main__ -   ***** Running evaluation  in sw *****
+12/27/2021 00:11:19 - INFO - __main__ -     Num examples = 1000
+12/27/2021 00:11:19 - INFO - __main__ -     Batch size = 32
+12/27/2021 00:11:19 - INFO - __main__ -   Batch number = 1
+12/27/2021 00:11:19 - INFO - __main__ -   Batch number = 2
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 3
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 4
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 5
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 6
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 7
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 8
+12/27/2021 00:11:20 - INFO - __main__ -   Batch number = 9
+12/27/2021 00:11:21 - INFO - __main__ -   Batch number = 10
+12/27/2021 00:11:21 - INFO - __main__ -   Batch number = 11
+12/27/2021 00:11:21 - INFO - __main__ -   Batch number = 12
+12/27/2021 00:11:21 - INFO - __main__ -   Batch number = 13
+12/27/2021 00:11:21 - INFO - __main__ -   Batch number = 14
+12/27/2021 00:11:21 - INFO - __main__ -   Batch number = 15
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 16
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 17
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 18
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 19
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 20
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 21
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 22
+12/27/2021 00:11:22 - INFO - __main__ -   Batch number = 23
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 24
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 25
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 26
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 27
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 28
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 29
+12/27/2021 00:11:23 - INFO - __main__ -   Batch number = 30
+12/27/2021 00:11:24 - INFO - __main__ -   Batch number = 31
+12/27/2021 00:11:24 - INFO - __main__ -   Batch number = 32
+12/27/2021 00:11:24 - INFO - __main__ -   ***** Evaluation result  in sw *****
+12/27/2021 00:11:24 - INFO - __main__ -     f1 = 0.555878084179971
+12/27/2021 00:11:24 - INFO - __main__ -     loss = 1.6222248636186123
+12/27/2021 00:11:24 - INFO - __main__ -     precision = 0.49039692701664533
+12/27/2021 00:11:24 - INFO - __main__ -     recall = 0.6415410385259631
+01/12/2022 19:09:04 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='rw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:09:04 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/12/2022 19:09:04 - INFO - __main__ -   Seed = 2
+01/12/2022 19:09:04 - INFO - root -   save model
+01/12/2022 19:09:04 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='rw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:09:04 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/12/2022 19:09:07 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/12/2022 19:09:13 - INFO - __main__ -   Using lang2id = None
+01/12/2022 19:09:13 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/12/2022 19:09:13 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+01/12/2022 19:09:13 - INFO - root -   Trying to decide if add adapter
+01/12/2022 19:09:13 - INFO - root -   loading task adapter
+01/12/2022 19:09:13 - INFO - root -   loading lang adpater sw/wiki@ukp
+01/12/2022 19:09:13 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+01/12/2022 19:09:13 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+01/12/2022 19:09:13 - INFO - __main__ -   Language = sw
+01/12/2022 19:09:13 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+01/12/2022 19:09:21 - INFO - __main__ -   Language adapter for rw not found, using sw instead
+01/12/2022 19:09:21 - INFO - __main__ -   Set active language adapter to sw
+01/12/2022 19:09:21 - INFO - __main__ -   Args Adapter Weight = None
+01/12/2022 19:09:21 - INFO - __main__ -   Adapter Languages = ['sw']
+01/12/2022 19:09:21 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/12/2022 19:09:21 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/12/2022 19:09:21 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:09:21 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:09:21 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:09:22 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:09:22 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:09:23 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:09:23 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/12/2022 19:09:23 - INFO - __main__ -     f1 = 0.48068669527896996
+01/12/2022 19:09:23 - INFO - __main__ -     loss = 2.3044527545571327
+01/12/2022 19:09:23 - INFO - __main__ -     precision = 0.43410852713178294
+01/12/2022 19:09:23 - INFO - __main__ -     recall = 0.5384615384615384
+01/12/2022 19:09:25 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='rw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:09:25 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/12/2022 19:09:25 - INFO - __main__ -   Seed = 3
+01/12/2022 19:09:25 - INFO - root -   save model
+01/12/2022 19:09:25 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='rw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:09:25 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/12/2022 19:09:35 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/12/2022 19:09:43 - INFO - __main__ -   Using lang2id = None
+01/12/2022 19:09:43 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/12/2022 19:09:43 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+01/12/2022 19:09:43 - INFO - root -   Trying to decide if add adapter
+01/12/2022 19:09:43 - INFO - root -   loading task adapter
+01/12/2022 19:09:43 - INFO - root -   loading lang adpater sw/wiki@ukp
+01/12/2022 19:09:43 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+01/12/2022 19:09:43 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+01/12/2022 19:09:43 - INFO - __main__ -   Language = sw
+01/12/2022 19:09:43 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+01/12/2022 19:09:50 - INFO - __main__ -   Language adapter for rw not found, using sw instead
+01/12/2022 19:09:50 - INFO - __main__ -   Set active language adapter to sw
+01/12/2022 19:09:50 - INFO - __main__ -   Args Adapter Weight = None
+01/12/2022 19:09:50 - INFO - __main__ -   Adapter Languages = ['sw']
+01/12/2022 19:09:50 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/12/2022 19:09:50 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/12/2022 19:09:50 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:09:50 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:09:50 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:09:51 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:09:51 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:09:51 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:09:51 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/12/2022 19:09:51 - INFO - __main__ -     f1 = 0.5099601593625498
+01/12/2022 19:09:51 - INFO - __main__ -     loss = 2.543558745266637
+01/12/2022 19:09:51 - INFO - __main__ -     precision = 0.43537414965986393
+01/12/2022 19:09:51 - INFO - __main__ -     recall = 0.6153846153846154
+01/12/2022 19:10:46 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='rw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:10:46 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/12/2022 19:10:46 - INFO - __main__ -   Seed = 1
+01/12/2022 19:10:46 - INFO - root -   save model
+01/12/2022 19:10:46 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='rw', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_sw//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:10:46 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/12/2022 19:10:59 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/12/2022 19:11:06 - INFO - __main__ -   Using lang2id = None
+01/12/2022 19:11:06 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/12/2022 19:11:06 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+01/12/2022 19:11:06 - INFO - root -   Trying to decide if add adapter
+01/12/2022 19:11:06 - INFO - root -   loading task adapter
+01/12/2022 19:11:06 - INFO - root -   loading lang adpater sw/wiki@ukp
+01/12/2022 19:11:06 - INFO - __main__ -   Adapter Languages : ['sw'], Length : 1
+01/12/2022 19:11:06 - INFO - __main__ -   Adapter Names ['sw/wiki@ukp'], Length : 1
+01/12/2022 19:11:06 - INFO - __main__ -   Language = sw
+01/12/2022 19:11:06 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+01/12/2022 19:11:15 - INFO - __main__ -   Language adapter for rw not found, using sw instead
+01/12/2022 19:11:15 - INFO - __main__ -   Set active language adapter to sw
+01/12/2022 19:11:15 - INFO - __main__ -   Args Adapter Weight = None
+01/12/2022 19:11:15 - INFO - __main__ -   Adapter Languages = ['sw']
+01/12/2022 19:11:15 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/12/2022 19:11:15 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/12/2022 19:11:15 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:11:15 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:11:15 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:11:15 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:11:15 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:11:15 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:11:15 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/12/2022 19:11:15 - INFO - __main__ -     f1 = 0.5499999999999999
+01/12/2022 19:11:15 - INFO - __main__ -     loss = 2.5000627408735454
+01/12/2022 19:11:15 - INFO - __main__ -     precision = 0.4852941176470588
+01/12/2022 19:11:15 - INFO - __main__ -     recall = 0.6346153846153846

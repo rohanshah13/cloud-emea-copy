@@ -1,30 +1,16 @@
-import argparse
-import json
+LANGS = ["hi,my,fa,tk,vi,zh,ka,zh_yue,hy,ru", "hi,my,fa,vi,zh,tk,zh_yue,ru,bxr,cdo", "hi,my,fa,vi,tk,jv,zh_yue,id,zh,am", "is,en,se,et,fi,fr,kv,cs,de,eu", "et,lv,fi,en,se,cs,de,fr,is,hu", "cs,en,de,fr,lv,et,hu,fi,la,eu", "lv,et,cs,hu,de,el,fi,myv,mhr,tr", "hu,el,cs,de,lv,tr,la,et,xmf,myv", "el,hu,tr,la,cs,de,xmf,lv,hy,ka"]
 
-PATH = 'scripts/udpos/{}.json'
+my_str = ''
+counter = 0
+for langs in LANGS:
+    print(counter)
+    counter += 1
+    assert len(langs.split(',')) == 10 
+    adapter_names = [f'{lang}/wiki@ukp' for lang in langs.split(',')]
+    adapter_names = ','.join(adapter_names)
+    if len(my_str) == 0:
+        my_str = f'"{adapter_names}"'
+    else:
+        my_str = my_str + f' "{adapter_names}"'
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--lang', default='hi')
-args = parser.parse_args()
-
-all_adapters = []
-
-with open(PATH.format('en')) as f:
-    for line in f:
-        line = json.loads(line.strip())
-        all_adapters.append(line['adapter'])
-
-lang_adapters = []
-incomplete_adapters = []
-with open(PATH.format(args.lang)) as f:
-    for line in f:
-        line = json.loads(line.strip())
-        lang_adapters.append(line['adapter'])
-        if line['num_seeds'] < 3:
-            incomplete_adapters.append(line['adapter'])
-
-rem_adapters = [f'"{adapter}"' for adapter in all_adapters if adapter not in lang_adapters] + [f'"{adapter}"' for adapter in incomplete_adapters]
-rem_adapter_names = [f'"{adapter}/wiki@ukp"' for adapter in all_adapters if adapter not in lang_adapters] + [f'"{adapter}/wiki@ukp"' for adapter in incomplete_adapters]
-
-print(f"ADAPTERS_LANGS=( {' '.join(rem_adapters)} )")
-print(f"LANG_ADAPTER_NAMES=( {' '.join(rem_adapter_names)} )")
+print(my_str)

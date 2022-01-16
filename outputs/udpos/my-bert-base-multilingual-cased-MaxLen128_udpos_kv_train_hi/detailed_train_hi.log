@@ -1,0 +1,1083 @@
+PyTorch version 1.10.0+cu102 available.
+12/01/2021 13:02:12 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi//train_hi.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/01/2021 13:02:12 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/01/2021 13:02:12 - INFO - __main__ -   Seed = 1
+12/01/2021 13:02:12 - INFO - root -   save model
+12/01/2021 13:02:12 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi//train_hi.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/01/2021 13:02:12 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/01/2021 13:02:15 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/01/2021 13:02:21 - INFO - __main__ -   Using lang2id = None
+12/01/2021 13:02:21 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/01/2021 13:02:21 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/
+12/01/2021 13:02:21 - INFO - root -   Trying to decide if add adapter
+12/01/2021 13:02:21 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/pytorch_model_head.bin
+12/01/2021 13:02:21 - INFO - root -   loading lang adpater kv/wiki@ukp
+12/01/2021 13:02:21 - INFO - __main__ -   Adapter Languages : ['kv'], Length : 1
+12/01/2021 13:02:21 - INFO - __main__ -   Adapter Names ['kv/wiki@ukp'], Length : 1
+12/01/2021 13:02:21 - INFO - __main__ -   Language = kv
+12/01/2021 13:02:21 - INFO - __main__ -   Adapter Name = kv/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/kv/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_kv_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/adapter_config.json
+Adding adapter 'kv' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/head_config.json
+12/01/2021 13:02:26 - INFO - __main__ -   Language adapter for en not found, using kv instead
+12/01/2021 13:02:26 - INFO - __main__ -   Set active language adapter to kv
+12/01/2021 13:02:26 - INFO - __main__ -   Args Adapter Weight = None
+12/01/2021 13:02:26 - INFO - __main__ -   Adapter Languages = ['kv']
+12/01/2021 13:02:26 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/cached_test_en_bert-base-multilingual-cased_128
+12/01/2021 13:02:27 - INFO - __main__ -   ***** Running evaluation  in en *****
+12/01/2021 13:02:27 - INFO - __main__ -     Num examples = 5441
+12/01/2021 13:02:27 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/171 [00:00<?, ?it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 1
+Evaluating:   1%|          | 1/171 [00:00<00:26,  6.32it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 2
+Evaluating:   1%|          | 2/171 [00:00<00:25,  6.59it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 3
+Evaluating:   2%|▏         | 3/171 [00:00<00:24,  6.79it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 4
+Evaluating:   2%|▏         | 4/171 [00:00<00:24,  6.94it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 5
+Evaluating:   3%|▎         | 5/171 [00:00<00:23,  7.00it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 6
+Evaluating:   4%|▎         | 6/171 [00:00<00:23,  7.06it/s]12/01/2021 13:02:27 - INFO - __main__ -   Batch number = 7
+Evaluating:   4%|▍         | 7/171 [00:01<00:23,  7.10it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 8
+Evaluating:   5%|▍         | 8/171 [00:01<00:22,  7.13it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 9
+Evaluating:   5%|▌         | 9/171 [00:01<00:22,  7.12it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 10
+Evaluating:   6%|▌         | 10/171 [00:01<00:22,  7.13it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 11
+Evaluating:   6%|▋         | 11/171 [00:01<00:22,  7.14it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 12
+Evaluating:   7%|▋         | 12/171 [00:01<00:22,  7.13it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 13
+Evaluating:   8%|▊         | 13/171 [00:01<00:22,  7.13it/s]12/01/2021 13:02:28 - INFO - __main__ -   Batch number = 14
+Evaluating:   8%|▊         | 14/171 [00:01<00:22,  7.11it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 15
+Evaluating:   9%|▉         | 15/171 [00:02<00:21,  7.09it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 16
+Evaluating:   9%|▉         | 16/171 [00:02<00:21,  7.10it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 17
+Evaluating:  10%|▉         | 17/171 [00:02<00:21,  7.11it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 18
+Evaluating:  11%|█         | 18/171 [00:02<00:21,  7.11it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 19
+Evaluating:  11%|█         | 19/171 [00:02<00:21,  7.11it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 20
+Evaluating:  12%|█▏        | 20/171 [00:02<00:21,  7.11it/s]12/01/2021 13:02:29 - INFO - __main__ -   Batch number = 21
+Evaluating:  12%|█▏        | 21/171 [00:02<00:21,  7.09it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 22
+Evaluating:  13%|█▎        | 22/171 [00:03<00:21,  7.08it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 23
+Evaluating:  13%|█▎        | 23/171 [00:03<00:20,  7.09it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 24
+Evaluating:  14%|█▍        | 24/171 [00:03<00:20,  7.06it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 25
+Evaluating:  15%|█▍        | 25/171 [00:03<00:20,  7.08it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 26
+Evaluating:  15%|█▌        | 26/171 [00:03<00:20,  7.01it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 27
+Evaluating:  16%|█▌        | 27/171 [00:03<00:20,  6.99it/s]12/01/2021 13:02:30 - INFO - __main__ -   Batch number = 28
+Evaluating:  16%|█▋        | 28/171 [00:03<00:20,  7.00it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 29
+Evaluating:  17%|█▋        | 29/171 [00:04<00:20,  7.02it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 30
+Evaluating:  18%|█▊        | 30/171 [00:04<00:20,  7.02it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 31
+Evaluating:  18%|█▊        | 31/171 [00:04<00:19,  7.02it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 32
+Evaluating:  19%|█▊        | 32/171 [00:04<00:19,  7.03it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 33
+Evaluating:  19%|█▉        | 33/171 [00:04<00:19,  7.01it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 34
+Evaluating:  20%|█▉        | 34/171 [00:04<00:19,  7.00it/s]12/01/2021 13:02:31 - INFO - __main__ -   Batch number = 35
+Evaluating:  20%|██        | 35/171 [00:04<00:19,  7.01it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 36
+Evaluating:  21%|██        | 36/171 [00:05<00:19,  6.99it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 37
+Evaluating:  22%|██▏       | 37/171 [00:05<00:19,  6.98it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 38
+Evaluating:  22%|██▏       | 38/171 [00:05<00:19,  6.99it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 39
+Evaluating:  23%|██▎       | 39/171 [00:05<00:18,  6.98it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 40
+Evaluating:  23%|██▎       | 40/171 [00:05<00:18,  6.99it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 41
+Evaluating:  24%|██▍       | 41/171 [00:05<00:18,  6.99it/s]12/01/2021 13:02:32 - INFO - __main__ -   Batch number = 42
+Evaluating:  25%|██▍       | 42/171 [00:05<00:18,  6.97it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 43
+Evaluating:  25%|██▌       | 43/171 [00:06<00:18,  6.95it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 44
+Evaluating:  26%|██▌       | 44/171 [00:06<00:18,  6.98it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 45
+Evaluating:  26%|██▋       | 45/171 [00:06<00:18,  6.94it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 46
+Evaluating:  27%|██▋       | 46/171 [00:06<00:18,  6.93it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 47
+Evaluating:  27%|██▋       | 47/171 [00:06<00:17,  6.93it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 48
+Evaluating:  28%|██▊       | 48/171 [00:06<00:17,  6.94it/s]12/01/2021 13:02:33 - INFO - __main__ -   Batch number = 49
+Evaluating:  29%|██▊       | 49/171 [00:06<00:17,  6.96it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 50
+Evaluating:  29%|██▉       | 50/171 [00:07<00:17,  6.83it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 51
+Evaluating:  30%|██▉       | 51/171 [00:07<00:17,  6.82it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 52
+Evaluating:  30%|███       | 52/171 [00:07<00:17,  6.85it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 53
+Evaluating:  31%|███       | 53/171 [00:07<00:17,  6.87it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 54
+Evaluating:  32%|███▏      | 54/171 [00:07<00:16,  6.89it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 55
+Evaluating:  32%|███▏      | 55/171 [00:07<00:16,  6.91it/s]12/01/2021 13:02:34 - INFO - __main__ -   Batch number = 56
+Evaluating:  33%|███▎      | 56/171 [00:08<00:16,  6.93it/s]12/01/2021 13:02:35 - INFO - __main__ -   Batch number = 57
+Evaluating:  33%|███▎      | 57/171 [00:08<00:16,  6.93it/s]12/01/2021 13:02:35 - INFO - __main__ -   Batch number = 58
+Evaluating:  34%|███▍      | 58/171 [00:08<00:16,  6.93it/s]12/01/2021 13:02:35 - INFO - __main__ -   Batch number = 59
+Evaluating:  35%|███▍      | 59/171 [00:08<00:16,  6.92it/s]12/01/2021 13:02:35 - INFO - __main__ -   Batch number = 60
+Evaluating:  35%|███▌      | 60/171 [00:08<00:17,  6.25it/s]12/01/2021 13:02:35 - INFO - __main__ -   Batch number = 61
+Evaluating:  36%|███▌      | 61/171 [00:08<00:17,  6.44it/s]12/01/2021 13:02:35 - INFO - __main__ -   Batch number = 62
+Evaluating:  36%|███▋      | 62/171 [00:08<00:16,  6.58it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 63
+Evaluating:  37%|███▋      | 63/171 [00:09<00:16,  6.65it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 64
+Evaluating:  37%|███▋      | 64/171 [00:09<00:15,  6.71it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 65
+Evaluating:  38%|███▊      | 65/171 [00:09<00:15,  6.78it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 66
+Evaluating:  39%|███▊      | 66/171 [00:09<00:15,  6.80it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 67
+Evaluating:  39%|███▉      | 67/171 [00:09<00:15,  6.82it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 68
+Evaluating:  40%|███▉      | 68/171 [00:09<00:15,  6.85it/s]12/01/2021 13:02:36 - INFO - __main__ -   Batch number = 69
+Evaluating:  40%|████      | 69/171 [00:09<00:14,  6.86it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 70
+Evaluating:  41%|████      | 70/171 [00:10<00:14,  6.84it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 71
+Evaluating:  42%|████▏     | 71/171 [00:10<00:14,  6.83it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 72
+Evaluating:  42%|████▏     | 72/171 [00:10<00:14,  6.81it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 73
+Evaluating:  43%|████▎     | 73/171 [00:10<00:14,  6.83it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 74
+Evaluating:  43%|████▎     | 74/171 [00:10<00:14,  6.83it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 75
+Evaluating:  44%|████▍     | 75/171 [00:10<00:14,  6.82it/s]12/01/2021 13:02:37 - INFO - __main__ -   Batch number = 76
+Evaluating:  44%|████▍     | 76/171 [00:10<00:14,  6.73it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 77
+Evaluating:  45%|████▌     | 77/171 [00:11<00:13,  6.75it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 78
+Evaluating:  46%|████▌     | 78/171 [00:11<00:13,  6.79it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 79
+Evaluating:  46%|████▌     | 79/171 [00:11<00:13,  6.78it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 80
+Evaluating:  47%|████▋     | 80/171 [00:11<00:13,  6.79it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 81
+Evaluating:  47%|████▋     | 81/171 [00:11<00:13,  6.82it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 82
+Evaluating:  48%|████▊     | 82/171 [00:11<00:13,  6.84it/s]12/01/2021 13:02:38 - INFO - __main__ -   Batch number = 83
+Evaluating:  49%|████▊     | 83/171 [00:11<00:12,  6.85it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 84
+Evaluating:  49%|████▉     | 84/171 [00:12<00:12,  6.79it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 85
+Evaluating:  50%|████▉     | 85/171 [00:12<00:12,  6.73it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 86
+Evaluating:  50%|█████     | 86/171 [00:12<00:12,  6.73it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 87
+Evaluating:  51%|█████     | 87/171 [00:12<00:12,  6.70it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 88
+Evaluating:  51%|█████▏    | 88/171 [00:12<00:12,  6.64it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 89
+Evaluating:  52%|█████▏    | 89/171 [00:12<00:12,  6.64it/s]12/01/2021 13:02:39 - INFO - __main__ -   Batch number = 90
+Evaluating:  53%|█████▎    | 90/171 [00:13<00:12,  6.67it/s]12/01/2021 13:02:40 - INFO - __main__ -   Batch number = 91
+Evaluating:  53%|█████▎    | 91/171 [00:13<00:11,  6.69it/s]12/01/2021 13:02:40 - INFO - __main__ -   Batch number = 92
+Evaluating:  54%|█████▍    | 92/171 [00:13<00:11,  6.73it/s]12/01/2021 13:02:40 - INFO - __main__ -   Batch number = 93
+Evaluating:  54%|█████▍    | 93/171 [00:13<00:11,  6.72it/s]12/01/2021 13:02:40 - INFO - __main__ -   Batch number = 94
+Evaluating:  55%|█████▍    | 94/171 [00:13<00:11,  6.63it/s]12/01/2021 13:02:40 - INFO - __main__ -   Batch number = 95
+Evaluating:  56%|█████▌    | 95/171 [00:13<00:11,  6.70it/s]12/01/2021 13:02:40 - INFO - __main__ -   Batch number = 96
+Evaluating:  56%|█████▌    | 96/171 [00:13<00:11,  6.74it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 97
+Evaluating:  57%|█████▋    | 97/171 [00:14<00:10,  6.76it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 98
+Evaluating:  57%|█████▋    | 98/171 [00:14<00:10,  6.76it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 99
+Evaluating:  58%|█████▊    | 99/171 [00:14<00:10,  6.71it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 100
+Evaluating:  58%|█████▊    | 100/171 [00:14<00:10,  6.67it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 101
+Evaluating:  59%|█████▉    | 101/171 [00:14<00:10,  6.67it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 102
+Evaluating:  60%|█████▉    | 102/171 [00:14<00:10,  6.67it/s]12/01/2021 13:02:41 - INFO - __main__ -   Batch number = 103
+Evaluating:  60%|██████    | 103/171 [00:14<00:10,  6.66it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 104
+Evaluating:  61%|██████    | 104/171 [00:15<00:10,  6.66it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 105
+Evaluating:  61%|██████▏   | 105/171 [00:15<00:09,  6.68it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 106
+Evaluating:  62%|██████▏   | 106/171 [00:15<00:09,  6.71it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 107
+Evaluating:  63%|██████▎   | 107/171 [00:15<00:09,  6.61it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 108
+Evaluating:  63%|██████▎   | 108/171 [00:15<00:09,  6.57it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 109
+Evaluating:  64%|██████▎   | 109/171 [00:15<00:09,  6.62it/s]12/01/2021 13:02:42 - INFO - __main__ -   Batch number = 110
+Evaluating:  64%|██████▍   | 110/171 [00:16<00:09,  6.54it/s]12/01/2021 13:02:43 - INFO - __main__ -   Batch number = 111
+Evaluating:  65%|██████▍   | 111/171 [00:16<00:09,  6.47it/s]12/01/2021 13:02:43 - INFO - __main__ -   Batch number = 112
+Evaluating:  65%|██████▌   | 112/171 [00:16<00:09,  6.47it/s]12/01/2021 13:02:43 - INFO - __main__ -   Batch number = 113
+Evaluating:  66%|██████▌   | 113/171 [00:16<00:09,  6.44it/s]12/01/2021 13:02:43 - INFO - __main__ -   Batch number = 114
+Evaluating:  67%|██████▋   | 114/171 [00:16<00:08,  6.37it/s]12/01/2021 13:02:43 - INFO - __main__ -   Batch number = 115
+Evaluating:  67%|██████▋   | 115/171 [00:16<00:08,  6.33it/s]12/01/2021 13:02:43 - INFO - __main__ -   Batch number = 116
+Evaluating:  68%|██████▊   | 116/171 [00:17<00:08,  6.19it/s]12/01/2021 13:02:44 - INFO - __main__ -   Batch number = 117
+Evaluating:  68%|██████▊   | 117/171 [00:17<00:08,  6.27it/s]12/01/2021 13:02:44 - INFO - __main__ -   Batch number = 118
+Evaluating:  69%|██████▉   | 118/171 [00:17<00:08,  6.36it/s]12/01/2021 13:02:44 - INFO - __main__ -   Batch number = 119
+Evaluating:  70%|██████▉   | 119/171 [00:17<00:08,  6.32it/s]12/01/2021 13:02:44 - INFO - __main__ -   Batch number = 120
+Evaluating:  70%|███████   | 120/171 [00:17<00:08,  6.21it/s]12/01/2021 13:02:44 - INFO - __main__ -   Batch number = 121
+Evaluating:  71%|███████   | 121/171 [00:17<00:08,  6.23it/s]12/01/2021 13:02:44 - INFO - __main__ -   Batch number = 122
+Evaluating:  71%|███████▏  | 122/171 [00:17<00:07,  6.25it/s]12/01/2021 13:02:45 - INFO - __main__ -   Batch number = 123
+Evaluating:  72%|███████▏  | 123/171 [00:18<00:07,  6.17it/s]12/01/2021 13:02:45 - INFO - __main__ -   Batch number = 124
+Evaluating:  73%|███████▎  | 124/171 [00:18<00:07,  6.18it/s]12/01/2021 13:02:45 - INFO - __main__ -   Batch number = 125
+Evaluating:  73%|███████▎  | 125/171 [00:18<00:07,  6.21it/s]12/01/2021 13:02:45 - INFO - __main__ -   Batch number = 126
+Evaluating:  74%|███████▎  | 126/171 [00:18<00:07,  5.83it/s]12/01/2021 13:02:45 - INFO - __main__ -   Batch number = 127
+Evaluating:  74%|███████▍  | 127/171 [00:18<00:07,  6.05it/s]12/01/2021 13:02:45 - INFO - __main__ -   Batch number = 128
+Evaluating:  75%|███████▍  | 128/171 [00:18<00:06,  6.21it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 129
+Evaluating:  75%|███████▌  | 129/171 [00:19<00:06,  6.22it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 130
+Evaluating:  76%|███████▌  | 130/171 [00:19<00:06,  6.35it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 131
+Evaluating:  77%|███████▋  | 131/171 [00:19<00:06,  6.45it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 132
+Evaluating:  77%|███████▋  | 132/171 [00:19<00:06,  6.44it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 133
+Evaluating:  78%|███████▊  | 133/171 [00:19<00:05,  6.52it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 134
+Evaluating:  78%|███████▊  | 134/171 [00:19<00:05,  6.57it/s]12/01/2021 13:02:46 - INFO - __main__ -   Batch number = 135
+Evaluating:  79%|███████▉  | 135/171 [00:20<00:05,  6.51it/s]12/01/2021 13:02:47 - INFO - __main__ -   Batch number = 136
+Evaluating:  80%|███████▉  | 136/171 [00:20<00:05,  6.56it/s]12/01/2021 13:02:47 - INFO - __main__ -   Batch number = 137
+Evaluating:  80%|████████  | 137/171 [00:20<00:05,  6.58it/s]12/01/2021 13:02:47 - INFO - __main__ -   Batch number = 138
+Evaluating:  81%|████████  | 138/171 [00:20<00:05,  6.53it/s]12/01/2021 13:02:47 - INFO - __main__ -   Batch number = 139
+Evaluating:  81%|████████▏ | 139/171 [00:20<00:04,  6.57it/s]12/01/2021 13:02:47 - INFO - __main__ -   Batch number = 140
+Evaluating:  82%|████████▏ | 140/171 [00:20<00:04,  6.60it/s]12/01/2021 13:02:47 - INFO - __main__ -   Batch number = 141
+Evaluating:  82%|████████▏ | 141/171 [00:20<00:04,  6.52it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 142
+Evaluating:  83%|████████▎ | 142/171 [00:21<00:04,  6.53it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 143
+Evaluating:  84%|████████▎ | 143/171 [00:21<00:04,  6.53it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 144
+Evaluating:  84%|████████▍ | 144/171 [00:21<00:04,  6.44it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 145
+Evaluating:  85%|████████▍ | 145/171 [00:21<00:04,  6.48it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 146
+Evaluating:  85%|████████▌ | 146/171 [00:21<00:03,  6.52it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 147
+Evaluating:  86%|████████▌ | 147/171 [00:21<00:03,  6.44it/s]12/01/2021 13:02:48 - INFO - __main__ -   Batch number = 148
+Evaluating:  87%|████████▋ | 148/171 [00:22<00:03,  6.46it/s]12/01/2021 13:02:49 - INFO - __main__ -   Batch number = 149
+Evaluating:  87%|████████▋ | 149/171 [00:22<00:03,  6.48it/s]12/01/2021 13:02:49 - INFO - __main__ -   Batch number = 150
+Evaluating:  88%|████████▊ | 150/171 [00:22<00:03,  6.50it/s]12/01/2021 13:02:49 - INFO - __main__ -   Batch number = 151
+Evaluating:  88%|████████▊ | 151/171 [00:22<00:03,  6.47it/s]12/01/2021 13:02:49 - INFO - __main__ -   Batch number = 152
+Evaluating:  89%|████████▉ | 152/171 [00:22<00:02,  6.43it/s]12/01/2021 13:02:49 - INFO - __main__ -   Batch number = 153
+Evaluating:  89%|████████▉ | 153/171 [00:22<00:02,  6.42it/s]12/01/2021 13:02:49 - INFO - __main__ -   Batch number = 154
+Evaluating:  90%|█████████ | 154/171 [00:22<00:02,  6.31it/s]12/01/2021 13:02:50 - INFO - __main__ -   Batch number = 155
+Evaluating:  91%|█████████ | 155/171 [00:23<00:02,  6.38it/s]12/01/2021 13:02:50 - INFO - __main__ -   Batch number = 156
+Evaluating:  91%|█████████ | 156/171 [00:23<00:02,  6.16it/s]12/01/2021 13:02:50 - INFO - __main__ -   Batch number = 157
+Evaluating:  92%|█████████▏| 157/171 [00:23<00:02,  5.79it/s]12/01/2021 13:02:50 - INFO - __main__ -   Batch number = 158
+Evaluating:  92%|█████████▏| 158/171 [00:23<00:02,  5.57it/s]12/01/2021 13:02:50 - INFO - __main__ -   Batch number = 159
+Evaluating:  93%|█████████▎| 159/171 [00:23<00:02,  5.60it/s]12/01/2021 13:02:50 - INFO - __main__ -   Batch number = 160
+Evaluating:  94%|█████████▎| 160/171 [00:24<00:01,  5.64it/s]12/01/2021 13:02:51 - INFO - __main__ -   Batch number = 161
+Evaluating:  94%|█████████▍| 161/171 [00:24<00:01,  5.69it/s]12/01/2021 13:02:51 - INFO - __main__ -   Batch number = 162
+Evaluating:  95%|█████████▍| 162/171 [00:24<00:01,  5.67it/s]12/01/2021 13:02:51 - INFO - __main__ -   Batch number = 163
+Evaluating:  95%|█████████▌| 163/171 [00:24<00:01,  5.76it/s]12/01/2021 13:02:51 - INFO - __main__ -   Batch number = 164
+Evaluating:  96%|█████████▌| 164/171 [00:24<00:01,  5.77it/s]12/01/2021 13:02:51 - INFO - __main__ -   Batch number = 165
+Evaluating:  96%|█████████▋| 165/171 [00:24<00:01,  5.84it/s]12/01/2021 13:02:51 - INFO - __main__ -   Batch number = 166
+Evaluating:  97%|█████████▋| 166/171 [00:25<00:00,  5.90it/s]12/01/2021 13:02:52 - INFO - __main__ -   Batch number = 167
+Evaluating:  98%|█████████▊| 167/171 [00:25<00:00,  5.83it/s]12/01/2021 13:02:52 - INFO - __main__ -   Batch number = 168
+Evaluating:  98%|█████████▊| 168/171 [00:25<00:00,  5.90it/s]12/01/2021 13:02:52 - INFO - __main__ -   Batch number = 169
+Evaluating:  99%|█████████▉| 169/171 [00:25<00:00,  5.89it/s]12/01/2021 13:02:52 - INFO - __main__ -   Batch number = 170
+Evaluating:  99%|█████████▉| 170/171 [00:25<00:00,  5.99it/s]12/01/2021 13:02:52 - INFO - __main__ -   Batch number = 171
+Evaluating: 100%|██████████| 171/171 [00:25<00:00,  6.64it/s]
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SYM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+12/01/2021 13:02:54 - INFO - __main__ -   ***** Evaluation result  in en *****
+12/01/2021 13:02:54 - INFO - __main__ -     f1 = 0.5120678843511093
+12/01/2021 13:02:54 - INFO - __main__ -     loss = 1.725387770530076
+12/01/2021 13:02:54 - INFO - __main__ -     precision = 0.5423661748911877
+12/01/2021 13:02:54 - INFO - __main__ -     recall = 0.4849756122216887
+36.42user 12.33system 0:44.41elapsed 109%CPU (0avgtext+0avgdata 3997452maxresident)k
+0inputs+1032outputs (0major+1773406minor)pagefaults 0swaps
+PyTorch version 1.10.0+cu102 available.
+12/01/2021 13:02:57 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi//train_hi.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/01/2021 13:02:57 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/01/2021 13:02:57 - INFO - __main__ -   Seed = 2
+12/01/2021 13:02:57 - INFO - root -   save model
+12/01/2021 13:02:57 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi//train_hi.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/01/2021 13:02:57 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/01/2021 13:02:59 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/01/2021 13:03:05 - INFO - __main__ -   Using lang2id = None
+12/01/2021 13:03:05 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/01/2021 13:03:05 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/
+12/01/2021 13:03:05 - INFO - root -   Trying to decide if add adapter
+12/01/2021 13:03:05 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/pytorch_model_head.bin
+12/01/2021 13:03:05 - INFO - root -   loading lang adpater kv/wiki@ukp
+12/01/2021 13:03:05 - INFO - __main__ -   Adapter Languages : ['kv'], Length : 1
+12/01/2021 13:03:05 - INFO - __main__ -   Adapter Names ['kv/wiki@ukp'], Length : 1
+12/01/2021 13:03:05 - INFO - __main__ -   Language = kv
+12/01/2021 13:03:05 - INFO - __main__ -   Adapter Name = kv/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/kv/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_kv_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/adapter_config.json
+Adding adapter 'kv' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/head_config.json
+12/01/2021 13:03:10 - INFO - __main__ -   Language adapter for en not found, using kv instead
+12/01/2021 13:03:10 - INFO - __main__ -   Set active language adapter to kv
+12/01/2021 13:03:10 - INFO - __main__ -   Args Adapter Weight = None
+12/01/2021 13:03:10 - INFO - __main__ -   Adapter Languages = ['kv']
+12/01/2021 13:03:10 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/cached_test_en_bert-base-multilingual-cased_128
+12/01/2021 13:03:11 - INFO - __main__ -   ***** Running evaluation  in en *****
+12/01/2021 13:03:11 - INFO - __main__ -     Num examples = 5441
+12/01/2021 13:03:11 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/171 [00:00<?, ?it/s]12/01/2021 13:03:11 - INFO - __main__ -   Batch number = 1
+Evaluating:   1%|          | 1/171 [00:00<00:26,  6.42it/s]12/01/2021 13:03:11 - INFO - __main__ -   Batch number = 2
+Evaluating:   1%|          | 2/171 [00:00<00:25,  6.62it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 3
+Evaluating:   2%|▏         | 3/171 [00:00<00:24,  6.82it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 4
+Evaluating:   2%|▏         | 4/171 [00:00<00:23,  6.96it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 5
+Evaluating:   3%|▎         | 5/171 [00:00<00:23,  7.03it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 6
+Evaluating:   4%|▎         | 6/171 [00:00<00:23,  7.08it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 7
+Evaluating:   4%|▍         | 7/171 [00:01<00:23,  7.09it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 8
+Evaluating:   5%|▍         | 8/171 [00:01<00:22,  7.10it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 9
+Evaluating:   5%|▌         | 9/171 [00:01<00:22,  7.12it/s]12/01/2021 13:03:12 - INFO - __main__ -   Batch number = 10
+Evaluating:   6%|▌         | 10/171 [00:01<00:22,  7.13it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 11
+Evaluating:   6%|▋         | 11/171 [00:01<00:22,  7.11it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 12
+Evaluating:   7%|▋         | 12/171 [00:01<00:22,  7.12it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 13
+Evaluating:   8%|▊         | 13/171 [00:01<00:22,  7.13it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 14
+Evaluating:   8%|▊         | 14/171 [00:01<00:22,  7.10it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 15
+Evaluating:   9%|▉         | 15/171 [00:02<00:21,  7.09it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 16
+Evaluating:   9%|▉         | 16/171 [00:02<00:21,  7.10it/s]12/01/2021 13:03:13 - INFO - __main__ -   Batch number = 17
+Evaluating:  10%|▉         | 17/171 [00:02<00:21,  7.10it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 18
+Evaluating:  11%|█         | 18/171 [00:02<00:21,  7.10it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 19
+Evaluating:  11%|█         | 19/171 [00:02<00:21,  7.11it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 20
+Evaluating:  12%|█▏        | 20/171 [00:02<00:21,  7.10it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 21
+Evaluating:  12%|█▏        | 21/171 [00:02<00:21,  7.10it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 22
+Evaluating:  13%|█▎        | 22/171 [00:03<00:20,  7.10it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 23
+Evaluating:  13%|█▎        | 23/171 [00:03<00:20,  7.09it/s]12/01/2021 13:03:14 - INFO - __main__ -   Batch number = 24
+Evaluating:  14%|█▍        | 24/171 [00:03<00:20,  7.07it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 25
+Evaluating:  15%|█▍        | 25/171 [00:03<00:20,  7.07it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 26
+Evaluating:  15%|█▌        | 26/171 [00:03<00:20,  7.08it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 27
+Evaluating:  16%|█▌        | 27/171 [00:03<00:20,  7.06it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 28
+Evaluating:  16%|█▋        | 28/171 [00:03<00:21,  6.65it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 29
+Evaluating:  17%|█▋        | 29/171 [00:04<00:20,  6.78it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 30
+Evaluating:  18%|█▊        | 30/171 [00:04<00:20,  6.84it/s]12/01/2021 13:03:15 - INFO - __main__ -   Batch number = 31
+Evaluating:  18%|█▊        | 31/171 [00:04<00:20,  6.91it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 32
+Evaluating:  19%|█▊        | 32/171 [00:04<00:20,  6.95it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 33
+Evaluating:  19%|█▉        | 33/171 [00:04<00:19,  6.95it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 34
+Evaluating:  20%|█▉        | 34/171 [00:04<00:19,  6.97it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 35
+Evaluating:  20%|██        | 35/171 [00:04<00:19,  7.00it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 36
+Evaluating:  21%|██        | 36/171 [00:05<00:19,  7.00it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 37
+Evaluating:  22%|██▏       | 37/171 [00:05<00:19,  7.00it/s]12/01/2021 13:03:16 - INFO - __main__ -   Batch number = 38
+Evaluating:  22%|██▏       | 38/171 [00:05<00:18,  7.01it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 39
+Evaluating:  23%|██▎       | 39/171 [00:05<00:18,  7.00it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 40
+Evaluating:  23%|██▎       | 40/171 [00:05<00:18,  7.02it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 41
+Evaluating:  24%|██▍       | 41/171 [00:05<00:18,  7.01it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 42
+Evaluating:  25%|██▍       | 42/171 [00:05<00:18,  7.00it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 43
+Evaluating:  25%|██▌       | 43/171 [00:06<00:18,  7.00it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 44
+Evaluating:  26%|██▌       | 44/171 [00:06<00:18,  7.01it/s]12/01/2021 13:03:17 - INFO - __main__ -   Batch number = 45
+Evaluating:  26%|██▋       | 45/171 [00:06<00:18,  6.98it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 46
+Evaluating:  27%|██▋       | 46/171 [00:06<00:17,  6.97it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 47
+Evaluating:  27%|██▋       | 47/171 [00:06<00:17,  6.97it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 48
+Evaluating:  28%|██▊       | 48/171 [00:06<00:17,  6.96it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 49
+Evaluating:  29%|██▊       | 49/171 [00:06<00:17,  6.94it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 50
+Evaluating:  29%|██▉       | 50/171 [00:07<00:17,  6.95it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 51
+Evaluating:  30%|██▉       | 51/171 [00:07<00:17,  6.95it/s]12/01/2021 13:03:18 - INFO - __main__ -   Batch number = 52
+Evaluating:  30%|███       | 52/171 [00:07<00:17,  6.96it/s]12/01/2021 13:03:19 - INFO - __main__ -   Batch number = 53
+Evaluating:  31%|███       | 53/171 [00:07<00:16,  6.97it/s]12/01/2021 13:03:19 - INFO - __main__ -   Batch number = 54
+Evaluating:  32%|███▏      | 54/171 [00:07<00:16,  6.96it/s]12/01/2021 13:03:19 - INFO - __main__ -   Batch number = 55
+Evaluating:  32%|███▏      | 55/171 [00:07<00:16,  6.92it/s]12/01/2021 13:03:19 - INFO - __main__ -   Batch number = 56
+Evaluating:  33%|███▎      | 56/171 [00:08<00:16,  6.89it/s]12/01/2021 13:03:19 - INFO - __main__ -   Batch number = 57
+Evaluating:  33%|███▎      | 57/171 [00:08<00:16,  6.85it/s]12/01/2021 13:03:19 - INFO - __main__ -   Batch number = 58
+Evaluating:  34%|███▍      | 58/171 [00:08<00:16,  6.88it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 59
+Evaluating:  35%|███▍      | 59/171 [00:08<00:16,  6.89it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 60
+Evaluating:  35%|███▌      | 60/171 [00:08<00:16,  6.87it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 61
+Evaluating:  36%|███▌      | 61/171 [00:08<00:16,  6.86it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 62
+Evaluating:  36%|███▋      | 62/171 [00:08<00:15,  6.82it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 63
+Evaluating:  37%|███▋      | 63/171 [00:09<00:15,  6.76it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 64
+Evaluating:  37%|███▋      | 64/171 [00:09<00:15,  6.76it/s]12/01/2021 13:03:20 - INFO - __main__ -   Batch number = 65
+Evaluating:  38%|███▊      | 65/171 [00:09<00:15,  6.78it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 66
+Evaluating:  39%|███▊      | 66/171 [00:09<00:15,  6.78it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 67
+Evaluating:  39%|███▉      | 67/171 [00:09<00:15,  6.80it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 68
+Evaluating:  40%|███▉      | 68/171 [00:09<00:15,  6.83it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 69
+Evaluating:  40%|████      | 69/171 [00:09<00:14,  6.84it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 70
+Evaluating:  41%|████      | 70/171 [00:10<00:14,  6.86it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 71
+Evaluating:  42%|████▏     | 71/171 [00:10<00:14,  6.87it/s]12/01/2021 13:03:21 - INFO - __main__ -   Batch number = 72
+Evaluating:  42%|████▏     | 72/171 [00:10<00:14,  6.86it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 73
+Evaluating:  43%|████▎     | 73/171 [00:10<00:14,  6.85it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 74
+Evaluating:  43%|████▎     | 74/171 [00:10<00:14,  6.83it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 75
+Evaluating:  44%|████▍     | 75/171 [00:10<00:14,  6.84it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 76
+Evaluating:  44%|████▍     | 76/171 [00:10<00:14,  6.72it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 77
+Evaluating:  45%|████▌     | 77/171 [00:11<00:14,  6.70it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 78
+Evaluating:  46%|████▌     | 78/171 [00:11<00:13,  6.73it/s]12/01/2021 13:03:22 - INFO - __main__ -   Batch number = 79
+Evaluating:  46%|████▌     | 79/171 [00:11<00:13,  6.72it/s]12/01/2021 13:03:23 - INFO - __main__ -   Batch number = 80
+Evaluating:  47%|████▋     | 80/171 [00:11<00:13,  6.67it/s]12/01/2021 13:03:23 - INFO - __main__ -   Batch number = 81
+Evaluating:  47%|████▋     | 81/171 [00:11<00:13,  6.56it/s]12/01/2021 13:03:23 - INFO - __main__ -   Batch number = 82
+Evaluating:  48%|████▊     | 82/171 [00:11<00:13,  6.50it/s]12/01/2021 13:03:23 - INFO - __main__ -   Batch number = 83
+Evaluating:  49%|████▊     | 83/171 [00:12<00:13,  6.55it/s]12/01/2021 13:03:23 - INFO - __main__ -   Batch number = 84
+Evaluating:  49%|████▉     | 84/171 [00:12<00:13,  6.63it/s]12/01/2021 13:03:23 - INFO - __main__ -   Batch number = 85
+Evaluating:  50%|████▉     | 85/171 [00:12<00:12,  6.69it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 86
+Evaluating:  50%|█████     | 86/171 [00:12<00:12,  6.74it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 87
+Evaluating:  51%|█████     | 87/171 [00:12<00:12,  6.78it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 88
+Evaluating:  51%|█████▏    | 88/171 [00:12<00:12,  6.77it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 89
+Evaluating:  52%|█████▏    | 89/171 [00:12<00:12,  6.67it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 90
+Evaluating:  53%|█████▎    | 90/171 [00:13<00:12,  6.72it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 91
+Evaluating:  53%|█████▎    | 91/171 [00:13<00:11,  6.69it/s]12/01/2021 13:03:24 - INFO - __main__ -   Batch number = 92
+Evaluating:  54%|█████▍    | 92/171 [00:13<00:11,  6.73it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 93
+Evaluating:  54%|█████▍    | 93/171 [00:13<00:11,  6.76it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 94
+Evaluating:  55%|█████▍    | 94/171 [00:13<00:11,  6.79it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 95
+Evaluating:  56%|█████▌    | 95/171 [00:13<00:11,  6.80it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 96
+Evaluating:  56%|█████▌    | 96/171 [00:13<00:11,  6.80it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 97
+Evaluating:  57%|█████▋    | 97/171 [00:14<00:10,  6.81it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 98
+Evaluating:  57%|█████▋    | 98/171 [00:14<00:10,  6.82it/s]12/01/2021 13:03:25 - INFO - __main__ -   Batch number = 99
+Evaluating:  58%|█████▊    | 99/171 [00:14<00:10,  6.83it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 100
+Evaluating:  58%|█████▊    | 100/171 [00:14<00:10,  6.83it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 101
+Evaluating:  59%|█████▉    | 101/171 [00:14<00:10,  6.83it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 102
+Evaluating:  60%|█████▉    | 102/171 [00:14<00:10,  6.81it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 103
+Evaluating:  60%|██████    | 103/171 [00:14<00:09,  6.80it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 104
+Evaluating:  61%|██████    | 104/171 [00:15<00:09,  6.81it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 105
+Evaluating:  61%|██████▏   | 105/171 [00:15<00:09,  6.81it/s]12/01/2021 13:03:26 - INFO - __main__ -   Batch number = 106
+Evaluating:  62%|██████▏   | 106/171 [00:15<00:09,  6.80it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 107
+Evaluating:  63%|██████▎   | 107/171 [00:15<00:09,  6.80it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 108
+Evaluating:  63%|██████▎   | 108/171 [00:15<00:09,  6.80it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 109
+Evaluating:  64%|██████▎   | 109/171 [00:15<00:09,  6.79it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 110
+Evaluating:  64%|██████▍   | 110/171 [00:15<00:08,  6.79it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 111
+Evaluating:  65%|██████▍   | 111/171 [00:16<00:08,  6.79it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 112
+Evaluating:  65%|██████▌   | 112/171 [00:16<00:08,  6.79it/s]12/01/2021 13:03:27 - INFO - __main__ -   Batch number = 113
+Evaluating:  66%|██████▌   | 113/171 [00:16<00:08,  6.79it/s]12/01/2021 13:03:28 - INFO - __main__ -   Batch number = 114
+Evaluating:  67%|██████▋   | 114/171 [00:16<00:08,  6.79it/s]12/01/2021 13:03:28 - INFO - __main__ -   Batch number = 115
+Evaluating:  67%|██████▋   | 115/171 [00:16<00:08,  6.78it/s]12/01/2021 13:03:28 - INFO - __main__ -   Batch number = 116
+Evaluating:  68%|██████▊   | 116/171 [00:16<00:08,  6.74it/s]12/01/2021 13:03:28 - INFO - __main__ -   Batch number = 117
+Evaluating:  68%|██████▊   | 117/171 [00:17<00:08,  6.73it/s]12/01/2021 13:03:28 - INFO - __main__ -   Batch number = 118
+Evaluating:  69%|██████▉   | 118/171 [00:17<00:17,  3.07it/s]12/01/2021 13:03:29 - INFO - __main__ -   Batch number = 119
+Evaluating:  70%|██████▉   | 119/171 [00:17<00:14,  3.60it/s]12/01/2021 13:03:29 - INFO - __main__ -   Batch number = 120
+Evaluating:  70%|███████   | 120/171 [00:18<00:12,  4.11it/s]12/01/2021 13:03:29 - INFO - __main__ -   Batch number = 121
+Evaluating:  71%|███████   | 121/171 [00:18<00:11,  4.47it/s]12/01/2021 13:03:29 - INFO - __main__ -   Batch number = 122
+Evaluating:  71%|███████▏  | 122/171 [00:18<00:09,  4.96it/s]12/01/2021 13:03:30 - INFO - __main__ -   Batch number = 123
+Evaluating:  72%|███████▏  | 123/171 [00:18<00:08,  5.38it/s]12/01/2021 13:03:30 - INFO - __main__ -   Batch number = 124
+Evaluating:  73%|███████▎  | 124/171 [00:18<00:10,  4.56it/s]12/01/2021 13:03:30 - INFO - __main__ -   Batch number = 125
+Evaluating:  73%|███████▎  | 125/171 [00:19<00:09,  4.61it/s]12/01/2021 13:03:30 - INFO - __main__ -   Batch number = 126
+Evaluating:  74%|███████▎  | 126/171 [00:19<00:08,  5.02it/s]12/01/2021 13:03:30 - INFO - __main__ -   Batch number = 127
+Evaluating:  74%|███████▍  | 127/171 [00:19<00:08,  5.17it/s]12/01/2021 13:03:31 - INFO - __main__ -   Batch number = 128
+Evaluating:  75%|███████▍  | 128/171 [00:19<00:07,  5.46it/s]12/01/2021 13:03:31 - INFO - __main__ -   Batch number = 129
+Evaluating:  75%|███████▌  | 129/171 [00:19<00:07,  5.69it/s]12/01/2021 13:03:31 - INFO - __main__ -   Batch number = 130
+Evaluating:  76%|███████▌  | 130/171 [00:20<00:08,  4.71it/s]12/01/2021 13:03:31 - INFO - __main__ -   Batch number = 131
+Evaluating:  77%|███████▋  | 131/171 [00:20<00:07,  5.09it/s]12/01/2021 13:03:31 - INFO - __main__ -   Batch number = 132
+Evaluating:  77%|███████▋  | 132/171 [00:20<00:07,  5.47it/s]12/01/2021 13:03:32 - INFO - __main__ -   Batch number = 133
+Evaluating:  78%|███████▊  | 133/171 [00:20<00:06,  5.55it/s]12/01/2021 13:03:32 - INFO - __main__ -   Batch number = 134
+Evaluating:  78%|███████▊  | 134/171 [00:20<00:06,  5.83it/s]12/01/2021 13:03:32 - INFO - __main__ -   Batch number = 135
+Evaluating:  79%|███████▉  | 135/171 [00:20<00:05,  6.06it/s]12/01/2021 13:03:32 - INFO - __main__ -   Batch number = 136
+Evaluating:  80%|███████▉  | 136/171 [00:21<00:07,  4.87it/s]12/01/2021 13:03:32 - INFO - __main__ -   Batch number = 137
+Evaluating:  80%|████████  | 137/171 [00:21<00:06,  5.19it/s]12/01/2021 13:03:32 - INFO - __main__ -   Batch number = 138
+Evaluating:  81%|████████  | 138/171 [00:21<00:06,  5.45it/s]12/01/2021 13:03:33 - INFO - __main__ -   Batch number = 139
+Evaluating:  81%|████████▏ | 139/171 [00:21<00:07,  4.52it/s]12/01/2021 13:03:33 - INFO - __main__ -   Batch number = 140
+Evaluating:  82%|████████▏ | 140/171 [00:21<00:06,  4.82it/s]12/01/2021 13:03:33 - INFO - __main__ -   Batch number = 141
+Evaluating:  82%|████████▏ | 141/171 [00:22<00:05,  5.15it/s]12/01/2021 13:03:33 - INFO - __main__ -   Batch number = 142
+Evaluating:  83%|████████▎ | 142/171 [00:22<00:05,  5.21it/s]12/01/2021 13:03:33 - INFO - __main__ -   Batch number = 143
+Evaluating:  84%|████████▎ | 143/171 [00:22<00:05,  5.44it/s]12/01/2021 13:03:34 - INFO - __main__ -   Batch number = 144
+Evaluating:  84%|████████▍ | 144/171 [00:22<00:04,  5.71it/s]12/01/2021 13:03:34 - INFO - __main__ -   Batch number = 145
+Evaluating:  85%|████████▍ | 145/171 [00:22<00:05,  4.62it/s]12/01/2021 13:03:34 - INFO - __main__ -   Batch number = 146
+Evaluating:  85%|████████▌ | 146/171 [00:23<00:04,  5.06it/s]12/01/2021 13:03:34 - INFO - __main__ -   Batch number = 147
+Evaluating:  86%|████████▌ | 147/171 [00:23<00:04,  5.45it/s]12/01/2021 13:03:34 - INFO - __main__ -   Batch number = 148
+Evaluating:  87%|████████▋ | 148/171 [00:23<00:04,  5.46it/s]12/01/2021 13:03:35 - INFO - __main__ -   Batch number = 149
+Evaluating:  87%|████████▋ | 149/171 [00:23<00:03,  5.65it/s]12/01/2021 13:03:35 - INFO - __main__ -   Batch number = 150
+Evaluating:  88%|████████▊ | 150/171 [00:23<00:03,  5.91it/s]12/01/2021 13:03:35 - INFO - __main__ -   Batch number = 151
+Evaluating:  88%|████████▊ | 151/171 [00:23<00:03,  6.02it/s]12/01/2021 13:03:35 - INFO - __main__ -   Batch number = 152
+Evaluating:  89%|████████▉ | 152/171 [00:24<00:03,  5.27it/s]12/01/2021 13:03:35 - INFO - __main__ -   Batch number = 153
+Evaluating:  89%|████████▉ | 153/171 [00:24<00:03,  5.50it/s]12/01/2021 13:03:35 - INFO - __main__ -   Batch number = 154
+Evaluating:  90%|█████████ | 154/171 [00:24<00:02,  5.67it/s]12/01/2021 13:03:36 - INFO - __main__ -   Batch number = 155
+Evaluating:  91%|█████████ | 155/171 [00:24<00:03,  4.60it/s]12/01/2021 13:03:36 - INFO - __main__ -   Batch number = 156
+Evaluating:  91%|█████████ | 156/171 [00:24<00:02,  5.01it/s]12/01/2021 13:03:36 - INFO - __main__ -   Batch number = 157
+Evaluating:  92%|█████████▏| 157/171 [00:25<00:02,  5.30it/s]12/01/2021 13:03:36 - INFO - __main__ -   Batch number = 158
+Evaluating:  92%|█████████▏| 158/171 [00:25<00:02,  5.64it/s]12/01/2021 13:03:36 - INFO - __main__ -   Batch number = 159
+Evaluating:  93%|█████████▎| 159/171 [00:25<00:02,  5.90it/s]12/01/2021 13:03:37 - INFO - __main__ -   Batch number = 160
+Evaluating:  94%|█████████▎| 160/171 [00:25<00:01,  6.10it/s]12/01/2021 13:03:37 - INFO - __main__ -   Batch number = 161
+Evaluating:  94%|█████████▍| 161/171 [00:25<00:01,  6.22it/s]12/01/2021 13:03:37 - INFO - __main__ -   Batch number = 162
+Evaluating:  95%|█████████▍| 162/171 [00:25<00:01,  6.30it/s]12/01/2021 13:03:37 - INFO - __main__ -   Batch number = 163
+Evaluating:  95%|█████████▌| 163/171 [00:25<00:01,  6.38it/s]12/01/2021 13:03:37 - INFO - __main__ -   Batch number = 164
+Evaluating:  96%|█████████▌| 164/171 [00:26<00:01,  4.96it/s]12/01/2021 13:03:37 - INFO - __main__ -   Batch number = 165
+Evaluating:  96%|█████████▋| 165/171 [00:26<00:01,  5.30it/s]12/01/2021 13:03:38 - INFO - __main__ -   Batch number = 166
+Evaluating:  97%|█████████▋| 166/171 [00:26<00:01,  4.36it/s]12/01/2021 13:03:38 - INFO - __main__ -   Batch number = 167
+Evaluating:  98%|█████████▊| 167/171 [00:26<00:00,  4.78it/s]12/01/2021 13:03:38 - INFO - __main__ -   Batch number = 168
+Evaluating:  98%|█████████▊| 168/171 [00:27<00:00,  5.17it/s]12/01/2021 13:03:38 - INFO - __main__ -   Batch number = 169
+Evaluating:  99%|█████████▉| 169/171 [00:27<00:00,  5.26it/s]12/01/2021 13:03:38 - INFO - __main__ -   Batch number = 170
+Evaluating:  99%|█████████▉| 170/171 [00:27<00:00,  5.57it/s]12/01/2021 13:03:39 - INFO - __main__ -   Batch number = 171
+Evaluating: 100%|██████████| 171/171 [00:27<00:00,  5.56it/s]Evaluating: 100%|██████████| 171/171 [00:27<00:00,  6.19it/s]
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SYM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+12/01/2021 13:03:41 - INFO - __main__ -   ***** Evaluation result  in en *****
+12/01/2021 13:03:41 - INFO - __main__ -     f1 = 0.5270933368414129
+12/01/2021 13:03:41 - INFO - __main__ -     loss = 1.826476916932223
+12/01/2021 13:03:41 - INFO - __main__ -     precision = 0.5496762333315042
+12/01/2021 13:03:41 - INFO - __main__ -     recall = 0.5062928049735904
+36.56user 12.89system 0:46.29elapsed 106%CPU (0avgtext+0avgdata 3989972maxresident)k
+0inputs+1024outputs (0major+1719233minor)pagefaults 0swaps
+PyTorch version 1.10.0+cu102 available.
+12/01/2021 13:03:43 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi//train_hi.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/01/2021 13:03:43 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/01/2021 13:03:43 - INFO - __main__ -   Seed = 3
+12/01/2021 13:03:43 - INFO - root -   save model
+12/01/2021 13:03:43 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='en', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_kv_train_hi//train_hi.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/01/2021 13:03:43 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/01/2021 13:03:46 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/01/2021 13:03:51 - INFO - __main__ -   Using lang2id = None
+12/01/2021 13:03:51 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/01/2021 13:03:51 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/
+12/01/2021 13:03:51 - INFO - root -   Trying to decide if add adapter
+12/01/2021 13:03:51 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/pytorch_model_head.bin
+12/01/2021 13:03:52 - INFO - root -   loading lang adpater kv/wiki@ukp
+12/01/2021 13:03:52 - INFO - __main__ -   Adapter Languages : ['kv'], Length : 1
+12/01/2021 13:03:52 - INFO - __main__ -   Adapter Names ['kv/wiki@ukp'], Length : 1
+12/01/2021 13:03:52 - INFO - __main__ -   Language = kv
+12/01/2021 13:03:52 - INFO - __main__ -   Adapter Name = kv/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/kv/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_kv_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/adapter_config.json
+Adding adapter 'kv' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8c7ef1d59f2e7888f829ca8edd6807ff5c323cf1d6a192ee461f1e366badde87-0050f57527e02a26f88c08e667184c3066ed5b89e292c6ae65121710a15a8e2d-extracted/head_config.json
+12/01/2021 13:03:56 - INFO - __main__ -   Language adapter for en not found, using kv instead
+12/01/2021 13:03:56 - INFO - __main__ -   Set active language adapter to kv
+12/01/2021 13:03:56 - INFO - __main__ -   Args Adapter Weight = None
+12/01/2021 13:03:56 - INFO - __main__ -   Adapter Languages = ['kv']
+12/01/2021 13:03:56 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//udpos/udpos_processed_maxlen128/cached_test_en_bert-base-multilingual-cased_128
+12/01/2021 13:03:57 - INFO - __main__ -   ***** Running evaluation  in en *****
+12/01/2021 13:03:57 - INFO - __main__ -     Num examples = 5441
+12/01/2021 13:03:57 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/171 [00:00<?, ?it/s]12/01/2021 13:03:57 - INFO - __main__ -   Batch number = 1
+Evaluating:   1%|          | 1/171 [00:00<00:26,  6.46it/s]12/01/2021 13:03:57 - INFO - __main__ -   Batch number = 2
+Evaluating:   1%|          | 2/171 [00:00<00:24,  6.86it/s]12/01/2021 13:03:57 - INFO - __main__ -   Batch number = 3
+Evaluating:   2%|▏         | 3/171 [00:00<00:24,  6.99it/s]12/01/2021 13:03:57 - INFO - __main__ -   Batch number = 4
+Evaluating:   2%|▏         | 4/171 [00:00<00:23,  7.04it/s]12/01/2021 13:03:57 - INFO - __main__ -   Batch number = 5
+Evaluating:   3%|▎         | 5/171 [00:00<00:23,  7.08it/s]12/01/2021 13:03:57 - INFO - __main__ -   Batch number = 6
+Evaluating:   4%|▎         | 6/171 [00:00<00:23,  7.10it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 7
+Evaluating:   4%|▍         | 7/171 [00:00<00:23,  7.11it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 8
+Evaluating:   5%|▍         | 8/171 [00:01<00:22,  7.13it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 9
+Evaluating:   5%|▌         | 9/171 [00:01<00:22,  7.10it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 10
+Evaluating:   6%|▌         | 10/171 [00:01<00:22,  7.10it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 11
+Evaluating:   6%|▋         | 11/171 [00:01<00:22,  7.08it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 12
+Evaluating:   7%|▋         | 12/171 [00:01<00:22,  7.06it/s]12/01/2021 13:03:58 - INFO - __main__ -   Batch number = 13
+Evaluating:   8%|▊         | 13/171 [00:01<00:22,  7.06it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 14
+Evaluating:   8%|▊         | 14/171 [00:01<00:22,  7.06it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 15
+Evaluating:   9%|▉         | 15/171 [00:02<00:22,  7.06it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 16
+Evaluating:   9%|▉         | 16/171 [00:02<00:21,  7.07it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 17
+Evaluating:  10%|▉         | 17/171 [00:02<00:21,  7.06it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 18
+Evaluating:  11%|█         | 18/171 [00:02<00:21,  7.07it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 19
+Evaluating:  11%|█         | 19/171 [00:02<00:21,  7.07it/s]12/01/2021 13:03:59 - INFO - __main__ -   Batch number = 20
+Evaluating:  12%|█▏        | 20/171 [00:02<00:21,  7.05it/s]12/01/2021 13:04:00 - INFO - __main__ -   Batch number = 21
+Evaluating:  12%|█▏        | 21/171 [00:02<00:21,  7.05it/s]12/01/2021 13:04:00 - INFO - __main__ -   Batch number = 22
+Evaluating:  13%|█▎        | 22/171 [00:03<00:21,  7.03it/s]12/01/2021 13:04:00 - INFO - __main__ -   Batch number = 23
+Evaluating:  13%|█▎        | 23/171 [00:03<00:21,  7.01it/s]12/01/2021 13:04:00 - INFO - __main__ -   Batch number = 24
+Evaluating:  14%|█▍        | 24/171 [00:03<00:23,  6.35it/s]12/01/2021 13:04:00 - INFO - __main__ -   Batch number = 25
+Evaluating:  15%|█▍        | 25/171 [00:03<00:22,  6.53it/s]12/01/2021 13:04:00 - INFO - __main__ -   Batch number = 26
+Evaluating:  15%|█▌        | 26/171 [00:03<00:21,  6.67it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 27
+Evaluating:  16%|█▌        | 27/171 [00:03<00:21,  6.77it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 28
+Evaluating:  16%|█▋        | 28/171 [00:04<00:20,  6.84it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 29
+Evaluating:  17%|█▋        | 29/171 [00:04<00:20,  6.90it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 30
+Evaluating:  18%|█▊        | 30/171 [00:04<00:20,  6.94it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 31
+Evaluating:  18%|█▊        | 31/171 [00:04<00:20,  6.97it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 32
+Evaluating:  19%|█▊        | 32/171 [00:04<00:19,  6.98it/s]12/01/2021 13:04:01 - INFO - __main__ -   Batch number = 33
+Evaluating:  19%|█▉        | 33/171 [00:04<00:19,  6.99it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 34
+Evaluating:  20%|█▉        | 34/171 [00:04<00:19,  7.01it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 35
+Evaluating:  20%|██        | 35/171 [00:05<00:19,  6.99it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 36
+Evaluating:  21%|██        | 36/171 [00:05<00:19,  6.99it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 37
+Evaluating:  22%|██▏       | 37/171 [00:05<00:19,  6.99it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 38
+Evaluating:  22%|██▏       | 38/171 [00:05<00:19,  6.99it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 39
+Evaluating:  23%|██▎       | 39/171 [00:05<00:18,  7.00it/s]12/01/2021 13:04:02 - INFO - __main__ -   Batch number = 40
+Evaluating:  23%|██▎       | 40/171 [00:05<00:18,  7.00it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 41
+Evaluating:  24%|██▍       | 41/171 [00:05<00:18,  6.99it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 42
+Evaluating:  25%|██▍       | 42/171 [00:06<00:18,  6.98it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 43
+Evaluating:  25%|██▌       | 43/171 [00:06<00:18,  6.97it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 44
+Evaluating:  26%|██▌       | 44/171 [00:06<00:18,  6.94it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 45
+Evaluating:  26%|██▋       | 45/171 [00:06<00:18,  6.95it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 46
+Evaluating:  27%|██▋       | 46/171 [00:06<00:17,  6.96it/s]12/01/2021 13:04:03 - INFO - __main__ -   Batch number = 47
+Evaluating:  27%|██▋       | 47/171 [00:06<00:17,  6.95it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 48
+Evaluating:  28%|██▊       | 48/171 [00:06<00:17,  6.97it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 49
+Evaluating:  29%|██▊       | 49/171 [00:07<00:17,  6.96it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 50
+Evaluating:  29%|██▉       | 50/171 [00:07<00:17,  6.95it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 51
+Evaluating:  30%|██▉       | 51/171 [00:07<00:17,  6.93it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 52
+Evaluating:  30%|███       | 52/171 [00:07<00:17,  6.92it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 53
+Evaluating:  31%|███       | 53/171 [00:07<00:17,  6.78it/s]12/01/2021 13:04:04 - INFO - __main__ -   Batch number = 54
+Evaluating:  32%|███▏      | 54/171 [00:07<00:17,  6.75it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 55
+Evaluating:  32%|███▏      | 55/171 [00:07<00:17,  6.80it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 56
+Evaluating:  33%|███▎      | 56/171 [00:08<00:16,  6.81it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 57
+Evaluating:  33%|███▎      | 57/171 [00:08<00:16,  6.84it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 58
+Evaluating:  34%|███▍      | 58/171 [00:08<00:16,  6.87it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 59
+Evaluating:  35%|███▍      | 59/171 [00:08<00:16,  6.80it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 60
+Evaluating:  35%|███▌      | 60/171 [00:08<00:16,  6.84it/s]12/01/2021 13:04:05 - INFO - __main__ -   Batch number = 61
+Evaluating:  36%|███▌      | 61/171 [00:08<00:16,  6.84it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 62
+Evaluating:  36%|███▋      | 62/171 [00:08<00:15,  6.86it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 63
+Evaluating:  37%|███▋      | 63/171 [00:09<00:15,  6.87it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 64
+Evaluating:  37%|███▋      | 64/171 [00:09<00:15,  6.87it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 65
+Evaluating:  38%|███▊      | 65/171 [00:09<00:15,  6.84it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 66
+Evaluating:  39%|███▊      | 66/171 [00:09<00:15,  6.84it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 67
+Evaluating:  39%|███▉      | 67/171 [00:09<00:15,  6.82it/s]12/01/2021 13:04:06 - INFO - __main__ -   Batch number = 68
+Evaluating:  40%|███▉      | 68/171 [00:09<00:15,  6.75it/s]12/01/2021 13:04:07 - INFO - __main__ -   Batch number = 69
+Evaluating:  40%|████      | 69/171 [00:09<00:15,  6.70it/s]12/01/2021 13:04:07 - INFO - __main__ -   Batch number = 70
+Evaluating:  41%|████      | 70/171 [00:10<00:15,  6.68it/s]12/01/2021 13:04:07 - INFO - __main__ -   Batch number = 71
+Evaluating:  42%|████▏     | 71/171 [00:10<00:15,  6.64it/s]12/01/2021 13:04:07 - INFO - __main__ -   Batch number = 72
+Evaluating:  42%|████▏     | 72/171 [00:10<00:15,  6.53it/s]12/01/2021 13:04:07 - INFO - __main__ -   Batch number = 73
+Evaluating:  43%|████▎     | 73/171 [00:10<00:14,  6.53it/s]12/01/2021 13:04:07 - INFO - __main__ -   Batch number = 74
+Evaluating:  43%|████▎     | 74/171 [00:10<00:14,  6.57it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 75
+Evaluating:  44%|████▍     | 75/171 [00:10<00:14,  6.61it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 76
+Evaluating:  44%|████▍     | 76/171 [00:11<00:14,  6.59it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 77
+Evaluating:  45%|████▌     | 77/171 [00:11<00:14,  6.64it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 78
+Evaluating:  46%|████▌     | 78/171 [00:11<00:13,  6.68it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 79
+Evaluating:  46%|████▌     | 79/171 [00:11<00:13,  6.73it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 80
+Evaluating:  47%|████▋     | 80/171 [00:11<00:13,  6.71it/s]12/01/2021 13:04:08 - INFO - __main__ -   Batch number = 81
+Evaluating:  47%|████▋     | 81/171 [00:11<00:13,  6.63it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 82
+Evaluating:  48%|████▊     | 82/171 [00:11<00:13,  6.59it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 83
+Evaluating:  49%|████▊     | 83/171 [00:12<00:13,  6.67it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 84
+Evaluating:  49%|████▉     | 84/171 [00:12<00:12,  6.72it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 85
+Evaluating:  50%|████▉     | 85/171 [00:12<00:12,  6.75it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 86
+Evaluating:  50%|█████     | 86/171 [00:12<00:12,  6.66it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 87
+Evaluating:  51%|█████     | 87/171 [00:12<00:12,  6.71it/s]12/01/2021 13:04:09 - INFO - __main__ -   Batch number = 88
+Evaluating:  51%|█████▏    | 88/171 [00:12<00:12,  6.73it/s]12/01/2021 13:04:10 - INFO - __main__ -   Batch number = 89
+Evaluating:  52%|█████▏    | 89/171 [00:12<00:12,  6.76it/s]12/01/2021 13:04:10 - INFO - __main__ -   Batch number = 90
+Evaluating:  53%|█████▎    | 90/171 [00:13<00:11,  6.77it/s]12/01/2021 13:04:10 - INFO - __main__ -   Batch number = 91
+Evaluating:  53%|█████▎    | 91/171 [00:13<00:11,  6.75it/s]12/01/2021 13:04:10 - INFO - __main__ -   Batch number = 92
+Evaluating:  54%|█████▍    | 92/171 [00:13<00:13,  5.81it/s]12/01/2021 13:04:10 - INFO - __main__ -   Batch number = 93
+Evaluating:  54%|█████▍    | 93/171 [00:13<00:12,  6.08it/s]12/01/2021 13:04:10 - INFO - __main__ -   Batch number = 94
+Evaluating:  55%|█████▍    | 94/171 [00:13<00:12,  6.27it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 95
+Evaluating:  56%|█████▌    | 95/171 [00:13<00:11,  6.42it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 96
+Evaluating:  56%|█████▌    | 96/171 [00:14<00:11,  6.55it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 97
+Evaluating:  57%|█████▋    | 97/171 [00:14<00:11,  6.60it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 98
+Evaluating:  57%|█████▋    | 98/171 [00:14<00:10,  6.66it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 99
+Evaluating:  58%|█████▊    | 99/171 [00:14<00:10,  6.70it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 100
+Evaluating:  58%|█████▊    | 100/171 [00:14<00:10,  6.72it/s]12/01/2021 13:04:11 - INFO - __main__ -   Batch number = 101
+Evaluating:  59%|█████▉    | 101/171 [00:14<00:10,  6.74it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 102
+Evaluating:  60%|█████▉    | 102/171 [00:14<00:10,  6.76it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 103
+Evaluating:  60%|██████    | 103/171 [00:15<00:10,  6.75it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 104
+Evaluating:  61%|██████    | 104/171 [00:15<00:09,  6.77it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 105
+Evaluating:  61%|██████▏   | 105/171 [00:15<00:09,  6.78it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 106
+Evaluating:  62%|██████▏   | 106/171 [00:15<00:09,  6.76it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 107
+Evaluating:  63%|██████▎   | 107/171 [00:15<00:09,  6.75it/s]12/01/2021 13:04:12 - INFO - __main__ -   Batch number = 108
+Evaluating:  63%|██████▎   | 108/171 [00:15<00:09,  6.76it/s]12/01/2021 13:04:13 - INFO - __main__ -   Batch number = 109
+Evaluating:  64%|██████▎   | 109/171 [00:16<00:09,  6.75it/s]12/01/2021 13:04:13 - INFO - __main__ -   Batch number = 110
+Evaluating:  64%|██████▍   | 110/171 [00:16<00:09,  6.46it/s]12/01/2021 13:04:13 - INFO - __main__ -   Batch number = 111
+Evaluating:  65%|██████▍   | 111/171 [00:16<00:09,  6.52it/s]12/01/2021 13:04:13 - INFO - __main__ -   Batch number = 112
+Evaluating:  65%|██████▌   | 112/171 [00:16<00:08,  6.59it/s]12/01/2021 13:04:13 - INFO - __main__ -   Batch number = 113
+Evaluating:  66%|██████▌   | 113/171 [00:16<00:08,  6.63it/s]12/01/2021 13:04:13 - INFO - __main__ -   Batch number = 114
+Evaluating:  67%|██████▋   | 114/171 [00:16<00:08,  6.58it/s]12/01/2021 13:04:14 - INFO - __main__ -   Batch number = 115
+Evaluating:  67%|██████▋   | 115/171 [00:17<00:18,  3.02it/s]12/01/2021 13:04:14 - INFO - __main__ -   Batch number = 116
+Evaluating:  68%|██████▊   | 116/171 [00:17<00:15,  3.56it/s]12/01/2021 13:04:14 - INFO - __main__ -   Batch number = 117
+Evaluating:  68%|██████▊   | 117/171 [00:17<00:13,  4.08it/s]12/01/2021 13:04:15 - INFO - __main__ -   Batch number = 118
+Evaluating:  69%|██████▉   | 118/171 [00:18<00:11,  4.42it/s]12/01/2021 13:04:15 - INFO - __main__ -   Batch number = 119
+Evaluating:  70%|██████▉   | 119/171 [00:18<00:10,  4.90it/s]12/01/2021 13:04:15 - INFO - __main__ -   Batch number = 120
+Evaluating:  70%|███████   | 120/171 [00:18<00:09,  5.32it/s]12/01/2021 13:04:15 - INFO - __main__ -   Batch number = 121
+Evaluating:  71%|███████   | 121/171 [00:18<00:10,  4.61it/s]12/01/2021 13:04:15 - INFO - __main__ -   Batch number = 122
+Evaluating:  71%|███████▏  | 122/171 [00:18<00:09,  5.03it/s]12/01/2021 13:04:16 - INFO - __main__ -   Batch number = 123
+Evaluating:  72%|███████▏  | 123/171 [00:18<00:08,  5.34it/s]12/01/2021 13:04:16 - INFO - __main__ -   Batch number = 124
+Evaluating:  73%|███████▎  | 124/171 [00:19<00:08,  5.37it/s]12/01/2021 13:04:16 - INFO - __main__ -   Batch number = 125
+Evaluating:  73%|███████▎  | 125/171 [00:19<00:08,  5.58it/s]12/01/2021 13:04:16 - INFO - __main__ -   Batch number = 126
+Evaluating:  74%|███████▎  | 126/171 [00:19<00:07,  5.75it/s]12/01/2021 13:04:16 - INFO - __main__ -   Batch number = 127
+Evaluating:  74%|███████▍  | 127/171 [00:19<00:09,  4.72it/s]12/01/2021 13:04:17 - INFO - __main__ -   Batch number = 128
+Evaluating:  75%|███████▍  | 128/171 [00:19<00:08,  5.07it/s]12/01/2021 13:04:17 - INFO - __main__ -   Batch number = 129
+Evaluating:  75%|███████▌  | 129/171 [00:20<00:07,  5.35it/s]12/01/2021 13:04:17 - INFO - __main__ -   Batch number = 130
+Evaluating:  76%|███████▌  | 130/171 [00:20<00:09,  4.47it/s]12/01/2021 13:04:17 - INFO - __main__ -   Batch number = 131
+Evaluating:  77%|███████▋  | 131/171 [00:20<00:08,  4.90it/s]12/01/2021 13:04:17 - INFO - __main__ -   Batch number = 132
+Evaluating:  77%|███████▋  | 132/171 [00:20<00:07,  5.22it/s]12/01/2021 13:04:17 - INFO - __main__ -   Batch number = 133
+Evaluating:  78%|███████▊  | 133/171 [00:20<00:07,  5.23it/s]12/01/2021 13:04:18 - INFO - __main__ -   Batch number = 134
+Evaluating:  78%|███████▊  | 134/171 [00:21<00:06,  5.52it/s]12/01/2021 13:04:18 - INFO - __main__ -   Batch number = 135
+Evaluating:  79%|███████▉  | 135/171 [00:21<00:06,  5.82it/s]12/01/2021 13:04:18 - INFO - __main__ -   Batch number = 136
+Evaluating:  80%|███████▉  | 136/171 [00:21<00:07,  4.70it/s]12/01/2021 13:04:18 - INFO - __main__ -   Batch number = 137
+Evaluating:  80%|████████  | 137/171 [00:21<00:06,  4.99it/s]12/01/2021 13:04:18 - INFO - __main__ -   Batch number = 138
+Evaluating:  81%|████████  | 138/171 [00:21<00:06,  5.31it/s]12/01/2021 13:04:19 - INFO - __main__ -   Batch number = 139
+Evaluating:  81%|████████▏ | 139/171 [00:22<00:05,  5.41it/s]12/01/2021 13:04:19 - INFO - __main__ -   Batch number = 140
+Evaluating:  82%|████████▏ | 140/171 [00:22<00:05,  5.67it/s]12/01/2021 13:04:19 - INFO - __main__ -   Batch number = 141
+Evaluating:  82%|████████▏ | 141/171 [00:22<00:05,  5.81it/s]12/01/2021 13:04:19 - INFO - __main__ -   Batch number = 142
+Evaluating:  83%|████████▎ | 142/171 [00:22<00:04,  5.91it/s]12/01/2021 13:04:19 - INFO - __main__ -   Batch number = 143
+Evaluating:  84%|████████▎ | 143/171 [00:22<00:04,  6.01it/s]12/01/2021 13:04:19 - INFO - __main__ -   Batch number = 144
+Evaluating:  84%|████████▍ | 144/171 [00:22<00:04,  6.07it/s]12/01/2021 13:04:20 - INFO - __main__ -   Batch number = 145
+Evaluating:  85%|████████▍ | 145/171 [00:22<00:04,  6.11it/s]12/01/2021 13:04:20 - INFO - __main__ -   Batch number = 146
+Evaluating:  85%|████████▌ | 146/171 [00:23<00:05,  4.65it/s]12/01/2021 13:04:20 - INFO - __main__ -   Batch number = 147
+Evaluating:  86%|████████▌ | 147/171 [00:23<00:04,  4.84it/s]12/01/2021 13:04:20 - INFO - __main__ -   Batch number = 148
+Evaluating:  87%|████████▋ | 148/171 [00:23<00:04,  5.16it/s]12/01/2021 13:04:20 - INFO - __main__ -   Batch number = 149
+Evaluating:  87%|████████▋ | 149/171 [00:23<00:05,  4.34it/s]12/01/2021 13:04:21 - INFO - __main__ -   Batch number = 150
+Evaluating:  88%|████████▊ | 150/171 [00:24<00:04,  4.74it/s]12/01/2021 13:04:21 - INFO - __main__ -   Batch number = 151
+Evaluating:  88%|████████▊ | 151/171 [00:24<00:03,  5.09it/s]12/01/2021 13:04:21 - INFO - __main__ -   Batch number = 152
+Evaluating:  89%|████████▉ | 152/171 [00:24<00:03,  5.46it/s]12/01/2021 13:04:21 - INFO - __main__ -   Batch number = 153
+Evaluating:  89%|████████▉ | 153/171 [00:24<00:03,  5.76it/s]12/01/2021 13:04:21 - INFO - __main__ -   Batch number = 154
+Evaluating:  90%|█████████ | 154/171 [00:24<00:02,  5.67it/s]12/01/2021 13:04:22 - INFO - __main__ -   Batch number = 155
+Evaluating:  91%|█████████ | 155/171 [00:24<00:02,  5.90it/s]12/01/2021 13:04:22 - INFO - __main__ -   Batch number = 156
+Evaluating:  91%|█████████ | 156/171 [00:25<00:03,  4.65it/s]12/01/2021 13:04:22 - INFO - __main__ -   Batch number = 157
+Evaluating:  92%|█████████▏| 157/171 [00:25<00:02,  5.07it/s]12/01/2021 13:04:22 - INFO - __main__ -   Batch number = 158
+Evaluating:  92%|█████████▏| 158/171 [00:25<00:02,  5.44it/s]12/01/2021 13:04:22 - INFO - __main__ -   Batch number = 159
+Evaluating:  93%|█████████▎| 159/171 [00:25<00:02,  4.51it/s]12/01/2021 13:04:23 - INFO - __main__ -   Batch number = 160
+Evaluating:  94%|█████████▎| 160/171 [00:26<00:02,  4.84it/s]12/01/2021 13:04:23 - INFO - __main__ -   Batch number = 161
+Evaluating:  94%|█████████▍| 161/171 [00:26<00:02,  4.95it/s]12/01/2021 13:04:23 - INFO - __main__ -   Batch number = 162
+Evaluating:  95%|█████████▍| 162/171 [00:26<00:01,  5.23it/s]12/01/2021 13:04:23 - INFO - __main__ -   Batch number = 163
+Evaluating:  95%|█████████▌| 163/171 [00:26<00:02,  3.85it/s]12/01/2021 13:04:24 - INFO - __main__ -   Batch number = 164
+Evaluating:  96%|█████████▌| 164/171 [00:27<00:01,  4.33it/s]12/01/2021 13:04:24 - INFO - __main__ -   Batch number = 165
+Evaluating:  96%|█████████▋| 165/171 [00:27<00:01,  3.72it/s]12/01/2021 13:04:24 - INFO - __main__ -   Batch number = 166
+Evaluating:  97%|█████████▋| 166/171 [00:27<00:01,  4.21it/s]12/01/2021 13:04:24 - INFO - __main__ -   Batch number = 167
+Evaluating:  98%|█████████▊| 167/171 [00:27<00:00,  4.46it/s]12/01/2021 13:04:24 - INFO - __main__ -   Batch number = 168
+Evaluating:  98%|█████████▊| 168/171 [00:27<00:00,  4.87it/s]12/01/2021 13:04:25 - INFO - __main__ -   Batch number = 169
+Evaluating:  99%|█████████▉| 169/171 [00:28<00:00,  4.07it/s]12/01/2021 13:04:25 - INFO - __main__ -   Batch number = 170
+Evaluating:  99%|█████████▉| 170/171 [00:28<00:00,  4.48it/s]12/01/2021 13:04:25 - INFO - __main__ -   Batch number = 171
+Evaluating: 100%|██████████| 171/171 [00:28<00:00,  4.71it/s]Evaluating: 100%|██████████| 171/171 [00:28<00:00,  5.98it/s]
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SYM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+12/01/2021 13:04:27 - INFO - __main__ -   ***** Evaluation result  in en *****
+12/01/2021 13:04:27 - INFO - __main__ -     f1 = 0.5757974050987078
+12/01/2021 13:04:27 - INFO - __main__ -     loss = 1.4201976196807728
+12/01/2021 13:04:27 - INFO - __main__ -     precision = 0.5935236357782905
+12/01/2021 13:04:27 - INFO - __main__ -     recall = 0.5590992949025753
+35.51user 13.72system 0:46.52elapsed 105%CPU (0avgtext+0avgdata 3986728maxresident)k
+0inputs+1024outputs (0major+1790894minor)pagefaults 0swaps

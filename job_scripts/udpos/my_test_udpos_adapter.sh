@@ -21,9 +21,9 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 
 export CUDA_VISIBLE_DEVICES=$GPU
 TASK='udpos'
-# LANGS="bho,mr,ta,fo,no,da,be,uk,bg"
+LANGS="aii,he,mt"
 # ALL_LANGS="mr,ta,bho,fo,no,da,bg,uk,be"
-ALL_LANGS="en"
+# ALL_LANGS="en"
 # REM_LANGS="be"
 TRAIN_LANGS="en"
 
@@ -31,13 +31,13 @@ NUM_EPOCHS=50
 MAX_LENGTH=128
 # SEED=12
 
-LANG_ADAPTER_NAME="am/wiki@ukp"
-ADAPTER_LANG="am"
+LANG_ADAPTER_NAME="en/wiki@ukp"
+ADAPTER_LANG="en"
 
 TASK_ADAPTER_NAME="udpos"
 
 DATA_DIR=$DATA_DIR/${TASK}/${TASK}_processed_maxlen${MAX_LENGTH}/
-OUTPUT_DIR="$OUT_DIR/${TASK}/cloud-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
+OUTPUT_DIR="$OUT_DIR/${TASK}/my-${MODEL}-MaxLen${MAX_LENGTH}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
 #This is where you choose the english adapter, and average over seeds
 TASK_ADAPTER="outputs/udpos/"
 
@@ -81,7 +81,7 @@ nohup time python third_party/my_run_tag.py \
   --save_steps 1000 \
   --seed $SEED \
   --do_predict \
-  --predict_langs $ALL_LANGS \
+  --predict_langs $LANGS \
   --train_langs $TRAIN_LANGS \
   --log_file $OUTPUT_DIR/train.log \
   --eval_all_checkpoints \

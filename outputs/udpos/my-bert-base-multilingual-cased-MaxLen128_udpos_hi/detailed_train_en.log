@@ -1,0 +1,126 @@
+Command terminated by signal 2
+0.00user 0.00system 0:00.01elapsed 90%CPU (0avgtext+0avgdata 6660maxresident)k
+0inputs+0outputs (0major+508minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 556, in main
+    known_paths = addusersitepackages(known_paths)
+  File "/usr/lib/python3.6/site.py", line 288, in addusersitepackages
+    user_site = getusersitepackages()
+  File "/usr/lib/python3.6/site.py", line 264, in getusersitepackages
+    user_base = getuserbase() # this will also set USER_BASE
+  File "/usr/lib/python3.6/site.py", line 254, in getuserbase
+    USER_BASE = get_config_var('userbase')
+  File "/usr/lib/python3.6/sysconfig.py", line 607, in get_config_var
+    return get_config_vars().get(name)
+  File "/usr/lib/python3.6/sysconfig.py", line 580, in get_config_vars
+    srcdir = os.path.dirname(get_makefile_filename())
+  File "/usr/lib/python3.6/sysconfig.py", line 342, in get_makefile_filename
+    return os.path.join(get_path('stdlib'), config_dir_name, 'Makefile')
+  File "/usr/lib/python3.6/sysconfig.py", line 512, in get_path
+    return get_paths(scheme, vars, expand)[name]
+  File "/usr/lib/python3.6/sysconfig.py", line 502, in get_paths
+    return _expand_vars(scheme, vars)
+  File "/usr/lib/python3.6/sysconfig.py", line 164, in _expand_vars
+    _extend_dict(vars, get_config_vars())
+  File "/usr/lib/python3.6/sysconfig.py", line 155, in _extend_dict
+    if key in target_keys:
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.03user 0.00system 0:00.03elapsed 100%CPU (0avgtext+0avgdata 9492maxresident)k
+0inputs+0outputs (0major+1086minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 652, in <module>
+    from _collections_abc import MutableMapping
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 779, in get_code
+  File "<frozen importlib._bootstrap_external>", line 487, in _compile_bytecode
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8340maxresident)k
+0inputs+0outputs (0major+792minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 7, in <module>
+    from numpy.core._multiarray_umath import (
+KeyboardInterrupt
+Command terminated by signal 2
+0.31user 0.44system 0:00.09elapsed 819%CPU (0avgtext+0avgdata 19792maxresident)k
+0inputs+8outputs (0major+3004minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 70, in <module>
+    from . import numerictypes as nt
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/numerictypes.py", line 566, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/numerictypes.py", line 562, in _register_types
+    numbers.Complex.register(inexact)
+  File "/usr/lib/python3.6/abc.py", line 158, in register
+    if issubclass(subclass, cls):
+  File "/usr/lib/python3.6/abc.py", line 228, in __subclasscheck__
+    if issubclass(subclass, scls):
+  File "/usr/lib/python3.6/abc.py", line 196, in __subclasscheck__
+    def __subclasscheck__(cls, subclass):
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.84user 0.96system 0:00.11elapsed 1644%CPU (0avgtext+0avgdata 20664maxresident)k
+0inputs+8outputs (0major+3185minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 7, in <module>
+    from numpy.core._multiarray_umath import (
+ImportError: PyCapsule_Import could not import module "datetime"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 48, in <module>
+    raise ImportError(msg)
+ImportError: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python3.6 from "/home/abhijeet/rohan/venvs/cloud-emea-copy/bin/python"
+  * The NumPy version is: "1.19.5"
+
+and make sure that they are the versions you expect.
+Please carefully study the documentation linked above for further help.
+
+Original error was: PyCapsule_Import could not import module "datetime"
+
+Command exited with non-zero status 1
+0.54user 0.60system 0:00.08elapsed 1298%CPU (0avgtext+0avgdata 19344maxresident)k
+0inputs+0outputs (0major+2945minor)pagefaults 0swaps

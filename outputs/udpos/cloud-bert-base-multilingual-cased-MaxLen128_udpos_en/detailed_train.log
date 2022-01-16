@@ -1,0 +1,897 @@
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 20:23:12 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='aii,he,mt', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 20:23:12 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 20:23:12 - INFO - __main__ -   Seed = 1
+01/15/2022 20:23:12 - INFO - root -   save model
+01/15/2022 20:23:12 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='aii,he,mt', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 20:23:12 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 20:23:15 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 20:23:21 - INFO - __main__ -   Using lang2id = None
+01/15/2022 20:23:21 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 20:23:21 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/
+01/15/2022 20:23:21 - INFO - root -   Trying to decide if add adapter
+01/15/2022 20:23:21 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/pytorch_model_head.bin
+01/15/2022 20:23:21 - INFO - root -   loading lang adpater en/wiki@ukp
+01/15/2022 20:23:21 - INFO - __main__ -   Adapter Languages : ['en'], Length : 1
+01/15/2022 20:23:21 - INFO - __main__ -   Adapter Names ['en/wiki@ukp'], Length : 1
+01/15/2022 20:23:21 - INFO - __main__ -   Language = en
+01/15/2022 20:23:21 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/15/2022 20:23:26 - INFO - __main__ -   Language adapter for aii not found, using en instead
+01/15/2022 20:23:26 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:23:26 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:23:26 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:23:26 - INFO - __main__ -   all languages = aii
+01/15/2022 20:23:26 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/aii/test.bert-base-multilingual-cased in language aii
+01/15/2022 20:23:26 - INFO - utils_tag -   lang_id=0, lang=aii, lang2id=None
+01/15/2022 20:23:26 - INFO - utils_tag -   Writing example 0 of 57
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: aii-1
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] [UNK] ، [UNK] [UNK] [UNK] [UNK] [UNK] . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 100 100 100 100 100 752 100 100 100 100 100 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 6 6 1 4 16 13 3 11 1 4 16 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: aii-2
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] ? [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 100 100 100 100 100 100 100 136 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 8 1 4 5 1 5 1 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: aii-3
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 100 100 100 100 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 6 8 11 4 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: aii-4
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 100 100 100 100 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 8 10 4 8 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: aii-5
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 100 100 100 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 8 1 4 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_aii_bert-base-multilingual-cased_128, len(features)=57
+01/15/2022 20:23:26 - INFO - __main__ -   ***** Running evaluation  in aii *****
+01/15/2022 20:23:26 - INFO - __main__ -     Num examples = 57
+01/15/2022 20:23:26 - INFO - __main__ -     Batch size = 32
+**********
+[<utils_tag.InputExample object at 0x7f2e19bf1518>, <utils_tag.InputExample object at 0x7f2e19bf1748>, <utils_tag.InputExample object at 0x7f2e19bf18d0>, <utils_tag.InputExample object at 0x7f2e19bf1a58>, <utils_tag.InputExample object at 0x7f2e19bf1ba8>, <utils_tag.InputExample object at 0x7f2e19bf1e48>, <utils_tag.InputExample object at 0x7f2e19bf1f98>, <utils_tag.InputExample object at 0x7f2e19c0a240>, <utils_tag.InputExample object at 0x7f2e19c0a4a8>, <utils_tag.InputExample object at 0x7f2e19c0a668>, <utils_tag.InputExample object at 0x7f2e19c0a828>, <utils_tag.InputExample object at 0x7f2e19c0a9e8>, <utils_tag.InputExample object at 0x7f2e19c0ac88>, <utils_tag.InputExample object at 0x7f2e19c0aeb8>, <utils_tag.InputExample object at 0x7f2e19c0d0b8>, <utils_tag.InputExample object at 0x7f2e19c0d278>, <utils_tag.InputExample object at 0x7f2e19c0d5c0>, <utils_tag.InputExample object at 0x7f2e19c0d8d0>, <utils_tag.InputExample object at 0x7f2e19c0da90>, <utils_tag.InputExample object at 0x7f2e19c0dba8>, <utils_tag.InputExample object at 0x7f2e19c0dcc0>, <utils_tag.InputExample object at 0x7f2e19c0de80>, <utils_tag.InputExample object at 0x7f2e19c0e048>, <utils_tag.InputExample object at 0x7f2e19c0e1d0>, <utils_tag.InputExample object at 0x7f2e19c0e390>, <utils_tag.InputExample object at 0x7f2e19c0e518>, <utils_tag.InputExample object at 0x7f2e19c0e6d8>, <utils_tag.InputExample object at 0x7f2e19c0e898>, <utils_tag.InputExample object at 0x7f2e19c0eb00>, <utils_tag.InputExample object at 0x7f2e19c0ed68>, <utils_tag.InputExample object at 0x7f2e19c12630>, <utils_tag.InputExample object at 0x7f2e19c127b8>, <utils_tag.InputExample object at 0x7f2e19c12908>, <utils_tag.InputExample object at 0x7f2e19c12a58>, <utils_tag.InputExample object at 0x7f2e19c12ba8>, <utils_tag.InputExample object at 0x7f2e19c12dd8>, <utils_tag.InputExample object at 0x7f2e19c12f28>, <utils_tag.InputExample object at 0x7f2e19c140f0>, <utils_tag.InputExample object at 0x7f2e19c14240>, <utils_tag.InputExample object at 0x7f2e19c14390>, <utils_tag.InputExample object at 0x7f2e19c144e0>, <utils_tag.InputExample object at 0x7f2e19c14630>, <utils_tag.InputExample object at 0x7f2e19c14860>, <utils_tag.InputExample object at 0x7f2e19c14a58>, <utils_tag.InputExample object at 0x7f2e19c14c18>, <utils_tag.InputExample object at 0x7f2e19c14dd8>, <utils_tag.InputExample object at 0x7f2e19c14f98>, <utils_tag.InputExample object at 0x7f2e19c16438>, <utils_tag.InputExample object at 0x7f2e19c166d8>, <utils_tag.InputExample object at 0x7f2e19c16a58>, <utils_tag.InputExample object at 0x7f2e19c16c50>, <utils_tag.InputExample object at 0x7f2e19c16f98>, <utils_tag.InputExample object at 0x7f2e19c173c8>, <utils_tag.InputExample object at 0x7f2e19c17710>, <utils_tag.InputExample object at 0x7f2e19c17b38>, <utils_tag.InputExample object at 0x7f2e19c17da0>, <utils_tag.InputExample object at 0x7f2e19c17f98>]
+Evaluating:   0%|          | 0/2 [00:00<?, ?it/s]01/15/2022 20:23:26 - INFO - __main__ -   Batch number = 1
+Evaluating:  50%|█████     | 1/2 [00:00<00:00,  6.45it/s]01/15/2022 20:23:26 - INFO - __main__ -   Batch number = 2
+Evaluating: 100%|██████████| 2/2 [00:00<00:00,  7.56it/s]Evaluating: 100%|██████████| 2/2 [00:00<00:00,  7.36it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SYM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 20:23:26 - INFO - __main__ -   ***** Evaluation result  in aii *****
+01/15/2022 20:23:26 - INFO - __main__ -     f1 = 0.0
+01/15/2022 20:23:26 - INFO - __main__ -     loss = 8.341755390167236
+01/15/2022 20:23:26 - INFO - __main__ -     precision = 0.0
+01/15/2022 20:23:26 - INFO - __main__ -     recall = 0.0
+01/15/2022 20:23:26 - INFO - __main__ -   Language adapter for he not found, using en instead
+01/15/2022 20:23:26 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:23:26 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:23:26 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:23:26 - INFO - __main__ -   all languages = he
+01/15/2022 20:23:26 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/he/test.bert-base-multilingual-cased in language he
+01/15/2022 20:23:26 - INFO - utils_tag -   lang_id=0, lang=he, lang2id=None
+[<utils_tag.InputExample object at 0x7f2e19bf1e80>, <utils_tag.InputExample object at 0x7f2e19c13128>, <utils_tag.InputExample object at 0x7f2e19c13518>, <utils_tag.InputExample object at 0x7f2e19c138d0>, <utils_tag.InputExample object at 0x7f2e19c13ba8>, <utils_tag.InputExample object at 0x7f2e19c13d68>, <utils_tag.InputExample object at 0x7f2e1a138358>, <utils_tag.InputExample object at 0x7f2e1a138828>, <utils_tag.InputExample object at 0x7f2e1a138da0>, <utils_tag.InputExample object at 0x7f2e1a12d518>, <utils_tag.InputExample object at 0x7f2e1a12d9e8>, <utils_tag.InputExample object at 0x7f2e1a12def0>, <utils_tag.InputExample object at 0x7f2e1a130588>, <utils_tag.InputExample object at 0x7f2e1a130710>, <utils_tag.InputExample object at 0x7f2e1a130ba8>, <utils_tag.InputExample object at 0x7f2e1a130f28>, <utils_tag.InputExample object at 0x7f2e1a12b2e8>, <utils_tag.InputExample object at 0x7f2e1a12b518>, <utils_tag.InputExample object at 0x7f2e1a12b6d8>, <utils_tag.InputExample object at 0x7f2e1a12b9b0>, <utils_tag.InputExample object at 0x7f2e1a12bcc0>, <utils_tag.InputExample object at 0x7f2e1a134198>, <utils_tag.InputExample object at 0x7f2e1a1344e0>, <utils_tag.InputExample object at 0x7f2e1a1347b8>, <utils_tag.InputExample object at 0x7f2e1a134b00>, <utils_tag.InputExample object at 0x7f2e1a134c88>, <utils_tag.InputExample object at 0x7f2e1a134e80>, <utils_tag.InputExample object at 0x7f2e1a139240>, <utils_tag.InputExample object at 0x7f2e1a139550>, <utils_tag.InputExample object at 0x7f2e1a139710>, <utils_tag.InputExample object at 0x7f2e1a139c50>, <utils_tag.InputExample object at 0x7f2e1a139fd0>, <utils_tag.InputExample object at 0x7f2e1a13b278>, <utils_tag.InputExample object at 0x7f2e1a13b710>, <utils_tag.InputExample object at 0x7f2e1a13ba90>, <utils_tag.InputExample object at 0x7f2e1a13bbe0>, <utils_tag.InputExample object at 0x7f2e1a13be80>, <utils_tag.InputExample object at 0x7f2e1a13f160>, <utils_tag.InputExample object at 0x7f2e1a13f390>, <utils_tag.InputExample object at 0x7f2e1a13f748>, <utils_tag.InputExample object at 0x7f2e1a13fa90>, <utils_tag.InputExample object at 0x7f2e1a13fe48>, <utils_tag.InputExample object at 0x7f2e1a141278>, <utils_tag.InputExample object at 0x7f2e1a141438>, <utils_tag.InputExample object at 0x7f2e1a141710>, <utils_tag.InputExample object at 0x7f2e1a141b00>, <utils_tag.InputExample object at 0x7f2e1a141da0>, <utils_tag.InputExample object at 0x7f2e1a143208>, <utils_tag.InputExample object at 0x7f2e1a1434e0>, <utils_tag.InputExample object at 0x7f2e1a1437f0>, <utils_tag.InputExample object at 0x7f2e1a143c18>, <utils_tag.InputExample object at 0x7f2e1a147390>, <utils_tag.InputExample object at 0x7f2e1a147a20>, <utils_tag.InputExample object at 0x7f2e1a149198>, <utils_tag.InputExample object at 0x7f2e1a149438>, <utils_tag.InputExample object at 0x7f2e1a149780>, <utils_tag.InputExample object at 0x7f2e1a1499b0>, <utils_tag.InputExample object at 0x7f2e1a149cf8>, <utils_tag.InputExample object at 0x7f2e1a14b080>, <utils_tag.InputExample object at 0x7f2e1a14b390>, <utils_tag.InputExample object at 0x7f2e1a14b630>, <utils_tag.InputExample object at 0x7f2e1a14b7f0>, <utils_tag.InputExample object at 0x7f2e1a14bb38>, <utils_tag.InputExample object at 0x7f2e1a14bf98>, <utils_tag.InputExample object at 0x7f2e1a14d3c8>, <utils_tag.InputExample object at 0x7f2e1a14d7b8>, <utils_tag.InputExample object at 0x7f2e1a14dbe0>, <utils_tag.InputExample object at 0x7f2e1a14def0>, <utils_tag.InputExample object at 0x7f2e1a14f470>, <utils_tag.InputExample object at 0x7f2e1a14f780>, <utils_tag.InputExample object at 0x7f2e1a14fa58>, <utils_tag.InputExample object at 0x7f2e1a14fd30>, <utils_tag.InputExample object at 0x7f2e1a152080>, <utils_tag.InputExample object at 0x7f2e1a1524a8>, <utils_tag.InputExample object at 0x7f2e1a152780>, <utils_tag.InputExample object at 0x7f2e1a152ba8>, <utils_tag.InputExample object at 0x7f2e1a154048>, <utils_tag.InputExample object at 0x7f2e1a1547f0>, <utils_tag.InputExample object at 0x7f2e1a154ef0>, <utils_tag.InputExample object at 0x7f2e1a159128>, <utils_tag.InputExample object at 0x7f2e1a159400>, <utils_tag.InputExample object at 0x7f2e1a159748>, <utils_tag.InputExample object at 0x7f2e1a159978>, <utils_tag.InputExample object at 0x7f2e1a159eb8>, <utils_tag.InputExample object at 0x7f2e1a15b320>, <utils_tag.InputExample object at 0x7f2e1a15b550>, <utils_tag.InputExample object at 0x7f2e1a15bba8>, <utils_tag.InputExample object at 0x7f2e1a15bf28>, <utils_tag.InputExample object at 0x7f2e1a15d470>, <utils_tag.InputExample object at 0x7f2e1a15d940>, <utils_tag.InputExample object at 0x7f2e1a15dcf8>, <utils_tag.InputExample object at 0x7f2e1a15df28>, <utils_tag.InputExample object at 0x7f2e1a160240>, <utils_tag.InputExample object at 0x7f2e1a160518>, <utils_tag.InputExample object at 0x7f2e1a1609e8>, <utils_tag.InputExample object at 0x7f2e1a160be0>, <utils_tag.InputExample object at 0x7f2e1a160d30>, <utils_tag.InputExample object at 0x7f2e1a164128>, <utils_tag.InputExample object at 0x7f2e1a1642b0>, <utils_tag.InputExample object at 0x7f2e1a164748>, <utils_tag.InputExample object at 0x7f2e1a164828>, <utils_tag.InputExample object at 0x7f2e1a164a20>, <utils_tag.InputExample object at 0x7f2e1a1650b8>, <utils_tag.InputExample object at 0x7f2e1a1657b8>, <utils_tag.InputExample object at 0x7f2e1a165ac8>, <utils_tag.InputExample object at 0x7f2e1a0e80f0>, <utils_tag.InputExample object at 0x7f2e1a0e8588>, <utils_tag.InputExample object at 0x7f2e1a0e87b8>, <utils_tag.InputExample object at 0x7f2e1a0e8e48>, <utils_tag.InputExample object at 0x7f2e1a0eb5f8>, <utils_tag.InputExample object at 0x7f2e1a0ebba8>, <utils_tag.InputExample object at 0x7f2e1a0ef550>, <utils_tag.InputExample object at 0x7f2e1a0efc18>, <utils_tag.InputExample object at 0x7f2e1a0efe80>, <utils_tag.InputExample object at 0x7f2e1a0f36a0>, <utils_tag.InputExample object at 0x7f2e1a0f3908>, <utils_tag.InputExample object at 0x7f2e1a0f3ba8>, <utils_tag.InputExample object at 0x7f2e1a0f5160>, <utils_tag.InputExample object at 0x7f2e1a0f5940>, <utils_tag.InputExample object at 0x7f2e1a0f5b38>, <utils_tag.InputExample object at 0x7f2e1a0f5eb8>, <utils_tag.InputExample object at 0x7f2e1a0f7390>, <utils_tag.InputExample object at 0x7f2e1a0f75f8>, <utils_tag.InputExample object at 0x7f2e1a0f77f0>, <utils_tag.InputExample object at 0x7f2e1a0f7ac8>, <utils_tag.InputExample object at 0x7f2e1a0f7cc0>, <utils_tag.InputExample object at 0x7f2e1a0f7f98>, <utils_tag.InputExample object at 0x7f2e1a0fa828>, <utils_tag.InputExample object at 0x7f2e1a0fabe0>, <utils_tag.InputExample object at 0x7f2e1a0fadd8>, <utils_tag.InputExample object at 0x7f2e1a0fafd0>, <utils_tag.InputExample object at 0x7f2e1a0fd4a8>, <utils_tag.InputExample object at 0x7f2e1a0fd748>, <utils_tag.InputExample object at 0x7f2e1a0fd940>, <utils_tag.InputExample object at 0x7f2e1a0fdac8>, <utils_tag.InputExample object at 0x7f2e1a0fdeb8>, <utils_tag.InputExample object at 0x7f2e1a100198>, <utils_tag.InputExample object at 0x7f2e1a1005f8>, <utils_tag.InputExample object at 0x7f2e1a1007b8>, <utils_tag.InputExample object at 0x7f2e1a100978>, <utils_tag.InputExample object at 0x7f2e1a100ac8>, <utils_tag.InputExample object at 0x7f2e1a100c50>, <utils_tag.InputExample object at 0x7f2e1a102080>, <utils_tag.InputExample object at 0x7f2e1a102518>, <utils_tag.InputExample object at 0x7f2e1a102a20>, <utils_tag.InputExample object at 0x7f2e1a1061d0>, <utils_tag.InputExample object at 0x7f2e1a1064a8>, <utils_tag.InputExample object at 0x7f2e1a106748>, <utils_tag.InputExample object at 0x7f2e1a106d68>, <utils_tag.InputExample object at 0x7f2e1a1081d0>, <utils_tag.InputExample object at 0x7f2e1a108518>, <utils_tag.InputExample object at 0x7f2e1a1087b8>, <utils_tag.InputExample object at 0x7f2e1a1089e8>, <utils_tag.InputExample object at 0x7f2e1a108eb8>, <utils_tag.InputExample object at 0x7f2e1a10c550>, <utils_tag.InputExample object at 0x7f2e1a10c978>, <utils_tag.InputExample object at 0x7f2e1a10cc88>, <utils_tag.InputExample object at 0x7f2e1a10cf28>, <utils_tag.InputExample object at 0x7f2e1a10e438>, <utils_tag.InputExample object at 0x7f2e1a10e9e8>, <utils_tag.InputExample object at 0x7f2e1a10ecc0>, <utils_tag.InputExample object at 0x7f2e1a110278>, <utils_tag.InputExample object at 0x7f2e1a1106d8>, <utils_tag.InputExample object at 0x7f2e1a110c88>, <utils_tag.InputExample object at 0x7f2e1a113748>, <utils_tag.InputExample object at 0x7f2e1a1170f0>, <utils_tag.InputExample object at 0x7f2e1a117470>, <utils_tag.InputExample object at 0x7f2e1a1179e8>, <utils_tag.InputExample object at 0x7f2e1a117ef0>, <utils_tag.InputExample object at 0x7f2e1a11a5f8>, <utils_tag.InputExample object at 0x7f2e1a11a978>, <utils_tag.InputExample object at 0x7f2e1a11d438>, <utils_tag.InputExample object at 0x7f2e1a11d9b0>, <utils_tag.InputExample object at 0x7f2e1a11e7b8>, <utils_tag.InputExample object at 0x7f2e1a11ec50>, <utils_tag.InputExample object at 0x7f2e1a120358>, <utils_tag.InputExample object at 0x7f2e1a1208d0>, <utils_tag.InputExample object at 0x7f2e1a123048>, <utils_tag.InputExample object at 0x7f2e1a123588>, <utils_tag.InputExample object at 0x7f2e1a123978>, <utils_tag.InputExample object at 0x7f2e1a125048>, <utils_tag.InputExample object at 0x7f2e1a1259e8>, <utils_tag.InputExample object at 0x7f2e1a125ba8>, <utils_tag.InputExample object at 0x7f2e1a125f98>, <utils_tag.InputExample object at 0x7f2e1a0a9550>, <utils_tag.InputExample object at 0x7f2e1a0a9748>, <utils_tag.InputExample object at 0x7f2e1a0a9c88>, <utils_tag.InputExample object at 0x7f2e1a0ac278>, <utils_tag.InputExample object at 0x7f2e1a0ac4e0>, <utils_tag.InputExample object at 0x7f2e1a0ac940>, <utils_tag.InputExample object at 0x7f2e1a0acbe0>, <utils_tag.InputExample object at 0x7f2e1a0ace10>, <utils_tag.InputExample object at 0x7f2e1a0af6a0>, <utils_tag.InputExample object at 0x7f2e1a0afb70>, <utils_tag.InputExample object at 0x7f2e1a0aff98>, <utils_tag.InputExample object at 0x7f2e1a0b3390>, <utils_tag.InputExample object at 0x7f2e1a0b3ac8>, <utils_tag.InputExample object at 0x7f2e1a0b3e48>, <utils_tag.InputExample object at 0x7f2e1a0b4198>, <utils_tag.InputExample object at 0x7f2e1a0b44a8>, <utils_tag.InputExample object at 0x7f2e1a0b4780>, <utils_tag.InputExample object at 0x7f2e1a0b4b00>, <utils_tag.InputExample object at 0x7f2e1a0b6080>, <utils_tag.InputExample object at 0x7f2e1a0b6400>, <utils_tag.InputExample object at 0x7f2e1a0b6668>, <utils_tag.InputExample object at 0x7f2e1a0b6940>, <utils_tag.InputExample object at 0x7f2e1a0b6f60>, <utils_tag.InputExample object at 0x7f2e1a0b9198>, <utils_tag.InputExample object at 0x7f2e1a0b9860>, <utils_tag.InputExample object at 0x7f2e1a0b9c18>, <utils_tag.InputExample object at 0x7f2e1a0b9ef0>, <utils_tag.InputExample object at 0x7f2e1a0be3c8>, <utils_tag.InputExample object at 0x7f2e1a0be860>, <utils_tag.InputExample object at 0x7f2e1a0bec18>, <utils_tag.InputExample object at 0x7f2e1a0c11d0>, <utils_tag.InputExample object at 0x7f2e1a0c1438>, <utils_tag.InputExample object at 0x7f2e1a0c1668>, <utils_tag.InputExample object at 0x7f2e1a0c19e8>, <utils_tag.InputExample object at 0x7f2e1a0c1da0>, <utils_tag.InputExample object at 0x7f2e1a0c1fd0>, <utils_tag.InputExample object at 0x7f2e1a0c4588>, <utils_tag.InputExample object at 0x7f2e1a0c4c88>, <utils_tag.InputExample object at 0x7f2e1a0c4ef0>, <utils_tag.InputExample object at 0x7f2e1a0c6278>, <utils_tag.InputExample object at 0x7f2e1a0c65f8>, <utils_tag.InputExample object at 0x7f2e1a0c6a58>, <utils_tag.InputExample object at 0x7f2e1a0c6e80>, <utils_tag.InputExample object at 0x7f2e1a0c8b00>, <utils_tag.InputExample object at 0x7f2e1a0cb240>, <utils_tag.InputExample object at 0x7f2e1a0cb668>, <utils_tag.InputExample object at 0x7f2e1a0cbd68>, <utils_tag.InputExample object at 0x7f2e1a0ce4e0>, <utils_tag.InputExample object at 0x7f2e1a0ce860>, <utils_tag.InputExample object at 0x7f2e1a0cecf8>, <utils_tag.InputExample object at 0x7f2e1a0ceeb8>, <utils_tag.InputExample object at 0x7f2e1a0d04a8>, <utils_tag.InputExample object at 0x7f2e1a0d09e8>, <utils_tag.InputExample object at 0x7f2e1a0d0cc0>, <utils_tag.InputExample object at 0x7f2e1a0d3198>, <utils_tag.InputExample object at 0x7f2e1a0d37f0>, <utils_tag.InputExample object at 0x7f2e1a0d3f98>, <utils_tag.InputExample object at 0x7f2e1a0d76d8>, <utils_tag.InputExample object at 0x7f2e1a0d7a90>, <utils_tag.InputExample object at 0x7f2e1a0d7ef0>, <utils_tag.InputExample object at 0x7f2e1a0da278>, <utils_tag.InputExample object at 0x7f2e1a0da7b8>, <utils_tag.InputExample object at 0x7f2e1a0dac88>, <utils_tag.InputExample object at 0x7f2e1a0dc6d8>, <utils_tag.InputExample object at 0x7f2e1a0e0080>, <utils_tag.InputExample object at 0x7f2e1a0e0400>, <utils_tag.InputExample object at 0x7f2e1a0e0d30>, <utils_tag.InputExample object at 0x7f2e1a0e20f0>, <utils_tag.InputExample object at 0x7f2e1a0e28d0>, <utils_tag.InputExample object at 0x7f2e1a0e2ef0>, <utils_tag.InputExample object at 0x7f2e1a0e5320>, <utils_tag.InputExample object at 0x7f2e1a0e5518>, <utils_tag.InputExample object at 0x7f2e1a0e5eb8>, <utils_tag.InputExample object at 0x7f2e1a068518>, <utils_tag.InputExample object at 0x7f2e1a068b00>, <utils_tag.InputExample object at 0x7f2e1a06b2b0>, <utils_tag.InputExample object at 0x7f2e1a06bb70>, <utils_tag.InputExample object at 0x7f2e1a06beb8>, <utils_tag.InputExample object at 0x7f2e1a06e588>, <utils_tag.InputExample object at 0x7f2e1a06e978>, <utils_tag.InputExample object at 0x7f2e1a06eeb8>, <utils_tag.InputExample object at 0x7f2e1a071668>, <utils_tag.InputExample object at 0x7f2e1a071978>, <utils_tag.InputExample object at 0x7f2e1a0730b8>, <utils_tag.InputExample object at 0x7f2e1a073940>, <utils_tag.InputExample object at 0x7f2e1a073c18>, <utils_tag.InputExample object at 0x7f2e1a073f28>, <utils_tag.InputExample object at 0x7f2e1a076390>, <utils_tag.InputExample object at 0x7f2e1a076748>, <utils_tag.InputExample object at 0x7f2e1a076ba8>, <utils_tag.InputExample object at 0x7f2e1a076d68>, <utils_tag.InputExample object at 0x7f2e1a0781d0>, <utils_tag.InputExample object at 0x7f2e1a078668>, <utils_tag.InputExample object at 0x7f2e1a078b38>, <utils_tag.InputExample object at 0x7f2e1a07b048>, <utils_tag.InputExample object at 0x7f2e1a07b400>, <utils_tag.InputExample object at 0x7f2e1a07b9b0>, <utils_tag.InputExample object at 0x7f2e1a07bdd8>, <utils_tag.InputExample object at 0x7f2e1a07f588>, <utils_tag.InputExample object at 0x7f2e1a07f860>, <utils_tag.InputExample object at 0x7f2e1a07fc50>, <utils_tag.InputExample object at 0x7f2e1a07ff98>, <utils_tag.InputExample object at 0x7f2e1a0824e0>, <utils_tag.InputExample object at 0x7f2e1a0829e8>, <utils_tag.InputExample object at 0x7f2e1a082f98>, <utils_tag.InputExample object at 0x7f2e1a085278>, <utils_tag.InputExample object at 0x7f2e1a085898>, <utils_tag.InputExample object at 0x7f2e1a085d68>, <utils_tag.InputExample object at 0x7f2e1a087128>, <utils_tag.InputExample object at 0x7f2e1a087550>, <utils_tag.InputExample object at 0x7f2e1a0877b8>, <utils_tag.InputExample object at 0x7f2e1a087ac8>, <utils_tag.InputExample object at 0x7f2e1a087d30>, <utils_tag.InputExample object at 0x7f2e1a08b2b0>, <utils_tag.InputExample object at 0x7f2e1a08b518>, <utils_tag.InputExample object at 0x7f2e1a08b9b0>, <utils_tag.InputExample object at 0x7f2e1a08bb38>, <utils_tag.InputExample object at 0x7f2e1a08bdd8>, <utils_tag.InputExample object at 0x7f2e1a08e358>, <utils_tag.InputExample object at 0x7f2e1a08e940>, <utils_tag.InputExample object at 0x7f2e1a08ec50>, <utils_tag.InputExample object at 0x7f2e1a08ef60>, <utils_tag.InputExample object at 0x7f2e1a090208>, <utils_tag.InputExample object at 0x7f2e1a090470>, <utils_tag.InputExample object at 0x7f2e1a090978>, <utils_tag.InputExample object at 0x7f2e1a093668>, <utils_tag.InputExample object at 0x7f2e1a093940>, <utils_tag.InputExample object at 0x7f2e1a093dd8>, <utils_tag.InputExample object at 0x7f2e1a097438>, <utils_tag.InputExample object at 0x7f2e1a097898>, <utils_tag.InputExample object at 0x7f2e1a097fd0>, <utils_tag.InputExample object at 0x7f2e1a09a320>, <utils_tag.InputExample object at 0x7f2e1a09a6d8>, <utils_tag.InputExample object at 0x7f2e1a09a978>, <utils_tag.InputExample object at 0x7f2e1a09ad68>, <utils_tag.InputExample object at 0x7f2e1a09af98>, <utils_tag.InputExample object at 0x7f2e1a09c470>, <utils_tag.InputExample object at 0x7f2e1a09c668>, <utils_tag.InputExample object at 0x7f2e1a09ca90>, <utils_tag.InputExample object at 0x7f2e1a09d588>, <utils_tag.InputExample object at 0x7f2e1a09df60>, <utils_tag.InputExample object at 0x7f2e1a0a2780>, <utils_tag.InputExample object at 0x7f2e1a0a3208>, <utils_tag.InputExample object at 0x7f2e1a0a3860>, <utils_tag.InputExample object at 0x7f2e1a0a3da0>, <utils_tag.InputExample object at 0x7f2e1a0290f0>, <utils_tag.InputExample object at 0x7f2e1a029b00>, <utils_tag.InputExample object at 0x7f2e1a029e48>, <utils_tag.InputExample object at 0x7f2e1a02b400>, <utils_tag.InputExample object at 0x7f2e1a02b780>, <utils_tag.InputExample object at 0x7f2e1a02ba58>, <utils_tag.InputExample object at 0x7f2e1a02be10>, <utils_tag.InputExample object at 0x7f2e1a02d240>, <utils_tag.InputExample object at 0x7f2e1a02d6d8>, <utils_tag.InputExample object at 0x7f2e1a02d9b0>, <utils_tag.InputExample object at 0x7f2e1a02ddd8>, <utils_tag.InputExample object at 0x7f2e1a031390>, <utils_tag.InputExample object at 0x7f2e1a031a58>, <utils_tag.InputExample object at 0x7f2e1a031f60>, <utils_tag.InputExample object at 0x7f2e1a033898>, <utils_tag.InputExample object at 0x7f2e1a033cf8>, <utils_tag.InputExample object at 0x7f2e1a0350b8>, <utils_tag.InputExample object at 0x7f2e1a0352e8>, <utils_tag.InputExample object at 0x7f2e1a035f60>, <utils_tag.InputExample object at 0x7f2e1a0370f0>, <utils_tag.InputExample object at 0x7f2e1a037390>, <utils_tag.InputExample object at 0x7f2e1a0376a0>, <utils_tag.InputExample object at 0x7f2e1a037908>, <utils_tag.InputExample object at 0x7f2e1a037b38>, <utils_tag.InputExample object at 0x7f2e1a03c240>, <utils_tag.InputExample object at 0x7f2e1a03c4a8>, <utils_tag.InputExample object at 0x7f2e1a03c898>, <utils_tag.InputExample object at 0x7f2e1a03cf98>, <utils_tag.InputExample object at 0x7f2e1a03d828>, <utils_tag.InputExample object at 0x7f2e1a03d9e8>, <utils_tag.InputExample object at 0x7f2e1a03de48>, <utils_tag.InputExample object at 0x7f2e1a041358>, <utils_tag.InputExample object at 0x7f2e1a041908>, <utils_tag.InputExample object at 0x7f2e1a0452e8>, <utils_tag.InputExample object at 0x7f2e1a045748>, <utils_tag.InputExample object at 0x7f2e1a045b70>, <utils_tag.InputExample object at 0x7f2e1a048390>, <utils_tag.InputExample object at 0x7f2e1a048550>, <utils_tag.InputExample object at 0x7f2e1a048a58>, <utils_tag.InputExample object at 0x7f2e1a048ef0>, <utils_tag.InputExample object at 0x7f2e1a04b438>, <utils_tag.InputExample object at 0x7f2e1a04b9b0>, <utils_tag.InputExample object at 0x7f2e1a04bc88>, <utils_tag.InputExample object at 0x7f2e1a04e2b0>, <utils_tag.InputExample object at 0x7f2e1a04e8d0>, <utils_tag.InputExample object at 0x7f2e1a04eeb8>, <utils_tag.InputExample object at 0x7f2e1a050240>, <utils_tag.InputExample object at 0x7f2e1a050780>, <utils_tag.InputExample object at 0x7f2e1a050898>, <utils_tag.InputExample object at 0x7f2e1a050c88>, <utils_tag.InputExample object at 0x7f2e1a054518>, <utils_tag.InputExample object at 0x7f2e1a054978>, <utils_tag.InputExample object at 0x7f2e1a0550f0>, <utils_tag.InputExample object at 0x7f2e1a055470>, <utils_tag.InputExample object at 0x7f2e1a055630>, <utils_tag.InputExample object at 0x7f2e1a055d68>, <utils_tag.InputExample object at 0x7f2e1a057278>, <utils_tag.InputExample object at 0x7f2e1a057828>, <utils_tag.InputExample object at 0x7f2e1a057c50>, <utils_tag.InputExample object at 0x7f2e1a05b400>, <utils_tag.InputExample object at 0x7f2e1a05b748>, <utils_tag.InputExample object at 0x7f2e1a05bb38>, <utils_tag.InputExample object at 0x7f2e1a05bf60>, <utils_tag.InputExample object at 0x7f2e1a05d198>, <utils_tag.InputExample object at 0x7f2e1a05d860>, <utils_tag.InputExample object at 0x7f2e1a05db00>, <utils_tag.InputExample object at 0x7f2e1a05dda0>, <utils_tag.InputExample object at 0x7f2e1a060278>, <utils_tag.InputExample object at 0x7f2e1a060710>, <utils_tag.InputExample object at 0x7f2e1a060c18>, <utils_tag.InputExample object at 0x7f2e1a064128>, <utils_tag.InputExample object at 0x7f2e1a064860>, <utils_tag.InputExample object at 0x7f2e1a064eb8>, <utils_tag.InputExample object at 0x7f2e1a0653c8>, <utils_tag.InputExample object at 0x7f2e1a065860>, <utils_tag.InputExample object at 0x7f2e1a065ac8>, <utils_tag.InputExample object at 0x7f2e1a065fd0>, <utils_tag.InputExample object at 0x7f2e19feb2e8>, <utils_tag.InputExample object at 0x7f2e19feba20>, <utils_tag.InputExample object at 0x7f2e19febda0>, <utils_tag.InputExample object at 0x7f2e19fed048>, <utils_tag.InputExample object at 0x7f2e19fed518>, <utils_tag.InputExample object at 0x7f2e19fed780>, <utils_tag.InputExample object at 0x7f2e19fedac8>, <utils_tag.InputExample object at 0x7f2e19fede10>, <utils_tag.InputExample object at 0x7f2e19fee0b8>, <utils_tag.InputExample object at 0x7f2e19fee630>, <utils_tag.InputExample object at 0x7f2e19feeba8>, <utils_tag.InputExample object at 0x7f2e19feecf8>, <utils_tag.InputExample object at 0x7f2e19ff4240>, <utils_tag.InputExample object at 0x7f2e19ff4630>, <utils_tag.InputExample object at 0x7f2e19ff4be0>, <utils_tag.InputExample object at 0x7f2e19ff4e80>, <utils_tag.InputExample object at 0x7f2e19ff7780>, <utils_tag.InputExample object at 0x7f2e19ff7978>, <utils_tag.InputExample object at 0x7f2e19ff7e10>, <utils_tag.InputExample object at 0x7f2e19ff8080>, <utils_tag.InputExample object at 0x7f2e19ff83c8>, <utils_tag.InputExample object at 0x7f2e19ff89e8>, <utils_tag.InputExample object at 0x7f2e19ff8e48>, <utils_tag.InputExample object at 0x7f2e19ffc550>, <utils_tag.InputExample object at 0x7f2e19ffc898>, <utils_tag.InputExample object at 0x7f2e19ffcd68>, <utils_tag.InputExample object at 0x7f2e19fff278>, <utils_tag.InputExample object at 0x7f2e19fff4a8>, <utils_tag.InputExample object at 0x7f2e19fffa20>, <utils_tag.InputExample object at 0x7f2e1a001240>, <utils_tag.InputExample object at 0x7f2e1a001390>, <utils_tag.InputExample object at 0x7f2e1a001940>, <utils_tag.InputExample object at 0x7f2e1a001e80>, <utils_tag.InputExample object at 0x7f2e1a005438>, <utils_tag.InputExample object at 0x7f2e1a005630>, <utils_tag.InputExample object at 0x7f2e1a005860>, <utils_tag.InputExample object at 0x7f2e1a005d68>, <utils_tag.InputExample object at 0x7f2e1a008278>, <utils_tag.InputExample object at 0x7f2e1a008630>, <utils_tag.InputExample object at 0x7f2e1a008a58>, <utils_tag.InputExample object at 0x7f2e1a00a048>, <utils_tag.InputExample object at 0x7f2e1a00a588>, <utils_tag.InputExample object at 0x7f2e1a00a940>, <utils_tag.InputExample object at 0x7f2e1a00c128>, <utils_tag.InputExample object at 0x7f2e1a00c5f8>, <utils_tag.InputExample object at 0x7f2e1a00c8d0>, <utils_tag.InputExample object at 0x7f2e1a00cd30>, <utils_tag.InputExample object at 0x7f2e1a00f1d0>, <utils_tag.InputExample object at 0x7f2e1a00f6a0>, <utils_tag.InputExample object at 0x7f2e1a00f908>, <utils_tag.InputExample object at 0x7f2e1a00fcc0>, <utils_tag.InputExample object at 0x7f2e1a012208>, <utils_tag.InputExample object at 0x7f2e1a0126a0>, <utils_tag.InputExample object at 0x7f2e1a0128d0>, <utils_tag.InputExample object at 0x7f2e1a012c18>, <utils_tag.InputExample object at 0x7f2e1a012f28>, <utils_tag.InputExample object at 0x7f2e1a014198>, <utils_tag.InputExample object at 0x7f2e1a0146d8>, <utils_tag.InputExample object at 0x7f2e1a0148d0>, <utils_tag.InputExample object at 0x7f2e1a014da0>, <utils_tag.InputExample object at 0x7f2e1a018048>, <utils_tag.InputExample object at 0x7f2e1a018470>, <utils_tag.InputExample object at 0x7f2e1a018ac8>, <utils_tag.InputExample object at 0x7f2e1a018d68>, <utils_tag.InputExample object at 0x7f2e1a01b0b8>, <utils_tag.InputExample object at 0x7f2e1a01b630>, <utils_tag.InputExample object at 0x7f2e1a01b828>, <utils_tag.InputExample object at 0x7f2e1a01bcc0>, <utils_tag.InputExample object at 0x7f2e1a01f438>, <utils_tag.InputExample object at 0x7f2e1a01f978>, <utils_tag.InputExample object at 0x7f2e1a01fe48>, <utils_tag.InputExample object at 0x7f2e1a023278>, <utils_tag.InputExample object at 0x7f2e1a0235c0>, <utils_tag.InputExample object at 0x7f2e1a023940>, <utils_tag.InputExample object at 0x7f2e1a025080>, <utils_tag.InputExample object at 0x7f2e1a025438>, <utils_tag.InputExample object at 0x7f2e1a025cc0>, <utils_tag.InputExample object at 0x7f2e19fa8240>, <utils_tag.InputExample object at 0x7f2e19fa85c0>, <utils_tag.InputExample object at 0x7f2e19fa8ba8>, <utils_tag.InputExample object at 0x7f2e19faa048>, <utils_tag.InputExample object at 0x7f2e19faa518>, <utils_tag.InputExample object at 0x7f2e19faa9e8>, <utils_tag.InputExample object at 0x7f2e19faaba8>, <utils_tag.InputExample object at 0x7f2e19faaef0>, <utils_tag.InputExample object at 0x7f2e19fad0f0>]01/15/2022 20:23:26 - INFO - utils_tag -   Writing example 0 of 492
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: he-1
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] ה ##ול ##קו ##מ ##ב לא ה ##זכיר את יכולת ##ו , ק ##רט ##ר ו ##ס ##מית שהיו אמו ##רים ל ##ע ##זור בר ##יב ##או ##נד , נ ##ת ##קל ##ו ב ##ק ##מ ##בל ובו ##רמו ##ר ש ##קט ##פו את מרבית ה ##כ ##דור ##ים ה ##חו ##זרים עובד ##ה ש ##אי ##פשר ##ה ל ##גל ##יל ל ##צאת לה ##ת ##ק ##פות מת ##פר ##צות בו ##רמו ##ר הוביל , ג ##ורד ##ון ו ##מט ##לון ס ##יי ##מו ב ##מר ##בית ה ##מקרים ב ##סל . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 727 17345 25941 34694 12094 12340 727 80227 10507 89408 10481 117 746 50139 11209 728 11828 20653 50959 104818 16160 735 13202 43793 54120 23449 23554 22622 117 739 10501 49325 10481 724 12510 34694 23917 81396 98822 11209 748 68642 19747 10507 85692 727 36051 34194 10438 727 37436 92468 97729 10416 748 16495 60276 10416 735 22359 20797 735 59553 25704 10501 12510 17085 70981 32512 30444 16790 98822 11209 104978 117 725 98845 11893 728 84583 72487 740 53631 16249 724 20597 34333 727 67608 724 61303 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 12 -100 -100 -100 -100 3 16 -100 2 8 -100 13 12 -100 -100 12 -100 -100 4 4 -100 16 -100 -100 8 -100 -100 -100 13 16 -100 -100 -100 12 -100 -100 -100 12 -100 -100 16 -100 -100 2 6 8 -100 -100 -100 1 -100 -100 8 -100 16 -100 -100 -100 8 -100 -100 16 -100 8 -100 -100 -100 16 -100 -100 12 -100 -100 16 13 12 -100 -100 12 -100 -100 16 -100 -100 2 -100 -100 8 -100 8 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: he-2
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] ב ##דק ##ה ה - 37 היה י ##תר ##ון ה ##גל ##יל 91 81 . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 724 109780 10416 727 118 11204 12168 732 37454 11893 727 22359 20797 12519 12324 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 8 -100 -100 6 13 9 4 8 -100 -100 8 -100 -100 9 9 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: he-3
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] י ##צי ##את ##ו של לי ##ף ג ##רר ##ה בתוך ד ##קה את צ ##י ##מ ##צו ##ם ה ##תו ##צאה ל - 91 88 . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 732 38486 43448 10481 10318 63205 12530 725 102889 10416 38656 726 15912 10507 745 10534 34694 43066 10932 727 20375 63858 735 118 12519 12074 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 8 -100 -100 -100 2 12 -100 16 -100 -100 2 8 -100 2 8 -100 -100 -100 -100 8 -100 -100 2 13 9 9 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: he-4
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] אולם ק ##מ ##בל וג ##ורד ##ון די ##יקו ב ##קל ##יע ##ות ##יהם ו ##ה ##ב ##טיח ##ו את ה ##ני ##צחון ( 99 91 ) . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 25036 746 34694 23917 84661 98845 11893 91560 78555 724 49325 58166 10577 35585 728 10416 12094 106247 10481 10507 727 12706 48793 113 12187 12519 114 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 5 12 -100 -100 12 -100 -100 16 -100 8 -100 -100 -100 -100 16 -100 -100 -100 -100 2 8 -100 -100 13 9 9 13 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:26 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:26 - INFO - utils_tag -   guid: he-5
+01/15/2022 20:23:26 - INFO - utils_tag -   tokens: [CLS] מ ##לכת ##חיל ##ה היה בר ##ור ש ##תו ##צאת המשחק תל ##וי ##יה אך ורק בה ##פועל ח ##ולו ##ן . [SEP]
+01/15/2022 20:23:26 - INFO - utils_tag -   input_ids: 101 737 91292 49132 10416 12168 54120 14340 748 20375 59553 49708 25246 23264 12330 14016 103086 20074 106725 730 80267 11002 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:26 - INFO - utils_tag -   label_ids: -100 3 -100 -100 -100 4 16 -100 8 -100 -100 8 16 -100 -100 3 3 8 -100 12 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:26 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:27 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_he_bert-base-multilingual-cased_128, len(features)=492
+01/15/2022 20:23:27 - INFO - __main__ -   ***** Running evaluation  in he *****
+01/15/2022 20:23:27 - INFO - __main__ -     Num examples = 492
+01/15/2022 20:23:27 - INFO - __main__ -     Batch size = 32
+
+Evaluating:   0%|          | 0/16 [00:00<?, ?it/s]01/15/2022 20:23:27 - INFO - __main__ -   Batch number = 1
+Evaluating:   6%|▋         | 1/16 [00:00<00:01,  7.51it/s]01/15/2022 20:23:27 - INFO - __main__ -   Batch number = 2
+Evaluating:  12%|█▎        | 2/16 [00:00<00:01,  7.49it/s]01/15/2022 20:23:27 - INFO - __main__ -   Batch number = 3
+Evaluating:  19%|█▉        | 3/16 [00:00<00:01,  7.44it/s]01/15/2022 20:23:27 - INFO - __main__ -   Batch number = 4
+Evaluating:  25%|██▌       | 4/16 [00:00<00:01,  7.44it/s]01/15/2022 20:23:27 - INFO - __main__ -   Batch number = 5
+Evaluating:  31%|███▏      | 5/16 [00:00<00:01,  7.43it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 6
+Evaluating:  38%|███▊      | 6/16 [00:00<00:01,  7.42it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 7
+Evaluating:  44%|████▍     | 7/16 [00:00<00:01,  7.41it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 8
+Evaluating:  50%|█████     | 8/16 [00:01<00:01,  7.39it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 9
+Evaluating:  56%|█████▋    | 9/16 [00:01<00:00,  7.37it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 10
+Evaluating:  62%|██████▎   | 10/16 [00:01<00:00,  7.35it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 11
+Evaluating:  69%|██████▉   | 11/16 [00:01<00:00,  7.33it/s]01/15/2022 20:23:28 - INFO - __main__ -   Batch number = 12
+Evaluating:  75%|███████▌  | 12/16 [00:01<00:00,  7.34it/s]01/15/2022 20:23:29 - INFO - __main__ -   Batch number = 13
+Evaluating:  81%|████████▏ | 13/16 [00:01<00:00,  7.35it/s]01/15/2022 20:23:29 - INFO - __main__ -   Batch number = 14
+Evaluating:  88%|████████▊ | 14/16 [00:01<00:00,  7.35it/s]01/15/2022 20:23:29 - INFO - __main__ -   Batch number = 15
+Evaluating:  94%|█████████▍| 15/16 [00:02<00:00,  7.36it/s]01/15/2022 20:23:29 - INFO - __main__ -   Batch number = 16
+Evaluating: 100%|██████████| 16/16 [00:02<00:00,  7.65it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 20:23:29 - INFO - __main__ -   ***** Evaluation result  in he *****
+01/15/2022 20:23:29 - INFO - __main__ -     f1 = 0.5541763641065426
+01/15/2022 20:23:29 - INFO - __main__ -     loss = 2.1113880202174187
+01/15/2022 20:23:29 - INFO - __main__ -     precision = 0.5358839709927482
+01/15/2022 20:23:29 - INFO - __main__ -     recall = 0.5737617135207497
+01/15/2022 20:23:29 - INFO - __main__ -   Language adapter for mt not found, using en instead
+01/15/2022 20:23:29 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:23:29 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:23:29 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:23:29 - INFO - __main__ -   all languages = mt
+01/15/2022 20:23:29 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/mt/test.bert-base-multilingual-cased in language mt
+01/15/2022 20:23:29 - INFO - utils_tag -   lang_id=0, lang=mt, lang2id=None
+[<utils_tag.InputExample object at 0x7f2e19c1df98>, <utils_tag.InputExample object at 0x7f2e19c25da0>, <utils_tag.InputExample object at 0x7f2e1a0639e8>, <utils_tag.InputExample object at 0x7f2e1a065198>, <utils_tag.InputExample object at 0x7f2e1a065e80>, <utils_tag.InputExample object at 0x7f2e1a05ff60>, <utils_tag.InputExample object at 0x7f2e1a060588>, <utils_tag.InputExample object at 0x7f2e1a060c88>, <utils_tag.InputExample object at 0x7f2e1a062908>, <utils_tag.InputExample object at 0x7f2e1a062cf8>, <utils_tag.InputExample object at 0x7f2e1a066a58>, <utils_tag.InputExample object at 0x7f2e1a0682e8>, <utils_tag.InputExample object at 0x7f2e1a07b048>, <utils_tag.InputExample object at 0x7f2e1a07b978>, <utils_tag.InputExample object at 0x7f2e1a07be48>, <utils_tag.InputExample object at 0x7f2e1a084550>, <utils_tag.InputExample object at 0x7f2e1a084908>, <utils_tag.InputExample object at 0x7f2e1a0675f8>, <utils_tag.InputExample object at 0x7f2e1a0810f0>, <utils_tag.InputExample object at 0x7f2e1a081320>, <utils_tag.InputExample object at 0x7f2e1a081710>, <utils_tag.InputExample object at 0x7f2e1a077160>, <utils_tag.InputExample object at 0x7f2e1a077e80>, <utils_tag.InputExample object at 0x7f2e1a07ed68>, <utils_tag.InputExample object at 0x7f2e1a0724a8>, <utils_tag.InputExample object at 0x7f2e1a072a20>, <utils_tag.InputExample object at 0x7f2e1a069080>, <utils_tag.InputExample object at 0x7f2e1a0699e8>, <utils_tag.InputExample object at 0x7f2e1a07a048>, <utils_tag.InputExample object at 0x7f2e1a07ab38>, <utils_tag.InputExample object at 0x7f2e1a06c860>, <utils_tag.InputExample object at 0x7f2e1a070470>, <utils_tag.InputExample object at 0x7f2e1a070cc0>, <utils_tag.InputExample object at 0x7f2e1a0715f8>, <utils_tag.InputExample object at 0x7f2e1a071ef0>, <utils_tag.InputExample object at 0x7f2e1a07d470>, <utils_tag.InputExample object at 0x7f2e1a07d940>, <utils_tag.InputExample object at 0x7f2e1a074320>, <utils_tag.InputExample object at 0x7f2e1a074c50>, <utils_tag.InputExample object at 0x7f2e1a06f9b0>, <utils_tag.InputExample object at 0x7f2e1a073320>, <utils_tag.InputExample object at 0x7f2e1a073668>, <utils_tag.InputExample object at 0x7f2e1a06d9e8>, <utils_tag.InputExample object at 0x7f2e1a07f0b8>, <utils_tag.InputExample object at 0x7f2e1a079160>, <utils_tag.InputExample object at 0x7f2e1a083550>, <utils_tag.InputExample object at 0x7f2e1a083e80>, <utils_tag.InputExample object at 0x7f2e1a0d5208>, <utils_tag.InputExample object at 0x7f2e1a0e4320>, <utils_tag.InputExample object at 0x7f2e1a0e4828>, <utils_tag.InputExample object at 0x7f2e1a0e4f28>, <utils_tag.InputExample object at 0x7f2e1a0b1c88>, <utils_tag.InputExample object at 0x7f2e1a0b4f98>, <utils_tag.InputExample object at 0x7f2e1a0e1be0>, <utils_tag.InputExample object at 0x7f2e1a0c9cf8>, <utils_tag.InputExample object at 0x7f2e1a0ab208>, <utils_tag.InputExample object at 0x7f2e1a0ab828>, <utils_tag.InputExample object at 0x7f2e1a0ba278>, <utils_tag.InputExample object at 0x7f2e1a0baba8>, <utils_tag.InputExample object at 0x7f2e1a0ae278>, <utils_tag.InputExample object at 0x7f2e1a0aec18>, <utils_tag.InputExample object at 0x7f2e1a0c0908>, <utils_tag.InputExample object at 0x7f2e1a0cf7f0>, <utils_tag.InputExample object at 0x7f2e1a0cc320>, <utils_tag.InputExample object at 0x7f2e1a0bd4e0>, <utils_tag.InputExample object at 0x7f2e1a0de128>, <utils_tag.InputExample object at 0x7f2e1a0dea58>, <utils_tag.InputExample object at 0x7f2e1a0dedd8>, <utils_tag.InputExample object at 0x7f2e1a0dbc50>, <utils_tag.InputExample object at 0x7f2e1a0aa208>, <utils_tag.InputExample object at 0x7f2e1a0aaba8>, <utils_tag.InputExample object at 0x7f2e1a0af908>, <utils_tag.InputExample object at 0x7f2e1a0b86d8>, <utils_tag.InputExample object at 0x7f2e1a0bc6d8>, <utils_tag.InputExample object at 0x7f2e1a0c2198>, <utils_tag.InputExample object at 0x7f2e1a0c2630>, <utils_tag.InputExample object at 0x7f2e1a0c2f28>, <utils_tag.InputExample object at 0x7f2e1a0c7c88>, <utils_tag.InputExample object at 0x7f2e1a0ca6d8>, <utils_tag.InputExample object at 0x7f2e1a0d1160>, <utils_tag.InputExample object at 0x7f2e1a0cd1d0>, <utils_tag.InputExample object at 0x7f2e1a0cdb00>, <utils_tag.InputExample object at 0x7f2e1a0df630>, <utils_tag.InputExample object at 0x7f2e1a0e58d0>, <utils_tag.InputExample object at 0x7f2e1a0e5f60>, <utils_tag.InputExample object at 0x7f2e19fd9278>, <utils_tag.InputExample object at 0x7f2e19fd96a0>, <utils_tag.InputExample object at 0x7f2e19fa8390>, <utils_tag.InputExample object at 0x7f2e19fa7128>, <utils_tag.InputExample object at 0x7f2e19fa7470>, <utils_tag.InputExample object at 0x7f2e19fa7ef0>, <utils_tag.InputExample object at 0x7f2e19faaeb8>, <utils_tag.InputExample object at 0x7f2e19fe3cf8>, <utils_tag.InputExample object at 0x7f2e19fe4860>, <utils_tag.InputExample object at 0x7f2e19fe26a0>, <utils_tag.InputExample object at 0x7f2e19fdd278>, <utils_tag.InputExample object at 0x7f2e19fdd780>, <utils_tag.InputExample object at 0x7f2e19fe11d0>, <utils_tag.InputExample object at 0x7f2e19fe1fd0>, <utils_tag.InputExample object at 0x7f2e19fe0978>, <utils_tag.InputExample object at 0x7f2e19fdb0f0>, <utils_tag.InputExample object at 0x7f2e19fdb940>, <utils_tag.InputExample object at 0x7f2e19fc15f8>, <utils_tag.InputExample object at 0x7f2e19fc1fd0>, <utils_tag.InputExample object at 0x7f2e19fc4198>, <utils_tag.InputExample object at 0x7f2e19fc48d0>, <utils_tag.InputExample object at 0x7f2e19fc4d30>, <utils_tag.InputExample object at 0x7f2e19fd5d30>, <utils_tag.InputExample object at 0x7f2e19fc2208>, <utils_tag.InputExample object at 0x7f2e19fc2780>, <utils_tag.InputExample object at 0x7f2e19fc80f0>, <utils_tag.InputExample object at 0x7f2e19fc8710>, <utils_tag.InputExample object at 0x7f2e19fc8b70>, <utils_tag.InputExample object at 0x7f2e19fd34e0>, <utils_tag.InputExample object at 0x7f2e19fd3a90>, <utils_tag.InputExample object at 0x7f2e19fd3ef0>, <utils_tag.InputExample object at 0x7f2e19fd72b0>, <utils_tag.InputExample object at 0x7f2e19fd7588>, <utils_tag.InputExample object at 0x7f2e19fd7d30>, <utils_tag.InputExample object at 0x7f2e19fdf358>, <utils_tag.InputExample object at 0x7f2e19fdf780>, <utils_tag.InputExample object at 0x7f2e19fdfa90>, <utils_tag.InputExample object at 0x7f2e19fdfeb8>, <utils_tag.InputExample object at 0x7f2e19fdffd0>, <utils_tag.InputExample object at 0x7f2e19fc6208>, <utils_tag.InputExample object at 0x7f2e19fc6400>, <utils_tag.InputExample object at 0x7f2e19fc6780>, <utils_tag.InputExample object at 0x7f2e19fc6da0>, <utils_tag.InputExample object at 0x7f2e19fc3400>, <utils_tag.InputExample object at 0x7f2e19fc3b38>, <utils_tag.InputExample object at 0x7f2e19fd2080>, <utils_tag.InputExample object at 0x7f2e19fd2668>, <utils_tag.InputExample object at 0x7f2e19fd2cf8>, <utils_tag.InputExample object at 0x7f2e19fd2e80>, <utils_tag.InputExample object at 0x7f2e19fcb438>, <utils_tag.InputExample object at 0x7f2e19fcb6a0>, <utils_tag.InputExample object at 0x7f2e19fcbb00>, <utils_tag.InputExample object at 0x7f2e19fcbc88>, <utils_tag.InputExample object at 0x7f2e19fcd6a0>, <utils_tag.InputExample object at 0x7f2e19fc9080>, <utils_tag.InputExample object at 0x7f2e19fc9400>, <utils_tag.InputExample object at 0x7f2e19fc9be0>, <utils_tag.InputExample object at 0x7f2e19fcc0f0>, <utils_tag.InputExample object at 0x7f2e19fccfd0>, <utils_tag.InputExample object at 0x7f2e19e6a2b0>, <utils_tag.InputExample object at 0x7f2e19e6ad68>, <utils_tag.InputExample object at 0x7f2e19e99668>, <utils_tag.InputExample object at 0x7f2e19e999b0>, <utils_tag.InputExample object at 0x7f2e19e99fd0>, <utils_tag.InputExample object at 0x7f2e19e93550>, <utils_tag.InputExample object at 0x7f2e19e93b70>, <utils_tag.InputExample object at 0x7f2e19e93e48>, <utils_tag.InputExample object at 0x7f2e19e78048>, <utils_tag.InputExample object at 0x7f2e19e784e0>, <utils_tag.InputExample object at 0x7f2e19e78d30>, <utils_tag.InputExample object at 0x7f2e19e78ef0>, <utils_tag.InputExample object at 0x7f2e19e6f208>, <utils_tag.InputExample object at 0x7f2e19e6f4e0>, <utils_tag.InputExample object at 0x7f2e19e6fcf8>, <utils_tag.InputExample object at 0x7f2e19e9c128>, <utils_tag.InputExample object at 0x7f2e19e9c518>, <utils_tag.InputExample object at 0x7f2e19e9cb38>, <utils_tag.InputExample object at 0x7f2e19e7e0b8>, <utils_tag.InputExample object at 0x7f2e19e7e320>, <utils_tag.InputExample object at 0x7f2e19e7e668>, <utils_tag.InputExample object at 0x7f2e19e7ea90>, <utils_tag.InputExample object at 0x7f2e19e7ed68>, <utils_tag.InputExample object at 0x7f2e19e965c0>, <utils_tag.InputExample object at 0x7f2e19e96748>, <utils_tag.InputExample object at 0x7f2e19e8a198>, <utils_tag.InputExample object at 0x7f2e19e8a5c0>, <utils_tag.InputExample object at 0x7f2e19e8acf8>, <utils_tag.InputExample object at 0x7f2e19e810f0>, <utils_tag.InputExample object at 0x7f2e19e81400>, <utils_tag.InputExample object at 0x7f2e19e81b00>, <utils_tag.InputExample object at 0x7f2e19e81f28>, <utils_tag.InputExample object at 0x7f2e19ea52e8>, <utils_tag.InputExample object at 0x7f2e19ea5518>, <utils_tag.InputExample object at 0x7f2e19ea5c50>, <utils_tag.InputExample object at 0x7f2e19e72198>, <utils_tag.InputExample object at 0x7f2e19e72748>, <utils_tag.InputExample object at 0x7f2e19e72be0>, <utils_tag.InputExample object at 0x7f2e19ea2128>, <utils_tag.InputExample object at 0x7f2e19ea2278>, <utils_tag.InputExample object at 0x7f2e19ea25f8>, <utils_tag.InputExample object at 0x7f2e19e75048>, <utils_tag.InputExample object at 0x7f2e19e75390>, <utils_tag.InputExample object at 0x7f2e19e757b8>, <utils_tag.InputExample object at 0x7f2e19e75b00>, <utils_tag.InputExample object at 0x7f2e19e87208>, <utils_tag.InputExample object at 0x7f2e19e878d0>, <utils_tag.InputExample object at 0x7f2e19e6c6a0>, <utils_tag.InputExample object at 0x7f2e19e6cc50>, <utils_tag.InputExample object at 0x7f2e19e6cf60>, <utils_tag.InputExample object at 0x7f2e19e694a8>, <utils_tag.InputExample object at 0x7f2e19e697b8>, <utils_tag.InputExample object at 0x7f2e19e69cf8>, <utils_tag.InputExample object at 0x7f2e19e679b0>, <utils_tag.InputExample object at 0x7f2e19e67cf8>, <utils_tag.InputExample object at 0x7f2e19e67e48>, <utils_tag.InputExample object at 0x7f2e19e70080>, <utils_tag.InputExample object at 0x7f2e19e70710>, <utils_tag.InputExample object at 0x7f2e19e70860>, <utils_tag.InputExample object at 0x7f2e19e70ac8>, <utils_tag.InputExample object at 0x7f2e19e732e8>, <utils_tag.InputExample object at 0x7f2e19e73860>, <utils_tag.InputExample object at 0x7f2e19e73b38>, <utils_tag.InputExample object at 0x7f2e19e76160>, <utils_tag.InputExample object at 0x7f2e19e76550>, <utils_tag.InputExample object at 0x7f2e19e76c50>, <utils_tag.InputExample object at 0x7f2e19e7a1d0>, <utils_tag.InputExample object at 0x7f2e19e7a898>, <utils_tag.InputExample object at 0x7f2e19e7ad68>, <utils_tag.InputExample object at 0x7f2e19e7af60>, <utils_tag.InputExample object at 0x7f2e19e7d160>, <utils_tag.InputExample object at 0x7f2e19e7d6d8>, <utils_tag.InputExample object at 0x7f2e19e7d9b0>, <utils_tag.InputExample object at 0x7f2e19e7df60>, <utils_tag.InputExample object at 0x7f2e19e7fa58>, <utils_tag.InputExample object at 0x7f2e19e802e8>, <utils_tag.InputExample object at 0x7f2e19e80630>, <utils_tag.InputExample object at 0x7f2e19e80908>, <utils_tag.InputExample object at 0x7f2e19e82208>, <utils_tag.InputExample object at 0x7f2e19e82c88>, <utils_tag.InputExample object at 0x7f2e19e83710>, <utils_tag.InputExample object at 0x7f2e19e83b70>, <utils_tag.InputExample object at 0x7f2e19e85518>, <utils_tag.InputExample object at 0x7f2e19e85908>, <utils_tag.InputExample object at 0x7f2e19e85d68>, <utils_tag.InputExample object at 0x7f2e19e85f60>, <utils_tag.InputExample object at 0x7f2e19e88518>, <utils_tag.InputExample object at 0x7f2e19e88898>, <utils_tag.InputExample object at 0x7f2e19e88ba8>, <utils_tag.InputExample object at 0x7f2e19e8b7f0>, <utils_tag.InputExample object at 0x7f2e19e8ba20>, <utils_tag.InputExample object at 0x7f2e19e8beb8>, <utils_tag.InputExample object at 0x7f2e19e8ca58>, <utils_tag.InputExample object at 0x7f2e19e8ceb8>, <utils_tag.InputExample object at 0x7f2e19e923c8>, <utils_tag.InputExample object at 0x7f2e19e92f28>, <utils_tag.InputExample object at 0x7f2e19e97438>, <utils_tag.InputExample object at 0x7f2e19e977b8>, <utils_tag.InputExample object at 0x7f2e19e97b70>, <utils_tag.InputExample object at 0x7f2e19e97e48>, <utils_tag.InputExample object at 0x7f2e19e9a6d8>, <utils_tag.InputExample object at 0x7f2e19e9aef0>, <utils_tag.InputExample object at 0x7f2e19ea4400>, <utils_tag.InputExample object at 0x7f2e19ea4d30>, <utils_tag.InputExample object at 0x7f2e19f4d0b8>, <utils_tag.InputExample object at 0x7f2e19f4d5c0>, <utils_tag.InputExample object at 0x7f2e19f4da90>, <utils_tag.InputExample object at 0x7f2e19f5f0b8>, <utils_tag.InputExample object at 0x7f2e19f5f2b0>, <utils_tag.InputExample object at 0x7f2e19f5f4e0>, <utils_tag.InputExample object at 0x7f2e19f5f710>, <utils_tag.InputExample object at 0x7f2e19f5fbe0>, <utils_tag.InputExample object at 0x7f2e19f47160>, <utils_tag.InputExample object at 0x7f2e19f47588>, <utils_tag.InputExample object at 0x7f2e19f47940>, <utils_tag.InputExample object at 0x7f2e19f32128>, <utils_tag.InputExample object at 0x7f2e19f32780>, <utils_tag.InputExample object at 0x7f2e19f32a20>, <utils_tag.InputExample object at 0x7f2e19f61278>, <utils_tag.InputExample object at 0x7f2e19f61860>, <utils_tag.InputExample object at 0x7f2e19f3c4e0>, <utils_tag.InputExample object at 0x7f2e19f3c6a0>, <utils_tag.InputExample object at 0x7f2e19f3c898>, <utils_tag.InputExample object at 0x7f2e19f3cdd8>, <utils_tag.InputExample object at 0x7f2e19f44198>, <utils_tag.InputExample object at 0x7f2e19f44a90>, <utils_tag.InputExample object at 0x7f2e19f44c88>, <utils_tag.InputExample object at 0x7f2e19f5e080>, <utils_tag.InputExample object at 0x7f2e19f5e4a8>, <utils_tag.InputExample object at 0x7f2e19f5e860>, <utils_tag.InputExample object at 0x7f2e19f5b2b0>, <utils_tag.InputExample object at 0x7f2e19f5b7b8>, <utils_tag.InputExample object at 0x7f2e19f5bd30>, <utils_tag.InputExample object at 0x7f2e19f54358>, <utils_tag.InputExample object at 0x7f2e19f545c0>, <utils_tag.InputExample object at 0x7f2e19f54828>, <utils_tag.InputExample object at 0x7f2e19f2c0b8>, <utils_tag.InputExample object at 0x7f2e19f2ce10>, <utils_tag.InputExample object at 0x7f2e19f29128>, <utils_tag.InputExample object at 0x7f2e19f29438>, <utils_tag.InputExample object at 0x7f2e19f29c50>, <utils_tag.InputExample object at 0x7f2e19f29e48>, <utils_tag.InputExample object at 0x7f2e19f2f550>, <utils_tag.InputExample object at 0x7f2e19f2fa90>, <utils_tag.InputExample object at 0x7f2e19f2fda0>, <utils_tag.InputExample object at 0x7f2e19f30208>, <utils_tag.InputExample object at 0x7f2e19f30630>, <utils_tag.InputExample object at 0x7f2e19f30a58>, <utils_tag.InputExample object at 0x7f2e19f30e48>, <utils_tag.InputExample object at 0x7f2e19f520f0>, <utils_tag.InputExample object at 0x7f2e19f523c8>, <utils_tag.InputExample object at 0x7f2e19f525c0>, <utils_tag.InputExample object at 0x7f2e19f52710>, <utils_tag.InputExample object at 0x7f2e19f52b00>, <utils_tag.InputExample object at 0x7f2e19f52e48>, <utils_tag.InputExample object at 0x7f2e19f4c5c0>, <utils_tag.InputExample object at 0x7f2e19f4c9b0>, <utils_tag.InputExample object at 0x7f2e19f490b8>, <utils_tag.InputExample object at 0x7f2e19f49358>, <utils_tag.InputExample object at 0x7f2e19f496d8>, <utils_tag.InputExample object at 0x7f2e19f49cf8>, <utils_tag.InputExample object at 0x7f2e19f3b0b8>, <utils_tag.InputExample object at 0x7f2e19f3b358>, <utils_tag.InputExample object at 0x7f2e19f3b898>, <utils_tag.InputExample object at 0x7f2e19f3bc88>, <utils_tag.InputExample object at 0x7f2e19f3bf28>, <utils_tag.InputExample object at 0x7f2e19f350f0>, <utils_tag.InputExample object at 0x7f2e19f35208>, <utils_tag.InputExample object at 0x7f2e19f353c8>, <utils_tag.InputExample object at 0x7f2e19f35908>, <utils_tag.InputExample object at 0x7f2e19f35ef0>, <utils_tag.InputExample object at 0x7f2e19f46438>, <utils_tag.InputExample object at 0x7f2e19f465f8>, <utils_tag.InputExample object at 0x7f2e19f469b0>, <utils_tag.InputExample object at 0x7f2e19f2d128>, <utils_tag.InputExample object at 0x7f2e19f2d4a8>, <utils_tag.InputExample object at 0x7f2e19f2db00>, <utils_tag.InputExample object at 0x7f2e19f405f8>, <utils_tag.InputExample object at 0x7f2e19f40898>, <utils_tag.InputExample object at 0x7f2e19f2a208>, <utils_tag.InputExample object at 0x7f2e19f2a5c0>, <utils_tag.InputExample object at 0x7f2e19f2aac8>, <utils_tag.InputExample object at 0x7f2e19f530f0>, <utils_tag.InputExample object at 0x7f2e19f53390>, <utils_tag.InputExample object at 0x7f2e19f53e10>, <utils_tag.InputExample object at 0x7f2e19f5a3c8>, <utils_tag.InputExample object at 0x7f2e19f5a4e0>, <utils_tag.InputExample object at 0x7f2e19f5a7b8>, <utils_tag.InputExample object at 0x7f2e19f5aac8>, <utils_tag.InputExample object at 0x7f2e19f3d320>, <utils_tag.InputExample object at 0x7f2e19f3dac8>, <utils_tag.InputExample object at 0x7f2e19f435c0>, <utils_tag.InputExample object at 0x7f2e19f43f28>, <utils_tag.InputExample object at 0x7f2e19f34278>, <utils_tag.InputExample object at 0x7f2e19f345c0>, <utils_tag.InputExample object at 0x7f2e19f34d68>, <utils_tag.InputExample object at 0x7f2e19f64c50>, <utils_tag.InputExample object at 0x7f2e19f387f0>, <utils_tag.InputExample object at 0x7f2e19f60240>, <utils_tag.InputExample object at 0x7f2e19f270f0>, <utils_tag.InputExample object at 0x7f2e19f330b8>, <utils_tag.InputExample object at 0x7f2e19f33e80>, <utils_tag.InputExample object at 0x7f2e19f5d710>, <utils_tag.InputExample object at 0x7f2e19f5de80>, <utils_tag.InputExample object at 0x7f2e19f58748>, <utils_tag.InputExample object at 0x7f2e19f58eb8>, <utils_tag.InputExample object at 0x7f2e19f567f0>, <utils_tag.InputExample object at 0x7f2e19f510b8>, <utils_tag.InputExample object at 0x7f2e19f51dd8>, <utils_tag.InputExample object at 0x7f2e19f50208>, <utils_tag.InputExample object at 0x7f2e19f50a90>, <utils_tag.InputExample object at 0x7f2e19f42400>, <utils_tag.InputExample object at 0x7f2e19f42a20>, <utils_tag.InputExample object at 0x7f2e19f371d0>, <utils_tag.InputExample object at 0x7f2e19f37630>, <utils_tag.InputExample object at 0x7f2e19f37e80>, <utils_tag.InputExample object at 0x7f2e1a135668>, <utils_tag.InputExample object at 0x7f2e1a12d160>, <utils_tag.InputExample object at 0x7f2e1a12d588>, <utils_tag.InputExample object at 0x7f2e1a12dda0>, <utils_tag.InputExample object at 0x7f2e19f314a8>, <utils_tag.InputExample object at 0x7f2e1a15a0b8>, <utils_tag.InputExample object at 0x7f2e1a15ab38>, <utils_tag.InputExample object at 0x7f2e1a140160>, <utils_tag.InputExample object at 0x7f2e1a140668>, <utils_tag.InputExample object at 0x7f2e1a151128>, <utils_tag.InputExample object at 0x7f2e1a151cf8>, <utils_tag.InputExample object at 0x7f2e1a141978>, <utils_tag.InputExample object at 0x7f2e1a141e80>, <utils_tag.InputExample object at 0x7f2e1a1494e0>, <utils_tag.InputExample object at 0x7f2e1a1571d0>, <utils_tag.InputExample object at 0x7f2e1a157a90>, <utils_tag.InputExample object at 0x7f2e1a15b6a0>, <utils_tag.InputExample object at 0x7f2e1a129080>, <utils_tag.InputExample object at 0x7f2e1a129a58>, <utils_tag.InputExample object at 0x7f2e1a129f60>, <utils_tag.InputExample object at 0x7f2e1a1434e0>, <utils_tag.InputExample object at 0x7f2e1a13c080>, <utils_tag.InputExample object at 0x7f2e1a13c9b0>, <utils_tag.InputExample object at 0x7f2e1a137048>, <utils_tag.InputExample object at 0x7f2e1a137908>, <utils_tag.InputExample object at 0x7f2e1a137eb8>, <utils_tag.InputExample object at 0x7f2e1a127400>, <utils_tag.InputExample object at 0x7f2e1a13d1d0>, <utils_tag.InputExample object at 0x7f2e1a13d4a8>, <utils_tag.InputExample object at 0x7f2e1a13dba8>, <utils_tag.InputExample object at 0x7f2e1a1547b8>, <utils_tag.InputExample object at 0x7f2e1a154a20>, <utils_tag.InputExample object at 0x7f2e1a12c208>, <utils_tag.InputExample object at 0x7f2e1a13f438>, <utils_tag.InputExample object at 0x7f2e1a153358>, <utils_tag.InputExample object at 0x7f2e1a130128>, <utils_tag.InputExample object at 0x7f2e1a130c88>, <utils_tag.InputExample object at 0x7f2e1a1616a0>, <utils_tag.InputExample object at 0x7f2e1a14c518>, <utils_tag.InputExample object at 0x7f2e1a14cac8>, <utils_tag.InputExample object at 0x7f2e1a15e4e0>, <utils_tag.InputExample object at 0x7f2e1a15ecc0>, <utils_tag.InputExample object at 0x7f2e1a15ee10>, <utils_tag.InputExample object at 0x7f2e1a1280b8>, <utils_tag.InputExample object at 0x7f2e1a128b38>, <utils_tag.InputExample object at 0x7f2e1a134978>, <utils_tag.InputExample object at 0x7f2e1a134fd0>, <utils_tag.InputExample object at 0x7f2e1a147278>, <utils_tag.InputExample object at 0x7f2e1a147f28>, <utils_tag.InputExample object at 0x7f2e1a138cf8>, <utils_tag.InputExample object at 0x7f2e1a164f98>, <utils_tag.InputExample object at 0x7f2e1a15f940>, <utils_tag.InputExample object at 0x7f2e1a13e4a8>, <utils_tag.InputExample object at 0x7f2e1a13ed68>, <utils_tag.InputExample object at 0x7f2e1a158b00>, <utils_tag.InputExample object at 0x7f2e1a152160>, <utils_tag.InputExample object at 0x7f2e1a152828>, <utils_tag.InputExample object at 0x7f2e1a152f28>, <utils_tag.InputExample object at 0x7f2e1a150668>, <utils_tag.InputExample object at 0x7f2e1a150b38>, <utils_tag.InputExample object at 0x7f2e1a14ee80>, <utils_tag.InputExample object at 0x7f2e1a142a90>, <utils_tag.InputExample object at 0x7f2e1a142e80>, <utils_tag.InputExample object at 0x7f2e1a12b4e0>, <utils_tag.InputExample object at 0x7f2e1a12bc18>, <utils_tag.InputExample object at 0x7f2e1a13add8>, <utils_tag.InputExample object at 0x7f2e1a13af98>, <utils_tag.InputExample object at 0x7f2e1a12eda0>, <utils_tag.InputExample object at 0x7f2e1a14a9e8>, <utils_tag.InputExample object at 0x7f2e19f6d240>, <utils_tag.InputExample object at 0x7f2e19f6dbe0>, <utils_tag.InputExample object at 0x7f2e19f94780>, <utils_tag.InputExample object at 0x7f2e19f91198>, <utils_tag.InputExample object at 0x7f2e19f8e358>, <utils_tag.InputExample object at 0x7f2e19f70630>, <utils_tag.InputExample object at 0x7f2e19f70be0>, <utils_tag.InputExample object at 0x7f2e19f70da0>, <utils_tag.InputExample object at 0x7f2e19f76780>, <utils_tag.InputExample object at 0x7f2e19fa02b0>, <utils_tag.InputExample object at 0x7f2e19fa0860>, <utils_tag.InputExample object at 0x7f2e19fa5438>, <utils_tag.InputExample object at 0x7f2e19f82470>, <utils_tag.InputExample object at 0x7f2e19f7e828>, <utils_tag.InputExample object at 0x7f2e19f7e9b0>, <utils_tag.InputExample object at 0x7f2e19f7dba8>, <utils_tag.InputExample object at 0x7f2e19f7df28>, <utils_tag.InputExample object at 0x7f2e19f95b00>, <utils_tag.InputExample object at 0x7f2e19f95cc0>, <utils_tag.InputExample object at 0x7f2e19fa3630>, <utils_tag.InputExample object at 0x7f2e19f9f978>, <utils_tag.InputExample object at 0x7f2e19f74358>, <utils_tag.InputExample object at 0x7f2e19f84198>, <utils_tag.InputExample object at 0x7f2e19f924e0>, <utils_tag.InputExample object at 0x7f2e19f97160>, <utils_tag.InputExample object at 0x7f2e19fa1080>, <utils_tag.InputExample object at 0x7f2e19fa1860>, <utils_tag.InputExample object at 0x7f2e19fa1eb8>, <utils_tag.InputExample object at 0x7f2e19f800f0>, <utils_tag.InputExample object at 0x7f2e19f80da0>, <utils_tag.InputExample object at 0x7f2e19f68860>, <utils_tag.InputExample object at 0x7f2e19f7b240>, <utils_tag.InputExample object at 0x7f2e19f7bc88>, <utils_tag.InputExample object at 0x7f2e19f78550>, <utils_tag.InputExample object at 0x7f2e19f78e48>, <utils_tag.InputExample object at 0x7f2e19f75cc0>, <utils_tag.InputExample object at 0x7f2e19f815c0>, <utils_tag.InputExample object at 0x7f2e19f77cc0>, <utils_tag.InputExample object at 0x7f2e19f6e128>, <utils_tag.InputExample object at 0x7f2e19f6e4e0>, <utils_tag.InputExample object at 0x7f2e19f6ec18>, <utils_tag.InputExample object at 0x7f2e19f736d8>, <utils_tag.InputExample object at 0x7f2e19f73b38>, <utils_tag.InputExample object at 0x7f2e19f88588>, <utils_tag.InputExample object at 0x7f2e19f88f28>, <utils_tag.InputExample object at 0x7f2e19f72a58>, <utils_tag.InputExample object at 0x7f2e19f9e550>, <utils_tag.InputExample object at 0x7f2e19f7f320>, <utils_tag.InputExample object at 0x7f2e19f7a470>, <utils_tag.InputExample object at 0x7f2e19f7a908>, <utils_tag.InputExample object at 0x7f2e19f7aa20>, <utils_tag.InputExample object at 0x7f2e19f8a2e8>, <utils_tag.InputExample object at 0x7f2e19f6f208>, <utils_tag.InputExample object at 0x7f2e19f6f898>, <utils_tag.InputExample object at 0x7f2e19f86048>, <utils_tag.InputExample object at 0x7f2e19f86e80>, <utils_tag.InputExample object at 0x7f2e19f69668>, <utils_tag.InputExample object at 0x7f2e19f69be0>, <utils_tag.InputExample object at 0x7f2e19f897f0>, <utils_tag.InputExample object at 0x7f2e19f8bcc0>, <utils_tag.InputExample object at 0x7f2e19f8bef0>, <utils_tag.InputExample object at 0x7f2e1a01bb00>, <utils_tag.InputExample object at 0x7f2e1a0090f0>, <utils_tag.InputExample object at 0x7f2e19ffe048>, <utils_tag.InputExample object at 0x7f2e19ffe9b0>, <utils_tag.InputExample object at 0x7f2e19ffea58>, <utils_tag.InputExample object at 0x7f2e19ffeb38>, <utils_tag.InputExample object at 0x7f2e19ffeef0>, <utils_tag.InputExample object at 0x7f2e19ff0470>, <utils_tag.InputExample object at 0x7f2e19ff0e48>, <utils_tag.InputExample object at 0x7f2e1a0175c0>, <utils_tag.InputExample object at 0x7f2e1a017940>, <utils_tag.InputExample object at 0x7f2e1a017c50>, <utils_tag.InputExample object at 0x7f2e19ff4748>, <utils_tag.InputExample object at 0x7f2e19ff4a90>, <utils_tag.InputExample object at 0x7f2e19ff4eb8>, <utils_tag.InputExample object at 0x7f2e1a016208>, <utils_tag.InputExample object at 0x7f2e1a016898>, <utils_tag.InputExample object at 0x7f2e1a016c18>, <utils_tag.InputExample object at 0x7f2e1a016e80>, <utils_tag.InputExample object at 0x7f2e19fe73c8>, <utils_tag.InputExample object at 0x7f2e19fe7860>, <utils_tag.InputExample object at 0x7f2e1a023320>, <utils_tag.InputExample object at 0x7f2e1a023898>, <utils_tag.InputExample object at 0x7f2e1a023f98>, <utils_tag.InputExample object at 0x7f2e19fff908>, <utils_tag.InputExample object at 0x7f2e19ff6470>, <utils_tag.InputExample object at 0x7f2e19ff6978>, <utils_tag.InputExample object at 0x7f2e19ff6cc0>, <utils_tag.InputExample object at 0x7f2e19ffc4a8>, <utils_tag.InputExample object at 0x7f2e19ffcc88>, <utils_tag.InputExample object at 0x7f2e1a00a278>, <utils_tag.InputExample object at 0x7f2e1a00af98>, <utils_tag.InputExample object at 0x7f2e19fe99b0>, <utils_tag.InputExample object at 0x7f2e1a0050b8>, <utils_tag.InputExample object at 0x7f2e1a005748>]01/15/2022 20:23:29 - INFO - utils_tag -   Writing example 0 of 525
+01/15/2022 20:23:29 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:29 - INFO - utils_tag -   guid: mt-1
+01/15/2022 20:23:29 - INFO - utils_tag -   tokens: [CLS] Philip Sc ##hem ##bri , [UNK] - Chairman tal - Bord ta ' In ##kje ##sta dwa ##r l - alle ##gat ri ##mi illegal ##i ta ' kimi ##ka im ##se ##j ##ħ ##a mer ##cap ##tan mill - En ##ema ##lta , q ##al li l - Bord ta ' In ##kje ##sta tala ##b id - dokument ##i li q ##al li kell ##u f ' ide ##j ##h id - De ##putat Lab ##uris ##ta Joe Mi ##zzi war ##a li hu b ' mod pub ##blik ##u q ##al li kell ##u dokument ##i li ki ##en les ##t j ##g ##ħ ##ad ##di ##hom li ##l Bord ta ' In ##kje ##sta . [SEP]
+01/15/2022 20:23:29 - INFO - utils_tag -   input_ids: 101 13324 55260 25947 32066 117 100 118 28635 13675 118 68475 11057 112 10167 85650 10972 20056 10129 180 118 10968 27107 29956 10500 39806 10116 11057 112 17007 10371 10211 10341 10418 110944 10113 13697 93103 12059 43980 118 10243 18089 15468 117 185 10415 11614 180 118 68475 11057 112 10167 85650 10972 100707 10457 12604 118 62348 10116 11614 185 10415 11614 24830 10138 174 112 38938 10418 10237 12604 118 10190 57408 48790 84926 10213 13062 19803 22125 10338 10113 11614 26506 170 112 15608 67742 85459 10138 185 10415 11614 24830 10138 62348 10116 11614 10879 10136 10152 10123 178 10240 110944 11488 10703 71784 11614 10161 68475 11057 112 10167 85650 10972 119 102 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   label_ids: -100 12 12 -100 -100 13 6 -100 8 2 -100 8 2 -100 8 -100 -100 2 -100 6 -100 16 -100 8 -100 1 -100 2 -100 8 -100 16 -100 -100 -100 -100 12 -100 -100 2 -100 12 -100 -100 13 16 -100 14 6 -100 8 2 -100 8 -100 -100 16 -100 6 -100 8 -100 14 16 -100 14 16 -100 2 -100 8 -100 -100 6 -100 8 -100 1 -100 -100 12 12 -100 2 -100 14 11 2 -100 8 1 -100 -100 16 -100 14 16 -100 8 -100 14 4 -100 1 -100 16 -100 -100 -100 -100 -100 2 -100 8 2 -100 8 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:29 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:29 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:29 - INFO - utils_tag -   guid: mt-2
+01/15/2022 20:23:29 - INFO - utils_tag -   tokens: [CLS] [UNK] - Chairman q ##al li l - Bord q ##al li ##l Joe Mi ##zzi li hu ##ma ki ##enu les ##ti ji ##rri ##sp ##etta ##w is - sor ##s li kell ##u im ##ma Joe Mi ##zzi q ##al li hu ki ##en g ##ħ ##ad ##da d - dokument ##i lu ##ra li ##l min tag ##ħ ##hom ##lu . [SEP]
+01/15/2022 20:23:29 - INFO - utils_tag -   input_ids: 101 100 118 28635 185 10415 11614 180 118 68475 185 10415 11614 10161 13062 19803 22125 11614 26506 10369 10879 55484 10152 10325 18028 24874 54609 19521 10874 10124 118 56011 10107 11614 24830 10138 10211 10369 13062 19803 22125 185 10415 11614 26506 10879 10136 175 110944 11488 10229 172 118 62348 10116 14657 10288 11614 10161 13484 37836 110944 71784 11435 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   label_ids: -100 6 -100 8 16 -100 14 6 -100 8 16 -100 2 -100 12 12 -100 14 11 -100 4 -100 1 -100 16 -100 -100 -100 -100 6 -100 8 -100 14 16 -100 5 -100 12 12 -100 16 -100 14 11 4 -100 16 -100 -100 -100 6 -100 8 -100 3 -100 2 -100 11 16 -100 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:29 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:29 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:29 - INFO - utils_tag -   guid: mt-3
+01/15/2022 20:23:29 - INFO - utils_tag -   tokens: [CLS] Dan ħ ##are ##ġ meta l - Ku ##mita ##t Parlament ##ari dwa ##r il - Ko ##nti ##jie ##t [UNK] bed ##a ji ##ddi ##sku ##ti r - Rapport tal - Ko ##rp ##ora ##zz ##joni En ##ema ##lta ta ' [UNK] 2011 dwa ##r l - in ##kje ##sta fu ##q l - alle ##gat ri ##mi illegal ##i ta ' kimi ##ka im ##se ##j ##ħ ##a mer ##cap ##tan . [SEP]
+01/15/2022 20:23:29 - INFO - utils_tag -   input_ids: 101 14261 314 11591 110940 39063 180 118 49869 63496 10123 29889 12476 20056 10129 10154 118 30186 12752 93246 10123 100 30113 10113 18028 37226 14836 10325 186 118 100882 13675 118 30186 33394 14945 46671 90353 10243 18089 15468 11057 112 100 10158 20056 10129 180 118 10106 85650 10972 11005 11703 180 118 10968 27107 29956 10500 39806 10116 11057 112 17007 10371 10211 10341 10418 110944 10113 13697 93103 12059 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   label_ids: -100 11 16 -100 -100 14 6 -100 8 -100 -100 1 -100 2 -100 6 -100 8 -100 -100 -100 1 16 -100 16 -100 -100 -100 6 -100 8 2 -100 8 -100 -100 -100 -100 12 -100 -100 2 -100 12 9 2 -100 6 -100 8 -100 -100 2 -100 6 -100 16 -100 8 -100 1 -100 2 -100 8 -100 16 -100 -100 -100 -100 12 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:29 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:29 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:29 - INFO - utils_tag -   guid: mt-4
+01/15/2022 20:23:29 - INFO - utils_tag -   tokens: [CLS] Ir - rapport ki ##en t ##po ##ġ ##ġ ##a fu ##q il - Me ##jda tal - Ka ##m ##ra tar - Rap ##pre ##że ##ntan ##ti fit - 30 ta ' April li g ##ħ ##ad ##da . [SEP]
+01/15/2022 20:23:29 - INFO - utils_tag -   input_ids: 101 61562 118 17508 10879 10136 188 13520 110940 110940 10113 11005 11703 10154 118 11589 95693 13675 118 25444 10147 10288 24948 118 47957 30619 21978 109368 10325 21635 118 10244 11057 112 10780 11614 175 110944 11488 10229 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   label_ids: -100 6 -100 8 4 -100 16 -100 -100 -100 -100 2 -100 6 -100 8 -100 2 -100 8 -100 -100 2 -100 8 -100 -100 -100 -100 2 -100 9 2 -100 12 14 16 -100 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:29 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:29 - INFO - utils_tag -   *** Example ***
+01/15/2022 20:23:29 - INFO - utils_tag -   guid: mt-5
+01/15/2022 20:23:29 - INFO - utils_tag -   tokens: [CLS] Fi ##l - bid ##u tal - la ##q ##g ##ħ ##a , li t ##me ##x ##xie ##t mid - De ##putat Lab ##uris ##ta Charles Man ##gion b ##ħ ##ala [UNK] - Chairman , sa ##ret disk ##uss ##joni dwa ##r il - lista tax - x ##hie ##da li g ##ħ ##and ##ha ti ##sse ##j ##ja ##ħ qu ##ddi ##em il - Ku ##mita ##t u l - [UNK] li se tin ##tu ##ża . [SEP]
+01/15/2022 20:23:29 - INFO - utils_tag -   input_ids: 101 36448 10161 118 50385 10138 13675 118 10109 11703 10240 110944 10113 117 11614 188 10627 10686 50536 10123 15607 118 10190 57408 48790 84926 10213 10925 11343 69197 170 110944 13322 100 118 28635 117 10148 12785 50169 66148 90353 20056 10129 10154 118 15843 25468 118 192 72287 10229 11614 175 110944 14752 10921 14382 12818 10418 10320 110944 10608 37226 10451 10154 118 49869 63496 10123 189 180 118 100 11614 10126 21629 10991 19025 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/15/2022 20:23:29 - INFO - utils_tag -   label_ids: -100 2 -100 -100 8 -100 2 -100 8 -100 -100 -100 -100 13 14 16 -100 -100 -100 -100 2 -100 8 -100 1 -100 -100 12 12 -100 2 -100 -100 6 -100 8 13 16 -100 8 -100 -100 2 -100 6 -100 8 2 -100 8 -100 -100 14 16 -100 -100 -100 16 -100 -100 -100 -100 2 -100 -100 6 -100 8 -100 -100 5 6 -100 8 14 4 16 -100 -100 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/15/2022 20:23:29 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/15/2022 20:23:30 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mt_bert-base-multilingual-cased_128, len(features)=525
+01/15/2022 20:23:30 - INFO - __main__ -   ***** Running evaluation  in mt *****
+01/15/2022 20:23:30 - INFO - __main__ -     Num examples = 525
+01/15/2022 20:23:30 - INFO - __main__ -     Batch size = 32
+
+Evaluating:   0%|          | 0/17 [00:00<?, ?it/s]01/15/2022 20:23:30 - INFO - __main__ -   Batch number = 1
+Evaluating:   6%|▌         | 1/17 [00:00<00:02,  7.52it/s]01/15/2022 20:23:30 - INFO - __main__ -   Batch number = 2
+Evaluating:  12%|█▏        | 2/17 [00:00<00:02,  7.39it/s]01/15/2022 20:23:30 - INFO - __main__ -   Batch number = 3
+Evaluating:  18%|█▊        | 3/17 [00:00<00:01,  7.40it/s]01/15/2022 20:23:30 - INFO - __main__ -   Batch number = 4
+Evaluating:  24%|██▎       | 4/17 [00:00<00:01,  7.41it/s]01/15/2022 20:23:30 - INFO - __main__ -   Batch number = 5
+Evaluating:  29%|██▉       | 5/17 [00:00<00:01,  7.41it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 6
+Evaluating:  35%|███▌      | 6/17 [00:00<00:01,  7.40it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 7
+Evaluating:  41%|████      | 7/17 [00:00<00:01,  7.41it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 8
+Evaluating:  47%|████▋     | 8/17 [00:01<00:01,  7.42it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 9
+Evaluating:  53%|█████▎    | 9/17 [00:01<00:01,  7.41it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 10
+Evaluating:  59%|█████▉    | 10/17 [00:01<00:00,  7.42it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 11
+Evaluating:  65%|██████▍   | 11/17 [00:01<00:00,  7.39it/s]01/15/2022 20:23:31 - INFO - __main__ -   Batch number = 12
+Evaluating:  71%|███████   | 12/17 [00:01<00:00,  7.39it/s]01/15/2022 20:23:32 - INFO - __main__ -   Batch number = 13
+Evaluating:  76%|███████▋  | 13/17 [00:01<00:00,  7.38it/s]01/15/2022 20:23:32 - INFO - __main__ -   Batch number = 14
+Evaluating:  82%|████████▏ | 14/17 [00:01<00:00,  6.48it/s]01/15/2022 20:23:32 - INFO - __main__ -   Batch number = 15
+Evaluating:  88%|████████▊ | 15/17 [00:02<00:00,  6.72it/s]01/15/2022 20:23:32 - INFO - __main__ -   Batch number = 16
+Evaluating:  94%|█████████▍| 16/17 [00:02<00:00,  6.90it/s]01/15/2022 20:23:32 - INFO - __main__ -   Batch number = 17
+Evaluating: 100%|██████████| 17/17 [00:02<00:00,  7.41it/s]
+01/15/2022 20:23:32 - INFO - __main__ -   ***** Evaluation result  in mt *****
+01/15/2022 20:23:32 - INFO - __main__ -     f1 = 0.2104139751727237
+01/15/2022 20:23:32 - INFO - __main__ -     loss = 3.7368571758270264
+01/15/2022 20:23:32 - INFO - __main__ -     precision = 0.25482993197278914
+01/15/2022 20:23:32 - INFO - __main__ -     recall = 0.17918300966229792
+21.16user 11.70system 0:22.52elapsed 145%CPU (0avgtext+0avgdata 3962920maxresident)k
+32inputs+4192outputs (1major+1061598minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 20:23:35 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='aii,he,mt', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 20:23:35 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 20:23:35 - INFO - __main__ -   Seed = 2
+01/15/2022 20:23:35 - INFO - root -   save model
+01/15/2022 20:23:35 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='aii,he,mt', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 20:23:35 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 20:23:37 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 20:23:43 - INFO - __main__ -   Using lang2id = None
+01/15/2022 20:23:43 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 20:23:43 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/
+01/15/2022 20:23:43 - INFO - root -   Trying to decide if add adapter
+01/15/2022 20:23:43 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/pytorch_model_head.bin
+01/15/2022 20:23:43 - INFO - root -   loading lang adpater en/wiki@ukp
+01/15/2022 20:23:43 - INFO - __main__ -   Adapter Languages : ['en'], Length : 1
+01/15/2022 20:23:43 - INFO - __main__ -   Adapter Names ['en/wiki@ukp'], Length : 1
+01/15/2022 20:23:43 - INFO - __main__ -   Language = en
+01/15/2022 20:23:43 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/15/2022 20:23:47 - INFO - __main__ -   Language adapter for aii not found, using en instead
+01/15/2022 20:23:47 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:23:47 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:23:47 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:23:47 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_aii_bert-base-multilingual-cased_128
+01/15/2022 20:23:47 - INFO - __main__ -   ***** Running evaluation  in aii *****
+01/15/2022 20:23:47 - INFO - __main__ -     Num examples = 57
+01/15/2022 20:23:47 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/2 [00:00<?, ?it/s]01/15/2022 20:23:47 - INFO - __main__ -   Batch number = 1
+Evaluating:  50%|█████     | 1/2 [00:00<00:00,  6.41it/s]01/15/2022 20:23:47 - INFO - __main__ -   Batch number = 2
+Evaluating: 100%|██████████| 2/2 [00:00<00:00,  7.54it/s]Evaluating: 100%|██████████| 2/2 [00:00<00:00,  7.33it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SYM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 20:23:48 - INFO - __main__ -   ***** Evaluation result  in aii *****
+01/15/2022 20:23:48 - INFO - __main__ -     f1 = 0.0
+01/15/2022 20:23:48 - INFO - __main__ -     loss = 8.22346019744873
+01/15/2022 20:23:48 - INFO - __main__ -     precision = 0.0
+01/15/2022 20:23:48 - INFO - __main__ -     recall = 0.0
+01/15/2022 20:23:48 - INFO - __main__ -   Language adapter for he not found, using en instead
+01/15/2022 20:23:48 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:23:48 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:23:48 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:23:48 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_he_bert-base-multilingual-cased_128
+01/15/2022 20:23:48 - INFO - __main__ -   ***** Running evaluation  in he *****
+01/15/2022 20:23:48 - INFO - __main__ -     Num examples = 492
+01/15/2022 20:23:48 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/16 [00:00<?, ?it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 1
+Evaluating:   6%|▋         | 1/16 [00:00<00:02,  7.48it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 2
+Evaluating:  12%|█▎        | 2/16 [00:00<00:01,  7.47it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 3
+Evaluating:  19%|█▉        | 3/16 [00:00<00:01,  7.46it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 4
+Evaluating:  25%|██▌       | 4/16 [00:00<00:01,  7.47it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 5
+Evaluating:  31%|███▏      | 5/16 [00:00<00:01,  7.46it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 6
+Evaluating:  38%|███▊      | 6/16 [00:00<00:01,  7.46it/s]01/15/2022 20:23:48 - INFO - __main__ -   Batch number = 7
+Evaluating:  44%|████▍     | 7/16 [00:00<00:01,  7.45it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 8
+Evaluating:  50%|█████     | 8/16 [00:01<00:01,  7.40it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 9
+Evaluating:  56%|█████▋    | 9/16 [00:01<00:00,  7.35it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 10
+Evaluating:  62%|██████▎   | 10/16 [00:01<00:00,  7.35it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 11
+Evaluating:  69%|██████▉   | 11/16 [00:01<00:00,  7.33it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 12
+Evaluating:  75%|███████▌  | 12/16 [00:01<00:00,  7.34it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 13
+Evaluating:  81%|████████▏ | 13/16 [00:01<00:00,  7.35it/s]01/15/2022 20:23:49 - INFO - __main__ -   Batch number = 14
+Evaluating:  88%|████████▊ | 14/16 [00:01<00:00,  7.34it/s]01/15/2022 20:23:50 - INFO - __main__ -   Batch number = 15
+Evaluating:  94%|█████████▍| 15/16 [00:02<00:00,  7.34it/s]01/15/2022 20:23:50 - INFO - __main__ -   Batch number = 16
+Evaluating: 100%|██████████| 16/16 [00:02<00:00,  7.65it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 20:23:50 - INFO - __main__ -   ***** Evaluation result  in he *****
+01/15/2022 20:23:50 - INFO - __main__ -     f1 = 0.5286166979240768
+01/15/2022 20:23:50 - INFO - __main__ -     loss = 2.388287380337715
+01/15/2022 20:23:50 - INFO - __main__ -     precision = 0.5113224071062179
+01/15/2022 20:23:50 - INFO - __main__ -     recall = 0.5471218206157965
+01/15/2022 20:23:50 - INFO - __main__ -   Language adapter for mt not found, using en instead
+01/15/2022 20:23:50 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:23:50 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:23:50 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:23:50 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mt_bert-base-multilingual-cased_128
+01/15/2022 20:23:50 - INFO - __main__ -   ***** Running evaluation  in mt *****
+01/15/2022 20:23:50 - INFO - __main__ -     Num examples = 525
+01/15/2022 20:23:50 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/17 [00:00<?, ?it/s]01/15/2022 20:23:50 - INFO - __main__ -   Batch number = 1
+Evaluating:   6%|▌         | 1/17 [00:00<00:02,  7.51it/s]01/15/2022 20:23:50 - INFO - __main__ -   Batch number = 2
+Evaluating:  12%|█▏        | 2/17 [00:00<00:02,  7.47it/s]01/15/2022 20:23:50 - INFO - __main__ -   Batch number = 3
+Evaluating:  18%|█▊        | 3/17 [00:00<00:01,  7.42it/s]01/15/2022 20:23:50 - INFO - __main__ -   Batch number = 4
+Evaluating:  24%|██▎       | 4/17 [00:00<00:01,  7.41it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 5
+Evaluating:  29%|██▉       | 5/17 [00:00<00:01,  7.42it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 6
+Evaluating:  35%|███▌      | 6/17 [00:00<00:01,  7.40it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 7
+Evaluating:  41%|████      | 7/17 [00:00<00:01,  7.39it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 8
+Evaluating:  47%|████▋     | 8/17 [00:01<00:01,  7.36it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 9
+Evaluating:  53%|█████▎    | 9/17 [00:01<00:01,  7.35it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 10
+Evaluating:  59%|█████▉    | 10/17 [00:01<00:00,  7.34it/s]01/15/2022 20:23:51 - INFO - __main__ -   Batch number = 11
+Evaluating:  65%|██████▍   | 11/17 [00:01<00:00,  7.35it/s]01/15/2022 20:23:52 - INFO - __main__ -   Batch number = 12
+Evaluating:  71%|███████   | 12/17 [00:01<00:00,  7.35it/s]01/15/2022 20:23:52 - INFO - __main__ -   Batch number = 13
+Evaluating:  76%|███████▋  | 13/17 [00:01<00:00,  7.34it/s]01/15/2022 20:23:52 - INFO - __main__ -   Batch number = 14
+Evaluating:  82%|████████▏ | 14/17 [00:01<00:00,  7.34it/s]01/15/2022 20:23:52 - INFO - __main__ -   Batch number = 15
+Evaluating:  88%|████████▊ | 15/17 [00:02<00:00,  7.34it/s]01/15/2022 20:23:52 - INFO - __main__ -   Batch number = 16
+Evaluating:  94%|█████████▍| 16/17 [00:02<00:00,  7.35it/s]01/15/2022 20:23:52 - INFO - __main__ -   Batch number = 17
+Evaluating: 100%|██████████| 17/17 [00:02<00:00,  7.60it/s]
+01/15/2022 20:23:52 - INFO - __main__ -   ***** Evaluation result  in mt *****
+01/15/2022 20:23:52 - INFO - __main__ -     f1 = 0.19312343564747728
+01/15/2022 20:23:52 - INFO - __main__ -     loss = 4.913796172422521
+01/15/2022 20:23:52 - INFO - __main__ -     precision = 0.3100021146119687
+01/15/2022 20:23:52 - INFO - __main__ -     recall = 0.14024681909499664
+19.54user 11.73system 0:20.06elapsed 155%CPU (0avgtext+0avgdata 3969424maxresident)k
+0inputs+296outputs (0major+1110291minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 20:23:55 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='aii,he,mt', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 20:23:55 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 20:23:55 - INFO - __main__ -   Seed = 3
+01/15/2022 20:23:55 - INFO - root -   save model
+01/15/2022 20:23:55 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='aii,he,mt', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/cloud-bert-base-multilingual-cased-MaxLen128_udpos_en//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 20:23:55 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 20:23:57 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 20:24:03 - INFO - __main__ -   Using lang2id = None
+01/15/2022 20:24:03 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 20:24:03 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/
+01/15/2022 20:24:03 - INFO - root -   Trying to decide if add adapter
+01/15/2022 20:24:03 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/pytorch_model_head.bin
+01/15/2022 20:24:03 - INFO - root -   loading lang adpater en/wiki@ukp
+01/15/2022 20:24:03 - INFO - __main__ -   Adapter Languages : ['en'], Length : 1
+01/15/2022 20:24:03 - INFO - __main__ -   Adapter Names ['en/wiki@ukp'], Length : 1
+01/15/2022 20:24:03 - INFO - __main__ -   Language = en
+01/15/2022 20:24:03 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/en/bert-base-multilingual-cased/pfeiffer/en_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/adapter_config.json
+Adding adapter 'en' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/209973079df3cb5d155df4e290ec86070f257721693ce7618ff84b89b4aae2cf-3bd7c13f02e43f33b6ab727158d366c50d676646774b1c975dea5f965352474a-extracted'
+01/15/2022 20:24:08 - INFO - __main__ -   Language adapter for aii not found, using en instead
+01/15/2022 20:24:08 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:24:08 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:24:08 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:24:08 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_aii_bert-base-multilingual-cased_128
+01/15/2022 20:24:08 - INFO - __main__ -   ***** Running evaluation  in aii *****
+01/15/2022 20:24:08 - INFO - __main__ -     Num examples = 57
+01/15/2022 20:24:08 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/2 [00:00<?, ?it/s]01/15/2022 20:24:08 - INFO - __main__ -   Batch number = 1
+Evaluating:  50%|█████     | 1/2 [00:00<00:00,  7.27it/s]01/15/2022 20:24:08 - INFO - __main__ -   Batch number = 2
+Evaluating: 100%|██████████| 2/2 [00:00<00:00,  8.23it/s]Evaluating: 100%|██████████| 2/2 [00:00<00:00,  8.06it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 20:24:08 - INFO - __main__ -   ***** Evaluation result  in aii *****
+01/15/2022 20:24:08 - INFO - __main__ -     f1 = 0.0
+01/15/2022 20:24:08 - INFO - __main__ -     loss = 9.42789888381958
+01/15/2022 20:24:08 - INFO - __main__ -     precision = 0.0
+01/15/2022 20:24:08 - INFO - __main__ -     recall = 0.0
+01/15/2022 20:24:08 - INFO - __main__ -   Language adapter for he not found, using en instead
+01/15/2022 20:24:08 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:24:08 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:24:08 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:24:08 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_he_bert-base-multilingual-cased_128
+01/15/2022 20:24:08 - INFO - __main__ -   ***** Running evaluation  in he *****
+01/15/2022 20:24:08 - INFO - __main__ -     Num examples = 492
+01/15/2022 20:24:08 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/16 [00:00<?, ?it/s]01/15/2022 20:24:08 - INFO - __main__ -   Batch number = 1
+Evaluating:   6%|▋         | 1/16 [00:00<00:02,  7.48it/s]01/15/2022 20:24:08 - INFO - __main__ -   Batch number = 2
+Evaluating:  12%|█▎        | 2/16 [00:00<00:01,  7.45it/s]01/15/2022 20:24:08 - INFO - __main__ -   Batch number = 3
+Evaluating:  19%|█▉        | 3/16 [00:00<00:01,  7.44it/s]01/15/2022 20:24:08 - INFO - __main__ -   Batch number = 4
+Evaluating:  25%|██▌       | 4/16 [00:00<00:01,  7.43it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 5
+Evaluating:  31%|███▏      | 5/16 [00:00<00:01,  7.42it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 6
+Evaluating:  38%|███▊      | 6/16 [00:00<00:01,  7.41it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 7
+Evaluating:  44%|████▍     | 7/16 [00:00<00:01,  7.39it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 8
+Evaluating:  50%|█████     | 8/16 [00:01<00:01,  7.39it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 9
+Evaluating:  56%|█████▋    | 9/16 [00:01<00:00,  7.36it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 10
+Evaluating:  62%|██████▎   | 10/16 [00:01<00:00,  7.35it/s]01/15/2022 20:24:09 - INFO - __main__ -   Batch number = 11
+Evaluating:  69%|██████▉   | 11/16 [00:01<00:00,  7.35it/s]01/15/2022 20:24:10 - INFO - __main__ -   Batch number = 12
+Evaluating:  75%|███████▌  | 12/16 [00:01<00:00,  7.36it/s]01/15/2022 20:24:10 - INFO - __main__ -   Batch number = 13
+Evaluating:  81%|████████▏ | 13/16 [00:01<00:00,  7.36it/s]01/15/2022 20:24:10 - INFO - __main__ -   Batch number = 14
+Evaluating:  88%|████████▊ | 14/16 [00:01<00:00,  7.34it/s]01/15/2022 20:24:10 - INFO - __main__ -   Batch number = 15
+Evaluating:  94%|█████████▍| 15/16 [00:02<00:00,  7.33it/s]01/15/2022 20:24:10 - INFO - __main__ -   Batch number = 16
+Evaluating: 100%|██████████| 16/16 [00:02<00:00,  7.64it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SYM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 20:24:10 - INFO - __main__ -   ***** Evaluation result  in he *****
+01/15/2022 20:24:10 - INFO - __main__ -     f1 = 0.5472823971980801
+01/15/2022 20:24:10 - INFO - __main__ -     loss = 2.2514891251921654
+01/15/2022 20:24:10 - INFO - __main__ -     precision = 0.5308253648716659
+01/15/2022 20:24:10 - INFO - __main__ -     recall = 0.5647925033467203
+01/15/2022 20:24:10 - INFO - __main__ -   Language adapter for mt not found, using en instead
+01/15/2022 20:24:10 - INFO - __main__ -   Set active language adapter to en
+01/15/2022 20:24:10 - INFO - __main__ -   Args Adapter Weight = None
+01/15/2022 20:24:10 - INFO - __main__ -   Adapter Languages = ['en']
+01/15/2022 20:24:10 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mt_bert-base-multilingual-cased_128
+01/15/2022 20:24:10 - INFO - __main__ -   ***** Running evaluation  in mt *****
+01/15/2022 20:24:10 - INFO - __main__ -     Num examples = 525
+01/15/2022 20:24:10 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/17 [00:00<?, ?it/s]01/15/2022 20:24:10 - INFO - __main__ -   Batch number = 1
+Evaluating:   6%|▌         | 1/17 [00:00<00:02,  7.49it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 2
+Evaluating:  12%|█▏        | 2/17 [00:00<00:02,  7.43it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 3
+Evaluating:  18%|█▊        | 3/17 [00:00<00:02,  6.00it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 4
+Evaluating:  24%|██▎       | 4/17 [00:00<00:02,  6.48it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 5
+Evaluating:  29%|██▉       | 5/17 [00:00<00:01,  6.78it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 6
+Evaluating:  35%|███▌      | 6/17 [00:00<00:01,  6.98it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 7
+Evaluating:  41%|████      | 7/17 [00:01<00:01,  7.10it/s]01/15/2022 20:24:11 - INFO - __main__ -   Batch number = 8
+Evaluating:  47%|████▋     | 8/17 [00:01<00:01,  7.18it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 9
+Evaluating:  53%|█████▎    | 9/17 [00:01<00:01,  7.22it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 10
+Evaluating:  59%|█████▉    | 10/17 [00:01<00:00,  7.26it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 11
+Evaluating:  65%|██████▍   | 11/17 [00:01<00:00,  7.28it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 12
+Evaluating:  71%|███████   | 12/17 [00:01<00:00,  7.29it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 13
+Evaluating:  76%|███████▋  | 13/17 [00:01<00:00,  7.30it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 14
+Evaluating:  82%|████████▏ | 14/17 [00:01<00:00,  7.31it/s]01/15/2022 20:24:12 - INFO - __main__ -   Batch number = 15
+Evaluating:  88%|████████▊ | 15/17 [00:02<00:00,  7.32it/s]01/15/2022 20:24:13 - INFO - __main__ -   Batch number = 16
+Evaluating:  94%|█████████▍| 16/17 [00:02<00:00,  6.11it/s]01/15/2022 20:24:13 - INFO - __main__ -   Batch number = 17
+Evaluating: 100%|██████████| 17/17 [00:02<00:00,  7.09it/s]
+01/15/2022 20:24:13 - INFO - __main__ -   ***** Evaluation result  in mt *****
+01/15/2022 20:24:13 - INFO - __main__ -     f1 = 0.22487562189054724
+01/15/2022 20:24:13 - INFO - __main__ -     loss = 3.5075927341685578
+01/15/2022 20:24:13 - INFO - __main__ -     precision = 0.26633494827811965
+01/15/2022 20:24:13 - INFO - __main__ -     recall = 0.1945852865206161
+20.87user 11.54system 0:20.53elapsed 157%CPU (0avgtext+0avgdata 3963608maxresident)k
+0inputs+304outputs (0major+1244121minor)pagefaults 0swaps

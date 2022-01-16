@@ -1,0 +1,108 @@
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 652, in <module>
+    from _collections_abc import MutableMapping
+  File "/usr/lib/python3.6/_collections_abc.py", line 945, in <module>
+    class MutableSequence(Sequence):
+  File "/usr/lib/python3.6/abc.py", line 133, in __new__
+    cls = super().__new__(mcls, name, bases, namespace, **kwargs)
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8548maxresident)k
+0inputs+8outputs (0major+829minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python3.6/types.py", line 171, in <module>
+    import functools as _functools
+  File "/usr/lib/python3.6/functools.py", line 21, in <module>
+    from collections import namedtuple
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 779, in get_code
+  File "<frozen importlib._bootstrap_external>", line 487, in _compile_bytecode
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.03elapsed 96%CPU (0avgtext+0avgdata 8808maxresident)k
+0inputs+0outputs (0major+934minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 57, in <module>
+    import posixpath as path
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 674, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 779, in get_code
+  File "<frozen importlib._bootstrap_external>", line 487, in _compile_bytecode
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.01user 0.00system 0:00.02elapsed 95%CPU (0avgtext+0avgdata 8168maxresident)k
+0inputs+0outputs (0major+765minor)pagefaults 0swaps
+
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/logging/__init__.py", line 1945, in shutdown
+    h.flush()
+  File "/usr/lib/python3.6/logging/__init__.py", line 978, in flush
+    self.stream.flush()
+KeyboardInterrupt
+Command exited with non-zero status 1
+2.62user 4.00system 0:00.22elapsed 2958%CPU (0avgtext+0avgdata 20840maxresident)k
+0inputs+8outputs (0major+3162minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 26, in <module>
+    from dataclasses import dataclass, field
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/dataclasses.py", line 5, in <module>
+    import inspect
+  File "/usr/lib/python3.6/inspect.py", line 1430, in <module>
+  File "/usr/lib/python3.6/collections/__init__.py", line 429, in namedtuple
+    exec(class_definition, namespace)
+  File "<string>", line 1, in <module>
+KeyboardInterrupt
+Command terminated by signal 2
+0.05user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 14992maxresident)k
+0inputs+0outputs (0major+2459minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 9, in <module>
+    from numpy.compat._inspect import getargspec
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/__init__.py", line 12, in <module>
+    from . import py3k
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/py3k.py", line 21, in <module>
+    from pathlib import Path, PurePath
+  File "/usr/lib/python3.6/pathlib.py", line 382, in <module>
+    class _NormalAccessor(_Accessor):
+  File "/usr/lib/python3.6/pathlib.py", line 396, in _NormalAccessor
+    stat = _wrap_strfunc(os.stat)
+  File "/usr/lib/python3.6/pathlib.py", line 385, in _wrap_strfunc
+    @functools.wraps(strfunc)
+  File "/usr/lib/python3.6/functools.py", line 86, in wraps
+    assigned=assigned, updated=updated)
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.58user 0.85system 0:00.10elapsed 1332%CPU (0avgtext+0avgdata 20300maxresident)k
+32inputs+0outputs (0major+3090minor)pagefaults 0swaps

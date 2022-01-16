@@ -21,7 +21,7 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 
 export CUDA_VISIBLE_DEVICES=$GPU
 TASK='panx'
-LANGS="mr,bn,ta,fo,no,da,be,uk,bg,af,yo"
+LANGS="en,ja,zh,ar,jv,sw,is,my,qu,cdo,ilo,xmf,mi,mhr,tk,gn"
 # LANGS="mr,bn,no"
 # LANGS="af,bm,yo"
 # LANGS="bn"
@@ -36,11 +36,11 @@ SEED=0
 # LANG_ADAPTER_NAME='en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,cs/wiki@ukp,vi/wiki@ukp,eu/wiki@ukp,zh_yue/wiki@ukp,fa/wiki@ukp,es/wiki@ukp'
 # ADAPTER_LANG="en,pt,id,tr,cs,vi,eu,zh_yue,fa,es"
 SEEDS=( 1 2 3 )
-K=1
+K=10
 
 #Top 10 based on english results for each seed
-# LANG_ADAPTER_NAMES=( 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,cs/wiki@ukp,tr/wiki@ukp,eu/wiki@ukp,zh_yue/wiki@ukp,vi/wiki@ukp,fr/wiki@ukp,fa/wiki@ukp' 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,cs/wiki@ukp,vi/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,zh_yue/wiki@ukp,hy/wiki@ukp' 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,fa/wiki@ukp,eu/wiki@ukp,zh_yue/wiki@ukp,cs/wiki@ukp,es/wiki@ukp' )
-# ADAPTER_LANGS=( "en,pt,id,cs,tr,eu,zh_yue,vi,fr,fa" "en,pt,id,tr,cs,vi,eu,fa,zh_yue,hy" "en,pt,id,tr,vi,fa,eu,zh_yue,cs,es" )
+LANG_ADAPTER_NAMES=( 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,cs/wiki@ukp,tr/wiki@ukp,eu/wiki@ukp,zh_yue/wiki@ukp,vi/wiki@ukp,fr/wiki@ukp,fa/wiki@ukp' 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,cs/wiki@ukp,vi/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,zh_yue/wiki@ukp,hy/wiki@ukp' 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,fa/wiki@ukp,eu/wiki@ukp,zh_yue/wiki@ukp,cs/wiki@ukp,es/wiki@ukp' )
+ADAPTER_LANGS=( "en,pt,id,cs,tr,eu,zh_yue,vi,fr,fa" "en,pt,id,tr,cs,vi,eu,fa,zh_yue,hy" "en,pt,id,tr,vi,fa,eu,zh_yue,cs,es" )
 
 #Top 5 based on english results for each seed
 # LANG_ADAPTER_NAMES=( 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,cs/wiki@ukp,tr/wiki@ukp' 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,cs/wiki@ukp' 'en/wiki@ukp,pt/wiki@ukp,id/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp' )
@@ -51,8 +51,8 @@ K=1
 # ADAPTER_LANGS=( "en,pt,id" "en,pt,id" "en,pt,id" )
 
 #Top 1 based on english results for each seed
-LANG_ADAPTER_NAMES=( 'pt/wiki@ukp' 'pt/wiki@ukp' 'pt/wiki@ukp' )
-ADAPTER_LANGS=( "pt" "pt" "pt" )
+# LANG_ADAPTER_NAMES=( 'pt/wiki@ukp' 'pt/wiki@ukp' 'pt/wiki@ukp' )
+# ADAPTER_LANGS=( "pt" "pt" "pt" )
 
 
 # LANG_ADAPTER_NAME="am/wiki@ukp,bn/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp"

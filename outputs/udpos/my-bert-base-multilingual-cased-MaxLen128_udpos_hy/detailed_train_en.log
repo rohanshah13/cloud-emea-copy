@@ -1,0 +1,101 @@
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 652, in <module>
+    from _collections_abc import MutableMapping
+  File "/usr/lib/python3.6/_collections_abc.py", line 114, in <module>
+    class Coroutine(Awaitable):
+  File "/usr/lib/python3.6/abc.py", line 136, in __new__
+    for name, value in namespace.items()
+  File "/usr/lib/python3.6/abc.py", line 137, in <setcomp>
+    if getattr(value, "__isabstractmethod__", False)}
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.00user 0.00system 0:00.01elapsed 92%CPU (0avgtext+0avgdata 8380maxresident)k
+0inputs+8outputs (0major+800minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 21, in <module>
+    import argparse
+  File "/usr/lib/python3.6/argparse.py", line 87, in <module>
+    import copy as _copy
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 951, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 894, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1157, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1129, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1267, in find_spec
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.03user 0.00system 0:00.03elapsed 100%CPU (0avgtext+0avgdata 12456maxresident)k
+0inputs+0outputs (0major+1895minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/os.py", line 42, in _get_exports_list
+    return list(module.__all__)
+AttributeError: module 'posix' has no attribute '__all__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 79, in <module>
+    import os
+  File "/usr/lib/python3.6/os.py", line 65, in <module>
+    __all__.extend(_get_exports_list(posix))
+  File "/usr/lib/python3.6/os.py", line 44, in _get_exports_list
+    return [n for n in dir(module) if n[0] != '_']
+  File "/usr/lib/python3.6/os.py", line 44, in <listcomp>
+    return [n for n in dir(module) if n[0] != '_']
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8192maxresident)k
+0inputs+0outputs (0major+774minor)pagefaults 0swaps
+
+Exception ignored in: <module 'threading' from '/usr/lib/python3.6/threading.py'>
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 1291, in _shutdown
+KeyboardInterrupt
+Command exited with non-zero status 1
+2.47user 3.37system 0:00.19elapsed 3080%CPU (0avgtext+0avgdata 23104maxresident)k
+32inputs+8outputs (0major+3950minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 98, in <module>
+    from . import _add_newdocs
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/_add_newdocs.py", line 5944, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/function_base.py", line 497, in add_newdoc
+    new = getattr(__import__(place, globals(), {}, [obj]), obj)
+  File "<frozen importlib._bootstrap>", line 1007, in _handle_fromlist
+KeyboardInterrupt
+Command exited with non-zero status 1
+2.35user 3.34system 0:00.17elapsed 3256%CPU (0avgtext+0avgdata 22780maxresident)k
+32inputs+0outputs (0major+3733minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap_external>", line 88, in _path_is_mode_type
+  File "<frozen importlib._bootstrap_external>", line 82, in _path_stat
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 32, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/torch/__init__.py", line 29, in <module>
+    from .torch_version import __version__ as __version__
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/torch/torch_version.py", line 3, in <module>
+    from pkg_resources import packaging  # type: ignore[attr-defined]
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/pkg_resources/__init__.py", line 74, in <module>
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 951, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 894, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1157, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1129, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1260, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 96, in _path_isfile
+  File "<frozen importlib._bootstrap_external>", line 88, in _path_is_mode_type
+KeyboardInterrupt
+Command exited with non-zero status 1
+2.61user 3.84system 0:00.30elapsed 2139%CPU (0avgtext+0avgdata 36260maxresident)k
+32inputs+8outputs (0major+6136minor)pagefaults 0swaps

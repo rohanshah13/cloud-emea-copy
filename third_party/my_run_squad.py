@@ -473,7 +473,7 @@ def evaluate(args, model, tokenizer, prefix="", language='en', lang2id=None, ada
         "input_ids": batch[0],
         "attention_mask": batch[1],
         "token_type_ids": None if args.model_type in ["xlm", "distilbert", "xlm-roberta"] else batch[2],
-        # "adapter_weights": adapter_weight,
+        "adapter_weights": adapter_weight,
       }
       example_indices = batch[3]
 
@@ -482,7 +482,6 @@ def evaluate(args, model, tokenizer, prefix="", language='en', lang2id=None, ada
         inputs.update({"cls_index": batch[4], "p_mask": batch[5]})
       if args.model_type == "xlm":
         inputs["langs"] = batch[6]
-
       outputs = model(**inputs)
 
     for i, example_index in enumerate(example_indices):

@@ -1,0 +1,561 @@
+01/12/2022 19:30:25 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:30:25 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/12/2022 19:30:25 - INFO - __main__ -   Seed = 1
+01/12/2022 19:30:25 - INFO - root -   save model
+01/12/2022 19:30:25 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:30:25 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/12/2022 19:30:30 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/12/2022 19:30:36 - INFO - __main__ -   Using lang2id = None
+01/12/2022 19:30:36 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/12/2022 19:30:36 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+01/12/2022 19:30:36 - INFO - root -   Trying to decide if add adapter
+01/12/2022 19:30:36 - INFO - root -   loading task adapter
+01/12/2022 19:30:36 - INFO - root -   loading lang adpater am/wiki@ukp,ar/wiki@ukp,bxr/wiki@ukp,cdo/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,gn/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,kv/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,qu/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,sw/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp,xmf/wiki@ukp,zh/wiki@ukp,zh_yue/wiki@ukp
+01/12/2022 19:30:36 - INFO - __main__ -   Adapter Languages : ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue'], Length : 45
+01/12/2022 19:30:36 - INFO - __main__ -   Adapter Names ['am/wiki@ukp', 'ar/wiki@ukp', 'bxr/wiki@ukp', 'cdo/wiki@ukp', 'cs/wiki@ukp', 'de/wiki@ukp', 'el/wiki@ukp', 'en/wiki@ukp', 'es/wiki@ukp', 'et/wiki@ukp', 'eu/wiki@ukp', 'fa/wiki@ukp', 'fi/wiki@ukp', 'fr/wiki@ukp', 'gn/wiki@ukp', 'hi/wiki@ukp', 'ht/wiki@ukp', 'hu/wiki@ukp', 'hy/wiki@ukp', 'id/wiki@ukp', 'ilo/wiki@ukp', 'is/wiki@ukp', 'ja/wiki@ukp', 'jv/wiki@ukp', 'ka/wiki@ukp', 'ko/wiki@ukp', 'kv/wiki@ukp', 'la/wiki@ukp', 'lv/wiki@ukp', 'mhr/wiki@ukp', 'mi/wiki@ukp', 'my/wiki@ukp', 'myv/wiki@ukp', 'pt/wiki@ukp', 'qu/wiki@ukp', 'ru/wiki@ukp', 'se/wiki@ukp', 'sw/wiki@ukp', 'tk/wiki@ukp', 'tr/wiki@ukp', 'vi/wiki@ukp', 'wo/wiki@ukp', 'xmf/wiki@ukp', 'zh/wiki@ukp', 'zh_yue/wiki@ukp'], Length : 45
+01/12/2022 19:30:36 - INFO - __main__ -   Language = am
+01/12/2022 19:30:36 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+01/12/2022 19:30:38 - INFO - __main__ -   Language = ar
+01/12/2022 19:30:38 - INFO - __main__ -   Adapter Name = ar/wiki@ukp
+01/12/2022 19:30:40 - INFO - __main__ -   Language = bxr
+01/12/2022 19:30:40 - INFO - __main__ -   Adapter Name = bxr/wiki@ukp
+01/12/2022 19:30:43 - INFO - __main__ -   Language = cdo
+01/12/2022 19:30:43 - INFO - __main__ -   Adapter Name = cdo/wiki@ukp
+01/12/2022 19:30:44 - INFO - __main__ -   Language = cs
+01/12/2022 19:30:44 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+01/12/2022 19:30:47 - INFO - __main__ -   Language = de
+01/12/2022 19:30:47 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+01/12/2022 19:30:48 - INFO - __main__ -   Language = el
+01/12/2022 19:30:48 - INFO - __main__ -   Adapter Name = el/wiki@ukp
+01/12/2022 19:30:50 - INFO - __main__ -   Language = en
+01/12/2022 19:30:50 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+01/12/2022 19:30:51 - INFO - __main__ -   Language = es
+01/12/2022 19:30:51 - INFO - __main__ -   Adapter Name = es/wiki@ukp
+01/12/2022 19:30:52 - INFO - __main__ -   Language = et
+01/12/2022 19:30:52 - INFO - __main__ -   Adapter Name = et/wiki@ukp
+01/12/2022 19:30:55 - INFO - __main__ -   Language = eu
+01/12/2022 19:30:55 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+01/12/2022 19:30:57 - INFO - __main__ -   Language = fa
+01/12/2022 19:30:57 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+01/12/2022 19:31:00 - INFO - __main__ -   Language = fi
+01/12/2022 19:31:00 - INFO - __main__ -   Adapter Name = fi/wiki@ukp
+01/12/2022 19:31:01 - INFO - __main__ -   Language = fr
+01/12/2022 19:31:01 - INFO - __main__ -   Adapter Name = fr/wiki@ukp
+01/12/2022 19:31:03 - INFO - __main__ -   Language = gn
+01/12/2022 19:31:03 - INFO - __main__ -   Adapter Name = gn/wiki@ukp
+01/12/2022 19:31:04 - INFO - __main__ -   Language = hi
+01/12/2022 19:31:04 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+01/12/2022 19:31:05 - INFO - __main__ -   Language = ht
+01/12/2022 19:31:05 - INFO - __main__ -   Adapter Name = ht/wiki@ukp
+01/12/2022 19:31:07 - INFO - __main__ -   Language = hu
+01/12/2022 19:31:07 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+01/12/2022 19:31:09 - INFO - __main__ -   Language = hy
+01/12/2022 19:31:09 - INFO - __main__ -   Adapter Name = hy/wiki@ukp
+01/12/2022 19:31:12 - INFO - __main__ -   Language = id
+01/12/2022 19:31:12 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+01/12/2022 19:31:15 - INFO - __main__ -   Language = ilo
+01/12/2022 19:31:15 - INFO - __main__ -   Adapter Name = ilo/wiki@ukp
+01/12/2022 19:31:17 - INFO - __main__ -   Language = is
+01/12/2022 19:31:17 - INFO - __main__ -   Adapter Name = is/wiki@ukp
+01/12/2022 19:31:18 - INFO - __main__ -   Language = ja
+01/12/2022 19:31:18 - INFO - __main__ -   Adapter Name = ja/wiki@ukp
+01/12/2022 19:31:19 - INFO - __main__ -   Language = jv
+01/12/2022 19:31:19 - INFO - __main__ -   Adapter Name = jv/wiki@ukp
+01/12/2022 19:31:21 - INFO - __main__ -   Language = ka
+01/12/2022 19:31:21 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+01/12/2022 19:31:23 - INFO - __main__ -   Language = ko
+01/12/2022 19:31:23 - INFO - __main__ -   Adapter Name = ko/wiki@ukp
+01/12/2022 19:31:24 - INFO - __main__ -   Language = kv
+01/12/2022 19:31:24 - INFO - __main__ -   Adapter Name = kv/wiki@ukp
+01/12/2022 19:31:27 - INFO - __main__ -   Language = la
+01/12/2022 19:31:27 - INFO - __main__ -   Adapter Name = la/wiki@ukp
+01/12/2022 19:31:29 - INFO - __main__ -   Language = lv
+01/12/2022 19:31:29 - INFO - __main__ -   Adapter Name = lv/wiki@ukp
+01/12/2022 19:31:32 - INFO - __main__ -   Language = mhr
+01/12/2022 19:31:32 - INFO - __main__ -   Adapter Name = mhr/wiki@ukp
+01/12/2022 19:31:33 - INFO - __main__ -   Language = mi
+01/12/2022 19:31:33 - INFO - __main__ -   Adapter Name = mi/wiki@ukp
+01/12/2022 19:31:35 - INFO - __main__ -   Language = my
+01/12/2022 19:31:35 - INFO - __main__ -   Adapter Name = my/wiki@ukp
+01/12/2022 19:31:36 - INFO - __main__ -   Language = myv
+01/12/2022 19:31:36 - INFO - __main__ -   Adapter Name = myv/wiki@ukp
+01/12/2022 19:31:39 - INFO - __main__ -   Language = pt
+01/12/2022 19:31:39 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+01/12/2022 19:31:42 - INFO - __main__ -   Language = qu
+01/12/2022 19:31:42 - INFO - __main__ -   Adapter Name = qu/wiki@ukp
+01/12/2022 19:31:43 - INFO - __main__ -   Language = ru
+01/12/2022 19:31:43 - INFO - __main__ -   Adapter Name = ru/wiki@ukp
+01/12/2022 19:31:45 - INFO - __main__ -   Language = se
+01/12/2022 19:31:45 - INFO - __main__ -   Adapter Name = se/wiki@ukp
+01/12/2022 19:31:47 - INFO - __main__ -   Language = sw
+01/12/2022 19:31:47 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+01/12/2022 19:31:49 - INFO - __main__ -   Language = tk
+01/12/2022 19:31:49 - INFO - __main__ -   Adapter Name = tk/wiki@ukp
+01/12/2022 19:31:50 - INFO - __main__ -   Language = tr
+01/12/2022 19:31:50 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+01/12/2022 19:31:53 - INFO - __main__ -   Language = vi
+01/12/2022 19:31:53 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+01/12/2022 19:31:56 - INFO - __main__ -   Language = wo
+01/12/2022 19:31:56 - INFO - __main__ -   Adapter Name = wo/wiki@ukp
+01/12/2022 19:31:58 - INFO - __main__ -   Language = xmf
+01/12/2022 19:31:58 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+01/12/2022 19:32:00 - INFO - __main__ -   Language = zh
+01/12/2022 19:32:00 - INFO - __main__ -   Adapter Name = zh/wiki@ukp
+01/12/2022 19:32:01 - INFO - __main__ -   Language = zh_yue
+01/12/2022 19:32:01 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+01/12/2022 19:32:10 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:32:10 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:32:10 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:32:10 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:32:10 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:32:10 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/12/2022 19:32:10 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/12/2022 19:32:10 - INFO - __main__ -     Num examples = 1000
+01/12/2022 19:32:10 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:32:10 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:32:11 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:32:12 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:32:13 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:32:13 - INFO - __main__ -   Batch number = 5
+01/12/2022 19:32:14 - INFO - __main__ -   Batch number = 6
+01/12/2022 19:32:15 - INFO - __main__ -   Batch number = 7
+01/12/2022 19:32:16 - INFO - __main__ -   Batch number = 8
+01/12/2022 19:32:17 - INFO - __main__ -   Batch number = 9
+01/12/2022 19:32:18 - INFO - __main__ -   Batch number = 10
+01/12/2022 19:32:18 - INFO - __main__ -   Batch number = 11
+01/12/2022 19:32:19 - INFO - __main__ -   Batch number = 12
+01/12/2022 19:32:20 - INFO - __main__ -   Batch number = 13
+01/12/2022 19:32:21 - INFO - __main__ -   Batch number = 14
+01/12/2022 19:32:22 - INFO - __main__ -   Batch number = 15
+01/12/2022 19:32:22 - INFO - __main__ -   Batch number = 16
+01/12/2022 19:32:23 - INFO - __main__ -   Batch number = 17
+01/12/2022 19:32:24 - INFO - __main__ -   Batch number = 18
+01/12/2022 19:32:25 - INFO - __main__ -   Batch number = 19
+01/12/2022 19:32:26 - INFO - __main__ -   Batch number = 20
+01/12/2022 19:32:27 - INFO - __main__ -   Batch number = 21
+01/12/2022 19:32:27 - INFO - __main__ -   Batch number = 22
+01/12/2022 19:32:28 - INFO - __main__ -   Batch number = 23
+01/12/2022 19:32:29 - INFO - __main__ -   Batch number = 24
+01/12/2022 19:32:30 - INFO - __main__ -   Batch number = 25
+01/12/2022 19:32:31 - INFO - __main__ -   Batch number = 26
+01/12/2022 19:32:32 - INFO - __main__ -   Batch number = 27
+01/12/2022 19:32:32 - INFO - __main__ -   Batch number = 28
+01/12/2022 19:32:33 - INFO - __main__ -   Batch number = 29
+01/12/2022 19:32:34 - INFO - __main__ -   Batch number = 30
+01/12/2022 19:32:35 - INFO - __main__ -   Batch number = 31
+01/12/2022 19:32:36 - INFO - __main__ -   Batch number = 32
+01/12/2022 19:32:36 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/12/2022 19:32:36 - INFO - __main__ -     f1 = 0.7280074603668014
+01/12/2022 19:32:36 - INFO - __main__ -     loss = 1.0077109597623348
+01/12/2022 19:32:36 - INFO - __main__ -     precision = 0.676878612716763
+01/12/2022 19:32:36 - INFO - __main__ -     recall = 0.7874915938130465
+01/12/2022 19:32:36 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:32:36 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:32:36 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:32:36 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:32:36 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:32:36 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/12/2022 19:32:36 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/12/2022 19:32:36 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:32:36 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:32:36 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:32:37 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:32:38 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:32:39 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:32:39 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/12/2022 19:32:39 - INFO - __main__ -     f1 = 0.5913043478260869
+01/12/2022 19:32:39 - INFO - __main__ -     loss = 3.343715190887451
+01/12/2022 19:32:39 - INFO - __main__ -     precision = 0.5396825396825397
+01/12/2022 19:32:39 - INFO - __main__ -     recall = 0.6538461538461539
+01/12/2022 19:32:39 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:32:39 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:32:39 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:32:39 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:32:39 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:32:39 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/12/2022 19:32:39 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/12/2022 19:32:39 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:32:39 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:32:39 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:32:40 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:32:40 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:32:41 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:32:41 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/12/2022 19:32:41 - INFO - __main__ -     f1 = 0.5291479820627802
+01/12/2022 19:32:41 - INFO - __main__ -     loss = 4.418032169342041
+01/12/2022 19:32:41 - INFO - __main__ -     precision = 0.5267857142857143
+01/12/2022 19:32:41 - INFO - __main__ -     recall = 0.5315315315315315
+01/12/2022 19:32:44 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:32:44 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/12/2022 19:32:44 - INFO - __main__ -   Seed = 2
+01/12/2022 19:32:44 - INFO - root -   save model
+01/12/2022 19:32:44 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:32:44 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/12/2022 19:32:51 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/12/2022 19:32:59 - INFO - __main__ -   Using lang2id = None
+01/12/2022 19:32:59 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/12/2022 19:32:59 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+01/12/2022 19:32:59 - INFO - root -   Trying to decide if add adapter
+01/12/2022 19:32:59 - INFO - root -   loading task adapter
+01/12/2022 19:32:59 - INFO - root -   loading lang adpater am/wiki@ukp,ar/wiki@ukp,bxr/wiki@ukp,cdo/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,gn/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,kv/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,qu/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,sw/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp,xmf/wiki@ukp,zh/wiki@ukp,zh_yue/wiki@ukp
+01/12/2022 19:32:59 - INFO - __main__ -   Adapter Languages : ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue'], Length : 45
+01/12/2022 19:32:59 - INFO - __main__ -   Adapter Names ['am/wiki@ukp', 'ar/wiki@ukp', 'bxr/wiki@ukp', 'cdo/wiki@ukp', 'cs/wiki@ukp', 'de/wiki@ukp', 'el/wiki@ukp', 'en/wiki@ukp', 'es/wiki@ukp', 'et/wiki@ukp', 'eu/wiki@ukp', 'fa/wiki@ukp', 'fi/wiki@ukp', 'fr/wiki@ukp', 'gn/wiki@ukp', 'hi/wiki@ukp', 'ht/wiki@ukp', 'hu/wiki@ukp', 'hy/wiki@ukp', 'id/wiki@ukp', 'ilo/wiki@ukp', 'is/wiki@ukp', 'ja/wiki@ukp', 'jv/wiki@ukp', 'ka/wiki@ukp', 'ko/wiki@ukp', 'kv/wiki@ukp', 'la/wiki@ukp', 'lv/wiki@ukp', 'mhr/wiki@ukp', 'mi/wiki@ukp', 'my/wiki@ukp', 'myv/wiki@ukp', 'pt/wiki@ukp', 'qu/wiki@ukp', 'ru/wiki@ukp', 'se/wiki@ukp', 'sw/wiki@ukp', 'tk/wiki@ukp', 'tr/wiki@ukp', 'vi/wiki@ukp', 'wo/wiki@ukp', 'xmf/wiki@ukp', 'zh/wiki@ukp', 'zh_yue/wiki@ukp'], Length : 45
+01/12/2022 19:32:59 - INFO - __main__ -   Language = am
+01/12/2022 19:32:59 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+01/12/2022 19:33:01 - INFO - __main__ -   Language = ar
+01/12/2022 19:33:01 - INFO - __main__ -   Adapter Name = ar/wiki@ukp
+01/12/2022 19:33:02 - INFO - __main__ -   Language = bxr
+01/12/2022 19:33:02 - INFO - __main__ -   Adapter Name = bxr/wiki@ukp
+01/12/2022 19:33:04 - INFO - __main__ -   Language = cdo
+01/12/2022 19:33:04 - INFO - __main__ -   Adapter Name = cdo/wiki@ukp
+01/12/2022 19:33:05 - INFO - __main__ -   Language = cs
+01/12/2022 19:33:05 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+01/12/2022 19:33:07 - INFO - __main__ -   Language = de
+01/12/2022 19:33:07 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+01/12/2022 19:33:08 - INFO - __main__ -   Language = el
+01/12/2022 19:33:08 - INFO - __main__ -   Adapter Name = el/wiki@ukp
+01/12/2022 19:33:09 - INFO - __main__ -   Language = en
+01/12/2022 19:33:09 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+01/12/2022 19:33:10 - INFO - __main__ -   Language = es
+01/12/2022 19:33:10 - INFO - __main__ -   Adapter Name = es/wiki@ukp
+01/12/2022 19:33:11 - INFO - __main__ -   Language = et
+01/12/2022 19:33:11 - INFO - __main__ -   Adapter Name = et/wiki@ukp
+01/12/2022 19:33:12 - INFO - __main__ -   Language = eu
+01/12/2022 19:33:12 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+01/12/2022 19:33:14 - INFO - __main__ -   Language = fa
+01/12/2022 19:33:14 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+01/12/2022 19:33:17 - INFO - __main__ -   Language = fi
+01/12/2022 19:33:17 - INFO - __main__ -   Adapter Name = fi/wiki@ukp
+01/12/2022 19:33:18 - INFO - __main__ -   Language = fr
+01/12/2022 19:33:18 - INFO - __main__ -   Adapter Name = fr/wiki@ukp
+01/12/2022 19:33:19 - INFO - __main__ -   Language = gn
+01/12/2022 19:33:19 - INFO - __main__ -   Adapter Name = gn/wiki@ukp
+01/12/2022 19:33:20 - INFO - __main__ -   Language = hi
+01/12/2022 19:33:20 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+01/12/2022 19:33:21 - INFO - __main__ -   Language = ht
+01/12/2022 19:33:21 - INFO - __main__ -   Adapter Name = ht/wiki@ukp
+01/12/2022 19:33:23 - INFO - __main__ -   Language = hu
+01/12/2022 19:33:23 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+01/12/2022 19:33:25 - INFO - __main__ -   Language = hy
+01/12/2022 19:33:25 - INFO - __main__ -   Adapter Name = hy/wiki@ukp
+01/12/2022 19:33:27 - INFO - __main__ -   Language = id
+01/12/2022 19:33:27 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+01/12/2022 19:33:30 - INFO - __main__ -   Language = ilo
+01/12/2022 19:33:30 - INFO - __main__ -   Adapter Name = ilo/wiki@ukp
+01/12/2022 19:33:30 - INFO - __main__ -   Language = is
+01/12/2022 19:33:30 - INFO - __main__ -   Adapter Name = is/wiki@ukp
+01/12/2022 19:33:31 - INFO - __main__ -   Language = ja
+01/12/2022 19:33:31 - INFO - __main__ -   Adapter Name = ja/wiki@ukp
+01/12/2022 19:33:32 - INFO - __main__ -   Language = jv
+01/12/2022 19:33:32 - INFO - __main__ -   Adapter Name = jv/wiki@ukp
+01/12/2022 19:33:33 - INFO - __main__ -   Language = ka
+01/12/2022 19:33:33 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+01/12/2022 19:33:35 - INFO - __main__ -   Language = ko
+01/12/2022 19:33:35 - INFO - __main__ -   Adapter Name = ko/wiki@ukp
+01/12/2022 19:33:37 - INFO - __main__ -   Language = kv
+01/12/2022 19:33:37 - INFO - __main__ -   Adapter Name = kv/wiki@ukp
+01/12/2022 19:33:39 - INFO - __main__ -   Language = la
+01/12/2022 19:33:39 - INFO - __main__ -   Adapter Name = la/wiki@ukp
+01/12/2022 19:33:42 - INFO - __main__ -   Language = lv
+01/12/2022 19:33:42 - INFO - __main__ -   Adapter Name = lv/wiki@ukp
+01/12/2022 19:33:44 - INFO - __main__ -   Language = mhr
+01/12/2022 19:33:44 - INFO - __main__ -   Adapter Name = mhr/wiki@ukp
+01/12/2022 19:33:45 - INFO - __main__ -   Language = mi
+01/12/2022 19:33:45 - INFO - __main__ -   Adapter Name = mi/wiki@ukp
+01/12/2022 19:33:46 - INFO - __main__ -   Language = my
+01/12/2022 19:33:46 - INFO - __main__ -   Adapter Name = my/wiki@ukp
+01/12/2022 19:33:47 - INFO - __main__ -   Language = myv
+01/12/2022 19:33:47 - INFO - __main__ -   Adapter Name = myv/wiki@ukp
+01/12/2022 19:33:49 - INFO - __main__ -   Language = pt
+01/12/2022 19:33:49 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+01/12/2022 19:33:51 - INFO - __main__ -   Language = qu
+01/12/2022 19:33:51 - INFO - __main__ -   Adapter Name = qu/wiki@ukp
+01/12/2022 19:33:52 - INFO - __main__ -   Language = ru
+01/12/2022 19:33:52 - INFO - __main__ -   Adapter Name = ru/wiki@ukp
+01/12/2022 19:33:53 - INFO - __main__ -   Language = se
+01/12/2022 19:33:53 - INFO - __main__ -   Adapter Name = se/wiki@ukp
+01/12/2022 19:33:56 - INFO - __main__ -   Language = sw
+01/12/2022 19:33:56 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+01/12/2022 19:33:57 - INFO - __main__ -   Language = tk
+01/12/2022 19:33:57 - INFO - __main__ -   Adapter Name = tk/wiki@ukp
+01/12/2022 19:33:58 - INFO - __main__ -   Language = tr
+01/12/2022 19:33:58 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+01/12/2022 19:34:00 - INFO - __main__ -   Language = vi
+01/12/2022 19:34:00 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+01/12/2022 19:34:03 - INFO - __main__ -   Language = wo
+01/12/2022 19:34:03 - INFO - __main__ -   Adapter Name = wo/wiki@ukp
+01/12/2022 19:34:05 - INFO - __main__ -   Language = xmf
+01/12/2022 19:34:05 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+01/12/2022 19:34:06 - INFO - __main__ -   Language = zh
+01/12/2022 19:34:06 - INFO - __main__ -   Adapter Name = zh/wiki@ukp
+01/12/2022 19:34:07 - INFO - __main__ -   Language = zh_yue
+01/12/2022 19:34:07 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+01/12/2022 19:34:15 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:34:15 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:34:15 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:34:15 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:34:15 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:34:15 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/12/2022 19:34:16 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/12/2022 19:34:16 - INFO - __main__ -     Num examples = 1000
+01/12/2022 19:34:16 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:34:16 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:34:16 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:34:17 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:34:18 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:34:19 - INFO - __main__ -   Batch number = 5
+01/12/2022 19:34:20 - INFO - __main__ -   Batch number = 6
+01/12/2022 19:34:20 - INFO - __main__ -   Batch number = 7
+01/12/2022 19:34:21 - INFO - __main__ -   Batch number = 8
+01/12/2022 19:34:22 - INFO - __main__ -   Batch number = 9
+01/12/2022 19:34:23 - INFO - __main__ -   Batch number = 10
+01/12/2022 19:34:24 - INFO - __main__ -   Batch number = 11
+01/12/2022 19:34:25 - INFO - __main__ -   Batch number = 12
+01/12/2022 19:34:25 - INFO - __main__ -   Batch number = 13
+01/12/2022 19:34:26 - INFO - __main__ -   Batch number = 14
+01/12/2022 19:34:27 - INFO - __main__ -   Batch number = 15
+01/12/2022 19:34:28 - INFO - __main__ -   Batch number = 16
+01/12/2022 19:34:29 - INFO - __main__ -   Batch number = 17
+01/12/2022 19:34:29 - INFO - __main__ -   Batch number = 18
+01/12/2022 19:34:30 - INFO - __main__ -   Batch number = 19
+01/12/2022 19:34:31 - INFO - __main__ -   Batch number = 20
+01/12/2022 19:34:32 - INFO - __main__ -   Batch number = 21
+01/12/2022 19:34:33 - INFO - __main__ -   Batch number = 22
+01/12/2022 19:34:34 - INFO - __main__ -   Batch number = 23
+01/12/2022 19:34:34 - INFO - __main__ -   Batch number = 24
+01/12/2022 19:34:35 - INFO - __main__ -   Batch number = 25
+01/12/2022 19:34:36 - INFO - __main__ -   Batch number = 26
+01/12/2022 19:34:37 - INFO - __main__ -   Batch number = 27
+01/12/2022 19:34:38 - INFO - __main__ -   Batch number = 28
+01/12/2022 19:34:39 - INFO - __main__ -   Batch number = 29
+01/12/2022 19:34:39 - INFO - __main__ -   Batch number = 30
+01/12/2022 19:34:40 - INFO - __main__ -   Batch number = 31
+01/12/2022 19:34:41 - INFO - __main__ -   Batch number = 32
+01/12/2022 19:34:42 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/12/2022 19:34:42 - INFO - __main__ -     f1 = 0.7268292682926829
+01/12/2022 19:34:42 - INFO - __main__ -     loss = 0.9602483147755265
+01/12/2022 19:34:42 - INFO - __main__ -     precision = 0.6648075850529839
+01/12/2022 19:34:42 - INFO - __main__ -     recall = 0.8016139878950908
+01/12/2022 19:34:42 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:34:42 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:34:42 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:34:42 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:34:42 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:34:42 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/12/2022 19:34:42 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/12/2022 19:34:42 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:34:42 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:34:42 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:34:43 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:34:43 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:34:44 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:34:45 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/12/2022 19:34:45 - INFO - __main__ -     f1 = 0.5814977973568282
+01/12/2022 19:34:45 - INFO - __main__ -     loss = 3.2604271955788136
+01/12/2022 19:34:45 - INFO - __main__ -     precision = 0.5365853658536586
+01/12/2022 19:34:45 - INFO - __main__ -     recall = 0.6346153846153846
+01/12/2022 19:34:45 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:34:45 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:34:45 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:34:45 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:34:45 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:34:45 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/12/2022 19:34:45 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/12/2022 19:34:45 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:34:45 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:34:45 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:34:45 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:34:46 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:34:47 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:34:47 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/12/2022 19:34:47 - INFO - __main__ -     f1 = 0.502127659574468
+01/12/2022 19:34:47 - INFO - __main__ -     loss = 4.294128119945526
+01/12/2022 19:34:47 - INFO - __main__ -     precision = 0.47580645161290325
+01/12/2022 19:34:47 - INFO - __main__ -     recall = 0.5315315315315315
+01/12/2022 19:34:50 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:34:50 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/12/2022 19:34:50 - INFO - __main__ -   Seed = 3
+01/12/2022 19:34:50 - INFO - root -   save model
+01/12/2022 19:34:50 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='af,rw,yo', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_am,ar,bxr,cdo,cs,de,el,en,es,et,eu,fa,fi,fr,gn,hi,ht,hu,hy,id,ilo,is,ja,jv,ka,ko,kv,la,lv,mhr,mi,my,myv,pt,qu,ru,se,sw,tk,tr,vi,wo,xmf,zh,zh_yue_ensemble//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/12/2022 19:34:50 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/12/2022 19:34:56 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/12/2022 19:35:04 - INFO - __main__ -   Using lang2id = None
+01/12/2022 19:35:04 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/12/2022 19:35:04 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+01/12/2022 19:35:04 - INFO - root -   Trying to decide if add adapter
+01/12/2022 19:35:04 - INFO - root -   loading task adapter
+01/12/2022 19:35:04 - INFO - root -   loading lang adpater am/wiki@ukp,ar/wiki@ukp,bxr/wiki@ukp,cdo/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,el/wiki@ukp,en/wiki@ukp,es/wiki@ukp,et/wiki@ukp,eu/wiki@ukp,fa/wiki@ukp,fi/wiki@ukp,fr/wiki@ukp,gn/wiki@ukp,hi/wiki@ukp,ht/wiki@ukp,hu/wiki@ukp,hy/wiki@ukp,id/wiki@ukp,ilo/wiki@ukp,is/wiki@ukp,ja/wiki@ukp,jv/wiki@ukp,ka/wiki@ukp,ko/wiki@ukp,kv/wiki@ukp,la/wiki@ukp,lv/wiki@ukp,mhr/wiki@ukp,mi/wiki@ukp,my/wiki@ukp,myv/wiki@ukp,pt/wiki@ukp,qu/wiki@ukp,ru/wiki@ukp,se/wiki@ukp,sw/wiki@ukp,tk/wiki@ukp,tr/wiki@ukp,vi/wiki@ukp,wo/wiki@ukp,xmf/wiki@ukp,zh/wiki@ukp,zh_yue/wiki@ukp
+01/12/2022 19:35:04 - INFO - __main__ -   Adapter Languages : ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue'], Length : 45
+01/12/2022 19:35:04 - INFO - __main__ -   Adapter Names ['am/wiki@ukp', 'ar/wiki@ukp', 'bxr/wiki@ukp', 'cdo/wiki@ukp', 'cs/wiki@ukp', 'de/wiki@ukp', 'el/wiki@ukp', 'en/wiki@ukp', 'es/wiki@ukp', 'et/wiki@ukp', 'eu/wiki@ukp', 'fa/wiki@ukp', 'fi/wiki@ukp', 'fr/wiki@ukp', 'gn/wiki@ukp', 'hi/wiki@ukp', 'ht/wiki@ukp', 'hu/wiki@ukp', 'hy/wiki@ukp', 'id/wiki@ukp', 'ilo/wiki@ukp', 'is/wiki@ukp', 'ja/wiki@ukp', 'jv/wiki@ukp', 'ka/wiki@ukp', 'ko/wiki@ukp', 'kv/wiki@ukp', 'la/wiki@ukp', 'lv/wiki@ukp', 'mhr/wiki@ukp', 'mi/wiki@ukp', 'my/wiki@ukp', 'myv/wiki@ukp', 'pt/wiki@ukp', 'qu/wiki@ukp', 'ru/wiki@ukp', 'se/wiki@ukp', 'sw/wiki@ukp', 'tk/wiki@ukp', 'tr/wiki@ukp', 'vi/wiki@ukp', 'wo/wiki@ukp', 'xmf/wiki@ukp', 'zh/wiki@ukp', 'zh_yue/wiki@ukp'], Length : 45
+01/12/2022 19:35:04 - INFO - __main__ -   Language = am
+01/12/2022 19:35:04 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+01/12/2022 19:35:05 - INFO - __main__ -   Language = ar
+01/12/2022 19:35:05 - INFO - __main__ -   Adapter Name = ar/wiki@ukp
+01/12/2022 19:35:06 - INFO - __main__ -   Language = bxr
+01/12/2022 19:35:06 - INFO - __main__ -   Adapter Name = bxr/wiki@ukp
+01/12/2022 19:35:08 - INFO - __main__ -   Language = cdo
+01/12/2022 19:35:08 - INFO - __main__ -   Adapter Name = cdo/wiki@ukp
+01/12/2022 19:35:09 - INFO - __main__ -   Language = cs
+01/12/2022 19:35:09 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+01/12/2022 19:35:10 - INFO - __main__ -   Language = de
+01/12/2022 19:35:10 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+01/12/2022 19:35:11 - INFO - __main__ -   Language = el
+01/12/2022 19:35:11 - INFO - __main__ -   Adapter Name = el/wiki@ukp
+01/12/2022 19:35:12 - INFO - __main__ -   Language = en
+01/12/2022 19:35:12 - INFO - __main__ -   Adapter Name = en/wiki@ukp
+01/12/2022 19:35:13 - INFO - __main__ -   Language = es
+01/12/2022 19:35:13 - INFO - __main__ -   Adapter Name = es/wiki@ukp
+01/12/2022 19:35:14 - INFO - __main__ -   Language = et
+01/12/2022 19:35:14 - INFO - __main__ -   Adapter Name = et/wiki@ukp
+01/12/2022 19:35:15 - INFO - __main__ -   Language = eu
+01/12/2022 19:35:15 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+01/12/2022 19:35:17 - INFO - __main__ -   Language = fa
+01/12/2022 19:35:17 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+01/12/2022 19:35:18 - INFO - __main__ -   Language = fi
+01/12/2022 19:35:18 - INFO - __main__ -   Adapter Name = fi/wiki@ukp
+01/12/2022 19:35:19 - INFO - __main__ -   Language = fr
+01/12/2022 19:35:19 - INFO - __main__ -   Adapter Name = fr/wiki@ukp
+01/12/2022 19:35:20 - INFO - __main__ -   Language = gn
+01/12/2022 19:35:20 - INFO - __main__ -   Adapter Name = gn/wiki@ukp
+01/12/2022 19:35:21 - INFO - __main__ -   Language = hi
+01/12/2022 19:35:21 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+01/12/2022 19:35:22 - INFO - __main__ -   Language = ht
+01/12/2022 19:35:22 - INFO - __main__ -   Adapter Name = ht/wiki@ukp
+01/12/2022 19:35:23 - INFO - __main__ -   Language = hu
+01/12/2022 19:35:23 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+01/12/2022 19:35:25 - INFO - __main__ -   Language = hy
+01/12/2022 19:35:25 - INFO - __main__ -   Adapter Name = hy/wiki@ukp
+01/12/2022 19:35:27 - INFO - __main__ -   Language = id
+01/12/2022 19:35:27 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+01/12/2022 19:35:28 - INFO - __main__ -   Language = ilo
+01/12/2022 19:35:28 - INFO - __main__ -   Adapter Name = ilo/wiki@ukp
+01/12/2022 19:35:29 - INFO - __main__ -   Language = is
+01/12/2022 19:35:29 - INFO - __main__ -   Adapter Name = is/wiki@ukp
+01/12/2022 19:35:30 - INFO - __main__ -   Language = ja
+01/12/2022 19:35:30 - INFO - __main__ -   Adapter Name = ja/wiki@ukp
+01/12/2022 19:35:31 - INFO - __main__ -   Language = jv
+01/12/2022 19:35:31 - INFO - __main__ -   Adapter Name = jv/wiki@ukp
+01/12/2022 19:35:32 - INFO - __main__ -   Language = ka
+01/12/2022 19:35:32 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+01/12/2022 19:35:34 - INFO - __main__ -   Language = ko
+01/12/2022 19:35:34 - INFO - __main__ -   Adapter Name = ko/wiki@ukp
+01/12/2022 19:35:35 - INFO - __main__ -   Language = kv
+01/12/2022 19:35:35 - INFO - __main__ -   Adapter Name = kv/wiki@ukp
+01/12/2022 19:35:37 - INFO - __main__ -   Language = la
+01/12/2022 19:35:37 - INFO - __main__ -   Adapter Name = la/wiki@ukp
+01/12/2022 19:35:38 - INFO - __main__ -   Language = lv
+01/12/2022 19:35:38 - INFO - __main__ -   Adapter Name = lv/wiki@ukp
+01/12/2022 19:35:40 - INFO - __main__ -   Language = mhr
+01/12/2022 19:35:40 - INFO - __main__ -   Adapter Name = mhr/wiki@ukp
+01/12/2022 19:35:41 - INFO - __main__ -   Language = mi
+01/12/2022 19:35:41 - INFO - __main__ -   Adapter Name = mi/wiki@ukp
+01/12/2022 19:35:42 - INFO - __main__ -   Language = my
+01/12/2022 19:35:42 - INFO - __main__ -   Adapter Name = my/wiki@ukp
+01/12/2022 19:35:43 - INFO - __main__ -   Language = myv
+01/12/2022 19:35:43 - INFO - __main__ -   Adapter Name = myv/wiki@ukp
+01/12/2022 19:35:45 - INFO - __main__ -   Language = pt
+01/12/2022 19:35:45 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+01/12/2022 19:35:47 - INFO - __main__ -   Language = qu
+01/12/2022 19:35:47 - INFO - __main__ -   Adapter Name = qu/wiki@ukp
+01/12/2022 19:35:48 - INFO - __main__ -   Language = ru
+01/12/2022 19:35:48 - INFO - __main__ -   Adapter Name = ru/wiki@ukp
+01/12/2022 19:35:48 - INFO - __main__ -   Language = se
+01/12/2022 19:35:48 - INFO - __main__ -   Adapter Name = se/wiki@ukp
+01/12/2022 19:35:50 - INFO - __main__ -   Language = sw
+01/12/2022 19:35:50 - INFO - __main__ -   Adapter Name = sw/wiki@ukp
+01/12/2022 19:35:51 - INFO - __main__ -   Language = tk
+01/12/2022 19:35:51 - INFO - __main__ -   Adapter Name = tk/wiki@ukp
+01/12/2022 19:35:52 - INFO - __main__ -   Language = tr
+01/12/2022 19:35:52 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+01/12/2022 19:35:54 - INFO - __main__ -   Language = vi
+01/12/2022 19:35:54 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+01/12/2022 19:35:56 - INFO - __main__ -   Language = wo
+01/12/2022 19:35:56 - INFO - __main__ -   Adapter Name = wo/wiki@ukp
+01/12/2022 19:35:57 - INFO - __main__ -   Language = xmf
+01/12/2022 19:35:57 - INFO - __main__ -   Adapter Name = xmf/wiki@ukp
+01/12/2022 19:35:58 - INFO - __main__ -   Language = zh
+01/12/2022 19:35:58 - INFO - __main__ -   Adapter Name = zh/wiki@ukp
+01/12/2022 19:35:59 - INFO - __main__ -   Language = zh_yue
+01/12/2022 19:35:59 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+01/12/2022 19:36:07 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:36:07 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:36:07 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:36:07 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:36:07 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:36:07 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_af_bert-base-multilingual-cased_128
+01/12/2022 19:36:07 - INFO - __main__ -   ***** Running evaluation  in af *****
+01/12/2022 19:36:07 - INFO - __main__ -     Num examples = 1000
+01/12/2022 19:36:07 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:36:07 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:36:08 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:36:09 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:36:10 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:36:10 - INFO - __main__ -   Batch number = 5
+01/12/2022 19:36:11 - INFO - __main__ -   Batch number = 6
+01/12/2022 19:36:12 - INFO - __main__ -   Batch number = 7
+01/12/2022 19:36:13 - INFO - __main__ -   Batch number = 8
+01/12/2022 19:36:14 - INFO - __main__ -   Batch number = 9
+01/12/2022 19:36:14 - INFO - __main__ -   Batch number = 10
+01/12/2022 19:36:15 - INFO - __main__ -   Batch number = 11
+01/12/2022 19:36:16 - INFO - __main__ -   Batch number = 12
+01/12/2022 19:36:17 - INFO - __main__ -   Batch number = 13
+01/12/2022 19:36:18 - INFO - __main__ -   Batch number = 14
+01/12/2022 19:36:19 - INFO - __main__ -   Batch number = 15
+01/12/2022 19:36:19 - INFO - __main__ -   Batch number = 16
+01/12/2022 19:36:20 - INFO - __main__ -   Batch number = 17
+01/12/2022 19:36:21 - INFO - __main__ -   Batch number = 18
+01/12/2022 19:36:22 - INFO - __main__ -   Batch number = 19
+01/12/2022 19:36:23 - INFO - __main__ -   Batch number = 20
+01/12/2022 19:36:23 - INFO - __main__ -   Batch number = 21
+01/12/2022 19:36:24 - INFO - __main__ -   Batch number = 22
+01/12/2022 19:36:25 - INFO - __main__ -   Batch number = 23
+01/12/2022 19:36:26 - INFO - __main__ -   Batch number = 24
+01/12/2022 19:36:27 - INFO - __main__ -   Batch number = 25
+01/12/2022 19:36:28 - INFO - __main__ -   Batch number = 26
+01/12/2022 19:36:28 - INFO - __main__ -   Batch number = 27
+01/12/2022 19:36:29 - INFO - __main__ -   Batch number = 28
+01/12/2022 19:36:30 - INFO - __main__ -   Batch number = 29
+01/12/2022 19:36:31 - INFO - __main__ -   Batch number = 30
+01/12/2022 19:36:32 - INFO - __main__ -   Batch number = 31
+01/12/2022 19:36:33 - INFO - __main__ -   Batch number = 32
+01/12/2022 19:36:33 - INFO - __main__ -   ***** Evaluation result  in af *****
+01/12/2022 19:36:33 - INFO - __main__ -     f1 = 0.7301006404391582
+01/12/2022 19:36:33 - INFO - __main__ -     loss = 1.0299334451556206
+01/12/2022 19:36:33 - INFO - __main__ -     precision = 0.66796875
+01/12/2022 19:36:33 - INFO - __main__ -     recall = 0.8049764626765299
+01/12/2022 19:36:33 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:36:33 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:36:33 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:36:33 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:36:33 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:36:33 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_rw_bert-base-multilingual-cased_128
+01/12/2022 19:36:33 - INFO - __main__ -   ***** Running evaluation  in rw *****
+01/12/2022 19:36:33 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:36:33 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:36:33 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:36:34 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:36:35 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:36:36 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:36:36 - INFO - __main__ -   ***** Evaluation result  in rw *****
+01/12/2022 19:36:36 - INFO - __main__ -     f1 = 0.487603305785124
+01/12/2022 19:36:36 - INFO - __main__ -     loss = 3.1516700933376747
+01/12/2022 19:36:36 - INFO - __main__ -     precision = 0.427536231884058
+01/12/2022 19:36:36 - INFO - __main__ -     recall = 0.5673076923076923
+01/12/2022 19:36:36 - INFO - __main__ -   Args Adapter Weight = equal
+01/12/2022 19:36:36 - INFO - __main__ -   Adapter Languages = ['am', 'ar', 'bxr', 'cdo', 'cs', 'de', 'el', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gn', 'hi', 'ht', 'hu', 'hy', 'id', 'ilo', 'is', 'ja', 'jv', 'ka', 'ko', 'kv', 'la', 'lv', 'mhr', 'mi', 'my', 'myv', 'pt', 'qu', 'ru', 'se', 'sw', 'tk', 'tr', 'vi', 'wo', 'xmf', 'zh', 'zh_yue']
+01/12/2022 19:36:36 - INFO - __main__ -   Adapter Weights = [0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223, 0.022222222222222223]
+01/12/2022 19:36:36 - INFO - __main__ -   Sum of Adapter Weights = 1.0000000000000004
+01/12/2022 19:36:36 - INFO - __main__ -   Length of Adapter Weights = 45
+01/12/2022 19:36:36 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//panx/panx_processed_maxlen128/cached_test_yo_bert-base-multilingual-cased_128
+01/12/2022 19:36:36 - INFO - __main__ -   ***** Running evaluation  in yo *****
+01/12/2022 19:36:36 - INFO - __main__ -     Num examples = 100
+01/12/2022 19:36:36 - INFO - __main__ -     Batch size = 32
+01/12/2022 19:36:36 - INFO - __main__ -   Batch number = 1
+01/12/2022 19:36:37 - INFO - __main__ -   Batch number = 2
+01/12/2022 19:36:38 - INFO - __main__ -   Batch number = 3
+01/12/2022 19:36:39 - INFO - __main__ -   Batch number = 4
+01/12/2022 19:36:39 - INFO - __main__ -   ***** Evaluation result  in yo *****
+01/12/2022 19:36:39 - INFO - __main__ -     f1 = 0.49372384937238495
+01/12/2022 19:36:39 - INFO - __main__ -     loss = 4.437734544277191
+01/12/2022 19:36:39 - INFO - __main__ -     precision = 0.4609375
+01/12/2022 19:36:39 - INFO - __main__ -     recall = 0.5315315315315315

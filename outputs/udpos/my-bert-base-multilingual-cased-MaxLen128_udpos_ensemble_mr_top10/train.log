@@ -1,0 +1,336 @@
+01/14/2022 18:10:30 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/14/2022 18:10:30 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/14/2022 18:10:30 - INFO - __main__ -   Seed = 1
+01/14/2022 18:10:30 - INFO - root -   save model
+01/14/2022 18:10:30 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/14/2022 18:10:30 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/14/2022 18:10:33 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/14/2022 18:10:39 - INFO - __main__ -   Using lang2id = None
+01/14/2022 18:10:39 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/14/2022 18:10:39 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/
+01/14/2022 18:10:39 - INFO - root -   Trying to decide if add adapter
+01/14/2022 18:10:39 - INFO - root -   loading task adapter
+01/14/2022 18:10:39 - INFO - root -   loading lang adpater vi/wiki@ukp,pt/wiki@ukp,hu/wiki@ukp,ka/wiki@ukp,zh_yue/wiki@ukp,tr/wiki@ukp,cs/wiki@ukp,id/wiki@ukp,am/wiki@ukp,fa/wiki@ukp
+01/14/2022 18:10:39 - INFO - __main__ -   Adapter Languages : ['vi', 'pt', 'hu', 'ka', 'zh_yue', 'tr', 'cs', 'id', 'am', 'fa'], Length : 10
+01/14/2022 18:10:39 - INFO - __main__ -   Adapter Names ['vi/wiki@ukp', 'pt/wiki@ukp', 'hu/wiki@ukp', 'ka/wiki@ukp', 'zh_yue/wiki@ukp', 'tr/wiki@ukp', 'cs/wiki@ukp', 'id/wiki@ukp', 'am/wiki@ukp', 'fa/wiki@ukp'], Length : 10
+01/14/2022 18:10:39 - INFO - __main__ -   Language = vi
+01/14/2022 18:10:39 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+01/14/2022 18:10:41 - INFO - __main__ -   Language = pt
+01/14/2022 18:10:41 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+01/14/2022 18:10:43 - INFO - __main__ -   Language = hu
+01/14/2022 18:10:43 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+01/14/2022 18:10:45 - INFO - __main__ -   Language = ka
+01/14/2022 18:10:45 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+01/14/2022 18:10:46 - INFO - __main__ -   Language = zh_yue
+01/14/2022 18:10:46 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+01/14/2022 18:10:48 - INFO - __main__ -   Language = tr
+01/14/2022 18:10:48 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+01/14/2022 18:10:50 - INFO - __main__ -   Language = cs
+01/14/2022 18:10:50 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+01/14/2022 18:10:52 - INFO - __main__ -   Language = id
+01/14/2022 18:10:52 - INFO - __main__ -   Adapter Name = id/wiki@ukp
+01/14/2022 18:10:54 - INFO - __main__ -   Language = am
+01/14/2022 18:10:54 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+01/14/2022 18:10:55 - INFO - __main__ -   Language = fa
+01/14/2022 18:10:55 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+01/14/2022 18:11:03 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:11:03 - INFO - __main__ -   Adapter Languages = ['vi', 'pt', 'hu', 'ka', 'zh_yue', 'tr', 'cs', 'id', 'am', 'fa']
+01/14/2022 18:11:03 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:11:03 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:11:03 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:11:03 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/14/2022 18:11:03 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/14/2022 18:11:03 - INFO - __main__ -     Num examples = 47
+01/14/2022 18:11:03 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:11:03 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:11:04 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:11:04 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/14/2022 18:11:04 - INFO - __main__ -     f1 = 0.6891271056661562
+01/14/2022 18:11:04 - INFO - __main__ -     loss = 0.9280819296836853
+01/14/2022 18:11:04 - INFO - __main__ -     precision = 0.703125
+01/14/2022 18:11:04 - INFO - __main__ -     recall = 0.6756756756756757
+01/14/2022 18:11:04 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:11:04 - INFO - __main__ -   Adapter Languages = ['vi', 'pt', 'hu', 'ka', 'zh_yue', 'tr', 'cs', 'id', 'am', 'fa']
+01/14/2022 18:11:04 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:11:04 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:11:04 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:11:04 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_bho_bert-base-multilingual-cased_128
+01/14/2022 18:11:04 - INFO - __main__ -   ***** Running evaluation  in bho *****
+01/14/2022 18:11:04 - INFO - __main__ -     Num examples = 361
+01/14/2022 18:11:04 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:11:04 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:11:05 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:11:05 - INFO - __main__ -   Batch number = 3
+01/14/2022 18:11:06 - INFO - __main__ -   Batch number = 4
+01/14/2022 18:11:06 - INFO - __main__ -   Batch number = 5
+01/14/2022 18:11:07 - INFO - __main__ -   Batch number = 6
+01/14/2022 18:11:07 - INFO - __main__ -   Batch number = 7
+01/14/2022 18:11:08 - INFO - __main__ -   Batch number = 8
+01/14/2022 18:11:09 - INFO - __main__ -   Batch number = 9
+01/14/2022 18:11:09 - INFO - __main__ -   Batch number = 10
+01/14/2022 18:11:10 - INFO - __main__ -   Batch number = 11
+01/14/2022 18:11:10 - INFO - __main__ -   Batch number = 12
+01/14/2022 18:11:11 - INFO - __main__ -   ***** Evaluation result  in bho *****
+01/14/2022 18:11:11 - INFO - __main__ -     f1 = 0.47976579989667645
+01/14/2022 18:11:11 - INFO - __main__ -     loss = 2.383402238289515
+01/14/2022 18:11:11 - INFO - __main__ -     precision = 0.4984791554839864
+01/14/2022 18:11:11 - INFO - __main__ -     recall = 0.46240663900414936
+01/14/2022 18:11:11 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:11:11 - INFO - __main__ -   Adapter Languages = ['vi', 'pt', 'hu', 'ka', 'zh_yue', 'tr', 'cs', 'id', 'am', 'fa']
+01/14/2022 18:11:11 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:11:11 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:11:11 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:11:11 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/14/2022 18:11:11 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/14/2022 18:11:11 - INFO - __main__ -     Num examples = 656
+01/14/2022 18:11:11 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:11:11 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:11:11 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:11:12 - INFO - __main__ -   Batch number = 3
+01/14/2022 18:11:12 - INFO - __main__ -   Batch number = 4
+01/14/2022 18:11:13 - INFO - __main__ -   Batch number = 5
+01/14/2022 18:11:14 - INFO - __main__ -   Batch number = 6
+01/14/2022 18:11:14 - INFO - __main__ -   Batch number = 7
+01/14/2022 18:11:15 - INFO - __main__ -   Batch number = 8
+01/14/2022 18:11:15 - INFO - __main__ -   Batch number = 9
+01/14/2022 18:11:16 - INFO - __main__ -   Batch number = 10
+01/14/2022 18:11:16 - INFO - __main__ -   Batch number = 11
+01/14/2022 18:11:17 - INFO - __main__ -   Batch number = 12
+01/14/2022 18:11:17 - INFO - __main__ -   Batch number = 13
+01/14/2022 18:11:18 - INFO - __main__ -   Batch number = 14
+01/14/2022 18:11:19 - INFO - __main__ -   Batch number = 15
+01/14/2022 18:11:19 - INFO - __main__ -   Batch number = 16
+01/14/2022 18:11:20 - INFO - __main__ -   Batch number = 17
+01/14/2022 18:11:20 - INFO - __main__ -   Batch number = 18
+01/14/2022 18:11:21 - INFO - __main__ -   Batch number = 19
+01/14/2022 18:11:21 - INFO - __main__ -   Batch number = 20
+01/14/2022 18:11:22 - INFO - __main__ -   Batch number = 21
+01/14/2022 18:11:22 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/14/2022 18:11:22 - INFO - __main__ -     f1 = 0.6968733439321675
+01/14/2022 18:11:22 - INFO - __main__ -     loss = 0.9631059992881048
+01/14/2022 18:11:22 - INFO - __main__ -     precision = 0.7205479452054795
+01/14/2022 18:11:22 - INFO - __main__ -     recall = 0.6747049769112365
+01/14/2022 18:11:24 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/14/2022 18:11:24 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/14/2022 18:11:24 - INFO - __main__ -   Seed = 2
+01/14/2022 18:11:24 - INFO - root -   save model
+01/14/2022 18:11:24 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/14/2022 18:11:24 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/14/2022 18:11:27 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/14/2022 18:11:32 - INFO - __main__ -   Using lang2id = None
+01/14/2022 18:11:32 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/14/2022 18:11:32 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/
+01/14/2022 18:11:32 - INFO - root -   Trying to decide if add adapter
+01/14/2022 18:11:32 - INFO - root -   loading task adapter
+01/14/2022 18:11:33 - INFO - root -   loading lang adpater zh_yue/wiki@ukp,tr/wiki@ukp,am/wiki@ukp,vi/wiki@ukp,cs/wiki@ukp,pt/wiki@ukp,hu/wiki@ukp,ka/wiki@ukp,eu/wiki@ukp,la/wiki@ukp
+01/14/2022 18:11:33 - INFO - __main__ -   Adapter Languages : ['zh_yue', 'tr', 'am', 'vi', 'cs', 'pt', 'hu', 'ka', 'eu', 'la'], Length : 10
+01/14/2022 18:11:33 - INFO - __main__ -   Adapter Names ['zh_yue/wiki@ukp', 'tr/wiki@ukp', 'am/wiki@ukp', 'vi/wiki@ukp', 'cs/wiki@ukp', 'pt/wiki@ukp', 'hu/wiki@ukp', 'ka/wiki@ukp', 'eu/wiki@ukp', 'la/wiki@ukp'], Length : 10
+01/14/2022 18:11:33 - INFO - __main__ -   Language = zh_yue
+01/14/2022 18:11:33 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+01/14/2022 18:11:34 - INFO - __main__ -   Language = tr
+01/14/2022 18:11:34 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+01/14/2022 18:11:36 - INFO - __main__ -   Language = am
+01/14/2022 18:11:36 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+01/14/2022 18:11:37 - INFO - __main__ -   Language = vi
+01/14/2022 18:11:37 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+01/14/2022 18:11:39 - INFO - __main__ -   Language = cs
+01/14/2022 18:11:39 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+01/14/2022 18:11:40 - INFO - __main__ -   Language = pt
+01/14/2022 18:11:40 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+01/14/2022 18:11:42 - INFO - __main__ -   Language = hu
+01/14/2022 18:11:42 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+01/14/2022 18:11:43 - INFO - __main__ -   Language = ka
+01/14/2022 18:11:43 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+01/14/2022 18:11:45 - INFO - __main__ -   Language = eu
+01/14/2022 18:11:45 - INFO - __main__ -   Adapter Name = eu/wiki@ukp
+01/14/2022 18:11:47 - INFO - __main__ -   Language = la
+01/14/2022 18:11:47 - INFO - __main__ -   Adapter Name = la/wiki@ukp
+01/14/2022 18:11:54 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:11:54 - INFO - __main__ -   Adapter Languages = ['zh_yue', 'tr', 'am', 'vi', 'cs', 'pt', 'hu', 'ka', 'eu', 'la']
+01/14/2022 18:11:54 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:11:54 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:11:54 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:11:54 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/14/2022 18:11:54 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/14/2022 18:11:54 - INFO - __main__ -     Num examples = 47
+01/14/2022 18:11:54 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:11:54 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:11:54 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:11:55 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/14/2022 18:11:55 - INFO - __main__ -     f1 = 0.6975308641975309
+01/14/2022 18:11:55 - INFO - __main__ -     loss = 0.9400554299354553
+01/14/2022 18:11:55 - INFO - __main__ -     precision = 0.7174603174603175
+01/14/2022 18:11:55 - INFO - __main__ -     recall = 0.6786786786786787
+01/14/2022 18:11:55 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:11:55 - INFO - __main__ -   Adapter Languages = ['zh_yue', 'tr', 'am', 'vi', 'cs', 'pt', 'hu', 'ka', 'eu', 'la']
+01/14/2022 18:11:55 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:11:55 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:11:55 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:11:55 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_bho_bert-base-multilingual-cased_128
+01/14/2022 18:11:55 - INFO - __main__ -   ***** Running evaluation  in bho *****
+01/14/2022 18:11:55 - INFO - __main__ -     Num examples = 361
+01/14/2022 18:11:55 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:11:55 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:11:55 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:11:56 - INFO - __main__ -   Batch number = 3
+01/14/2022 18:11:57 - INFO - __main__ -   Batch number = 4
+01/14/2022 18:11:57 - INFO - __main__ -   Batch number = 5
+01/14/2022 18:11:58 - INFO - __main__ -   Batch number = 6
+01/14/2022 18:11:58 - INFO - __main__ -   Batch number = 7
+01/14/2022 18:11:59 - INFO - __main__ -   Batch number = 8
+01/14/2022 18:11:59 - INFO - __main__ -   Batch number = 9
+01/14/2022 18:12:00 - INFO - __main__ -   Batch number = 10
+01/14/2022 18:12:01 - INFO - __main__ -   Batch number = 11
+01/14/2022 18:12:01 - INFO - __main__ -   Batch number = 12
+01/14/2022 18:12:02 - INFO - __main__ -   ***** Evaluation result  in bho *****
+01/14/2022 18:12:02 - INFO - __main__ -     f1 = 0.4187631027253668
+01/14/2022 18:12:02 - INFO - __main__ -     loss = 2.7237703700860343
+01/14/2022 18:12:02 - INFO - __main__ -     precision = 0.44200626959247646
+01/14/2022 18:12:02 - INFO - __main__ -     recall = 0.3978423236514523
+01/14/2022 18:12:02 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:12:02 - INFO - __main__ -   Adapter Languages = ['zh_yue', 'tr', 'am', 'vi', 'cs', 'pt', 'hu', 'ka', 'eu', 'la']
+01/14/2022 18:12:02 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:12:02 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:12:02 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:12:02 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/14/2022 18:12:02 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/14/2022 18:12:02 - INFO - __main__ -     Num examples = 656
+01/14/2022 18:12:02 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:12:02 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:12:02 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:12:03 - INFO - __main__ -   Batch number = 3
+01/14/2022 18:12:03 - INFO - __main__ -   Batch number = 4
+01/14/2022 18:12:04 - INFO - __main__ -   Batch number = 5
+01/14/2022 18:12:05 - INFO - __main__ -   Batch number = 6
+01/14/2022 18:12:05 - INFO - __main__ -   Batch number = 7
+01/14/2022 18:12:06 - INFO - __main__ -   Batch number = 8
+01/14/2022 18:12:06 - INFO - __main__ -   Batch number = 9
+01/14/2022 18:12:07 - INFO - __main__ -   Batch number = 10
+01/14/2022 18:12:07 - INFO - __main__ -   Batch number = 11
+01/14/2022 18:12:08 - INFO - __main__ -   Batch number = 12
+01/14/2022 18:12:08 - INFO - __main__ -   Batch number = 13
+01/14/2022 18:12:09 - INFO - __main__ -   Batch number = 14
+01/14/2022 18:12:10 - INFO - __main__ -   Batch number = 15
+01/14/2022 18:12:10 - INFO - __main__ -   Batch number = 16
+01/14/2022 18:12:11 - INFO - __main__ -   Batch number = 17
+01/14/2022 18:12:11 - INFO - __main__ -   Batch number = 18
+01/14/2022 18:12:12 - INFO - __main__ -   Batch number = 19
+01/14/2022 18:12:12 - INFO - __main__ -   Batch number = 20
+01/14/2022 18:12:13 - INFO - __main__ -   Batch number = 21
+01/14/2022 18:12:14 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/14/2022 18:12:14 - INFO - __main__ -     f1 = 0.6851606052561721
+01/14/2022 18:12:14 - INFO - __main__ -     loss = 1.0033288867700667
+01/14/2022 18:12:14 - INFO - __main__ -     precision = 0.7098459845984598
+01/14/2022 18:12:14 - INFO - __main__ -     recall = 0.6621344279117496
+01/14/2022 18:12:16 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/14/2022 18:12:16 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/14/2022 18:12:16 - INFO - __main__ -   Seed = 3
+01/14/2022 18:12:16 - INFO - root -   save model
+01/14/2022 18:12:16 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_mr_top10//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/14/2022 18:12:16 - INFO - __main__ -   Loading pretrained model and tokenizer
+01/14/2022 18:12:18 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+01/14/2022 18:12:24 - INFO - __main__ -   Using lang2id = None
+01/14/2022 18:12:24 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/14/2022 18:12:24 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/
+01/14/2022 18:12:24 - INFO - root -   Trying to decide if add adapter
+01/14/2022 18:12:24 - INFO - root -   loading task adapter
+01/14/2022 18:12:24 - INFO - root -   loading lang adpater zh_yue/wiki@ukp,vi/wiki@ukp,pt/wiki@ukp,ka/wiki@ukp,tr/wiki@ukp,cs/wiki@ukp,de/wiki@ukp,fa/wiki@ukp,hu/wiki@ukp,la/wiki@ukp
+01/14/2022 18:12:24 - INFO - __main__ -   Adapter Languages : ['zh_yue', 'vi', 'pt', 'ka', 'tr', 'cs', 'de', 'fa', 'hu', 'la'], Length : 10
+01/14/2022 18:12:24 - INFO - __main__ -   Adapter Names ['zh_yue/wiki@ukp', 'vi/wiki@ukp', 'pt/wiki@ukp', 'ka/wiki@ukp', 'tr/wiki@ukp', 'cs/wiki@ukp', 'de/wiki@ukp', 'fa/wiki@ukp', 'hu/wiki@ukp', 'la/wiki@ukp'], Length : 10
+01/14/2022 18:12:24 - INFO - __main__ -   Language = zh_yue
+01/14/2022 18:12:24 - INFO - __main__ -   Adapter Name = zh_yue/wiki@ukp
+01/14/2022 18:12:26 - INFO - __main__ -   Language = vi
+01/14/2022 18:12:26 - INFO - __main__ -   Adapter Name = vi/wiki@ukp
+01/14/2022 18:12:28 - INFO - __main__ -   Language = pt
+01/14/2022 18:12:28 - INFO - __main__ -   Adapter Name = pt/wiki@ukp
+01/14/2022 18:12:30 - INFO - __main__ -   Language = ka
+01/14/2022 18:12:30 - INFO - __main__ -   Adapter Name = ka/wiki@ukp
+01/14/2022 18:12:32 - INFO - __main__ -   Language = tr
+01/14/2022 18:12:32 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+01/14/2022 18:12:34 - INFO - __main__ -   Language = cs
+01/14/2022 18:12:34 - INFO - __main__ -   Adapter Name = cs/wiki@ukp
+01/14/2022 18:12:36 - INFO - __main__ -   Language = de
+01/14/2022 18:12:36 - INFO - __main__ -   Adapter Name = de/wiki@ukp
+01/14/2022 18:12:37 - INFO - __main__ -   Language = fa
+01/14/2022 18:12:37 - INFO - __main__ -   Adapter Name = fa/wiki@ukp
+01/14/2022 18:12:40 - INFO - __main__ -   Language = hu
+01/14/2022 18:12:40 - INFO - __main__ -   Adapter Name = hu/wiki@ukp
+01/14/2022 18:12:42 - INFO - __main__ -   Language = la
+01/14/2022 18:12:42 - INFO - __main__ -   Adapter Name = la/wiki@ukp
+01/14/2022 18:12:49 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:12:49 - INFO - __main__ -   Adapter Languages = ['zh_yue', 'vi', 'pt', 'ka', 'tr', 'cs', 'de', 'fa', 'hu', 'la']
+01/14/2022 18:12:49 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:12:49 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:12:49 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:12:49 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/14/2022 18:12:49 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/14/2022 18:12:49 - INFO - __main__ -     Num examples = 47
+01/14/2022 18:12:49 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:12:49 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:12:50 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:12:50 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/14/2022 18:12:50 - INFO - __main__ -     f1 = 0.7125382262996941
+01/14/2022 18:12:50 - INFO - __main__ -     loss = 0.9535589814186096
+01/14/2022 18:12:50 - INFO - __main__ -     precision = 0.7258566978193146
+01/14/2022 18:12:50 - INFO - __main__ -     recall = 0.6996996996996997
+01/14/2022 18:12:50 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:12:50 - INFO - __main__ -   Adapter Languages = ['zh_yue', 'vi', 'pt', 'ka', 'tr', 'cs', 'de', 'fa', 'hu', 'la']
+01/14/2022 18:12:50 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:12:50 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:12:50 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:12:50 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_bho_bert-base-multilingual-cased_128
+01/14/2022 18:12:50 - INFO - __main__ -   ***** Running evaluation  in bho *****
+01/14/2022 18:12:50 - INFO - __main__ -     Num examples = 361
+01/14/2022 18:12:50 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:12:50 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:12:51 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:12:52 - INFO - __main__ -   Batch number = 3
+01/14/2022 18:12:52 - INFO - __main__ -   Batch number = 4
+01/14/2022 18:12:53 - INFO - __main__ -   Batch number = 5
+01/14/2022 18:12:53 - INFO - __main__ -   Batch number = 6
+01/14/2022 18:12:54 - INFO - __main__ -   Batch number = 7
+01/14/2022 18:12:54 - INFO - __main__ -   Batch number = 8
+01/14/2022 18:12:55 - INFO - __main__ -   Batch number = 9
+01/14/2022 18:12:56 - INFO - __main__ -   Batch number = 10
+01/14/2022 18:12:56 - INFO - __main__ -   Batch number = 11
+01/14/2022 18:12:57 - INFO - __main__ -   Batch number = 12
+01/14/2022 18:12:57 - INFO - __main__ -   ***** Evaluation result  in bho *****
+01/14/2022 18:12:57 - INFO - __main__ -     f1 = 0.4645116561227143
+01/14/2022 18:12:57 - INFO - __main__ -     loss = 2.438129554192225
+01/14/2022 18:12:57 - INFO - __main__ -     precision = 0.4860355458832064
+01/14/2022 18:12:57 - INFO - __main__ -     recall = 0.44481327800829873
+01/14/2022 18:12:57 - INFO - __main__ -   Args Adapter Weight = equal
+01/14/2022 18:12:57 - INFO - __main__ -   Adapter Languages = ['zh_yue', 'vi', 'pt', 'ka', 'tr', 'cs', 'de', 'fa', 'hu', 'la']
+01/14/2022 18:12:57 - INFO - __main__ -   Adapter Weights = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+01/14/2022 18:12:57 - INFO - __main__ -   Sum of Adapter Weights = 0.9999999999999999
+01/14/2022 18:12:57 - INFO - __main__ -   Length of Adapter Weights = 10
+01/14/2022 18:12:57 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/14/2022 18:12:57 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/14/2022 18:12:57 - INFO - __main__ -     Num examples = 656
+01/14/2022 18:12:57 - INFO - __main__ -     Batch size = 32
+01/14/2022 18:12:57 - INFO - __main__ -   Batch number = 1
+01/14/2022 18:12:58 - INFO - __main__ -   Batch number = 2
+01/14/2022 18:12:59 - INFO - __main__ -   Batch number = 3
+01/14/2022 18:12:59 - INFO - __main__ -   Batch number = 4
+01/14/2022 18:13:00 - INFO - __main__ -   Batch number = 5
+01/14/2022 18:13:00 - INFO - __main__ -   Batch number = 6
+01/14/2022 18:13:01 - INFO - __main__ -   Batch number = 7
+01/14/2022 18:13:01 - INFO - __main__ -   Batch number = 8
+01/14/2022 18:13:02 - INFO - __main__ -   Batch number = 9
+01/14/2022 18:13:03 - INFO - __main__ -   Batch number = 10
+01/14/2022 18:13:03 - INFO - __main__ -   Batch number = 11
+01/14/2022 18:13:04 - INFO - __main__ -   Batch number = 12
+01/14/2022 18:13:04 - INFO - __main__ -   Batch number = 13
+01/14/2022 18:13:05 - INFO - __main__ -   Batch number = 14
+01/14/2022 18:13:06 - INFO - __main__ -   Batch number = 15
+01/14/2022 18:13:06 - INFO - __main__ -   Batch number = 16
+01/14/2022 18:13:07 - INFO - __main__ -   Batch number = 17
+01/14/2022 18:13:07 - INFO - __main__ -   Batch number = 18
+01/14/2022 18:13:08 - INFO - __main__ -   Batch number = 19
+01/14/2022 18:13:08 - INFO - __main__ -   Batch number = 20
+01/14/2022 18:13:09 - INFO - __main__ -   Batch number = 21
+01/14/2022 18:13:10 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/14/2022 18:13:10 - INFO - __main__ -     f1 = 0.6855188741286333
+01/14/2022 18:13:10 - INFO - __main__ -     loss = 1.0010936430522375
+01/14/2022 18:13:10 - INFO - __main__ -     precision = 0.7033738191632929
+01/14/2022 18:13:10 - INFO - __main__ -     recall = 0.6685479733196511

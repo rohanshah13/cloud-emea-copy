@@ -1,0 +1,765 @@
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 01:31:54 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 01:31:54 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 01:31:54 - INFO - __main__ -   Seed = 1
+01/15/2022 01:31:54 - INFO - root -   save model
+01/15/2022 01:31:54 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 01:31:54 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 01:31:57 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 01:32:03 - INFO - __main__ -   Using lang2id = None
+01/15/2022 01:32:03 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 01:32:03 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/
+01/15/2022 01:32:03 - INFO - root -   Trying to decide if add adapter
+01/15/2022 01:32:03 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s1/checkpoint-best/udpos/pytorch_model_head.bin
+01/15/2022 01:32:03 - INFO - root -   loading lang adpater ja/wiki@ukp
+01/15/2022 01:32:03 - INFO - __main__ -   Adapter Languages : ['ja'], Length : 1
+01/15/2022 01:32:03 - INFO - __main__ -   Adapter Names ['ja/wiki@ukp'], Length : 1
+01/15/2022 01:32:03 - INFO - __main__ -   Language = ja
+01/15/2022 01:32:03 - INFO - __main__ -   Adapter Name = ja/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/ja/bert-base-multilingual-cased/pfeiffer/ja_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/33f7674e5dcc12c60ce1dc71157f57efc53ee8197319eb35aafdc432f1ec80e2-b68bc1b6391b647454339755813fc89a9be7a240365678187ee4f8e1dfd52fb2-extracted/adapter_config.json
+Adding adapter 'ja' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/33f7674e5dcc12c60ce1dc71157f57efc53ee8197319eb35aafdc432f1ec80e2-b68bc1b6391b647454339755813fc89a9be7a240365678187ee4f8e1dfd52fb2-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/33f7674e5dcc12c60ce1dc71157f57efc53ee8197319eb35aafdc432f1ec80e2-b68bc1b6391b647454339755813fc89a9be7a240365678187ee4f8e1dfd52fb2-extracted'
+01/15/2022 01:32:07 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:07 - INFO - __main__ -   Adapter Languages = ['ja']
+01/15/2022 01:32:07 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:07 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:07 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:07 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/15/2022 01:32:07 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/15/2022 01:32:07 - INFO - __main__ -     Num examples = 47
+01/15/2022 01:32:07 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/2 [00:00<?, ?it/s]01/15/2022 01:32:07 - INFO - __main__ -   Batch number = 1
+Evaluating:  50%|█████     | 1/2 [00:00<00:00,  6.26it/s]01/15/2022 01:32:07 - INFO - __main__ -   Batch number = 2
+Evaluating: 100%|██████████| 2/2 [00:00<00:00,  8.46it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 01:32:07 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/15/2022 01:32:07 - INFO - __main__ -     f1 = 0.6104928457869635
+01/15/2022 01:32:07 - INFO - __main__ -     loss = 1.1890516877174377
+01/15/2022 01:32:07 - INFO - __main__ -     precision = 0.6486486486486487
+01/15/2022 01:32:07 - INFO - __main__ -     recall = 0.5765765765765766
+01/15/2022 01:32:07 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:07 - INFO - __main__ -   Adapter Languages = ['ja']
+01/15/2022 01:32:07 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:07 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:07 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:07 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_bho_bert-base-multilingual-cased_128
+01/15/2022 01:32:07 - INFO - __main__ -   ***** Running evaluation  in bho *****
+01/15/2022 01:32:07 - INFO - __main__ -     Num examples = 361
+01/15/2022 01:32:07 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/12 [00:00<?, ?it/s]01/15/2022 01:32:07 - INFO - __main__ -   Batch number = 1
+Evaluating:   8%|▊         | 1/12 [00:00<00:01,  7.21it/s]01/15/2022 01:32:07 - INFO - __main__ -   Batch number = 2
+Evaluating:  17%|█▋        | 2/12 [00:00<00:01,  7.31it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 3
+Evaluating:  25%|██▌       | 3/12 [00:00<00:01,  7.33it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 4
+Evaluating:  33%|███▎      | 4/12 [00:00<00:01,  7.35it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 5
+Evaluating:  42%|████▏     | 5/12 [00:00<00:00,  7.35it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 6
+Evaluating:  50%|█████     | 6/12 [00:00<00:00,  7.35it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 7
+Evaluating:  58%|█████▊    | 7/12 [00:00<00:00,  7.35it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 8
+Evaluating:  67%|██████▋   | 8/12 [00:01<00:00,  7.34it/s]01/15/2022 01:32:08 - INFO - __main__ -   Batch number = 9
+Evaluating:  75%|███████▌  | 9/12 [00:01<00:00,  7.31it/s]01/15/2022 01:32:09 - INFO - __main__ -   Batch number = 10
+Evaluating:  83%|████████▎ | 10/12 [00:01<00:00,  7.29it/s]01/15/2022 01:32:09 - INFO - __main__ -   Batch number = 11
+Evaluating:  92%|█████████▏| 11/12 [00:01<00:00,  7.28it/s]01/15/2022 01:32:09 - INFO - __main__ -   Batch number = 12
+Evaluating: 100%|██████████| 12/12 [00:01<00:00,  7.75it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 01:32:09 - INFO - __main__ -   ***** Evaluation result  in bho *****
+01/15/2022 01:32:09 - INFO - __main__ -     f1 = 0.49105865522174535
+01/15/2022 01:32:09 - INFO - __main__ -     loss = 2.2367564042409263
+01/15/2022 01:32:09 - INFO - __main__ -     precision = 0.532273696452801
+01/15/2022 01:32:09 - INFO - __main__ -     recall = 0.4557676348547718
+01/15/2022 01:32:09 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:09 - INFO - __main__ -   Adapter Languages = ['ja']
+01/15/2022 01:32:09 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:09 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:09 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:09 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/15/2022 01:32:09 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/15/2022 01:32:09 - INFO - __main__ -     Num examples = 656
+01/15/2022 01:32:09 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/21 [00:00<?, ?it/s]01/15/2022 01:32:09 - INFO - __main__ -   Batch number = 1
+Evaluating:   5%|▍         | 1/21 [00:00<00:02,  7.45it/s]01/15/2022 01:32:09 - INFO - __main__ -   Batch number = 2
+Evaluating:  10%|▉         | 2/21 [00:00<00:02,  7.39it/s]01/15/2022 01:32:09 - INFO - __main__ -   Batch number = 3
+Evaluating:  14%|█▍        | 3/21 [00:00<00:02,  7.38it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 4
+Evaluating:  19%|█▉        | 4/21 [00:00<00:02,  7.36it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 5
+Evaluating:  24%|██▍       | 5/21 [00:00<00:02,  7.35it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 6
+Evaluating:  29%|██▊       | 6/21 [00:00<00:02,  7.34it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 7
+Evaluating:  33%|███▎      | 7/21 [00:00<00:01,  7.34it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 8
+Evaluating:  38%|███▊      | 8/21 [00:01<00:01,  7.35it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 9
+Evaluating:  43%|████▎     | 9/21 [00:01<00:01,  7.33it/s]01/15/2022 01:32:10 - INFO - __main__ -   Batch number = 10
+Evaluating:  48%|████▊     | 10/21 [00:01<00:01,  7.33it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 11
+Evaluating:  52%|█████▏    | 11/21 [00:01<00:01,  6.24it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 12
+Evaluating:  57%|█████▋    | 12/21 [00:01<00:01,  6.51it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 13
+Evaluating:  62%|██████▏   | 13/21 [00:01<00:01,  6.74it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 14
+Evaluating:  67%|██████▋   | 14/21 [00:01<00:01,  6.90it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 15
+Evaluating:  71%|███████▏  | 15/21 [00:02<00:00,  7.00it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 16
+Evaluating:  76%|███████▌  | 16/21 [00:02<00:00,  7.08it/s]01/15/2022 01:32:11 - INFO - __main__ -   Batch number = 17
+Evaluating:  81%|████████  | 17/21 [00:02<00:00,  7.11it/s]01/15/2022 01:32:12 - INFO - __main__ -   Batch number = 18
+Evaluating:  86%|████████▌ | 18/21 [00:02<00:00,  7.15it/s]01/15/2022 01:32:12 - INFO - __main__ -   Batch number = 19
+Evaluating:  90%|█████████ | 19/21 [00:02<00:00,  7.19it/s]01/15/2022 01:32:12 - INFO - __main__ -   Batch number = 20
+Evaluating:  95%|█████████▌| 20/21 [00:02<00:00,  7.19it/s]01/15/2022 01:32:12 - INFO - __main__ -   Batch number = 21
+Evaluating: 100%|██████████| 21/21 [00:02<00:00,  7.27it/s]
+01/15/2022 01:32:12 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/15/2022 01:32:12 - INFO - __main__ -     f1 = 0.582447533387844
+01/15/2022 01:32:12 - INFO - __main__ -     loss = 1.294986829871223
+01/15/2022 01:32:12 - INFO - __main__ -     precision = 0.6212209302325581
+01/15/2022 01:32:12 - INFO - __main__ -     recall = 0.5482298614674191
+20.13user 11.09system 0:20.31elapsed 153%CPU (0avgtext+0avgdata 3967028maxresident)k
+0inputs+224outputs (0major+1057778minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 01:32:14 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 01:32:14 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 01:32:14 - INFO - __main__ -   Seed = 2
+01/15/2022 01:32:14 - INFO - root -   save model
+01/15/2022 01:32:14 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 01:32:14 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 01:32:17 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 01:32:23 - INFO - __main__ -   Using lang2id = None
+01/15/2022 01:32:23 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 01:32:23 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/
+01/15/2022 01:32:23 - INFO - root -   Trying to decide if add adapter
+01/15/2022 01:32:23 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s2/checkpoint-best/udpos/pytorch_model_head.bin
+01/15/2022 01:32:23 - INFO - root -   loading lang adpater hi/wiki@ukp
+01/15/2022 01:32:23 - INFO - __main__ -   Adapter Languages : ['hi'], Length : 1
+01/15/2022 01:32:23 - INFO - __main__ -   Adapter Names ['hi/wiki@ukp'], Length : 1
+01/15/2022 01:32:23 - INFO - __main__ -   Language = hi
+01/15/2022 01:32:23 - INFO - __main__ -   Adapter Name = hi/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/hi/bert-base-multilingual-cased/pfeiffer/hi_pfeiffer_gelu_nd_200k.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/adapter_config.json
+Adding adapter 'hi' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/074d5b7e47a2e35f3d06d1f3bcdba40b0709c9e5ce81b3c3533bc81cd8e35505-6d8198b7d99138cfc02cbf557a60122f7492f9ee1ed400529bf29c8180688fec-extracted'
+01/15/2022 01:32:27 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:27 - INFO - __main__ -   Adapter Languages = ['hi']
+01/15/2022 01:32:27 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:27 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:27 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:27 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/15/2022 01:32:27 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/15/2022 01:32:27 - INFO - __main__ -     Num examples = 47
+01/15/2022 01:32:27 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/2 [00:00<?, ?it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 1
+Evaluating:  50%|█████     | 1/2 [00:00<00:00,  6.17it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 2
+Evaluating: 100%|██████████| 2/2 [00:00<00:00,  8.36it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 01:32:28 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/15/2022 01:32:28 - INFO - __main__ -     f1 = 0.5851393188854488
+01/15/2022 01:32:28 - INFO - __main__ -     loss = 2.2019989490509033
+01/15/2022 01:32:28 - INFO - __main__ -     precision = 0.6038338658146964
+01/15/2022 01:32:28 - INFO - __main__ -     recall = 0.5675675675675675
+01/15/2022 01:32:28 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:28 - INFO - __main__ -   Adapter Languages = ['hi']
+01/15/2022 01:32:28 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:28 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:28 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:28 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_bho_bert-base-multilingual-cased_128
+01/15/2022 01:32:28 - INFO - __main__ -   ***** Running evaluation  in bho *****
+01/15/2022 01:32:28 - INFO - __main__ -     Num examples = 361
+01/15/2022 01:32:28 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/12 [00:00<?, ?it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 1
+Evaluating:   8%|▊         | 1/12 [00:00<00:01,  7.14it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 2
+Evaluating:  17%|█▋        | 2/12 [00:00<00:01,  7.27it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 3
+Evaluating:  25%|██▌       | 3/12 [00:00<00:01,  7.31it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 4
+Evaluating:  33%|███▎      | 4/12 [00:00<00:01,  7.31it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 5
+Evaluating:  42%|████▏     | 5/12 [00:00<00:00,  7.32it/s]01/15/2022 01:32:28 - INFO - __main__ -   Batch number = 6
+Evaluating:  50%|█████     | 6/12 [00:00<00:00,  7.32it/s]01/15/2022 01:32:29 - INFO - __main__ -   Batch number = 7
+Evaluating:  58%|█████▊    | 7/12 [00:00<00:00,  7.32it/s]01/15/2022 01:32:29 - INFO - __main__ -   Batch number = 8
+Evaluating:  67%|██████▋   | 8/12 [00:01<00:00,  7.30it/s]01/15/2022 01:32:29 - INFO - __main__ -   Batch number = 9
+Evaluating:  75%|███████▌  | 9/12 [00:01<00:00,  7.26it/s]01/15/2022 01:32:29 - INFO - __main__ -   Batch number = 10
+Evaluating:  83%|████████▎ | 10/12 [00:01<00:00,  7.24it/s]01/15/2022 01:32:29 - INFO - __main__ -   Batch number = 11
+Evaluating:  92%|█████████▏| 11/12 [00:01<00:00,  7.21it/s]01/15/2022 01:32:29 - INFO - __main__ -   Batch number = 12
+Evaluating: 100%|██████████| 12/12 [00:01<00:00,  7.69it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 01:32:30 - INFO - __main__ -   ***** Evaluation result  in bho *****
+01/15/2022 01:32:30 - INFO - __main__ -     f1 = 0.539063829787234
+01/15/2022 01:32:30 - INFO - __main__ -     loss = 2.4685388108094535
+01/15/2022 01:32:30 - INFO - __main__ -     precision = 0.5531877729257642
+01/15/2022 01:32:30 - INFO - __main__ -     recall = 0.525643153526971
+01/15/2022 01:32:30 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:30 - INFO - __main__ -   Adapter Languages = ['hi']
+01/15/2022 01:32:30 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:30 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:30 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:30 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/15/2022 01:32:30 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/15/2022 01:32:30 - INFO - __main__ -     Num examples = 656
+01/15/2022 01:32:30 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/21 [00:00<?, ?it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 1
+Evaluating:   5%|▍         | 1/21 [00:00<00:02,  7.40it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 2
+Evaluating:  10%|▉         | 2/21 [00:00<00:02,  7.35it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 3
+Evaluating:  14%|█▍        | 3/21 [00:00<00:02,  7.33it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 4
+Evaluating:  19%|█▉        | 4/21 [00:00<00:02,  7.33it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 5
+Evaluating:  24%|██▍       | 5/21 [00:00<00:02,  7.34it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 6
+Evaluating:  29%|██▊       | 6/21 [00:00<00:02,  7.32it/s]01/15/2022 01:32:30 - INFO - __main__ -   Batch number = 7
+Evaluating:  33%|███▎      | 7/21 [00:00<00:01,  7.28it/s]01/15/2022 01:32:31 - INFO - __main__ -   Batch number = 8
+Evaluating:  38%|███▊      | 8/21 [00:01<00:02,  4.90it/s]01/15/2022 01:32:31 - INFO - __main__ -   Batch number = 9
+Evaluating:  43%|████▎     | 9/21 [00:01<00:02,  5.46it/s]01/15/2022 01:32:31 - INFO - __main__ -   Batch number = 10
+Evaluating:  48%|████▊     | 10/21 [00:01<00:01,  5.92it/s]01/15/2022 01:32:31 - INFO - __main__ -   Batch number = 11
+Evaluating:  52%|█████▏    | 11/21 [00:01<00:01,  6.27it/s]01/15/2022 01:32:31 - INFO - __main__ -   Batch number = 12
+Evaluating:  57%|█████▋    | 12/21 [00:01<00:01,  6.52it/s]01/15/2022 01:32:31 - INFO - __main__ -   Batch number = 13
+Evaluating:  62%|██████▏   | 13/21 [00:01<00:01,  6.73it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 14
+Evaluating:  67%|██████▋   | 14/21 [00:02<00:01,  6.84it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 15
+Evaluating:  71%|███████▏  | 15/21 [00:02<00:00,  6.96it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 16
+Evaluating:  76%|███████▌  | 16/21 [00:02<00:00,  7.04it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 17
+Evaluating:  81%|████████  | 17/21 [00:02<00:00,  7.06it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 18
+Evaluating:  86%|████████▌ | 18/21 [00:02<00:00,  7.13it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 19
+Evaluating:  90%|█████████ | 19/21 [00:02<00:00,  7.16it/s]01/15/2022 01:32:32 - INFO - __main__ -   Batch number = 20
+Evaluating:  95%|█████████▌| 20/21 [00:02<00:00,  7.15it/s]01/15/2022 01:32:33 - INFO - __main__ -   Batch number = 21
+Evaluating: 100%|██████████| 21/21 [00:03<00:00,  6.91it/s]
+01/15/2022 01:32:33 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/15/2022 01:32:33 - INFO - __main__ -     f1 = 0.6266220735785953
+01/15/2022 01:32:33 - INFO - __main__ -     loss = 1.364786153747922
+01/15/2022 01:32:33 - INFO - __main__ -     precision = 0.6547386077718759
+01/15/2022 01:32:33 - INFO - __main__ -     recall = 0.6008209338122114
+20.37user 11.40system 0:20.63elapsed 154%CPU (0avgtext+0avgdata 3963708maxresident)k
+8inputs+224outputs (1major+1260494minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/15/2022 01:32:35 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 01:32:35 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/15/2022 01:32:35 - INFO - __main__ -   Seed = 3
+01/15/2022 01:32:35 - INFO - root -   save model
+01/15/2022 01:32:35 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='mr,bho,ta', train_langs='hi', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_ensemble_hi_top1_hi//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight='equal', lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/15/2022 01:32:35 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/15/2022 01:32:38 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/15/2022 01:32:43 - INFO - __main__ -   Using lang2id = None
+01/15/2022 01:32:43 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/15/2022 01:32:43 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/
+01/15/2022 01:32:43 - INFO - root -   Trying to decide if add adapter
+01/15/2022 01:32:43 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLanghi_hi_s3/checkpoint-best/udpos/pytorch_model_head.bin
+01/15/2022 01:32:43 - INFO - root -   loading lang adpater tr/wiki@ukp
+01/15/2022 01:32:43 - INFO - __main__ -   Adapter Languages : ['tr'], Length : 1
+01/15/2022 01:32:43 - INFO - __main__ -   Adapter Names ['tr/wiki@ukp'], Length : 1
+01/15/2022 01:32:43 - INFO - __main__ -   Language = tr
+01/15/2022 01:32:43 - INFO - __main__ -   Adapter Name = tr/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/tr/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_tr_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/adapter_config.json
+Adding adapter 'tr' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/2aa8ac175583031cedf47ea5e7630625cbce5e0c192b2996e6ee77319acd094f-4f441ddc232e312b97eb1d8ec3329224e3295e344ff441583ee5a81d0002c032-extracted/head_config.json
+01/15/2022 01:32:49 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:49 - INFO - __main__ -   Adapter Languages = ['tr']
+01/15/2022 01:32:49 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:49 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:49 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:49 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_mr_bert-base-multilingual-cased_128
+01/15/2022 01:32:49 - INFO - __main__ -   ***** Running evaluation  in mr *****
+01/15/2022 01:32:49 - INFO - __main__ -     Num examples = 47
+01/15/2022 01:32:49 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/2 [00:00<?, ?it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 1
+Evaluating:  50%|█████     | 1/2 [00:00<00:00,  7.19it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 2
+Evaluating: 100%|██████████| 2/2 [00:00<00:00,  9.53it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 01:32:49 - INFO - __main__ -   ***** Evaluation result  in mr *****
+01/15/2022 01:32:49 - INFO - __main__ -     f1 = 0.6708268330733229
+01/15/2022 01:32:49 - INFO - __main__ -     loss = 1.251024067401886
+01/15/2022 01:32:49 - INFO - __main__ -     precision = 0.698051948051948
+01/15/2022 01:32:49 - INFO - __main__ -     recall = 0.6456456456456456
+01/15/2022 01:32:49 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:49 - INFO - __main__ -   Adapter Languages = ['tr']
+01/15/2022 01:32:49 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:49 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:49 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:49 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_bho_bert-base-multilingual-cased_128
+01/15/2022 01:32:49 - INFO - __main__ -   ***** Running evaluation  in bho *****
+01/15/2022 01:32:49 - INFO - __main__ -     Num examples = 361
+01/15/2022 01:32:49 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/12 [00:00<?, ?it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 1
+Evaluating:   8%|▊         | 1/12 [00:00<00:01,  7.42it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 2
+Evaluating:  17%|█▋        | 2/12 [00:00<00:01,  7.36it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 3
+Evaluating:  25%|██▌       | 3/12 [00:00<00:01,  7.35it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 4
+Evaluating:  33%|███▎      | 4/12 [00:00<00:01,  7.36it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 5
+Evaluating:  42%|████▏     | 5/12 [00:00<00:00,  7.36it/s]01/15/2022 01:32:49 - INFO - __main__ -   Batch number = 6
+Evaluating:  50%|█████     | 6/12 [00:00<00:00,  7.36it/s]01/15/2022 01:32:50 - INFO - __main__ -   Batch number = 7
+Evaluating:  58%|█████▊    | 7/12 [00:00<00:00,  7.35it/s]01/15/2022 01:32:50 - INFO - __main__ -   Batch number = 8
+Evaluating:  67%|██████▋   | 8/12 [00:01<00:00,  7.34it/s]01/15/2022 01:32:50 - INFO - __main__ -   Batch number = 9
+Evaluating:  75%|███████▌  | 9/12 [00:01<00:00,  7.31it/s]01/15/2022 01:32:50 - INFO - __main__ -   Batch number = 10
+Evaluating:  83%|████████▎ | 10/12 [00:01<00:00,  7.29it/s]01/15/2022 01:32:50 - INFO - __main__ -   Batch number = 11
+Evaluating:  92%|█████████▏| 11/12 [00:01<00:00,  7.28it/s]01/15/2022 01:32:50 - INFO - __main__ -   Batch number = 12
+Evaluating: 100%|██████████| 12/12 [00:01<00:00,  7.76it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: X seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/15/2022 01:32:50 - INFO - __main__ -   ***** Evaluation result  in bho *****
+01/15/2022 01:32:51 - INFO - __main__ -     f1 = 0.5020115445163549
+01/15/2022 01:32:51 - INFO - __main__ -     loss = 2.8631574710210166
+01/15/2022 01:32:51 - INFO - __main__ -     precision = 0.530597152893326
+01/15/2022 01:32:51 - INFO - __main__ -     recall = 0.4763485477178423
+01/15/2022 01:32:51 - INFO - __main__ -   Args Adapter Weight = equal
+01/15/2022 01:32:51 - INFO - __main__ -   Adapter Languages = ['tr']
+01/15/2022 01:32:51 - INFO - __main__ -   Adapter Weights = [1.0]
+01/15/2022 01:32:51 - INFO - __main__ -   Sum of Adapter Weights = 1.0
+01/15/2022 01:32:51 - INFO - __main__ -   Length of Adapter Weights = 1
+01/15/2022 01:32:51 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_ta_bert-base-multilingual-cased_128
+01/15/2022 01:32:51 - INFO - __main__ -   ***** Running evaluation  in ta *****
+01/15/2022 01:32:51 - INFO - __main__ -     Num examples = 656
+01/15/2022 01:32:51 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/21 [00:00<?, ?it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 1
+Evaluating:   5%|▍         | 1/21 [00:00<00:02,  7.42it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 2
+Evaluating:  10%|▉         | 2/21 [00:00<00:02,  7.37it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 3
+Evaluating:  14%|█▍        | 3/21 [00:00<00:02,  7.35it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 4
+Evaluating:  19%|█▉        | 4/21 [00:00<00:02,  7.35it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 5
+Evaluating:  24%|██▍       | 5/21 [00:00<00:02,  7.35it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 6
+Evaluating:  29%|██▊       | 6/21 [00:00<00:02,  7.33it/s]01/15/2022 01:32:51 - INFO - __main__ -   Batch number = 7
+Evaluating:  33%|███▎      | 7/21 [00:00<00:01,  7.33it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 8
+Evaluating:  38%|███▊      | 8/21 [00:01<00:01,  7.33it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 9
+Evaluating:  43%|████▎     | 9/21 [00:01<00:01,  7.33it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 10
+Evaluating:  48%|████▊     | 10/21 [00:01<00:01,  7.33it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 11
+Evaluating:  52%|█████▏    | 11/21 [00:01<00:01,  7.32it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 12
+Evaluating:  57%|█████▋    | 12/21 [00:01<00:01,  7.31it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 13
+Evaluating:  62%|██████▏   | 13/21 [00:01<00:01,  7.31it/s]01/15/2022 01:32:52 - INFO - __main__ -   Batch number = 14
+Evaluating:  67%|██████▋   | 14/21 [00:01<00:00,  7.29it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 15
+Evaluating:  71%|███████▏  | 15/21 [00:02<00:00,  7.29it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 16
+Evaluating:  76%|███████▌  | 16/21 [00:02<00:00,  7.28it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 17
+Evaluating:  81%|████████  | 17/21 [00:02<00:00,  7.26it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 18
+Evaluating:  86%|████████▌ | 18/21 [00:02<00:00,  7.27it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 19
+Evaluating:  90%|█████████ | 19/21 [00:02<00:00,  7.28it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 20
+Evaluating:  95%|█████████▌| 20/21 [00:02<00:00,  7.26it/s]01/15/2022 01:32:53 - INFO - __main__ -   Batch number = 21
+Evaluating: 100%|██████████| 21/21 [00:02<00:00,  7.47it/s]
+01/15/2022 01:32:54 - INFO - __main__ -   ***** Evaluation result  in ta *****
+01/15/2022 01:32:54 - INFO - __main__ -     f1 = 0.6896371020568584
+01/15/2022 01:32:54 - INFO - __main__ -     loss = 0.9539377604212079
+01/15/2022 01:32:54 - INFO - __main__ -     precision = 0.7046854082998661
+01/15/2022 01:32:54 - INFO - __main__ -     recall = 0.6752180605438687
+20.97user 11.40system 0:20.75elapsed 155%CPU (0avgtext+0avgdata 3963680maxresident)k
+16inputs+224outputs (1major+1179802minor)pagefaults 0swaps

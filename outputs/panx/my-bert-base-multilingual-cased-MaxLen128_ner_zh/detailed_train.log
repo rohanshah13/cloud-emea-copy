@@ -1,0 +1,1359 @@
+PyTorch version 1.10.0+cu102 available.
+12/27/2021 00:02:38 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='zh', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:02:38 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/27/2021 00:02:38 - INFO - __main__ -   Seed = 1
+12/27/2021 00:02:38 - INFO - root -   save model
+12/27/2021 00:02:38 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='zh', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:02:38 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/27/2021 00:02:42 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/27/2021 00:02:48 - INFO - __main__ -   Using lang2id = None
+12/27/2021 00:02:48 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/27/2021 00:02:48 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/
+12/27/2021 00:02:48 - INFO - root -   Trying to decide if add adapter
+12/27/2021 00:02:48 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s1/checkpoint-best/ner/pytorch_model_head.bin
+12/27/2021 00:02:48 - INFO - root -   loading lang adpater zh/wiki@ukp
+12/27/2021 00:02:48 - INFO - __main__ -   Adapter Languages : ['zh'], Length : 1
+12/27/2021 00:02:48 - INFO - __main__ -   Adapter Names ['zh/wiki@ukp'], Length : 1
+12/27/2021 00:02:48 - INFO - __main__ -   Language = zh
+12/27/2021 00:02:48 - INFO - __main__ -   Adapter Name = zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/bert-base-multilingual-cased/pfeiffer/zh_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted'
+12/27/2021 00:02:53 - INFO - __main__ -   Language adapter for zh found
+12/27/2021 00:02:53 - INFO - __main__ -   Set active language adapter to zh
+12/27/2021 00:02:53 - INFO - __main__ -   Args Adapter Weight = None
+12/27/2021 00:02:53 - INFO - __main__ -   Adapter Languages = ['zh']
+12/27/2021 00:02:53 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_zh_bert-base-multilingual-cased_128
+12/27/2021 00:02:55 - INFO - __main__ -   ***** Running evaluation  in zh *****
+12/27/2021 00:02:55 - INFO - __main__ -     Num examples = 10257
+12/27/2021 00:02:55 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/321 [00:00<?, ?it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 1
+Evaluating:   0%|          | 1/321 [00:00<00:51,  6.22it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 2
+Evaluating:   1%|          | 2/321 [00:00<00:48,  6.53it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 3
+Evaluating:   1%|          | 3/321 [00:00<00:46,  6.78it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 4
+Evaluating:   1%|          | 4/321 [00:00<00:45,  6.93it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 5
+Evaluating:   2%|▏         | 5/321 [00:00<00:45,  7.02it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 6
+Evaluating:   2%|▏         | 6/321 [00:00<00:44,  7.07it/s]12/27/2021 00:02:55 - INFO - __main__ -   Batch number = 7
+Evaluating:   2%|▏         | 7/321 [00:01<00:44,  7.11it/s]12/27/2021 00:02:56 - INFO - __main__ -   Batch number = 8
+Evaluating:   2%|▏         | 8/321 [00:01<01:00,  5.21it/s]12/27/2021 00:02:56 - INFO - __main__ -   Batch number = 9
+Evaluating:   3%|▎         | 9/321 [00:01<00:54,  5.69it/s]12/27/2021 00:02:56 - INFO - __main__ -   Batch number = 10
+Evaluating:   3%|▎         | 10/321 [00:01<00:51,  6.08it/s]12/27/2021 00:02:56 - INFO - __main__ -   Batch number = 11
+Evaluating:   3%|▎         | 11/321 [00:01<00:48,  6.37it/s]12/27/2021 00:02:56 - INFO - __main__ -   Batch number = 12
+Evaluating:   4%|▎         | 12/321 [00:01<00:46,  6.59it/s]12/27/2021 00:02:56 - INFO - __main__ -   Batch number = 13
+Evaluating:   4%|▍         | 13/321 [00:02<00:45,  6.76it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 14
+Evaluating:   4%|▍         | 14/321 [00:02<00:44,  6.85it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 15
+Evaluating:   5%|▍         | 15/321 [00:02<00:44,  6.93it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 16
+Evaluating:   5%|▍         | 16/321 [00:02<00:43,  6.99it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 17
+Evaluating:   5%|▌         | 17/321 [00:02<00:43,  7.04it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 18
+Evaluating:   6%|▌         | 18/321 [00:02<00:42,  7.07it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 19
+Evaluating:   6%|▌         | 19/321 [00:02<00:42,  7.09it/s]12/27/2021 00:02:57 - INFO - __main__ -   Batch number = 20
+Evaluating:   6%|▌         | 20/321 [00:02<00:42,  7.09it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 21
+Evaluating:   7%|▋         | 21/321 [00:03<00:42,  7.09it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 22
+Evaluating:   7%|▋         | 22/321 [00:03<00:42,  7.10it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 23
+Evaluating:   7%|▋         | 23/321 [00:03<00:42,  7.09it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 24
+Evaluating:   7%|▋         | 24/321 [00:03<00:41,  7.11it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 25
+Evaluating:   8%|▊         | 25/321 [00:03<00:41,  7.11it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 26
+Evaluating:   8%|▊         | 26/321 [00:03<00:41,  7.10it/s]12/27/2021 00:02:58 - INFO - __main__ -   Batch number = 27
+Evaluating:   8%|▊         | 27/321 [00:03<00:41,  7.11it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 28
+Evaluating:   9%|▊         | 28/321 [00:04<00:41,  7.11it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 29
+Evaluating:   9%|▉         | 29/321 [00:04<00:41,  7.11it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 30
+Evaluating:   9%|▉         | 30/321 [00:04<00:40,  7.12it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 31
+Evaluating:  10%|▉         | 31/321 [00:04<00:40,  7.13it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 32
+Evaluating:  10%|▉         | 32/321 [00:04<00:40,  7.12it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 33
+Evaluating:  10%|█         | 33/321 [00:04<00:40,  7.11it/s]12/27/2021 00:02:59 - INFO - __main__ -   Batch number = 34
+Evaluating:  11%|█         | 34/321 [00:04<00:40,  7.08it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 35
+Evaluating:  11%|█         | 35/321 [00:05<00:40,  7.10it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 36
+Evaluating:  11%|█         | 36/321 [00:05<00:40,  7.10it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 37
+Evaluating:  12%|█▏        | 37/321 [00:05<00:39,  7.11it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 38
+Evaluating:  12%|█▏        | 38/321 [00:05<00:39,  7.11it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 39
+Evaluating:  12%|█▏        | 39/321 [00:05<00:39,  7.12it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 40
+Evaluating:  12%|█▏        | 40/321 [00:05<00:39,  7.11it/s]12/27/2021 00:03:00 - INFO - __main__ -   Batch number = 41
+Evaluating:  13%|█▎        | 41/321 [00:05<00:39,  7.10it/s]12/27/2021 00:03:01 - INFO - __main__ -   Batch number = 42
+Evaluating:  13%|█▎        | 42/321 [00:06<00:56,  4.90it/s]12/27/2021 00:03:01 - INFO - __main__ -   Batch number = 43
+Evaluating:  13%|█▎        | 43/321 [00:06<00:51,  5.41it/s]12/27/2021 00:03:01 - INFO - __main__ -   Batch number = 44
+Evaluating:  14%|█▎        | 44/321 [00:06<00:47,  5.82it/s]12/27/2021 00:03:01 - INFO - __main__ -   Batch number = 45
+Evaluating:  14%|█▍        | 45/321 [00:06<00:44,  6.16it/s]12/27/2021 00:03:01 - INFO - __main__ -   Batch number = 46
+Evaluating:  14%|█▍        | 46/321 [00:06<00:42,  6.41it/s]12/27/2021 00:03:01 - INFO - __main__ -   Batch number = 47
+Evaluating:  15%|█▍        | 47/321 [00:07<00:41,  6.57it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 48
+Evaluating:  15%|█▍        | 48/321 [00:07<00:40,  6.70it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 49
+Evaluating:  15%|█▌        | 49/321 [00:07<00:39,  6.82it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 50
+Evaluating:  16%|█▌        | 50/321 [00:07<00:39,  6.90it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 51
+Evaluating:  16%|█▌        | 51/321 [00:07<00:38,  6.95it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 52
+Evaluating:  16%|█▌        | 52/321 [00:07<00:38,  6.99it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 53
+Evaluating:  17%|█▋        | 53/321 [00:07<00:38,  7.00it/s]12/27/2021 00:03:02 - INFO - __main__ -   Batch number = 54
+Evaluating:  17%|█▋        | 54/321 [00:07<00:38,  7.02it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 55
+Evaluating:  17%|█▋        | 55/321 [00:08<00:38,  7.00it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 56
+Evaluating:  17%|█▋        | 56/321 [00:08<00:37,  7.02it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 57
+Evaluating:  18%|█▊        | 57/321 [00:08<00:37,  7.04it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 58
+Evaluating:  18%|█▊        | 58/321 [00:08<00:37,  7.04it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 59
+Evaluating:  18%|█▊        | 59/321 [00:08<00:37,  7.04it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 60
+Evaluating:  19%|█▊        | 60/321 [00:08<00:37,  7.05it/s]12/27/2021 00:03:03 - INFO - __main__ -   Batch number = 61
+Evaluating:  19%|█▉        | 61/321 [00:08<00:36,  7.04it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 62
+Evaluating:  19%|█▉        | 62/321 [00:09<00:36,  7.05it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 63
+Evaluating:  20%|█▉        | 63/321 [00:09<00:36,  7.01it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 64
+Evaluating:  20%|█▉        | 64/321 [00:09<00:36,  7.01it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 65
+Evaluating:  20%|██        | 65/321 [00:09<00:36,  7.02it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 66
+Evaluating:  21%|██        | 66/321 [00:09<00:36,  7.03it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 67
+Evaluating:  21%|██        | 67/321 [00:09<00:36,  7.01it/s]12/27/2021 00:03:04 - INFO - __main__ -   Batch number = 68
+Evaluating:  21%|██        | 68/321 [00:09<00:36,  7.03it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 69
+Evaluating:  21%|██▏       | 69/321 [00:10<00:35,  7.02it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 70
+Evaluating:  22%|██▏       | 70/321 [00:10<00:35,  7.01it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 71
+Evaluating:  22%|██▏       | 71/321 [00:10<00:35,  7.01it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 72
+Evaluating:  22%|██▏       | 72/321 [00:10<00:35,  7.00it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 73
+Evaluating:  23%|██▎       | 73/321 [00:10<00:35,  7.01it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 74
+Evaluating:  23%|██▎       | 74/321 [00:10<00:35,  7.01it/s]12/27/2021 00:03:05 - INFO - __main__ -   Batch number = 75
+Evaluating:  23%|██▎       | 75/321 [00:10<00:35,  6.98it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 76
+Evaluating:  24%|██▎       | 76/321 [00:11<00:35,  7.00it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 77
+Evaluating:  24%|██▍       | 77/321 [00:11<00:34,  7.00it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 78
+Evaluating:  24%|██▍       | 78/321 [00:11<00:34,  6.99it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 79
+Evaluating:  25%|██▍       | 79/321 [00:11<00:34,  7.01it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 80
+Evaluating:  25%|██▍       | 80/321 [00:11<00:34,  7.02it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 81
+Evaluating:  25%|██▌       | 81/321 [00:11<00:34,  7.01it/s]12/27/2021 00:03:06 - INFO - __main__ -   Batch number = 82
+Evaluating:  26%|██▌       | 82/321 [00:11<00:34,  7.02it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 83
+Evaluating:  26%|██▌       | 83/321 [00:12<00:33,  7.02it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 84
+Evaluating:  26%|██▌       | 84/321 [00:12<00:33,  7.01it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 85
+Evaluating:  26%|██▋       | 85/321 [00:12<00:33,  7.00it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 86
+Evaluating:  27%|██▋       | 86/321 [00:12<00:33,  7.01it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 87
+Evaluating:  27%|██▋       | 87/321 [00:12<00:33,  7.01it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 88
+Evaluating:  27%|██▋       | 88/321 [00:12<00:33,  7.01it/s]12/27/2021 00:03:07 - INFO - __main__ -   Batch number = 89
+Evaluating:  28%|██▊       | 89/321 [00:12<00:33,  7.01it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 90
+Evaluating:  28%|██▊       | 90/321 [00:13<00:32,  7.02it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 91
+Evaluating:  28%|██▊       | 91/321 [00:13<00:32,  7.01it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 92
+Evaluating:  29%|██▊       | 92/321 [00:13<00:32,  7.00it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 93
+Evaluating:  29%|██▉       | 93/321 [00:13<00:32,  7.00it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 94
+Evaluating:  29%|██▉       | 94/321 [00:13<00:32,  7.01it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 95
+Evaluating:  30%|██▉       | 95/321 [00:13<00:32,  7.00it/s]12/27/2021 00:03:08 - INFO - __main__ -   Batch number = 96
+Evaluating:  30%|██▉       | 96/321 [00:13<00:32,  6.99it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 97
+Evaluating:  30%|███       | 97/321 [00:14<00:32,  6.99it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 98
+Evaluating:  31%|███       | 98/321 [00:14<00:31,  6.99it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 99
+Evaluating:  31%|███       | 99/321 [00:14<00:31,  6.99it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 100
+Evaluating:  31%|███       | 100/321 [00:14<00:31,  6.99it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 101
+Evaluating:  31%|███▏      | 101/321 [00:14<00:31,  6.99it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 102
+Evaluating:  32%|███▏      | 102/321 [00:14<00:31,  6.98it/s]12/27/2021 00:03:09 - INFO - __main__ -   Batch number = 103
+Evaluating:  32%|███▏      | 103/321 [00:14<00:31,  6.98it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 104
+Evaluating:  32%|███▏      | 104/321 [00:15<00:31,  6.97it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 105
+Evaluating:  33%|███▎      | 105/321 [00:15<00:31,  6.96it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 106
+Evaluating:  33%|███▎      | 106/321 [00:15<00:30,  6.96it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 107
+Evaluating:  33%|███▎      | 107/321 [00:15<00:30,  6.95it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 108
+Evaluating:  34%|███▎      | 108/321 [00:15<00:30,  6.96it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 109
+Evaluating:  34%|███▍      | 109/321 [00:15<00:30,  6.95it/s]12/27/2021 00:03:10 - INFO - __main__ -   Batch number = 110
+Evaluating:  34%|███▍      | 110/321 [00:15<00:30,  6.94it/s]12/27/2021 00:03:11 - INFO - __main__ -   Batch number = 111
+Evaluating:  35%|███▍      | 111/321 [00:16<00:42,  4.89it/s]12/27/2021 00:03:11 - INFO - __main__ -   Batch number = 112
+Evaluating:  35%|███▍      | 112/321 [00:16<00:39,  5.33it/s]12/27/2021 00:03:11 - INFO - __main__ -   Batch number = 113
+Evaluating:  35%|███▌      | 113/321 [00:16<00:36,  5.69it/s]12/27/2021 00:03:11 - INFO - __main__ -   Batch number = 114
+Evaluating:  36%|███▌      | 114/321 [00:16<00:34,  5.97it/s]12/27/2021 00:03:11 - INFO - __main__ -   Batch number = 115
+Evaluating:  36%|███▌      | 115/321 [00:16<00:33,  6.14it/s]12/27/2021 00:03:11 - INFO - __main__ -   Batch number = 116
+Evaluating:  36%|███▌      | 116/321 [00:17<00:32,  6.26it/s]12/27/2021 00:03:12 - INFO - __main__ -   Batch number = 117
+Evaluating:  36%|███▋      | 117/321 [00:17<00:32,  6.35it/s]12/27/2021 00:03:12 - INFO - __main__ -   Batch number = 118
+Evaluating:  37%|███▋      | 118/321 [00:17<00:31,  6.41it/s]12/27/2021 00:03:12 - INFO - __main__ -   Batch number = 119
+Evaluating:  37%|███▋      | 119/321 [00:17<00:32,  6.28it/s]12/27/2021 00:03:12 - INFO - __main__ -   Batch number = 120
+Evaluating:  37%|███▋      | 120/321 [00:17<00:32,  6.27it/s]12/27/2021 00:03:12 - INFO - __main__ -   Batch number = 121
+Evaluating:  38%|███▊      | 121/321 [00:17<00:31,  6.36it/s]12/27/2021 00:03:12 - INFO - __main__ -   Batch number = 122
+Evaluating:  38%|███▊      | 122/321 [00:18<00:31,  6.39it/s]12/27/2021 00:03:13 - INFO - __main__ -   Batch number = 123
+Evaluating:  38%|███▊      | 123/321 [00:18<00:31,  6.36it/s]12/27/2021 00:03:13 - INFO - __main__ -   Batch number = 124
+Evaluating:  39%|███▊      | 124/321 [00:18<00:31,  6.35it/s]12/27/2021 00:03:13 - INFO - __main__ -   Batch number = 125
+Evaluating:  39%|███▉      | 125/321 [00:18<00:30,  6.34it/s]12/27/2021 00:03:13 - INFO - __main__ -   Batch number = 126
+Evaluating:  39%|███▉      | 126/321 [00:18<00:30,  6.33it/s]12/27/2021 00:03:13 - INFO - __main__ -   Batch number = 127
+Evaluating:  40%|███▉      | 127/321 [00:18<00:30,  6.32it/s]12/27/2021 00:03:13 - INFO - __main__ -   Batch number = 128
+Evaluating:  40%|███▉      | 128/321 [00:18<00:30,  6.32it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 129
+Evaluating:  40%|████      | 129/321 [00:19<00:30,  6.31it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 130
+Evaluating:  40%|████      | 130/321 [00:19<00:30,  6.32it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 131
+Evaluating:  41%|████      | 131/321 [00:19<00:30,  6.32it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 132
+Evaluating:  41%|████      | 132/321 [00:19<00:29,  6.32it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 133
+Evaluating:  41%|████▏     | 133/321 [00:19<00:29,  6.31it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 134
+Evaluating:  42%|████▏     | 134/321 [00:19<00:29,  6.31it/s]12/27/2021 00:03:14 - INFO - __main__ -   Batch number = 135
+Evaluating:  42%|████▏     | 135/321 [00:20<00:29,  6.30it/s]12/27/2021 00:03:15 - INFO - __main__ -   Batch number = 136
+Evaluating:  42%|████▏     | 136/321 [00:20<00:29,  6.30it/s]12/27/2021 00:03:15 - INFO - __main__ -   Batch number = 137
+Evaluating:  43%|████▎     | 137/321 [00:20<00:29,  6.30it/s]12/27/2021 00:03:15 - INFO - __main__ -   Batch number = 138
+Evaluating:  43%|████▎     | 138/321 [00:20<00:29,  6.30it/s]12/27/2021 00:03:15 - INFO - __main__ -   Batch number = 139
+Evaluating:  43%|████▎     | 139/321 [00:20<00:28,  6.30it/s]12/27/2021 00:03:15 - INFO - __main__ -   Batch number = 140
+Evaluating:  44%|████▎     | 140/321 [00:20<00:28,  6.30it/s]12/27/2021 00:03:15 - INFO - __main__ -   Batch number = 141
+Evaluating:  44%|████▍     | 141/321 [00:21<00:28,  6.31it/s]12/27/2021 00:03:16 - INFO - __main__ -   Batch number = 142
+Evaluating:  44%|████▍     | 142/321 [00:21<00:38,  4.60it/s]12/27/2021 00:03:16 - INFO - __main__ -   Batch number = 143
+Evaluating:  45%|████▍     | 143/321 [00:21<00:35,  5.02it/s]12/27/2021 00:03:16 - INFO - __main__ -   Batch number = 144
+Evaluating:  45%|████▍     | 144/321 [00:21<00:32,  5.42it/s]12/27/2021 00:03:16 - INFO - __main__ -   Batch number = 145
+Evaluating:  45%|████▌     | 145/321 [00:21<00:31,  5.66it/s]12/27/2021 00:03:16 - INFO - __main__ -   Batch number = 146
+Evaluating:  45%|████▌     | 146/321 [00:22<00:30,  5.82it/s]12/27/2021 00:03:17 - INFO - __main__ -   Batch number = 147
+Evaluating:  46%|████▌     | 147/321 [00:22<00:29,  5.97it/s]12/27/2021 00:03:17 - INFO - __main__ -   Batch number = 148
+Evaluating:  46%|████▌     | 148/321 [00:22<00:28,  6.09it/s]12/27/2021 00:03:17 - INFO - __main__ -   Batch number = 149
+Evaluating:  46%|████▋     | 149/321 [00:22<00:27,  6.19it/s]12/27/2021 00:03:17 - INFO - __main__ -   Batch number = 150
+Evaluating:  47%|████▋     | 150/321 [00:22<00:27,  6.27it/s]12/27/2021 00:03:17 - INFO - __main__ -   Batch number = 151
+Evaluating:  47%|████▋     | 151/321 [00:22<00:27,  6.23it/s]12/27/2021 00:03:17 - INFO - __main__ -   Batch number = 152
+Evaluating:  47%|████▋     | 152/321 [00:22<00:26,  6.30it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 153
+Evaluating:  48%|████▊     | 153/321 [00:23<00:26,  6.40it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 154
+Evaluating:  48%|████▊     | 154/321 [00:23<00:25,  6.49it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 155
+Evaluating:  48%|████▊     | 155/321 [00:23<00:25,  6.56it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 156
+Evaluating:  49%|████▊     | 156/321 [00:23<00:24,  6.64it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 157
+Evaluating:  49%|████▉     | 157/321 [00:23<00:24,  6.70it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 158
+Evaluating:  49%|████▉     | 158/321 [00:23<00:24,  6.75it/s]12/27/2021 00:03:18 - INFO - __main__ -   Batch number = 159
+Evaluating:  50%|████▉     | 159/321 [00:23<00:23,  6.78it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 160
+Evaluating:  50%|████▉     | 160/321 [00:24<00:23,  6.80it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 161
+Evaluating:  50%|█████     | 161/321 [00:24<00:23,  6.79it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 162
+Evaluating:  50%|█████     | 162/321 [00:24<00:23,  6.81it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 163
+Evaluating:  51%|█████     | 163/321 [00:24<00:23,  6.82it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 164
+Evaluating:  51%|█████     | 164/321 [00:24<00:23,  6.68it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 165
+Evaluating:  51%|█████▏    | 165/321 [00:24<00:23,  6.70it/s]12/27/2021 00:03:19 - INFO - __main__ -   Batch number = 166
+Evaluating:  52%|█████▏    | 166/321 [00:25<00:22,  6.74it/s]12/27/2021 00:03:20 - INFO - __main__ -   Batch number = 167
+Evaluating:  52%|█████▏    | 167/321 [00:25<00:22,  6.76it/s]12/27/2021 00:03:20 - INFO - __main__ -   Batch number = 168
+Evaluating:  52%|█████▏    | 168/321 [00:25<00:22,  6.78it/s]12/27/2021 00:03:20 - INFO - __main__ -   Batch number = 169
+Evaluating:  53%|█████▎    | 169/321 [00:25<00:22,  6.80it/s]12/27/2021 00:03:20 - INFO - __main__ -   Batch number = 170
+Evaluating:  53%|█████▎    | 170/321 [00:25<00:22,  6.75it/s]12/27/2021 00:03:20 - INFO - __main__ -   Batch number = 171
+Evaluating:  53%|█████▎    | 171/321 [00:25<00:22,  6.77it/s]12/27/2021 00:03:20 - INFO - __main__ -   Batch number = 172
+Evaluating:  54%|█████▎    | 172/321 [00:25<00:21,  6.79it/s]12/27/2021 00:03:21 - INFO - __main__ -   Batch number = 173
+Evaluating:  54%|█████▍    | 173/321 [00:26<00:36,  4.02it/s]12/27/2021 00:03:21 - INFO - __main__ -   Batch number = 174
+Evaluating:  54%|█████▍    | 174/321 [00:26<00:32,  4.51it/s]12/27/2021 00:03:21 - INFO - __main__ -   Batch number = 175
+Evaluating:  55%|█████▍    | 175/321 [00:26<00:29,  4.91it/s]12/27/2021 00:03:21 - INFO - __main__ -   Batch number = 176
+Evaluating:  55%|█████▍    | 176/321 [00:26<00:27,  5.25it/s]12/27/2021 00:03:21 - INFO - __main__ -   Batch number = 177
+Evaluating:  55%|█████▌    | 177/321 [00:27<00:26,  5.52it/s]12/27/2021 00:03:22 - INFO - __main__ -   Batch number = 178
+Evaluating:  55%|█████▌    | 178/321 [00:27<00:24,  5.72it/s]12/27/2021 00:03:22 - INFO - __main__ -   Batch number = 179
+Evaluating:  56%|█████▌    | 179/321 [00:27<00:24,  5.90it/s]12/27/2021 00:03:22 - INFO - __main__ -   Batch number = 180
+Evaluating:  56%|█████▌    | 180/321 [00:27<00:23,  6.06it/s]12/27/2021 00:03:22 - INFO - __main__ -   Batch number = 181
+Evaluating:  56%|█████▋    | 181/321 [00:27<00:22,  6.18it/s]12/27/2021 00:03:22 - INFO - __main__ -   Batch number = 182
+Evaluating:  57%|█████▋    | 182/321 [00:27<00:22,  6.29it/s]12/27/2021 00:03:22 - INFO - __main__ -   Batch number = 183
+Evaluating:  57%|█████▋    | 183/321 [00:27<00:21,  6.37it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 184
+Evaluating:  57%|█████▋    | 184/321 [00:28<00:21,  6.44it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 185
+Evaluating:  58%|█████▊    | 185/321 [00:28<00:20,  6.50it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 186
+Evaluating:  58%|█████▊    | 186/321 [00:28<00:20,  6.56it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 187
+Evaluating:  58%|█████▊    | 187/321 [00:28<00:20,  6.63it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 188
+Evaluating:  59%|█████▊    | 188/321 [00:28<00:20,  6.52it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 189
+Evaluating:  59%|█████▉    | 189/321 [00:28<00:20,  6.55it/s]12/27/2021 00:03:23 - INFO - __main__ -   Batch number = 190
+Evaluating:  59%|█████▉    | 190/321 [00:29<00:20,  6.46it/s]12/27/2021 00:03:24 - INFO - __main__ -   Batch number = 191
+Evaluating:  60%|█████▉    | 191/321 [00:29<00:20,  6.38it/s]12/27/2021 00:03:24 - INFO - __main__ -   Batch number = 192
+Evaluating:  60%|█████▉    | 192/321 [00:29<00:20,  6.34it/s]12/27/2021 00:03:24 - INFO - __main__ -   Batch number = 193
+Evaluating:  60%|██████    | 193/321 [00:29<00:20,  6.33it/s]12/27/2021 00:03:24 - INFO - __main__ -   Batch number = 194
+Evaluating:  60%|██████    | 194/321 [00:29<00:20,  6.32it/s]12/27/2021 00:03:24 - INFO - __main__ -   Batch number = 195
+Evaluating:  61%|██████    | 195/321 [00:29<00:20,  6.28it/s]12/27/2021 00:03:24 - INFO - __main__ -   Batch number = 196
+Evaluating:  61%|██████    | 196/321 [00:29<00:19,  6.26it/s]12/27/2021 00:03:25 - INFO - __main__ -   Batch number = 197
+Evaluating:  61%|██████▏   | 197/321 [00:30<00:19,  6.28it/s]12/27/2021 00:03:25 - INFO - __main__ -   Batch number = 198
+Evaluating:  62%|██████▏   | 198/321 [00:30<00:19,  6.28it/s]12/27/2021 00:03:25 - INFO - __main__ -   Batch number = 199
+Evaluating:  62%|██████▏   | 199/321 [00:30<00:19,  6.25it/s]12/27/2021 00:03:25 - INFO - __main__ -   Batch number = 200
+Evaluating:  62%|██████▏   | 200/321 [00:30<00:19,  6.25it/s]12/27/2021 00:03:25 - INFO - __main__ -   Batch number = 201
+Evaluating:  63%|██████▎   | 201/321 [00:30<00:19,  6.24it/s]12/27/2021 00:03:25 - INFO - __main__ -   Batch number = 202
+Evaluating:  63%|██████▎   | 202/321 [00:30<00:19,  6.26it/s]12/27/2021 00:03:26 - INFO - __main__ -   Batch number = 203
+Evaluating:  63%|██████▎   | 203/321 [00:31<00:29,  4.06it/s]12/27/2021 00:03:26 - INFO - __main__ -   Batch number = 204
+Evaluating:  64%|██████▎   | 204/321 [00:31<00:25,  4.54it/s]12/27/2021 00:03:26 - INFO - __main__ -   Batch number = 205
+Evaluating:  64%|██████▍   | 205/321 [00:31<00:23,  4.97it/s]12/27/2021 00:03:26 - INFO - __main__ -   Batch number = 206
+Evaluating:  64%|██████▍   | 206/321 [00:31<00:21,  5.34it/s]12/27/2021 00:03:26 - INFO - __main__ -   Batch number = 207
+Evaluating:  64%|██████▍   | 207/321 [00:32<00:20,  5.66it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 208
+Evaluating:  65%|██████▍   | 208/321 [00:32<00:19,  5.92it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 209
+Evaluating:  65%|██████▌   | 209/321 [00:32<00:18,  6.10it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 210
+Evaluating:  65%|██████▌   | 210/321 [00:32<00:17,  6.23it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 211
+Evaluating:  66%|██████▌   | 211/321 [00:32<00:17,  6.33it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 212
+Evaluating:  66%|██████▌   | 212/321 [00:32<00:17,  6.40it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 213
+Evaluating:  66%|██████▋   | 213/321 [00:32<00:16,  6.47it/s]12/27/2021 00:03:27 - INFO - __main__ -   Batch number = 214
+Evaluating:  67%|██████▋   | 214/321 [00:33<00:16,  6.53it/s]12/27/2021 00:03:28 - INFO - __main__ -   Batch number = 215
+Evaluating:  67%|██████▋   | 215/321 [00:33<00:16,  6.58it/s]12/27/2021 00:03:28 - INFO - __main__ -   Batch number = 216
+Evaluating:  67%|██████▋   | 216/321 [00:33<00:15,  6.59it/s]12/27/2021 00:03:28 - INFO - __main__ -   Batch number = 217
+Evaluating:  68%|██████▊   | 217/321 [00:33<00:15,  6.60it/s]12/27/2021 00:03:28 - INFO - __main__ -   Batch number = 218
+Evaluating:  68%|██████▊   | 218/321 [00:33<00:15,  6.60it/s]12/27/2021 00:03:28 - INFO - __main__ -   Batch number = 219
+Evaluating:  68%|██████▊   | 219/321 [00:33<00:15,  6.60it/s]12/27/2021 00:03:28 - INFO - __main__ -   Batch number = 220
+Evaluating:  69%|██████▊   | 220/321 [00:33<00:15,  6.64it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 221
+Evaluating:  69%|██████▉   | 221/321 [00:34<00:15,  6.60it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 222
+Evaluating:  69%|██████▉   | 222/321 [00:34<00:15,  6.58it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 223
+Evaluating:  69%|██████▉   | 223/321 [00:34<00:14,  6.60it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 224
+Evaluating:  70%|██████▉   | 224/321 [00:34<00:14,  6.62it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 225
+Evaluating:  70%|███████   | 225/321 [00:34<00:14,  6.59it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 226
+Evaluating:  70%|███████   | 226/321 [00:34<00:14,  6.59it/s]12/27/2021 00:03:29 - INFO - __main__ -   Batch number = 227
+Evaluating:  71%|███████   | 227/321 [00:35<00:14,  6.60it/s]12/27/2021 00:03:30 - INFO - __main__ -   Batch number = 228
+Evaluating:  71%|███████   | 228/321 [00:35<00:14,  6.62it/s]12/27/2021 00:03:30 - INFO - __main__ -   Batch number = 229
+Evaluating:  71%|███████▏  | 229/321 [00:35<00:13,  6.62it/s]12/27/2021 00:03:30 - INFO - __main__ -   Batch number = 230
+Evaluating:  72%|███████▏  | 230/321 [00:35<00:13,  6.60it/s]12/27/2021 00:03:30 - INFO - __main__ -   Batch number = 231
+Evaluating:  72%|███████▏  | 231/321 [00:35<00:13,  6.56it/s]12/27/2021 00:03:30 - INFO - __main__ -   Batch number = 232
+Evaluating:  72%|███████▏  | 232/321 [00:35<00:13,  6.57it/s]12/27/2021 00:03:30 - INFO - __main__ -   Batch number = 233
+Evaluating:  73%|███████▎  | 233/321 [00:35<00:13,  6.49it/s]12/27/2021 00:03:31 - INFO - __main__ -   Batch number = 234
+Evaluating:  73%|███████▎  | 234/321 [00:36<00:20,  4.25it/s]12/27/2021 00:03:31 - INFO - __main__ -   Batch number = 235
+Evaluating:  73%|███████▎  | 235/321 [00:36<00:18,  4.62it/s]12/27/2021 00:03:31 - INFO - __main__ -   Batch number = 236
+Evaluating:  74%|███████▎  | 236/321 [00:36<00:16,  5.09it/s]12/27/2021 00:03:31 - INFO - __main__ -   Batch number = 237
+Evaluating:  74%|███████▍  | 237/321 [00:36<00:15,  5.48it/s]12/27/2021 00:03:31 - INFO - __main__ -   Batch number = 238
+Evaluating:  74%|███████▍  | 238/321 [00:37<00:14,  5.80it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 239
+Evaluating:  74%|███████▍  | 239/321 [00:37<00:13,  6.05it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 240
+Evaluating:  75%|███████▍  | 240/321 [00:37<00:12,  6.24it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 241
+Evaluating:  75%|███████▌  | 241/321 [00:37<00:12,  6.37it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 242
+Evaluating:  75%|███████▌  | 242/321 [00:37<00:12,  6.43it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 243
+Evaluating:  76%|███████▌  | 243/321 [00:37<00:12,  6.46it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 244
+Evaluating:  76%|███████▌  | 244/321 [00:37<00:11,  6.48it/s]12/27/2021 00:03:32 - INFO - __main__ -   Batch number = 245
+Evaluating:  76%|███████▋  | 245/321 [00:38<00:11,  6.51it/s]12/27/2021 00:03:33 - INFO - __main__ -   Batch number = 246
+Evaluating:  77%|███████▋  | 246/321 [00:38<00:11,  6.52it/s]12/27/2021 00:03:33 - INFO - __main__ -   Batch number = 247
+Evaluating:  77%|███████▋  | 247/321 [00:38<00:11,  6.55it/s]12/27/2021 00:03:33 - INFO - __main__ -   Batch number = 248
+Evaluating:  77%|███████▋  | 248/321 [00:38<00:11,  6.60it/s]12/27/2021 00:03:33 - INFO - __main__ -   Batch number = 249
+Evaluating:  78%|███████▊  | 249/321 [00:38<00:10,  6.64it/s]12/27/2021 00:03:33 - INFO - __main__ -   Batch number = 250
+Evaluating:  78%|███████▊  | 250/321 [00:38<00:10,  6.66it/s]12/27/2021 00:03:33 - INFO - __main__ -   Batch number = 251
+Evaluating:  78%|███████▊  | 251/321 [00:38<00:10,  6.67it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 252
+Evaluating:  79%|███████▊  | 252/321 [00:39<00:10,  6.69it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 253
+Evaluating:  79%|███████▉  | 253/321 [00:39<00:10,  6.68it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 254
+Evaluating:  79%|███████▉  | 254/321 [00:39<00:10,  6.70it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 255
+Evaluating:  79%|███████▉  | 255/321 [00:39<00:09,  6.70it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 256
+Evaluating:  80%|███████▉  | 256/321 [00:39<00:09,  6.63it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 257
+Evaluating:  80%|████████  | 257/321 [00:39<00:09,  6.64it/s]12/27/2021 00:03:34 - INFO - __main__ -   Batch number = 258
+Evaluating:  80%|████████  | 258/321 [00:40<00:09,  6.65it/s]12/27/2021 00:03:35 - INFO - __main__ -   Batch number = 259
+Evaluating:  81%|████████  | 259/321 [00:40<00:09,  6.60it/s]12/27/2021 00:03:35 - INFO - __main__ -   Batch number = 260
+Evaluating:  81%|████████  | 260/321 [00:40<00:09,  6.61it/s]12/27/2021 00:03:35 - INFO - __main__ -   Batch number = 261
+Evaluating:  81%|████████▏ | 261/321 [00:40<00:09,  6.41it/s]12/27/2021 00:03:35 - INFO - __main__ -   Batch number = 262
+Evaluating:  82%|████████▏ | 262/321 [00:40<00:09,  6.34it/s]12/27/2021 00:03:35 - INFO - __main__ -   Batch number = 263
+Evaluating:  82%|████████▏ | 263/321 [00:40<00:09,  6.25it/s]12/27/2021 00:03:35 - INFO - __main__ -   Batch number = 264
+Evaluating:  82%|████████▏ | 264/321 [00:40<00:08,  6.36it/s]12/27/2021 00:03:36 - INFO - __main__ -   Batch number = 265
+Evaluating:  83%|████████▎ | 265/321 [00:41<00:12,  4.54it/s]12/27/2021 00:03:36 - INFO - __main__ -   Batch number = 266
+Evaluating:  83%|████████▎ | 266/321 [00:41<00:11,  4.99it/s]12/27/2021 00:03:36 - INFO - __main__ -   Batch number = 267
+Evaluating:  83%|████████▎ | 267/321 [00:41<00:10,  5.35it/s]12/27/2021 00:03:36 - INFO - __main__ -   Batch number = 268
+Evaluating:  83%|████████▎ | 268/321 [00:41<00:09,  5.70it/s]12/27/2021 00:03:36 - INFO - __main__ -   Batch number = 269
+Evaluating:  84%|████████▍ | 269/321 [00:41<00:08,  5.90it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 270
+Evaluating:  84%|████████▍ | 270/321 [00:42<00:08,  6.12it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 271
+Evaluating:  84%|████████▍ | 271/321 [00:42<00:08,  6.22it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 272
+Evaluating:  85%|████████▍ | 272/321 [00:42<00:07,  6.35it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 273
+Evaluating:  85%|████████▌ | 273/321 [00:42<00:07,  6.38it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 274
+Evaluating:  85%|████████▌ | 274/321 [00:42<00:07,  6.48it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 275
+Evaluating:  86%|████████▌ | 275/321 [00:42<00:07,  6.47it/s]12/27/2021 00:03:37 - INFO - __main__ -   Batch number = 276
+Evaluating:  86%|████████▌ | 276/321 [00:43<00:06,  6.54it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 277
+Evaluating:  86%|████████▋ | 277/321 [00:43<00:06,  6.48it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 278
+Evaluating:  87%|████████▋ | 278/321 [00:43<00:06,  6.52it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 279
+Evaluating:  87%|████████▋ | 279/321 [00:43<00:06,  6.49it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 280
+Evaluating:  87%|████████▋ | 280/321 [00:43<00:06,  6.56it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 281
+Evaluating:  88%|████████▊ | 281/321 [00:43<00:06,  6.52it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 282
+Evaluating:  88%|████████▊ | 282/321 [00:43<00:05,  6.57it/s]12/27/2021 00:03:38 - INFO - __main__ -   Batch number = 283
+Evaluating:  88%|████████▊ | 283/321 [00:44<00:05,  6.53it/s]12/27/2021 00:03:39 - INFO - __main__ -   Batch number = 284
+Evaluating:  88%|████████▊ | 284/321 [00:44<00:05,  6.57it/s]12/27/2021 00:03:39 - INFO - __main__ -   Batch number = 285
+Evaluating:  89%|████████▉ | 285/321 [00:44<00:05,  6.53it/s]12/27/2021 00:03:39 - INFO - __main__ -   Batch number = 286
+Evaluating:  89%|████████▉ | 286/321 [00:44<00:05,  6.58it/s]12/27/2021 00:03:39 - INFO - __main__ -   Batch number = 287
+Evaluating:  89%|████████▉ | 287/321 [00:44<00:05,  6.52it/s]12/27/2021 00:03:39 - INFO - __main__ -   Batch number = 288
+Evaluating:  90%|████████▉ | 288/321 [00:44<00:05,  6.57it/s]12/27/2021 00:03:39 - INFO - __main__ -   Batch number = 289
+Evaluating:  90%|█████████ | 289/321 [00:45<00:04,  6.51it/s]12/27/2021 00:03:40 - INFO - __main__ -   Batch number = 290
+Evaluating:  90%|█████████ | 290/321 [00:45<00:04,  6.56it/s]12/27/2021 00:03:40 - INFO - __main__ -   Batch number = 291
+Evaluating:  91%|█████████ | 291/321 [00:45<00:04,  6.51it/s]12/27/2021 00:03:40 - INFO - __main__ -   Batch number = 292
+Evaluating:  91%|█████████ | 292/321 [00:45<00:04,  6.53it/s]12/27/2021 00:03:40 - INFO - __main__ -   Batch number = 293
+Evaluating:  91%|█████████▏| 293/321 [00:45<00:04,  6.34it/s]12/27/2021 00:03:40 - INFO - __main__ -   Batch number = 294
+Evaluating:  92%|█████████▏| 294/321 [00:45<00:04,  6.28it/s]12/27/2021 00:03:40 - INFO - __main__ -   Batch number = 295
+Evaluating:  92%|█████████▏| 295/321 [00:45<00:04,  6.23it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 296
+Evaluating:  92%|█████████▏| 296/321 [00:46<00:04,  6.07it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 297
+Evaluating:  93%|█████████▎| 297/321 [00:46<00:03,  6.16it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 298
+Evaluating:  93%|█████████▎| 298/321 [00:46<00:03,  6.31it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 299
+Evaluating:  93%|█████████▎| 299/321 [00:46<00:03,  6.33it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 300
+Evaluating:  93%|█████████▎| 300/321 [00:46<00:03,  6.42it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 301
+Evaluating:  94%|█████████▍| 301/321 [00:46<00:03,  6.40it/s]12/27/2021 00:03:41 - INFO - __main__ -   Batch number = 302
+Evaluating:  94%|█████████▍| 302/321 [00:47<00:02,  6.47it/s]12/27/2021 00:03:42 - INFO - __main__ -   Batch number = 303
+Evaluating:  94%|█████████▍| 303/321 [00:47<00:02,  6.45it/s]12/27/2021 00:03:42 - INFO - __main__ -   Batch number = 304
+Evaluating:  95%|█████████▍| 304/321 [00:47<00:02,  6.51it/s]12/27/2021 00:03:42 - INFO - __main__ -   Batch number = 305
+Evaluating:  95%|█████████▌| 305/321 [00:47<00:02,  6.46it/s]12/27/2021 00:03:42 - INFO - __main__ -   Batch number = 306
+Evaluating:  95%|█████████▌| 306/321 [00:47<00:02,  6.51it/s]12/27/2021 00:03:42 - INFO - __main__ -   Batch number = 307
+Evaluating:  96%|█████████▌| 307/321 [00:47<00:02,  6.47it/s]12/27/2021 00:03:42 - INFO - __main__ -   Batch number = 308
+Evaluating:  96%|█████████▌| 308/321 [00:47<00:01,  6.52it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 309
+Evaluating:  96%|█████████▋| 309/321 [00:48<00:01,  6.22it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 310
+Evaluating:  97%|█████████▋| 310/321 [00:48<00:01,  6.30it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 311
+Evaluating:  97%|█████████▋| 311/321 [00:48<00:01,  6.29it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 312
+Evaluating:  97%|█████████▋| 312/321 [00:48<00:01,  6.37it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 313
+Evaluating:  98%|█████████▊| 313/321 [00:48<00:01,  6.37it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 314
+Evaluating:  98%|█████████▊| 314/321 [00:48<00:01,  6.43it/s]12/27/2021 00:03:43 - INFO - __main__ -   Batch number = 315
+Evaluating:  98%|█████████▊| 315/321 [00:49<00:00,  6.26it/s]12/27/2021 00:03:44 - INFO - __main__ -   Batch number = 316
+Evaluating:  98%|█████████▊| 316/321 [00:49<00:00,  6.22it/s]12/27/2021 00:03:44 - INFO - __main__ -   Batch number = 317
+Evaluating:  99%|█████████▉| 317/321 [00:49<00:00,  6.16it/s]12/27/2021 00:03:44 - INFO - __main__ -   Batch number = 318
+Evaluating:  99%|█████████▉| 318/321 [00:49<00:00,  6.20it/s]12/27/2021 00:03:44 - INFO - __main__ -   Batch number = 319
+Evaluating:  99%|█████████▉| 319/321 [00:49<00:00,  6.15it/s]12/27/2021 00:03:44 - INFO - __main__ -   Batch number = 320
+Evaluating: 100%|█████████▉| 320/321 [00:49<00:00,  6.17it/s]12/27/2021 00:03:44 - INFO - __main__ -   Batch number = 321
+Evaluating: 100%|██████████| 321/321 [00:50<00:00,  6.42it/s]
+12/27/2021 00:03:47 - INFO - __main__ -   ***** Evaluation result  in zh *****
+12/27/2021 00:03:47 - INFO - __main__ -     f1 = 0.2998569677155701
+12/27/2021 00:03:47 - INFO - __main__ -     loss = 2.3792255793776467
+12/27/2021 00:03:47 - INFO - __main__ -     precision = 0.22055232012023296
+12/27/2021 00:03:47 - INFO - __main__ -     recall = 0.4682140863045386
+PyTorch version 1.10.0+cu102 available.
+12/27/2021 00:03:49 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='zh', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:03:49 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/27/2021 00:03:49 - INFO - __main__ -   Seed = 2
+12/27/2021 00:03:49 - INFO - root -   save model
+12/27/2021 00:03:49 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='zh', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:03:49 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/27/2021 00:03:53 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/27/2021 00:04:00 - INFO - __main__ -   Using lang2id = None
+12/27/2021 00:04:00 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/27/2021 00:04:00 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/
+12/27/2021 00:04:00 - INFO - root -   Trying to decide if add adapter
+12/27/2021 00:04:00 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s2/checkpoint-best/ner/pytorch_model_head.bin
+12/27/2021 00:04:00 - INFO - root -   loading lang adpater zh/wiki@ukp
+12/27/2021 00:04:00 - INFO - __main__ -   Adapter Languages : ['zh'], Length : 1
+12/27/2021 00:04:00 - INFO - __main__ -   Adapter Names ['zh/wiki@ukp'], Length : 1
+12/27/2021 00:04:00 - INFO - __main__ -   Language = zh
+12/27/2021 00:04:00 - INFO - __main__ -   Adapter Name = zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/bert-base-multilingual-cased/pfeiffer/zh_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted'
+12/27/2021 00:04:04 - INFO - __main__ -   Language adapter for zh found
+12/27/2021 00:04:04 - INFO - __main__ -   Set active language adapter to zh
+12/27/2021 00:04:04 - INFO - __main__ -   Args Adapter Weight = None
+12/27/2021 00:04:04 - INFO - __main__ -   Adapter Languages = ['zh']
+12/27/2021 00:04:04 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_zh_bert-base-multilingual-cased_128
+12/27/2021 00:04:05 - INFO - __main__ -   ***** Running evaluation  in zh *****
+12/27/2021 00:04:05 - INFO - __main__ -     Num examples = 10257
+12/27/2021 00:04:05 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/321 [00:00<?, ?it/s]12/27/2021 00:04:05 - INFO - __main__ -   Batch number = 1
+Evaluating:   0%|          | 1/321 [00:00<00:49,  6.43it/s]12/27/2021 00:04:05 - INFO - __main__ -   Batch number = 2
+Evaluating:   1%|          | 2/321 [00:00<00:47,  6.77it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 3
+Evaluating:   1%|          | 3/321 [00:00<00:55,  5.71it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 4
+Evaluating:   1%|          | 4/321 [00:00<00:51,  6.21it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 5
+Evaluating:   2%|▏         | 5/321 [00:00<00:48,  6.54it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 6
+Evaluating:   2%|▏         | 6/321 [00:00<00:46,  6.76it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 7
+Evaluating:   2%|▏         | 7/321 [00:01<00:45,  6.90it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 8
+Evaluating:   2%|▏         | 8/321 [00:01<00:44,  6.99it/s]12/27/2021 00:04:06 - INFO - __main__ -   Batch number = 9
+Evaluating:   3%|▎         | 9/321 [00:01<00:44,  7.06it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 10
+Evaluating:   3%|▎         | 10/321 [00:01<00:43,  7.09it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 11
+Evaluating:   3%|▎         | 11/321 [00:01<00:43,  7.12it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 12
+Evaluating:   4%|▎         | 12/321 [00:01<00:43,  7.15it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 13
+Evaluating:   4%|▍         | 13/321 [00:01<00:43,  7.15it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 14
+Evaluating:   4%|▍         | 14/321 [00:02<00:42,  7.16it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 15
+Evaluating:   5%|▍         | 15/321 [00:02<00:42,  7.17it/s]12/27/2021 00:04:07 - INFO - __main__ -   Batch number = 16
+Evaluating:   5%|▍         | 16/321 [00:02<00:42,  7.18it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 17
+Evaluating:   5%|▌         | 17/321 [00:02<00:42,  7.18it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 18
+Evaluating:   6%|▌         | 18/321 [00:02<00:42,  7.19it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 19
+Evaluating:   6%|▌         | 19/321 [00:02<00:42,  7.18it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 20
+Evaluating:   6%|▌         | 20/321 [00:02<00:41,  7.17it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 21
+Evaluating:   7%|▋         | 21/321 [00:03<00:41,  7.16it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 22
+Evaluating:   7%|▋         | 22/321 [00:03<00:41,  7.15it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 23
+Evaluating:   7%|▋         | 23/321 [00:03<00:41,  7.15it/s]12/27/2021 00:04:08 - INFO - __main__ -   Batch number = 24
+Evaluating:   7%|▋         | 24/321 [00:03<00:41,  7.14it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 25
+Evaluating:   8%|▊         | 25/321 [00:03<00:41,  7.13it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 26
+Evaluating:   8%|▊         | 26/321 [00:03<00:41,  7.13it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 27
+Evaluating:   8%|▊         | 27/321 [00:03<00:41,  7.13it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 28
+Evaluating:   9%|▊         | 28/321 [00:03<00:41,  7.14it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 29
+Evaluating:   9%|▉         | 29/321 [00:04<00:40,  7.14it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 30
+Evaluating:   9%|▉         | 30/321 [00:04<00:40,  7.14it/s]12/27/2021 00:04:09 - INFO - __main__ -   Batch number = 31
+Evaluating:  10%|▉         | 31/321 [00:04<00:40,  7.15it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 32
+Evaluating:  10%|▉         | 32/321 [00:04<00:40,  7.14it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 33
+Evaluating:  10%|█         | 33/321 [00:04<00:40,  7.15it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 34
+Evaluating:  11%|█         | 34/321 [00:04<00:40,  7.16it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 35
+Evaluating:  11%|█         | 35/321 [00:04<00:40,  7.15it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 36
+Evaluating:  11%|█         | 36/321 [00:05<00:39,  7.14it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 37
+Evaluating:  12%|█▏        | 37/321 [00:05<00:39,  7.13it/s]12/27/2021 00:04:10 - INFO - __main__ -   Batch number = 38
+Evaluating:  12%|█▏        | 38/321 [00:05<00:39,  7.11it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 39
+Evaluating:  12%|█▏        | 39/321 [00:05<00:39,  7.12it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 40
+Evaluating:  12%|█▏        | 40/321 [00:05<00:39,  7.13it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 41
+Evaluating:  13%|█▎        | 41/321 [00:05<00:39,  7.13it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 42
+Evaluating:  13%|█▎        | 42/321 [00:05<00:39,  7.11it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 43
+Evaluating:  13%|█▎        | 43/321 [00:06<00:39,  7.11it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 44
+Evaluating:  14%|█▎        | 44/321 [00:06<00:38,  7.12it/s]12/27/2021 00:04:11 - INFO - __main__ -   Batch number = 45
+Evaluating:  14%|█▍        | 45/321 [00:06<00:38,  7.12it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 46
+Evaluating:  14%|█▍        | 46/321 [00:06<00:38,  7.12it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 47
+Evaluating:  15%|█▍        | 47/321 [00:06<00:38,  7.11it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 48
+Evaluating:  15%|█▍        | 48/321 [00:06<00:38,  7.09it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 49
+Evaluating:  15%|█▌        | 49/321 [00:06<00:38,  7.09it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 50
+Evaluating:  16%|█▌        | 50/321 [00:07<00:38,  7.07it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 51
+Evaluating:  16%|█▌        | 51/321 [00:07<00:38,  7.08it/s]12/27/2021 00:04:12 - INFO - __main__ -   Batch number = 52
+Evaluating:  16%|█▌        | 52/321 [00:07<00:37,  7.09it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 53
+Evaluating:  17%|█▋        | 53/321 [00:07<00:37,  7.09it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 54
+Evaluating:  17%|█▋        | 54/321 [00:07<00:37,  7.08it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 55
+Evaluating:  17%|█▋        | 55/321 [00:07<00:37,  7.10it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 56
+Evaluating:  17%|█▋        | 56/321 [00:07<00:37,  7.10it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 57
+Evaluating:  18%|█▊        | 57/321 [00:08<00:37,  7.09it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 58
+Evaluating:  18%|█▊        | 58/321 [00:08<00:37,  7.10it/s]12/27/2021 00:04:13 - INFO - __main__ -   Batch number = 59
+Evaluating:  18%|█▊        | 59/321 [00:08<00:36,  7.09it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 60
+Evaluating:  19%|█▊        | 60/321 [00:08<00:36,  7.08it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 61
+Evaluating:  19%|█▉        | 61/321 [00:08<00:37,  7.01it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 62
+Evaluating:  19%|█▉        | 62/321 [00:08<00:36,  7.03it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 63
+Evaluating:  20%|█▉        | 63/321 [00:08<00:36,  7.04it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 64
+Evaluating:  20%|█▉        | 64/321 [00:09<00:36,  7.05it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 65
+Evaluating:  20%|██        | 65/321 [00:09<00:36,  7.04it/s]12/27/2021 00:04:14 - INFO - __main__ -   Batch number = 66
+Evaluating:  21%|██        | 66/321 [00:09<00:36,  7.05it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 67
+Evaluating:  21%|██        | 67/321 [00:09<00:36,  7.04it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 68
+Evaluating:  21%|██        | 68/321 [00:09<00:35,  7.05it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 69
+Evaluating:  21%|██▏       | 69/321 [00:09<00:35,  7.05it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 70
+Evaluating:  22%|██▏       | 70/321 [00:09<00:35,  7.05it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 71
+Evaluating:  22%|██▏       | 71/321 [00:10<00:35,  7.04it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 72
+Evaluating:  22%|██▏       | 72/321 [00:10<00:35,  7.04it/s]12/27/2021 00:04:15 - INFO - __main__ -   Batch number = 73
+Evaluating:  23%|██▎       | 73/321 [00:10<00:35,  7.04it/s]12/27/2021 00:04:16 - INFO - __main__ -   Batch number = 74
+Evaluating:  23%|██▎       | 74/321 [00:10<00:44,  5.60it/s]12/27/2021 00:04:16 - INFO - __main__ -   Batch number = 75
+Evaluating:  23%|██▎       | 75/321 [00:10<00:41,  5.96it/s]12/27/2021 00:04:16 - INFO - __main__ -   Batch number = 76
+Evaluating:  24%|██▎       | 76/321 [00:10<00:39,  6.26it/s]12/27/2021 00:04:16 - INFO - __main__ -   Batch number = 77
+Evaluating:  24%|██▍       | 77/321 [00:11<00:37,  6.47it/s]12/27/2021 00:04:16 - INFO - __main__ -   Batch number = 78
+Evaluating:  24%|██▍       | 78/321 [00:11<00:36,  6.62it/s]12/27/2021 00:04:16 - INFO - __main__ -   Batch number = 79
+Evaluating:  25%|██▍       | 79/321 [00:11<00:35,  6.74it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 80
+Evaluating:  25%|██▍       | 80/321 [00:11<00:35,  6.84it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 81
+Evaluating:  25%|██▌       | 81/321 [00:11<00:34,  6.88it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 82
+Evaluating:  26%|██▌       | 82/321 [00:11<00:34,  6.92it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 83
+Evaluating:  26%|██▌       | 83/321 [00:11<00:34,  6.94it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 84
+Evaluating:  26%|██▌       | 84/321 [00:12<00:34,  6.96it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 85
+Evaluating:  26%|██▋       | 85/321 [00:12<00:33,  6.98it/s]12/27/2021 00:04:17 - INFO - __main__ -   Batch number = 86
+Evaluating:  27%|██▋       | 86/321 [00:12<00:33,  7.00it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 87
+Evaluating:  27%|██▋       | 87/321 [00:12<00:33,  7.00it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 88
+Evaluating:  27%|██▋       | 88/321 [00:12<00:33,  7.01it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 89
+Evaluating:  28%|██▊       | 89/321 [00:12<00:33,  7.01it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 90
+Evaluating:  28%|██▊       | 90/321 [00:12<00:32,  7.00it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 91
+Evaluating:  28%|██▊       | 91/321 [00:13<00:32,  7.01it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 92
+Evaluating:  29%|██▊       | 92/321 [00:13<00:32,  7.01it/s]12/27/2021 00:04:18 - INFO - __main__ -   Batch number = 93
+Evaluating:  29%|██▉       | 93/321 [00:13<00:32,  7.00it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 94
+Evaluating:  29%|██▉       | 94/321 [00:13<00:32,  7.00it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 95
+Evaluating:  30%|██▉       | 95/321 [00:13<00:32,  6.99it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 96
+Evaluating:  30%|██▉       | 96/321 [00:13<00:32,  6.99it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 97
+Evaluating:  30%|███       | 97/321 [00:13<00:32,  6.98it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 98
+Evaluating:  31%|███       | 98/321 [00:14<00:31,  7.00it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 99
+Evaluating:  31%|███       | 99/321 [00:14<00:31,  6.98it/s]12/27/2021 00:04:19 - INFO - __main__ -   Batch number = 100
+Evaluating:  31%|███       | 100/321 [00:14<00:31,  6.99it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 101
+Evaluating:  31%|███▏      | 101/321 [00:14<00:31,  6.99it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 102
+Evaluating:  32%|███▏      | 102/321 [00:14<00:31,  6.99it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 103
+Evaluating:  32%|███▏      | 103/321 [00:14<00:31,  6.98it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 104
+Evaluating:  32%|███▏      | 104/321 [00:14<00:31,  6.97it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 105
+Evaluating:  33%|███▎      | 105/321 [00:15<00:31,  6.93it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 106
+Evaluating:  33%|███▎      | 106/321 [00:15<00:31,  6.92it/s]12/27/2021 00:04:20 - INFO - __main__ -   Batch number = 107
+Evaluating:  33%|███▎      | 107/321 [00:15<00:30,  6.91it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 108
+Evaluating:  34%|███▎      | 108/321 [00:15<00:35,  6.01it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 109
+Evaluating:  34%|███▍      | 109/321 [00:15<00:33,  6.26it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 110
+Evaluating:  34%|███▍      | 110/321 [00:15<00:32,  6.47it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 111
+Evaluating:  35%|███▍      | 111/321 [00:15<00:31,  6.60it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 112
+Evaluating:  35%|███▍      | 112/321 [00:16<00:31,  6.68it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 113
+Evaluating:  35%|███▌      | 113/321 [00:16<00:31,  6.71it/s]12/27/2021 00:04:21 - INFO - __main__ -   Batch number = 114
+Evaluating:  36%|███▌      | 114/321 [00:16<00:30,  6.74it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 115
+Evaluating:  36%|███▌      | 115/321 [00:16<00:30,  6.75it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 116
+Evaluating:  36%|███▌      | 116/321 [00:16<00:30,  6.77it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 117
+Evaluating:  36%|███▋      | 117/321 [00:16<00:30,  6.77it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 118
+Evaluating:  37%|███▋      | 118/321 [00:17<00:29,  6.79it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 119
+Evaluating:  37%|███▋      | 119/321 [00:17<00:29,  6.75it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 120
+Evaluating:  37%|███▋      | 120/321 [00:17<00:29,  6.70it/s]12/27/2021 00:04:22 - INFO - __main__ -   Batch number = 121
+Evaluating:  38%|███▊      | 121/321 [00:17<00:29,  6.70it/s]12/27/2021 00:04:23 - INFO - __main__ -   Batch number = 122
+Evaluating:  38%|███▊      | 122/321 [00:17<00:29,  6.70it/s]12/27/2021 00:04:23 - INFO - __main__ -   Batch number = 123
+Evaluating:  38%|███▊      | 123/321 [00:17<00:29,  6.66it/s]12/27/2021 00:04:23 - INFO - __main__ -   Batch number = 124
+Evaluating:  39%|███▊      | 124/321 [00:17<00:29,  6.65it/s]12/27/2021 00:04:23 - INFO - __main__ -   Batch number = 125
+Evaluating:  39%|███▉      | 125/321 [00:18<00:29,  6.63it/s]12/27/2021 00:04:23 - INFO - __main__ -   Batch number = 126
+Evaluating:  39%|███▉      | 126/321 [00:18<00:29,  6.61it/s]12/27/2021 00:04:23 - INFO - __main__ -   Batch number = 127
+Evaluating:  40%|███▉      | 127/321 [00:18<00:29,  6.60it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 128
+Evaluating:  40%|███▉      | 128/321 [00:18<00:29,  6.60it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 129
+Evaluating:  40%|████      | 129/321 [00:18<00:29,  6.61it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 130
+Evaluating:  40%|████      | 130/321 [00:18<00:28,  6.65it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 131
+Evaluating:  41%|████      | 131/321 [00:18<00:28,  6.67it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 132
+Evaluating:  41%|████      | 132/321 [00:19<00:28,  6.69it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 133
+Evaluating:  41%|████▏     | 133/321 [00:19<00:28,  6.71it/s]12/27/2021 00:04:24 - INFO - __main__ -   Batch number = 134
+Evaluating:  42%|████▏     | 134/321 [00:19<00:27,  6.69it/s]12/27/2021 00:04:25 - INFO - __main__ -   Batch number = 135
+Evaluating:  42%|████▏     | 135/321 [00:19<00:27,  6.67it/s]12/27/2021 00:04:25 - INFO - __main__ -   Batch number = 136
+Evaluating:  42%|████▏     | 136/321 [00:19<00:27,  6.68it/s]12/27/2021 00:04:25 - INFO - __main__ -   Batch number = 137
+Evaluating:  43%|████▎     | 137/321 [00:19<00:27,  6.69it/s]12/27/2021 00:04:25 - INFO - __main__ -   Batch number = 138
+Evaluating:  43%|████▎     | 138/321 [00:20<00:27,  6.68it/s]12/27/2021 00:04:25 - INFO - __main__ -   Batch number = 139
+Evaluating:  43%|████▎     | 139/321 [00:20<00:27,  6.67it/s]12/27/2021 00:04:25 - INFO - __main__ -   Batch number = 140
+Evaluating:  44%|████▎     | 140/321 [00:20<00:27,  6.68it/s]12/27/2021 00:04:26 - INFO - __main__ -   Batch number = 141
+Evaluating:  44%|████▍     | 141/321 [00:20<00:45,  3.97it/s]12/27/2021 00:04:26 - INFO - __main__ -   Batch number = 142
+Evaluating:  44%|████▍     | 142/321 [00:20<00:40,  4.46it/s]12/27/2021 00:04:26 - INFO - __main__ -   Batch number = 143
+Evaluating:  45%|████▍     | 143/321 [00:21<00:36,  4.91it/s]12/27/2021 00:04:26 - INFO - __main__ -   Batch number = 144
+Evaluating:  45%|████▍     | 144/321 [00:21<00:33,  5.30it/s]12/27/2021 00:04:26 - INFO - __main__ -   Batch number = 145
+Evaluating:  45%|████▌     | 145/321 [00:21<00:31,  5.59it/s]12/27/2021 00:04:27 - INFO - __main__ -   Batch number = 146
+Evaluating:  45%|████▌     | 146/321 [00:21<00:29,  5.85it/s]12/27/2021 00:04:27 - INFO - __main__ -   Batch number = 147
+Evaluating:  46%|████▌     | 147/321 [00:21<00:28,  6.02it/s]12/27/2021 00:04:27 - INFO - __main__ -   Batch number = 148
+Evaluating:  46%|████▌     | 148/321 [00:21<00:27,  6.19it/s]12/27/2021 00:04:27 - INFO - __main__ -   Batch number = 149
+Evaluating:  46%|████▋     | 149/321 [00:22<00:27,  6.30it/s]12/27/2021 00:04:27 - INFO - __main__ -   Batch number = 150
+Evaluating:  47%|████▋     | 150/321 [00:22<00:26,  6.40it/s]12/27/2021 00:04:27 - INFO - __main__ -   Batch number = 151
+Evaluating:  47%|████▋     | 151/321 [00:22<00:26,  6.47it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 152
+Evaluating:  47%|████▋     | 152/321 [00:22<00:25,  6.51it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 153
+Evaluating:  48%|████▊     | 153/321 [00:22<00:25,  6.55it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 154
+Evaluating:  48%|████▊     | 154/321 [00:22<00:25,  6.58it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 155
+Evaluating:  48%|████▊     | 155/321 [00:22<00:25,  6.61it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 156
+Evaluating:  49%|████▊     | 156/321 [00:23<00:24,  6.61it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 157
+Evaluating:  49%|████▉     | 157/321 [00:23<00:24,  6.62it/s]12/27/2021 00:04:28 - INFO - __main__ -   Batch number = 158
+Evaluating:  49%|████▉     | 158/321 [00:23<00:24,  6.65it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 159
+Evaluating:  50%|████▉     | 159/321 [00:23<00:24,  6.67it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 160
+Evaluating:  50%|████▉     | 160/321 [00:23<00:24,  6.70it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 161
+Evaluating:  50%|█████     | 161/321 [00:23<00:23,  6.73it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 162
+Evaluating:  50%|█████     | 162/321 [00:23<00:23,  6.74it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 163
+Evaluating:  51%|█████     | 163/321 [00:24<00:23,  6.76it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 164
+Evaluating:  51%|█████     | 164/321 [00:24<00:23,  6.78it/s]12/27/2021 00:04:29 - INFO - __main__ -   Batch number = 165
+Evaluating:  51%|█████▏    | 165/321 [00:24<00:23,  6.76it/s]12/27/2021 00:04:30 - INFO - __main__ -   Batch number = 166
+Evaluating:  52%|█████▏    | 166/321 [00:24<00:22,  6.76it/s]12/27/2021 00:04:30 - INFO - __main__ -   Batch number = 167
+Evaluating:  52%|█████▏    | 167/321 [00:24<00:22,  6.72it/s]12/27/2021 00:04:30 - INFO - __main__ -   Batch number = 168
+Evaluating:  52%|█████▏    | 168/321 [00:24<00:22,  6.66it/s]12/27/2021 00:04:30 - INFO - __main__ -   Batch number = 169
+Evaluating:  53%|█████▎    | 169/321 [00:25<00:22,  6.61it/s]12/27/2021 00:04:30 - INFO - __main__ -   Batch number = 170
+Evaluating:  53%|█████▎    | 170/321 [00:25<00:22,  6.60it/s]12/27/2021 00:04:30 - INFO - __main__ -   Batch number = 171
+Evaluating:  53%|█████▎    | 171/321 [00:25<00:22,  6.60it/s]12/27/2021 00:04:31 - INFO - __main__ -   Batch number = 172
+Evaluating:  54%|█████▎    | 172/321 [00:25<00:34,  4.35it/s]12/27/2021 00:04:31 - INFO - __main__ -   Batch number = 173
+Evaluating:  54%|█████▍    | 173/321 [00:25<00:30,  4.79it/s]12/27/2021 00:04:31 - INFO - __main__ -   Batch number = 174
+Evaluating:  54%|█████▍    | 174/321 [00:26<00:28,  5.21it/s]12/27/2021 00:04:31 - INFO - __main__ -   Batch number = 175
+Evaluating:  55%|█████▍    | 175/321 [00:26<00:26,  5.52it/s]12/27/2021 00:04:31 - INFO - __main__ -   Batch number = 176
+Evaluating:  55%|█████▍    | 176/321 [00:26<00:25,  5.74it/s]12/27/2021 00:04:32 - INFO - __main__ -   Batch number = 177
+Evaluating:  55%|█████▌    | 177/321 [00:26<00:24,  5.90it/s]12/27/2021 00:04:32 - INFO - __main__ -   Batch number = 178
+Evaluating:  55%|█████▌    | 178/321 [00:26<00:23,  6.05it/s]12/27/2021 00:04:32 - INFO - __main__ -   Batch number = 179
+Evaluating:  56%|█████▌    | 179/321 [00:26<00:23,  6.13it/s]12/27/2021 00:04:32 - INFO - __main__ -   Batch number = 180
+Evaluating:  56%|█████▌    | 180/321 [00:26<00:22,  6.17it/s]12/27/2021 00:04:32 - INFO - __main__ -   Batch number = 181
+Evaluating:  56%|█████▋    | 181/321 [00:27<00:22,  6.20it/s]12/27/2021 00:04:32 - INFO - __main__ -   Batch number = 182
+Evaluating:  57%|█████▋    | 182/321 [00:27<00:22,  6.22it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 183
+Evaluating:  57%|█████▋    | 183/321 [00:27<00:22,  6.22it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 184
+Evaluating:  57%|█████▋    | 184/321 [00:27<00:21,  6.24it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 185
+Evaluating:  58%|█████▊    | 185/321 [00:27<00:21,  6.25it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 186
+Evaluating:  58%|█████▊    | 186/321 [00:27<00:21,  6.24it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 187
+Evaluating:  58%|█████▊    | 187/321 [00:28<00:21,  6.24it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 188
+Evaluating:  59%|█████▊    | 188/321 [00:28<00:21,  6.25it/s]12/27/2021 00:04:33 - INFO - __main__ -   Batch number = 189
+Evaluating:  59%|█████▉    | 189/321 [00:28<00:21,  6.24it/s]12/27/2021 00:04:34 - INFO - __main__ -   Batch number = 190
+Evaluating:  59%|█████▉    | 190/321 [00:28<00:20,  6.25it/s]12/27/2021 00:04:34 - INFO - __main__ -   Batch number = 191
+Evaluating:  60%|█████▉    | 191/321 [00:28<00:20,  6.25it/s]12/27/2021 00:04:34 - INFO - __main__ -   Batch number = 192
+Evaluating:  60%|█████▉    | 192/321 [00:28<00:20,  6.27it/s]12/27/2021 00:04:34 - INFO - __main__ -   Batch number = 193
+Evaluating:  60%|██████    | 193/321 [00:29<00:20,  6.29it/s]12/27/2021 00:04:34 - INFO - __main__ -   Batch number = 194
+Evaluating:  60%|██████    | 194/321 [00:29<00:20,  6.29it/s]12/27/2021 00:04:34 - INFO - __main__ -   Batch number = 195
+Evaluating:  61%|██████    | 195/321 [00:29<00:20,  6.27it/s]12/27/2021 00:04:35 - INFO - __main__ -   Batch number = 196
+Evaluating:  61%|██████    | 196/321 [00:29<00:19,  6.27it/s]12/27/2021 00:04:35 - INFO - __main__ -   Batch number = 197
+Evaluating:  61%|██████▏   | 197/321 [00:29<00:19,  6.26it/s]12/27/2021 00:04:35 - INFO - __main__ -   Batch number = 198
+Evaluating:  62%|██████▏   | 198/321 [00:29<00:19,  6.25it/s]12/27/2021 00:04:35 - INFO - __main__ -   Batch number = 199
+Evaluating:  62%|██████▏   | 199/321 [00:30<00:19,  6.25it/s]12/27/2021 00:04:35 - INFO - __main__ -   Batch number = 200
+Evaluating:  62%|██████▏   | 200/321 [00:30<00:19,  6.25it/s]12/27/2021 00:04:35 - INFO - __main__ -   Batch number = 201
+Evaluating:  63%|██████▎   | 201/321 [00:30<00:19,  6.24it/s]12/27/2021 00:04:36 - INFO - __main__ -   Batch number = 202
+Evaluating:  63%|██████▎   | 202/321 [00:30<00:30,  3.92it/s]12/27/2021 00:04:36 - INFO - __main__ -   Batch number = 203
+Evaluating:  63%|██████▎   | 203/321 [00:30<00:26,  4.42it/s]12/27/2021 00:04:36 - INFO - __main__ -   Batch number = 204
+Evaluating:  64%|██████▎   | 204/321 [00:31<00:23,  4.88it/s]12/27/2021 00:04:36 - INFO - __main__ -   Batch number = 205
+Evaluating:  64%|██████▍   | 205/321 [00:31<00:22,  5.27it/s]12/27/2021 00:04:36 - INFO - __main__ -   Batch number = 206
+Evaluating:  64%|██████▍   | 206/321 [00:31<00:20,  5.60it/s]12/27/2021 00:04:37 - INFO - __main__ -   Batch number = 207
+Evaluating:  64%|██████▍   | 207/321 [00:31<00:19,  5.84it/s]12/27/2021 00:04:37 - INFO - __main__ -   Batch number = 208
+Evaluating:  65%|██████▍   | 208/321 [00:31<00:18,  6.06it/s]12/27/2021 00:04:37 - INFO - __main__ -   Batch number = 209
+Evaluating:  65%|██████▌   | 209/321 [00:31<00:18,  6.22it/s]12/27/2021 00:04:37 - INFO - __main__ -   Batch number = 210
+Evaluating:  65%|██████▌   | 210/321 [00:32<00:17,  6.33it/s]12/27/2021 00:04:37 - INFO - __main__ -   Batch number = 211
+Evaluating:  66%|██████▌   | 211/321 [00:32<00:17,  6.44it/s]12/27/2021 00:04:37 - INFO - __main__ -   Batch number = 212
+Evaluating:  66%|██████▌   | 212/321 [00:32<00:16,  6.52it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 213
+Evaluating:  66%|██████▋   | 213/321 [00:32<00:16,  6.42it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 214
+Evaluating:  67%|██████▋   | 214/321 [00:32<00:16,  6.49it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 215
+Evaluating:  67%|██████▋   | 215/321 [00:32<00:16,  6.56it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 216
+Evaluating:  67%|██████▋   | 216/321 [00:32<00:15,  6.60it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 217
+Evaluating:  68%|██████▊   | 217/321 [00:33<00:15,  6.60it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 218
+Evaluating:  68%|██████▊   | 218/321 [00:33<00:15,  6.62it/s]12/27/2021 00:04:38 - INFO - __main__ -   Batch number = 219
+Evaluating:  68%|██████▊   | 219/321 [00:33<00:15,  6.63it/s]12/27/2021 00:04:39 - INFO - __main__ -   Batch number = 220
+Evaluating:  69%|██████▊   | 220/321 [00:33<00:15,  6.66it/s]12/27/2021 00:04:39 - INFO - __main__ -   Batch number = 221
+Evaluating:  69%|██████▉   | 221/321 [00:33<00:14,  6.68it/s]12/27/2021 00:04:39 - INFO - __main__ -   Batch number = 222
+Evaluating:  69%|██████▉   | 222/321 [00:33<00:14,  6.69it/s]12/27/2021 00:04:39 - INFO - __main__ -   Batch number = 223
+Evaluating:  69%|██████▉   | 223/321 [00:34<00:14,  6.70it/s]12/27/2021 00:04:39 - INFO - __main__ -   Batch number = 224
+Evaluating:  70%|██████▉   | 224/321 [00:34<00:14,  6.72it/s]12/27/2021 00:04:39 - INFO - __main__ -   Batch number = 225
+Evaluating:  70%|███████   | 225/321 [00:34<00:14,  6.74it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 226
+Evaluating:  70%|███████   | 226/321 [00:34<00:14,  6.75it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 227
+Evaluating:  71%|███████   | 227/321 [00:34<00:13,  6.75it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 228
+Evaluating:  71%|███████   | 228/321 [00:34<00:13,  6.74it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 229
+Evaluating:  71%|███████▏  | 229/321 [00:34<00:13,  6.74it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 230
+Evaluating:  72%|███████▏  | 230/321 [00:35<00:13,  6.76it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 231
+Evaluating:  72%|███████▏  | 231/321 [00:35<00:13,  6.75it/s]12/27/2021 00:04:40 - INFO - __main__ -   Batch number = 232
+Evaluating:  72%|███████▏  | 232/321 [00:35<00:13,  6.77it/s]12/27/2021 00:04:41 - INFO - __main__ -   Batch number = 233
+Evaluating:  73%|███████▎  | 233/321 [00:35<00:17,  4.98it/s]12/27/2021 00:04:41 - INFO - __main__ -   Batch number = 234
+Evaluating:  73%|███████▎  | 234/321 [00:35<00:16,  5.30it/s]12/27/2021 00:04:41 - INFO - __main__ -   Batch number = 235
+Evaluating:  73%|███████▎  | 235/321 [00:35<00:15,  5.54it/s]12/27/2021 00:04:41 - INFO - __main__ -   Batch number = 236
+Evaluating:  74%|███████▎  | 236/321 [00:36<00:14,  5.74it/s]12/27/2021 00:04:41 - INFO - __main__ -   Batch number = 237
+Evaluating:  74%|███████▍  | 237/321 [00:36<00:14,  5.87it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 238
+Evaluating:  74%|███████▍  | 238/321 [00:36<00:13,  5.98it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 239
+Evaluating:  74%|███████▍  | 239/321 [00:36<00:13,  6.07it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 240
+Evaluating:  75%|███████▍  | 240/321 [00:36<00:13,  6.12it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 241
+Evaluating:  75%|███████▌  | 241/321 [00:36<00:12,  6.16it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 242
+Evaluating:  75%|███████▌  | 242/321 [00:37<00:12,  6.18it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 243
+Evaluating:  76%|███████▌  | 243/321 [00:37<00:12,  6.19it/s]12/27/2021 00:04:42 - INFO - __main__ -   Batch number = 244
+Evaluating:  76%|███████▌  | 244/321 [00:37<00:12,  6.20it/s]12/27/2021 00:04:43 - INFO - __main__ -   Batch number = 245
+Evaluating:  76%|███████▋  | 245/321 [00:37<00:12,  6.20it/s]12/27/2021 00:04:43 - INFO - __main__ -   Batch number = 246
+Evaluating:  77%|███████▋  | 246/321 [00:37<00:12,  6.21it/s]12/27/2021 00:04:43 - INFO - __main__ -   Batch number = 247
+Evaluating:  77%|███████▋  | 247/321 [00:37<00:11,  6.21it/s]12/27/2021 00:04:43 - INFO - __main__ -   Batch number = 248
+Evaluating:  77%|███████▋  | 248/321 [00:38<00:11,  6.24it/s]12/27/2021 00:04:43 - INFO - __main__ -   Batch number = 249
+Evaluating:  78%|███████▊  | 249/321 [00:38<00:11,  6.25it/s]12/27/2021 00:04:43 - INFO - __main__ -   Batch number = 250
+Evaluating:  78%|███████▊  | 250/321 [00:38<00:11,  6.28it/s]12/27/2021 00:04:44 - INFO - __main__ -   Batch number = 251
+Evaluating:  78%|███████▊  | 251/321 [00:38<00:11,  6.31it/s]12/27/2021 00:04:44 - INFO - __main__ -   Batch number = 252
+Evaluating:  79%|███████▊  | 252/321 [00:38<00:10,  6.32it/s]12/27/2021 00:04:44 - INFO - __main__ -   Batch number = 253
+Evaluating:  79%|███████▉  | 253/321 [00:38<00:10,  6.28it/s]12/27/2021 00:04:44 - INFO - __main__ -   Batch number = 254
+Evaluating:  79%|███████▉  | 254/321 [00:39<00:10,  6.26it/s]12/27/2021 00:04:44 - INFO - __main__ -   Batch number = 255
+Evaluating:  79%|███████▉  | 255/321 [00:39<00:10,  6.24it/s]12/27/2021 00:04:44 - INFO - __main__ -   Batch number = 256
+Evaluating:  80%|███████▉  | 256/321 [00:39<00:10,  6.23it/s]12/27/2021 00:04:45 - INFO - __main__ -   Batch number = 257
+Evaluating:  80%|████████  | 257/321 [00:39<00:10,  6.22it/s]12/27/2021 00:04:45 - INFO - __main__ -   Batch number = 258
+Evaluating:  80%|████████  | 258/321 [00:39<00:10,  6.22it/s]12/27/2021 00:04:45 - INFO - __main__ -   Batch number = 259
+Evaluating:  81%|████████  | 259/321 [00:39<00:09,  6.21it/s]12/27/2021 00:04:45 - INFO - __main__ -   Batch number = 260
+Evaluating:  81%|████████  | 260/321 [00:40<00:10,  5.71it/s]12/27/2021 00:04:46 - INFO - __main__ -   Batch number = 261
+Evaluating:  81%|████████▏ | 261/321 [00:40<00:17,  3.44it/s]12/27/2021 00:04:46 - INFO - __main__ -   Batch number = 262
+Evaluating:  82%|████████▏ | 262/321 [00:40<00:15,  3.89it/s]12/27/2021 00:04:46 - INFO - __main__ -   Batch number = 263
+Evaluating:  82%|████████▏ | 263/321 [00:40<00:13,  4.34it/s]12/27/2021 00:04:46 - INFO - __main__ -   Batch number = 264
+Evaluating:  82%|████████▏ | 264/321 [00:41<00:11,  4.75it/s]12/27/2021 00:04:46 - INFO - __main__ -   Batch number = 265
+Evaluating:  83%|████████▎ | 265/321 [00:41<00:10,  5.12it/s]12/27/2021 00:04:46 - INFO - __main__ -   Batch number = 266
+Evaluating:  83%|████████▎ | 266/321 [00:41<00:10,  5.44it/s]12/27/2021 00:04:47 - INFO - __main__ -   Batch number = 267
+Evaluating:  83%|████████▎ | 267/321 [00:41<00:09,  5.70it/s]12/27/2021 00:04:47 - INFO - __main__ -   Batch number = 268
+Evaluating:  83%|████████▎ | 268/321 [00:41<00:09,  5.86it/s]12/27/2021 00:04:47 - INFO - __main__ -   Batch number = 269
+Evaluating:  84%|████████▍ | 269/321 [00:41<00:08,  5.95it/s]12/27/2021 00:04:47 - INFO - __main__ -   Batch number = 270
+Evaluating:  84%|████████▍ | 270/321 [00:42<00:08,  6.07it/s]12/27/2021 00:04:47 - INFO - __main__ -   Batch number = 271
+Evaluating:  84%|████████▍ | 271/321 [00:42<00:08,  6.16it/s]12/27/2021 00:04:47 - INFO - __main__ -   Batch number = 272
+Evaluating:  85%|████████▍ | 272/321 [00:42<00:07,  6.16it/s]12/27/2021 00:04:48 - INFO - __main__ -   Batch number = 273
+Evaluating:  85%|████████▌ | 273/321 [00:42<00:07,  6.18it/s]12/27/2021 00:04:48 - INFO - __main__ -   Batch number = 274
+Evaluating:  85%|████████▌ | 274/321 [00:42<00:07,  6.23it/s]12/27/2021 00:04:48 - INFO - __main__ -   Batch number = 275
+Evaluating:  86%|████████▌ | 275/321 [00:42<00:07,  6.30it/s]12/27/2021 00:04:48 - INFO - __main__ -   Batch number = 276
+Evaluating:  86%|████████▌ | 276/321 [00:43<00:07,  6.34it/s]12/27/2021 00:04:48 - INFO - __main__ -   Batch number = 277
+Evaluating:  86%|████████▋ | 277/321 [00:43<00:06,  6.29it/s]12/27/2021 00:04:48 - INFO - __main__ -   Batch number = 278
+Evaluating:  87%|████████▋ | 278/321 [00:43<00:06,  6.34it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 279
+Evaluating:  87%|████████▋ | 279/321 [00:43<00:06,  6.37it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 280
+Evaluating:  87%|████████▋ | 280/321 [00:43<00:06,  6.39it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 281
+Evaluating:  88%|████████▊ | 281/321 [00:43<00:06,  6.40it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 282
+Evaluating:  88%|████████▊ | 282/321 [00:43<00:06,  6.41it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 283
+Evaluating:  88%|████████▊ | 283/321 [00:44<00:05,  6.42it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 284
+Evaluating:  88%|████████▊ | 284/321 [00:44<00:05,  6.42it/s]12/27/2021 00:04:49 - INFO - __main__ -   Batch number = 285
+Evaluating:  89%|████████▉ | 285/321 [00:44<00:05,  6.38it/s]12/27/2021 00:04:50 - INFO - __main__ -   Batch number = 286
+Evaluating:  89%|████████▉ | 286/321 [00:44<00:05,  6.35it/s]12/27/2021 00:04:50 - INFO - __main__ -   Batch number = 287
+Evaluating:  89%|████████▉ | 287/321 [00:44<00:05,  6.36it/s]12/27/2021 00:04:50 - INFO - __main__ -   Batch number = 288
+Evaluating:  90%|████████▉ | 288/321 [00:44<00:05,  6.38it/s]12/27/2021 00:04:50 - INFO - __main__ -   Batch number = 289
+Evaluating:  90%|█████████ | 289/321 [00:45<00:05,  6.38it/s]12/27/2021 00:04:50 - INFO - __main__ -   Batch number = 290
+Evaluating:  90%|█████████ | 290/321 [00:45<00:04,  6.39it/s]12/27/2021 00:04:50 - INFO - __main__ -   Batch number = 291
+Evaluating:  91%|█████████ | 291/321 [00:45<00:04,  6.40it/s]12/27/2021 00:04:51 - INFO - __main__ -   Batch number = 292
+Evaluating:  91%|█████████ | 292/321 [00:45<00:04,  5.96it/s]12/27/2021 00:04:51 - INFO - __main__ -   Batch number = 293
+Evaluating:  91%|█████████▏| 293/321 [00:45<00:04,  6.07it/s]12/27/2021 00:04:51 - INFO - __main__ -   Batch number = 294
+Evaluating:  92%|█████████▏| 294/321 [00:45<00:04,  6.07it/s]12/27/2021 00:04:51 - INFO - __main__ -   Batch number = 295
+Evaluating:  92%|█████████▏| 295/321 [00:46<00:04,  6.07it/s]12/27/2021 00:04:51 - INFO - __main__ -   Batch number = 296
+Evaluating:  92%|█████████▏| 296/321 [00:46<00:04,  6.19it/s]12/27/2021 00:04:51 - INFO - __main__ -   Batch number = 297
+Evaluating:  93%|█████████▎| 297/321 [00:46<00:04,  5.61it/s]12/27/2021 00:04:52 - INFO - __main__ -   Batch number = 298
+Evaluating:  93%|█████████▎| 298/321 [00:46<00:03,  5.84it/s]12/27/2021 00:04:52 - INFO - __main__ -   Batch number = 299
+Evaluating:  93%|█████████▎| 299/321 [00:46<00:03,  5.87it/s]12/27/2021 00:04:52 - INFO - __main__ -   Batch number = 300
+Evaluating:  93%|█████████▎| 300/321 [00:46<00:03,  5.88it/s]12/27/2021 00:04:52 - INFO - __main__ -   Batch number = 301
+Evaluating:  94%|█████████▍| 301/321 [00:47<00:03,  5.88it/s]12/27/2021 00:04:52 - INFO - __main__ -   Batch number = 302
+Evaluating:  94%|█████████▍| 302/321 [00:47<00:03,  5.90it/s]12/27/2021 00:04:52 - INFO - __main__ -   Batch number = 303
+Evaluating:  94%|█████████▍| 303/321 [00:47<00:03,  5.90it/s]12/27/2021 00:04:53 - INFO - __main__ -   Batch number = 304
+Evaluating:  95%|█████████▍| 304/321 [00:47<00:02,  5.96it/s]12/27/2021 00:04:53 - INFO - __main__ -   Batch number = 305
+Evaluating:  95%|█████████▌| 305/321 [00:47<00:02,  6.00it/s]12/27/2021 00:04:53 - INFO - __main__ -   Batch number = 306
+Evaluating:  95%|█████████▌| 306/321 [00:47<00:02,  5.98it/s]12/27/2021 00:04:53 - INFO - __main__ -   Batch number = 307
+Evaluating:  96%|█████████▌| 307/321 [00:48<00:02,  5.99it/s]12/27/2021 00:04:53 - INFO - __main__ -   Batch number = 308
+Evaluating:  96%|█████████▌| 308/321 [00:48<00:02,  6.05it/s]12/27/2021 00:04:53 - INFO - __main__ -   Batch number = 309
+Evaluating:  96%|█████████▋| 309/321 [00:48<00:01,  6.13it/s]12/27/2021 00:04:54 - INFO - __main__ -   Batch number = 310
+Evaluating:  97%|█████████▋| 310/321 [00:48<00:01,  6.19it/s]12/27/2021 00:04:54 - INFO - __main__ -   Batch number = 311
+Evaluating:  97%|█████████▋| 311/321 [00:48<00:01,  6.18it/s]12/27/2021 00:04:54 - INFO - __main__ -   Batch number = 312
+Evaluating:  97%|█████████▋| 312/321 [00:48<00:01,  6.18it/s]12/27/2021 00:04:54 - INFO - __main__ -   Batch number = 313
+Evaluating:  98%|█████████▊| 313/321 [00:49<00:01,  6.22it/s]12/27/2021 00:04:54 - INFO - __main__ -   Batch number = 314
+Evaluating:  98%|█████████▊| 314/321 [00:49<00:01,  6.26it/s]12/27/2021 00:04:54 - INFO - __main__ -   Batch number = 315
+Evaluating:  98%|█████████▊| 315/321 [00:49<00:00,  6.20it/s]12/27/2021 00:04:55 - INFO - __main__ -   Batch number = 316
+Evaluating:  98%|█████████▊| 316/321 [00:49<00:00,  6.20it/s]12/27/2021 00:04:55 - INFO - __main__ -   Batch number = 317
+Evaluating:  99%|█████████▉| 317/321 [00:49<00:00,  6.24it/s]12/27/2021 00:04:55 - INFO - __main__ -   Batch number = 318
+Evaluating:  99%|█████████▉| 318/321 [00:49<00:00,  6.28it/s]12/27/2021 00:04:55 - INFO - __main__ -   Batch number = 319
+Evaluating:  99%|█████████▉| 319/321 [00:49<00:00,  6.31it/s]12/27/2021 00:04:55 - INFO - __main__ -   Batch number = 320
+Evaluating: 100%|█████████▉| 320/321 [00:50<00:00,  6.26it/s]12/27/2021 00:04:55 - INFO - __main__ -   Batch number = 321
+Evaluating: 100%|██████████| 321/321 [00:50<00:00,  6.39it/s]
+12/27/2021 00:04:58 - INFO - __main__ -   ***** Evaluation result  in zh *****
+12/27/2021 00:04:58 - INFO - __main__ -     f1 = 0.29689779247301373
+12/27/2021 00:04:58 - INFO - __main__ -     loss = 2.353924803273329
+12/27/2021 00:04:58 - INFO - __main__ -     precision = 0.21353383458646616
+12/27/2021 00:04:58 - INFO - __main__ -     recall = 0.48703836643535137
+PyTorch version 1.10.0+cu102 available.
+12/27/2021 00:05:00 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='zh', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:05:00 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+12/27/2021 00:05:00 - INFO - __main__ -   Seed = 3
+12/27/2021 00:05:00 - INFO - root -   save model
+12/27/2021 00:05:00 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='zh', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea/outputs//panx/my-bert-base-multilingual-cased-MaxLen128_ner_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='ner', predict_task_adapter='output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+12/27/2021 00:05:00 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+12/27/2021 00:05:04 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+12/27/2021 00:05:10 - INFO - __main__ -   Using lang2id = None
+12/27/2021 00:05:10 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+12/27/2021 00:05:10 - INFO - __main__ -   Task Adapter will be loaded from this path output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/
+12/27/2021 00:05:10 - INFO - root -   Trying to decide if add adapter
+12/27/2021 00:05:10 - INFO - root -   loading task adapter
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/adapter_config.json
+Adding adapter 'ner' of type 'text_task'.
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_adapter.bin
+Loading module configuration from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/head_config.json
+Loading module weights from output/panx/my-bert-base-multilingual-cased-LR1e-4-epoch100-MaxLen128-TrainLangen_en_s3/checkpoint-best/ner/pytorch_model_head.bin
+12/27/2021 00:05:10 - INFO - root -   loading lang adpater zh/wiki@ukp
+12/27/2021 00:05:10 - INFO - __main__ -   Adapter Languages : ['zh'], Length : 1
+12/27/2021 00:05:10 - INFO - __main__ -   Adapter Names ['zh/wiki@ukp'], Length : 1
+12/27/2021 00:05:10 - INFO - __main__ -   Language = zh
+12/27/2021 00:05:10 - INFO - __main__ -   Adapter Name = zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/bert-base-multilingual-cased/pfeiffer/zh_pfeiffer_gelu_nd.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/6f2564c361bc79c3ea57846eaf144dcc612ca7882a3013f211ca168a6b3ee081-fe0c0730695790561f8ea222ddccd7cf7d222dd35f0b266559f463e9656eab36-extracted'
+12/27/2021 00:05:15 - INFO - __main__ -   Language adapter for zh found
+12/27/2021 00:05:15 - INFO - __main__ -   Set active language adapter to zh
+12/27/2021 00:05:15 - INFO - __main__ -   Args Adapter Weight = None
+12/27/2021 00:05:15 - INFO - __main__ -   Adapter Languages = ['zh']
+12/27/2021 00:05:15 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea/data//panx/panx_processed_maxlen128/cached_test_zh_bert-base-multilingual-cased_128
+12/27/2021 00:05:16 - INFO - __main__ -   ***** Running evaluation  in zh *****
+12/27/2021 00:05:16 - INFO - __main__ -     Num examples = 10257
+12/27/2021 00:05:16 - INFO - __main__ -     Batch size = 32
+Evaluating:   0%|          | 0/321 [00:00<?, ?it/s]12/27/2021 00:05:16 - INFO - __main__ -   Batch number = 1
+Evaluating:   0%|          | 1/321 [00:00<00:50,  6.28it/s]12/27/2021 00:05:16 - INFO - __main__ -   Batch number = 2
+Evaluating:   1%|          | 2/321 [00:00<00:48,  6.61it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 3
+Evaluating:   1%|          | 3/321 [00:00<00:46,  6.84it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 4
+Evaluating:   1%|          | 4/321 [00:00<00:45,  6.96it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 5
+Evaluating:   2%|▏         | 5/321 [00:00<00:44,  7.02it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 6
+Evaluating:   2%|▏         | 6/321 [00:00<00:44,  7.07it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 7
+Evaluating:   2%|▏         | 7/321 [00:01<00:44,  7.09it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 8
+Evaluating:   2%|▏         | 8/321 [00:01<00:43,  7.12it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 9
+Evaluating:   3%|▎         | 9/321 [00:01<00:43,  7.13it/s]12/27/2021 00:05:17 - INFO - __main__ -   Batch number = 10
+Evaluating:   3%|▎         | 10/321 [00:01<00:43,  7.12it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 11
+Evaluating:   3%|▎         | 11/321 [00:01<00:43,  7.13it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 12
+Evaluating:   4%|▎         | 12/321 [00:01<00:43,  7.14it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 13
+Evaluating:   4%|▍         | 13/321 [00:01<00:43,  7.15it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 14
+Evaluating:   4%|▍         | 14/321 [00:01<00:42,  7.14it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 15
+Evaluating:   5%|▍         | 15/321 [00:02<00:42,  7.14it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 16
+Evaluating:   5%|▍         | 16/321 [00:02<00:42,  7.15it/s]12/27/2021 00:05:18 - INFO - __main__ -   Batch number = 17
+Evaluating:   5%|▌         | 17/321 [00:02<00:42,  7.14it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 18
+Evaluating:   6%|▌         | 18/321 [00:02<00:42,  7.15it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 19
+Evaluating:   6%|▌         | 19/321 [00:02<00:42,  7.12it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 20
+Evaluating:   6%|▌         | 20/321 [00:02<00:42,  7.13it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 21
+Evaluating:   7%|▋         | 21/321 [00:02<00:42,  7.12it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 22
+Evaluating:   7%|▋         | 22/321 [00:03<00:42,  7.12it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 23
+Evaluating:   7%|▋         | 23/321 [00:03<00:41,  7.12it/s]12/27/2021 00:05:19 - INFO - __main__ -   Batch number = 24
+Evaluating:   7%|▋         | 24/321 [00:03<00:41,  7.12it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 25
+Evaluating:   8%|▊         | 25/321 [00:03<00:41,  7.12it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 26
+Evaluating:   8%|▊         | 26/321 [00:03<00:41,  7.12it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 27
+Evaluating:   8%|▊         | 27/321 [00:03<00:41,  7.11it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 28
+Evaluating:   9%|▊         | 28/321 [00:03<00:41,  7.10it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 29
+Evaluating:   9%|▉         | 29/321 [00:04<00:41,  7.10it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 30
+Evaluating:   9%|▉         | 30/321 [00:04<00:41,  7.08it/s]12/27/2021 00:05:20 - INFO - __main__ -   Batch number = 31
+Evaluating:  10%|▉         | 31/321 [00:04<00:40,  7.08it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 32
+Evaluating:  10%|▉         | 32/321 [00:04<00:41,  6.97it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 33
+Evaluating:  10%|█         | 33/321 [00:04<00:41,  7.00it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 34
+Evaluating:  11%|█         | 34/321 [00:04<00:40,  7.03it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 35
+Evaluating:  11%|█         | 35/321 [00:04<00:40,  7.03it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 36
+Evaluating:  11%|█         | 36/321 [00:05<00:40,  7.03it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 37
+Evaluating:  12%|█▏        | 37/321 [00:05<00:40,  7.04it/s]12/27/2021 00:05:21 - INFO - __main__ -   Batch number = 38
+Evaluating:  12%|█▏        | 38/321 [00:05<00:40,  7.05it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 39
+Evaluating:  12%|█▏        | 39/321 [00:05<00:39,  7.06it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 40
+Evaluating:  12%|█▏        | 40/321 [00:05<00:39,  7.08it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 41
+Evaluating:  13%|█▎        | 41/321 [00:05<00:39,  7.08it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 42
+Evaluating:  13%|█▎        | 42/321 [00:05<00:39,  7.06it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 43
+Evaluating:  13%|█▎        | 43/321 [00:06<00:39,  7.07it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 44
+Evaluating:  14%|█▎        | 44/321 [00:06<00:39,  7.08it/s]12/27/2021 00:05:22 - INFO - __main__ -   Batch number = 45
+Evaluating:  14%|█▍        | 45/321 [00:06<00:38,  7.08it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 46
+Evaluating:  14%|█▍        | 46/321 [00:06<00:38,  7.08it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 47
+Evaluating:  15%|█▍        | 47/321 [00:06<00:38,  7.06it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 48
+Evaluating:  15%|█▍        | 48/321 [00:06<00:38,  7.07it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 49
+Evaluating:  15%|█▌        | 49/321 [00:06<00:38,  7.06it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 50
+Evaluating:  16%|█▌        | 50/321 [00:07<00:38,  7.06it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 51
+Evaluating:  16%|█▌        | 51/321 [00:07<00:38,  7.06it/s]12/27/2021 00:05:23 - INFO - __main__ -   Batch number = 52
+Evaluating:  16%|█▌        | 52/321 [00:07<00:38,  7.06it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 53
+Evaluating:  17%|█▋        | 53/321 [00:07<00:37,  7.06it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 54
+Evaluating:  17%|█▋        | 54/321 [00:07<00:37,  7.05it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 55
+Evaluating:  17%|█▋        | 55/321 [00:07<00:37,  7.05it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 56
+Evaluating:  17%|█▋        | 56/321 [00:07<00:37,  7.06it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 57
+Evaluating:  18%|█▊        | 57/321 [00:08<00:37,  7.06it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 58
+Evaluating:  18%|█▊        | 58/321 [00:08<00:37,  7.06it/s]12/27/2021 00:05:24 - INFO - __main__ -   Batch number = 59
+Evaluating:  18%|█▊        | 59/321 [00:08<00:37,  7.05it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 60
+Evaluating:  19%|█▊        | 60/321 [00:08<00:36,  7.06it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 61
+Evaluating:  19%|█▉        | 61/321 [00:08<00:37,  7.03it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 62
+Evaluating:  19%|█▉        | 62/321 [00:08<00:36,  7.04it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 63
+Evaluating:  20%|█▉        | 63/321 [00:08<00:36,  7.03it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 64
+Evaluating:  20%|█▉        | 64/321 [00:09<00:36,  7.04it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 65
+Evaluating:  20%|██        | 65/321 [00:09<00:36,  7.03it/s]12/27/2021 00:05:25 - INFO - __main__ -   Batch number = 66
+Evaluating:  21%|██        | 66/321 [00:09<00:36,  7.03it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 67
+Evaluating:  21%|██        | 67/321 [00:09<00:40,  6.23it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 68
+Evaluating:  21%|██        | 68/321 [00:09<00:39,  6.46it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 69
+Evaluating:  21%|██▏       | 69/321 [00:09<00:38,  6.61it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 70
+Evaluating:  22%|██▏       | 70/321 [00:09<00:37,  6.73it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 71
+Evaluating:  22%|██▏       | 71/321 [00:10<00:36,  6.82it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 72
+Evaluating:  22%|██▏       | 72/321 [00:10<00:36,  6.87it/s]12/27/2021 00:05:26 - INFO - __main__ -   Batch number = 73
+Evaluating:  23%|██▎       | 73/321 [00:10<00:35,  6.91it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 74
+Evaluating:  23%|██▎       | 74/321 [00:10<00:35,  6.90it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 75
+Evaluating:  23%|██▎       | 75/321 [00:10<00:35,  6.90it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 76
+Evaluating:  24%|██▎       | 76/321 [00:10<00:35,  6.93it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 77
+Evaluating:  24%|██▍       | 77/321 [00:10<00:35,  6.95it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 78
+Evaluating:  24%|██▍       | 78/321 [00:11<00:34,  6.97it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 79
+Evaluating:  25%|██▍       | 79/321 [00:11<00:34,  6.98it/s]12/27/2021 00:05:27 - INFO - __main__ -   Batch number = 80
+Evaluating:  25%|██▍       | 80/321 [00:11<00:34,  7.00it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 81
+Evaluating:  25%|██▌       | 81/321 [00:11<00:34,  6.97it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 82
+Evaluating:  26%|██▌       | 82/321 [00:11<00:34,  6.98it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 83
+Evaluating:  26%|██▌       | 83/321 [00:11<00:34,  6.98it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 84
+Evaluating:  26%|██▌       | 84/321 [00:11<00:33,  6.98it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 85
+Evaluating:  26%|██▋       | 85/321 [00:12<00:33,  6.97it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 86
+Evaluating:  27%|██▋       | 86/321 [00:12<00:33,  6.95it/s]12/27/2021 00:05:28 - INFO - __main__ -   Batch number = 87
+Evaluating:  27%|██▋       | 87/321 [00:12<00:33,  6.92it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 88
+Evaluating:  27%|██▋       | 88/321 [00:12<00:33,  6.91it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 89
+Evaluating:  28%|██▊       | 89/321 [00:12<00:33,  6.93it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 90
+Evaluating:  28%|██▊       | 90/321 [00:12<00:33,  6.94it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 91
+Evaluating:  28%|██▊       | 91/321 [00:12<00:33,  6.94it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 92
+Evaluating:  29%|██▊       | 92/321 [00:13<00:33,  6.84it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 93
+Evaluating:  29%|██▉       | 93/321 [00:13<00:33,  6.83it/s]12/27/2021 00:05:29 - INFO - __main__ -   Batch number = 94
+Evaluating:  29%|██▉       | 94/321 [00:13<00:32,  6.88it/s]12/27/2021 00:05:30 - INFO - __main__ -   Batch number = 95
+Evaluating:  30%|██▉       | 95/321 [00:13<00:32,  6.90it/s]12/27/2021 00:05:30 - INFO - __main__ -   Batch number = 96
+Evaluating:  30%|██▉       | 96/321 [00:13<00:32,  6.89it/s]12/27/2021 00:05:30 - INFO - __main__ -   Batch number = 97
+Evaluating:  30%|███       | 97/321 [00:13<00:32,  6.88it/s]12/27/2021 00:05:30 - INFO - __main__ -   Batch number = 98
+Evaluating:  31%|███       | 98/321 [00:14<00:32,  6.88it/s]12/27/2021 00:05:30 - INFO - __main__ -   Batch number = 99
+Evaluating:  31%|███       | 99/321 [00:14<00:32,  6.86it/s]12/27/2021 00:05:30 - INFO - __main__ -   Batch number = 100
+Evaluating:  31%|███       | 100/321 [00:14<00:32,  6.86it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 101
+Evaluating:  31%|███▏      | 101/321 [00:14<00:32,  6.85it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 102
+Evaluating:  32%|███▏      | 102/321 [00:14<00:31,  6.86it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 103
+Evaluating:  32%|███▏      | 103/321 [00:14<00:31,  6.84it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 104
+Evaluating:  32%|███▏      | 104/321 [00:14<00:31,  6.84it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 105
+Evaluating:  33%|███▎      | 105/321 [00:15<00:31,  6.85it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 106
+Evaluating:  33%|███▎      | 106/321 [00:15<00:31,  6.86it/s]12/27/2021 00:05:31 - INFO - __main__ -   Batch number = 107
+Evaluating:  33%|███▎      | 107/321 [00:15<00:31,  6.86it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 108
+Evaluating:  34%|███▎      | 108/321 [00:15<00:31,  6.86it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 109
+Evaluating:  34%|███▍      | 109/321 [00:15<00:30,  6.88it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 110
+Evaluating:  34%|███▍      | 110/321 [00:15<00:30,  6.85it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 111
+Evaluating:  35%|███▍      | 111/321 [00:15<00:30,  6.83it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 112
+Evaluating:  35%|███▍      | 112/321 [00:16<00:30,  6.87it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 113
+Evaluating:  35%|███▌      | 113/321 [00:16<00:30,  6.89it/s]12/27/2021 00:05:32 - INFO - __main__ -   Batch number = 114
+Evaluating:  36%|███▌      | 114/321 [00:16<00:30,  6.90it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 115
+Evaluating:  36%|███▌      | 115/321 [00:16<00:29,  6.88it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 116
+Evaluating:  36%|███▌      | 116/321 [00:16<00:29,  6.90it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 117
+Evaluating:  36%|███▋      | 117/321 [00:16<00:29,  6.89it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 118
+Evaluating:  37%|███▋      | 118/321 [00:16<00:29,  6.87it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 119
+Evaluating:  37%|███▋      | 119/321 [00:17<00:29,  6.86it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 120
+Evaluating:  37%|███▋      | 120/321 [00:17<00:29,  6.83it/s]12/27/2021 00:05:33 - INFO - __main__ -   Batch number = 121
+Evaluating:  38%|███▊      | 121/321 [00:17<00:29,  6.82it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 122
+Evaluating:  38%|███▊      | 122/321 [00:17<00:29,  6.83it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 123
+Evaluating:  38%|███▊      | 123/321 [00:17<00:28,  6.84it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 124
+Evaluating:  39%|███▊      | 124/321 [00:17<00:28,  6.81it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 125
+Evaluating:  39%|███▉      | 125/321 [00:17<00:29,  6.76it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 126
+Evaluating:  39%|███▉      | 126/321 [00:18<00:28,  6.76it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 127
+Evaluating:  40%|███▉      | 127/321 [00:18<00:28,  6.78it/s]12/27/2021 00:05:34 - INFO - __main__ -   Batch number = 128
+Evaluating:  40%|███▉      | 128/321 [00:18<00:28,  6.81it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 129
+Evaluating:  40%|████      | 129/321 [00:18<00:28,  6.84it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 130
+Evaluating:  40%|████      | 130/321 [00:18<00:27,  6.85it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 131
+Evaluating:  41%|████      | 131/321 [00:18<00:27,  6.83it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 132
+Evaluating:  41%|████      | 132/321 [00:18<00:27,  6.85it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 133
+Evaluating:  41%|████▏     | 133/321 [00:19<00:27,  6.85it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 134
+Evaluating:  42%|████▏     | 134/321 [00:19<00:27,  6.84it/s]12/27/2021 00:05:35 - INFO - __main__ -   Batch number = 135
+Evaluating:  42%|████▏     | 135/321 [00:19<00:27,  6.83it/s]12/27/2021 00:05:36 - INFO - __main__ -   Batch number = 136
+Evaluating:  42%|████▏     | 136/321 [00:19<00:41,  4.42it/s]12/27/2021 00:05:36 - INFO - __main__ -   Batch number = 137
+Evaluating:  43%|████▎     | 137/321 [00:19<00:37,  4.90it/s]12/27/2021 00:05:36 - INFO - __main__ -   Batch number = 138
+Evaluating:  43%|████▎     | 138/321 [00:20<00:34,  5.34it/s]12/27/2021 00:05:36 - INFO - __main__ -   Batch number = 139
+Evaluating:  43%|████▎     | 139/321 [00:20<00:32,  5.66it/s]12/27/2021 00:05:36 - INFO - __main__ -   Batch number = 140
+Evaluating:  44%|████▎     | 140/321 [00:20<00:30,  5.89it/s]12/27/2021 00:05:37 - INFO - __main__ -   Batch number = 141
+Evaluating:  44%|████▍     | 141/321 [00:20<00:29,  6.08it/s]12/27/2021 00:05:37 - INFO - __main__ -   Batch number = 142
+Evaluating:  44%|████▍     | 142/321 [00:20<00:28,  6.24it/s]12/27/2021 00:05:37 - INFO - __main__ -   Batch number = 143
+Evaluating:  45%|████▍     | 143/321 [00:20<00:28,  6.32it/s]12/27/2021 00:05:37 - INFO - __main__ -   Batch number = 144
+Evaluating:  45%|████▍     | 144/321 [00:21<00:27,  6.37it/s]12/27/2021 00:05:37 - INFO - __main__ -   Batch number = 145
+Evaluating:  45%|████▌     | 145/321 [00:21<00:27,  6.41it/s]12/27/2021 00:05:37 - INFO - __main__ -   Batch number = 146
+Evaluating:  45%|████▌     | 146/321 [00:21<00:27,  6.40it/s]12/27/2021 00:05:38 - INFO - __main__ -   Batch number = 147
+Evaluating:  46%|████▌     | 147/321 [00:21<00:27,  6.36it/s]12/27/2021 00:05:38 - INFO - __main__ -   Batch number = 148
+Evaluating:  46%|████▌     | 148/321 [00:21<00:27,  6.35it/s]12/27/2021 00:05:38 - INFO - __main__ -   Batch number = 149
+Evaluating:  46%|████▋     | 149/321 [00:21<00:27,  6.36it/s]12/27/2021 00:05:38 - INFO - __main__ -   Batch number = 150
+Evaluating:  47%|████▋     | 150/321 [00:21<00:26,  6.39it/s]12/27/2021 00:05:38 - INFO - __main__ -   Batch number = 151
+Evaluating:  47%|████▋     | 151/321 [00:22<00:26,  6.43it/s]12/27/2021 00:05:38 - INFO - __main__ -   Batch number = 152
+Evaluating:  47%|████▋     | 152/321 [00:22<00:26,  6.44it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 153
+Evaluating:  48%|████▊     | 153/321 [00:22<00:26,  6.46it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 154
+Evaluating:  48%|████▊     | 154/321 [00:22<00:25,  6.48it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 155
+Evaluating:  48%|████▊     | 155/321 [00:22<00:25,  6.45it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 156
+Evaluating:  49%|████▊     | 156/321 [00:22<00:25,  6.43it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 157
+Evaluating:  49%|████▉     | 157/321 [00:23<00:25,  6.43it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 158
+Evaluating:  49%|████▉     | 158/321 [00:23<00:25,  6.43it/s]12/27/2021 00:05:39 - INFO - __main__ -   Batch number = 159
+Evaluating:  50%|████▉     | 159/321 [00:23<00:25,  6.38it/s]12/27/2021 00:05:40 - INFO - __main__ -   Batch number = 160
+Evaluating:  50%|████▉     | 160/321 [00:23<00:25,  6.35it/s]12/27/2021 00:05:40 - INFO - __main__ -   Batch number = 161
+Evaluating:  50%|█████     | 161/321 [00:23<00:25,  6.33it/s]12/27/2021 00:05:40 - INFO - __main__ -   Batch number = 162
+Evaluating:  50%|█████     | 162/321 [00:23<00:25,  6.31it/s]12/27/2021 00:05:40 - INFO - __main__ -   Batch number = 163
+Evaluating:  51%|█████     | 163/321 [00:24<00:25,  6.30it/s]12/27/2021 00:05:40 - INFO - __main__ -   Batch number = 164
+Evaluating:  51%|█████     | 164/321 [00:24<00:24,  6.29it/s]12/27/2021 00:05:40 - INFO - __main__ -   Batch number = 165
+Evaluating:  51%|█████▏    | 165/321 [00:24<00:24,  6.28it/s]12/27/2021 00:05:41 - INFO - __main__ -   Batch number = 166
+Evaluating:  52%|█████▏    | 166/321 [00:24<00:38,  4.04it/s]12/27/2021 00:05:41 - INFO - __main__ -   Batch number = 167
+Evaluating:  52%|█████▏    | 167/321 [00:24<00:33,  4.54it/s]12/27/2021 00:05:41 - INFO - __main__ -   Batch number = 168
+Evaluating:  52%|█████▏    | 168/321 [00:25<00:30,  5.03it/s]12/27/2021 00:05:41 - INFO - __main__ -   Batch number = 169
+Evaluating:  53%|█████▎    | 169/321 [00:25<00:28,  5.43it/s]12/27/2021 00:05:41 - INFO - __main__ -   Batch number = 170
+Evaluating:  53%|█████▎    | 170/321 [00:25<00:26,  5.72it/s]12/27/2021 00:05:42 - INFO - __main__ -   Batch number = 171
+Evaluating:  53%|█████▎    | 171/321 [00:25<00:25,  5.93it/s]12/27/2021 00:05:42 - INFO - __main__ -   Batch number = 172
+Evaluating:  54%|█████▎    | 172/321 [00:25<00:24,  6.10it/s]12/27/2021 00:05:42 - INFO - __main__ -   Batch number = 173
+Evaluating:  54%|█████▍    | 173/321 [00:25<00:23,  6.22it/s]12/27/2021 00:05:42 - INFO - __main__ -   Batch number = 174
+Evaluating:  54%|█████▍    | 174/321 [00:26<00:23,  6.27it/s]12/27/2021 00:05:42 - INFO - __main__ -   Batch number = 175
+Evaluating:  55%|█████▍    | 175/321 [00:26<00:23,  6.29it/s]12/27/2021 00:05:42 - INFO - __main__ -   Batch number = 176
+Evaluating:  55%|█████▍    | 176/321 [00:26<00:22,  6.31it/s]12/27/2021 00:05:43 - INFO - __main__ -   Batch number = 177
+Evaluating:  55%|█████▌    | 177/321 [00:26<00:22,  6.31it/s]12/27/2021 00:05:43 - INFO - __main__ -   Batch number = 178
+Evaluating:  55%|█████▌    | 178/321 [00:26<00:22,  6.29it/s]12/27/2021 00:05:43 - INFO - __main__ -   Batch number = 179
+Evaluating:  56%|█████▌    | 179/321 [00:26<00:22,  6.27it/s]12/27/2021 00:05:43 - INFO - __main__ -   Batch number = 180
+Evaluating:  56%|█████▌    | 180/321 [00:26<00:22,  6.28it/s]12/27/2021 00:05:43 - INFO - __main__ -   Batch number = 181
+Evaluating:  56%|█████▋    | 181/321 [00:27<00:22,  6.27it/s]12/27/2021 00:05:43 - INFO - __main__ -   Batch number = 182
+Evaluating:  57%|█████▋    | 182/321 [00:27<00:22,  6.27it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 183
+Evaluating:  57%|█████▋    | 183/321 [00:27<00:22,  6.26it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 184
+Evaluating:  57%|█████▋    | 184/321 [00:27<00:21,  6.26it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 185
+Evaluating:  58%|█████▊    | 185/321 [00:27<00:21,  6.26it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 186
+Evaluating:  58%|█████▊    | 186/321 [00:27<00:21,  6.25it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 187
+Evaluating:  58%|█████▊    | 187/321 [00:28<00:21,  6.26it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 188
+Evaluating:  59%|█████▊    | 188/321 [00:28<00:21,  6.26it/s]12/27/2021 00:05:44 - INFO - __main__ -   Batch number = 189
+Evaluating:  59%|█████▉    | 189/321 [00:28<00:21,  6.26it/s]12/27/2021 00:05:45 - INFO - __main__ -   Batch number = 190
+Evaluating:  59%|█████▉    | 190/321 [00:28<00:20,  6.28it/s]12/27/2021 00:05:45 - INFO - __main__ -   Batch number = 191
+Evaluating:  60%|█████▉    | 191/321 [00:28<00:20,  6.30it/s]12/27/2021 00:05:45 - INFO - __main__ -   Batch number = 192
+Evaluating:  60%|█████▉    | 192/321 [00:28<00:20,  6.32it/s]12/27/2021 00:05:45 - INFO - __main__ -   Batch number = 193
+Evaluating:  60%|██████    | 193/321 [00:29<00:20,  6.32it/s]12/27/2021 00:05:45 - INFO - __main__ -   Batch number = 194
+Evaluating:  60%|██████    | 194/321 [00:29<00:20,  6.33it/s]12/27/2021 00:05:45 - INFO - __main__ -   Batch number = 195
+Evaluating:  61%|██████    | 195/321 [00:29<00:19,  6.30it/s]12/27/2021 00:05:46 - INFO - __main__ -   Batch number = 196
+Evaluating:  61%|██████    | 196/321 [00:29<00:26,  4.64it/s]12/27/2021 00:05:46 - INFO - __main__ -   Batch number = 197
+Evaluating:  61%|██████▏   | 197/321 [00:29<00:24,  5.02it/s]12/27/2021 00:05:46 - INFO - __main__ -   Batch number = 198
+Evaluating:  62%|██████▏   | 198/321 [00:30<00:23,  5.28it/s]12/27/2021 00:05:46 - INFO - __main__ -   Batch number = 199
+Evaluating:  62%|██████▏   | 199/321 [00:30<00:21,  5.56it/s]12/27/2021 00:05:46 - INFO - __main__ -   Batch number = 200
+Evaluating:  62%|██████▏   | 200/321 [00:30<00:20,  5.78it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 201
+Evaluating:  63%|██████▎   | 201/321 [00:30<00:19,  6.02it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 202
+Evaluating:  63%|██████▎   | 202/321 [00:30<00:19,  6.22it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 203
+Evaluating:  63%|██████▎   | 203/321 [00:30<00:18,  6.37it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 204
+Evaluating:  64%|██████▎   | 204/321 [00:30<00:18,  6.50it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 205
+Evaluating:  64%|██████▍   | 205/321 [00:31<00:17,  6.58it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 206
+Evaluating:  64%|██████▍   | 206/321 [00:31<00:17,  6.65it/s]12/27/2021 00:05:47 - INFO - __main__ -   Batch number = 207
+Evaluating:  64%|██████▍   | 207/321 [00:31<00:17,  6.68it/s]12/27/2021 00:05:48 - INFO - __main__ -   Batch number = 208
+Evaluating:  65%|██████▍   | 208/321 [00:31<00:16,  6.68it/s]12/27/2021 00:05:48 - INFO - __main__ -   Batch number = 209
+Evaluating:  65%|██████▌   | 209/321 [00:31<00:16,  6.65it/s]12/27/2021 00:05:48 - INFO - __main__ -   Batch number = 210
+Evaluating:  65%|██████▌   | 210/321 [00:31<00:16,  6.64it/s]12/27/2021 00:05:48 - INFO - __main__ -   Batch number = 211
+Evaluating:  66%|██████▌   | 211/321 [00:31<00:16,  6.64it/s]12/27/2021 00:05:48 - INFO - __main__ -   Batch number = 212
+Evaluating:  66%|██████▌   | 212/321 [00:32<00:16,  6.63it/s]12/27/2021 00:05:48 - INFO - __main__ -   Batch number = 213
+Evaluating:  66%|██████▋   | 213/321 [00:32<00:16,  6.61it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 214
+Evaluating:  67%|██████▋   | 214/321 [00:32<00:16,  6.62it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 215
+Evaluating:  67%|██████▋   | 215/321 [00:32<00:15,  6.63it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 216
+Evaluating:  67%|██████▋   | 216/321 [00:32<00:15,  6.63it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 217
+Evaluating:  68%|██████▊   | 217/321 [00:32<00:15,  6.62it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 218
+Evaluating:  68%|██████▊   | 218/321 [00:33<00:15,  6.63it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 219
+Evaluating:  68%|██████▊   | 219/321 [00:33<00:15,  6.62it/s]12/27/2021 00:05:49 - INFO - __main__ -   Batch number = 220
+Evaluating:  69%|██████▊   | 220/321 [00:33<00:15,  6.66it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 221
+Evaluating:  69%|██████▉   | 221/321 [00:33<00:14,  6.68it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 222
+Evaluating:  69%|██████▉   | 222/321 [00:33<00:14,  6.70it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 223
+Evaluating:  69%|██████▉   | 223/321 [00:33<00:14,  6.65it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 224
+Evaluating:  70%|██████▉   | 224/321 [00:33<00:14,  6.61it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 225
+Evaluating:  70%|███████   | 225/321 [00:34<00:14,  6.60it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 226
+Evaluating:  70%|███████   | 226/321 [00:34<00:14,  6.61it/s]12/27/2021 00:05:50 - INFO - __main__ -   Batch number = 227
+Evaluating:  71%|███████   | 227/321 [00:34<00:14,  6.59it/s]12/27/2021 00:05:51 - INFO - __main__ -   Batch number = 228
+Evaluating:  71%|███████   | 228/321 [00:34<00:14,  6.32it/s]12/27/2021 00:05:51 - INFO - __main__ -   Batch number = 229
+Evaluating:  71%|███████▏  | 229/321 [00:34<00:14,  6.43it/s]12/27/2021 00:05:51 - INFO - __main__ -   Batch number = 230
+Evaluating:  72%|███████▏  | 230/321 [00:34<00:14,  6.48it/s]12/27/2021 00:05:51 - INFO - __main__ -   Batch number = 231
+Evaluating:  72%|███████▏  | 231/321 [00:35<00:13,  6.47it/s]12/27/2021 00:05:51 - INFO - __main__ -   Batch number = 232
+Evaluating:  72%|███████▏  | 232/321 [00:35<00:13,  6.49it/s]12/27/2021 00:05:51 - INFO - __main__ -   Batch number = 233
+Evaluating:  73%|███████▎  | 233/321 [00:35<00:13,  6.52it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 234
+Evaluating:  73%|███████▎  | 234/321 [00:35<00:13,  6.55it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 235
+Evaluating:  73%|███████▎  | 235/321 [00:35<00:13,  6.49it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 236
+Evaluating:  74%|███████▎  | 236/321 [00:35<00:13,  6.45it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 237
+Evaluating:  74%|███████▍  | 237/321 [00:35<00:13,  6.43it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 238
+Evaluating:  74%|███████▍  | 238/321 [00:36<00:12,  6.41it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 239
+Evaluating:  74%|███████▍  | 239/321 [00:36<00:12,  6.34it/s]12/27/2021 00:05:52 - INFO - __main__ -   Batch number = 240
+Evaluating:  75%|███████▍  | 240/321 [00:36<00:12,  6.29it/s]12/27/2021 00:05:53 - INFO - __main__ -   Batch number = 241
+Evaluating:  75%|███████▌  | 241/321 [00:36<00:12,  6.26it/s]12/27/2021 00:05:53 - INFO - __main__ -   Batch number = 242
+Evaluating:  75%|███████▌  | 242/321 [00:36<00:12,  6.24it/s]12/27/2021 00:05:53 - INFO - __main__ -   Batch number = 243
+Evaluating:  76%|███████▌  | 243/321 [00:36<00:12,  6.23it/s]12/27/2021 00:05:53 - INFO - __main__ -   Batch number = 244
+Evaluating:  76%|███████▌  | 244/321 [00:37<00:12,  6.22it/s]12/27/2021 00:05:53 - INFO - __main__ -   Batch number = 245
+Evaluating:  76%|███████▋  | 245/321 [00:37<00:12,  6.21it/s]12/27/2021 00:05:53 - INFO - __main__ -   Batch number = 246
+Evaluating:  77%|███████▋  | 246/321 [00:37<00:12,  6.23it/s]12/27/2021 00:05:54 - INFO - __main__ -   Batch number = 247
+Evaluating:  77%|███████▋  | 247/321 [00:37<00:11,  6.25it/s]12/27/2021 00:05:54 - INFO - __main__ -   Batch number = 248
+Evaluating:  77%|███████▋  | 248/321 [00:37<00:11,  6.30it/s]12/27/2021 00:05:54 - INFO - __main__ -   Batch number = 249
+Evaluating:  78%|███████▊  | 249/321 [00:37<00:11,  6.34it/s]12/27/2021 00:05:54 - INFO - __main__ -   Batch number = 250
+Evaluating:  78%|███████▊  | 250/321 [00:38<00:11,  6.39it/s]12/27/2021 00:05:54 - INFO - __main__ -   Batch number = 251
+Evaluating:  78%|███████▊  | 251/321 [00:38<00:10,  6.42it/s]12/27/2021 00:05:54 - INFO - __main__ -   Batch number = 252
+Evaluating:  79%|███████▊  | 252/321 [00:38<00:10,  6.47it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 253
+Evaluating:  79%|███████▉  | 253/321 [00:38<00:10,  6.48it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 254
+Evaluating:  79%|███████▉  | 254/321 [00:38<00:10,  6.50it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 255
+Evaluating:  79%|███████▉  | 255/321 [00:38<00:10,  6.53it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 256
+Evaluating:  80%|███████▉  | 256/321 [00:38<00:09,  6.59it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 257
+Evaluating:  80%|████████  | 257/321 [00:39<00:09,  6.61it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 258
+Evaluating:  80%|████████  | 258/321 [00:39<00:09,  6.64it/s]12/27/2021 00:05:55 - INFO - __main__ -   Batch number = 259
+Evaluating:  81%|████████  | 259/321 [00:39<00:09,  6.65it/s]12/27/2021 00:05:56 - INFO - __main__ -   Batch number = 260
+Evaluating:  81%|████████  | 260/321 [00:39<00:09,  6.52it/s]12/27/2021 00:05:56 - INFO - __main__ -   Batch number = 261
+Evaluating:  81%|████████▏ | 261/321 [00:39<00:09,  6.57it/s]12/27/2021 00:05:56 - INFO - __main__ -   Batch number = 262
+Evaluating:  82%|████████▏ | 262/321 [00:39<00:08,  6.61it/s]12/27/2021 00:05:56 - INFO - __main__ -   Batch number = 263
+Evaluating:  82%|████████▏ | 263/321 [00:40<00:08,  6.63it/s]12/27/2021 00:05:56 - INFO - __main__ -   Batch number = 264
+Evaluating:  82%|████████▏ | 264/321 [00:40<00:08,  6.66it/s]12/27/2021 00:05:56 - INFO - __main__ -   Batch number = 265
+Evaluating:  83%|████████▎ | 265/321 [00:40<00:08,  6.67it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 266
+Evaluating:  83%|████████▎ | 266/321 [00:40<00:08,  6.66it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 267
+Evaluating:  83%|████████▎ | 267/321 [00:40<00:08,  6.68it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 268
+Evaluating:  83%|████████▎ | 268/321 [00:40<00:07,  6.68it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 269
+Evaluating:  84%|████████▍ | 269/321 [00:40<00:07,  6.67it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 270
+Evaluating:  84%|████████▍ | 270/321 [00:41<00:07,  6.68it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 271
+Evaluating:  84%|████████▍ | 271/321 [00:41<00:07,  6.67it/s]12/27/2021 00:05:57 - INFO - __main__ -   Batch number = 272
+Evaluating:  85%|████████▍ | 272/321 [00:41<00:07,  6.67it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 273
+Evaluating:  85%|████████▌ | 273/321 [00:41<00:07,  6.67it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 274
+Evaluating:  85%|████████▌ | 274/321 [00:41<00:07,  6.67it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 275
+Evaluating:  86%|████████▌ | 275/321 [00:41<00:06,  6.67it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 276
+Evaluating:  86%|████████▌ | 276/321 [00:41<00:06,  6.68it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 277
+Evaluating:  86%|████████▋ | 277/321 [00:42<00:06,  6.67it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 278
+Evaluating:  87%|████████▋ | 278/321 [00:42<00:06,  6.67it/s]12/27/2021 00:05:58 - INFO - __main__ -   Batch number = 279
+Evaluating:  87%|████████▋ | 279/321 [00:42<00:06,  6.67it/s]12/27/2021 00:05:59 - INFO - __main__ -   Batch number = 280
+Evaluating:  87%|████████▋ | 280/321 [00:42<00:06,  6.67it/s]12/27/2021 00:05:59 - INFO - __main__ -   Batch number = 281
+Evaluating:  88%|████████▊ | 281/321 [00:42<00:05,  6.67it/s]12/27/2021 00:05:59 - INFO - __main__ -   Batch number = 282
+Evaluating:  88%|████████▊ | 282/321 [00:42<00:05,  6.66it/s]12/27/2021 00:05:59 - INFO - __main__ -   Batch number = 283
+Evaluating:  88%|████████▊ | 283/321 [00:43<00:05,  6.62it/s]12/27/2021 00:05:59 - INFO - __main__ -   Batch number = 284
+Evaluating:  88%|████████▊ | 284/321 [00:43<00:05,  6.60it/s]12/27/2021 00:05:59 - INFO - __main__ -   Batch number = 285
+Evaluating:  89%|████████▉ | 285/321 [00:43<00:05,  6.61it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 286
+Evaluating:  89%|████████▉ | 286/321 [00:43<00:05,  6.60it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 287
+Evaluating:  89%|████████▉ | 287/321 [00:43<00:05,  6.58it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 288
+Evaluating:  90%|████████▉ | 288/321 [00:43<00:05,  6.55it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 289
+Evaluating:  90%|█████████ | 289/321 [00:43<00:04,  6.55it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 290
+Evaluating:  90%|█████████ | 290/321 [00:44<00:04,  6.55it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 291
+Evaluating:  91%|█████████ | 291/321 [00:44<00:04,  6.54it/s]12/27/2021 00:06:00 - INFO - __main__ -   Batch number = 292
+Evaluating:  91%|█████████ | 292/321 [00:44<00:04,  6.52it/s]12/27/2021 00:06:01 - INFO - __main__ -   Batch number = 293
+Evaluating:  91%|█████████▏| 293/321 [00:44<00:04,  6.41it/s]12/27/2021 00:06:01 - INFO - __main__ -   Batch number = 294
+Evaluating:  92%|█████████▏| 294/321 [00:44<00:04,  6.49it/s]12/27/2021 00:06:01 - INFO - __main__ -   Batch number = 295
+Evaluating:  92%|█████████▏| 295/321 [00:44<00:03,  6.54it/s]12/27/2021 00:06:01 - INFO - __main__ -   Batch number = 296
+Evaluating:  92%|█████████▏| 296/321 [00:44<00:03,  6.58it/s]12/27/2021 00:06:01 - INFO - __main__ -   Batch number = 297
+Evaluating:  93%|█████████▎| 297/321 [00:45<00:03,  6.60it/s]12/27/2021 00:06:01 - INFO - __main__ -   Batch number = 298
+Evaluating:  93%|█████████▎| 298/321 [00:45<00:03,  6.63it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 299
+Evaluating:  93%|█████████▎| 299/321 [00:45<00:03,  6.63it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 300
+Evaluating:  93%|█████████▎| 300/321 [00:45<00:03,  6.57it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 301
+Evaluating:  94%|█████████▍| 301/321 [00:45<00:03,  6.59it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 302
+Evaluating:  94%|█████████▍| 302/321 [00:45<00:02,  6.61it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 303
+Evaluating:  94%|█████████▍| 303/321 [00:46<00:02,  6.61it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 304
+Evaluating:  95%|█████████▍| 304/321 [00:46<00:02,  6.60it/s]12/27/2021 00:06:02 - INFO - __main__ -   Batch number = 305
+Evaluating:  95%|█████████▌| 305/321 [00:46<00:02,  6.50it/s]12/27/2021 00:06:03 - INFO - __main__ -   Batch number = 306
+Evaluating:  95%|█████████▌| 306/321 [00:46<00:02,  6.48it/s]12/27/2021 00:06:03 - INFO - __main__ -   Batch number = 307
+Evaluating:  96%|█████████▌| 307/321 [00:46<00:02,  6.45it/s]12/27/2021 00:06:03 - INFO - __main__ -   Batch number = 308
+Evaluating:  96%|█████████▌| 308/321 [00:46<00:02,  6.36it/s]12/27/2021 00:06:03 - INFO - __main__ -   Batch number = 309
+Evaluating:  96%|█████████▋| 309/321 [00:46<00:01,  6.41it/s]12/27/2021 00:06:03 - INFO - __main__ -   Batch number = 310
+Evaluating:  97%|█████████▋| 310/321 [00:47<00:01,  6.46it/s]12/27/2021 00:06:03 - INFO - __main__ -   Batch number = 311
+Evaluating:  97%|█████████▋| 311/321 [00:47<00:01,  6.49it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 312
+Evaluating:  97%|█████████▋| 312/321 [00:47<00:01,  6.52it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 313
+Evaluating:  98%|█████████▊| 313/321 [00:47<00:01,  6.55it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 314
+Evaluating:  98%|█████████▊| 314/321 [00:47<00:01,  6.58it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 315
+Evaluating:  98%|█████████▊| 315/321 [00:47<00:00,  6.49it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 316
+Evaluating:  98%|█████████▊| 316/321 [00:48<00:00,  6.54it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 317
+Evaluating:  99%|█████████▉| 317/321 [00:48<00:00,  6.56it/s]12/27/2021 00:06:04 - INFO - __main__ -   Batch number = 318
+Evaluating:  99%|█████████▉| 318/321 [00:48<00:00,  6.49it/s]12/27/2021 00:06:05 - INFO - __main__ -   Batch number = 319
+Evaluating:  99%|█████████▉| 319/321 [00:48<00:00,  6.53it/s]12/27/2021 00:06:05 - INFO - __main__ -   Batch number = 320
+Evaluating: 100%|█████████▉| 320/321 [00:48<00:00,  6.56it/s]12/27/2021 00:06:05 - INFO - __main__ -   Batch number = 321
+Evaluating: 100%|██████████| 321/321 [00:48<00:00,  6.58it/s]
+12/27/2021 00:06:07 - INFO - __main__ -   ***** Evaluation result  in zh *****
+12/27/2021 00:06:07 - INFO - __main__ -     f1 = 0.31236597569692637
+12/27/2021 00:06:07 - INFO - __main__ -     loss = 2.8696849736097816
+12/27/2021 00:06:07 - INFO - __main__ -     precision = 0.22270920395474467
+12/27/2021 00:06:07 - INFO - __main__ -     recall = 0.5228523570232113

@@ -1,0 +1,126 @@
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 556, in main
+    known_paths = addusersitepackages(known_paths)
+  File "/usr/lib/python3.6/site.py", line 288, in addusersitepackages
+    user_site = getusersitepackages()
+  File "/usr/lib/python3.6/site.py", line 277, in getusersitepackages
+    USER_SITE = get_path('purelib', '%s_user' % os.name)
+  File "/usr/lib/python3.6/sysconfig.py", line 512, in get_path
+    return get_paths(scheme, vars, expand)[name]
+  File "/usr/lib/python3.6/sysconfig.py", line 502, in get_paths
+    return _expand_vars(scheme, vars)
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 96%CPU (0avgtext+0avgdata 9432maxresident)k
+0inputs+8outputs (0major+1081minor)pagefaults 0swaps
+Command terminated by signal 2
+0.00user 0.00system 0:00.00elapsed 100%CPU (0avgtext+0avgdata 6376maxresident)k
+0inputs+0outputs (0major+448minor)pagefaults 0swaps
+Failed to import the site module
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site.py", line 570, in <module>
+    main()
+  File "/usr/lib/python3.6/site.py", line 553, in main
+    known_paths = venv(known_paths)
+  File "/usr/lib/python3.6/site.py", line 490, in venv
+    addsitepackages(known_paths, [sys.prefix])
+  File "/usr/lib/python3.6/site.py", line 345, in addsitepackages
+    addsitedir(sitedir, known_paths)
+  File "/usr/lib/python3.6/site.py", line 213, in addsitedir
+    addpackage(sitedir, name, known_paths)
+  File "/usr/lib/python3.6/site.py", line 174, in addpackage
+    exec(line)
+  File "<string>", line 1, in <module>
+KeyboardInterrupt
+Command exited with non-zero status 1
+0.02user 0.00system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 8708maxresident)k
+0inputs+0outputs (0major+862minor)pagefaults 0swaps
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 48, in <module>
+    raise ImportError(msg)
+ImportError: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python3.6 from "/home/abhijeet/rohan/venvs/cloud-emea-copy/bin/python"
+  * The NumPy version is: "1.19.5"
+
+and make sure that they are the versions you expect.
+Please carefully study the documentation linked above for further help.
+
+Original error was: PyCapsule_Import could not import module "datetime"
+
+Command exited with non-zero status 1
+0.48user 0.50system 0:00.09elapsed 1079%CPU (0avgtext+0avgdata 19068maxresident)k
+0inputs+8outputs (0major+2881minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+
+Command exited with non-zero status 1
+0.05user 0.01system 0:00.07elapsed 98%CPU (0avgtext+0avgdata 15868maxresident)k
+0inputs+0outputs (0major+2623minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/__init__.py", line 140, in <module>
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/__init__.py", line 22, in <module>
+    from . import multiarray
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/multiarray.py", line 12, in <module>
+    from . import overrides
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/core/overrides.py", line 9, in <module>
+    from numpy.compat._inspect import getargspec
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/__init__.py", line 12, in <module>
+    from . import py3k
+  File "/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/numpy/compat/py3k.py", line 21, in <module>
+    from pathlib import Path, PurePath
+  File "/usr/lib/python3.6/pathlib.py", line 14, in <module>
+    from urllib.parse import quote_from_bytes as urlquote_from_bytes
+  File "/usr/lib/python3.6/urllib/parse.py", line 618, in <module>
+    _asciire = re.compile('([\x00-\x7f]+)')
+  File "/usr/lib/python3.6/re.py", line 233, in compile
+    return _compile(pattern, flags)
+  File "/usr/lib/python3.6/re.py", line 301, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "/usr/lib/python3.6/sre_compile.py", line 562, in compile
+    p = sre_parse.parse(p, flags)
+  File "/usr/lib/python3.6/sre_parse.py", line 855, in parse
+    p = _parse_sub(source, pattern, flags & SRE_FLAG_VERBOSE, 0)
+  File "/usr/lib/python3.6/sre_parse.py", line 416, in _parse_sub
+    not nested and not items))
+  File "/usr/lib/python3.6/sre_parse.py", line 770, in _parse
+    state.closegroup(group, p)
+  File "/usr/lib/python3.6/sre_parse.py", line 97, in closegroup
+    self.groupwidths[gid] = p.getwidth()
+  File "/usr/lib/python3.6/sre_parse.py", line 197, in getwidth
+    i, j = av[2].getwidth()
+  File "/usr/lib/python3.6/sre_parse.py", line 219, in getwidth
+    self.width = min(lo, MAXREPEAT - 1), min(hi, MAXREPEAT)
+KeyboardInterrupt
+Command exited with non-zero status 1
+1.15user 1.72system 0:00.13elapsed 2161%CPU (0avgtext+0avgdata 20208maxresident)k
+0inputs+8outputs (0major+3096minor)pagefaults 0swaps

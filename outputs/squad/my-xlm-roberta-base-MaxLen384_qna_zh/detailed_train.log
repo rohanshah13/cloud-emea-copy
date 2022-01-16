@@ -712,3 +712,1288 @@ Traceback (most recent call last):
   File "third_party/my_run_squad.py", line 856, in predict_and_save
     with open(output_test_results_file, 'a') as result_writer:
 FileNotFoundError: [Errno 2] No such file or directory: '/root/Desktop/cloud-emea-copy/outputs//squad/my_xlm-roberta-base_maxlen384_qna_zh/test_results.txt'
+PyTorch version 1.10.1+cu102 available.
+01/08/2022 19:20:21 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/08/2022 19:20:21 - INFO - root -   save model
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/08/2022 19:20:31 - INFO - __main__ -   lang2id = None
+01/08/2022 19:20:36 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='xlm-roberta-base', model_type='xlm-roberta', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//tydiqa', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/', max_seq_length=384, train_file='/home/abhijeet/rohan/cloud-emea-copy/data//tydiqa/tydiqa-goldp-v1.1-train/tydiqa.en.train.json', predict_file='/home/abhijeet/rohan/cloud-emea-copy/data//tydiqa/tydiqa-goldp-v1.1-dev/tydiqa.goldp.en.dev.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='zh', train_lang='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/1/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/08/2022 19:20:36 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/08/2022 19:20:47 - INFO - __main__ -   lang2id = None
+01/08/2022 19:20:47 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/08/2022 19:20:47 - INFO - __main__ -   Adapter will be loaded from this path: output/1/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna
+01/08/2022 19:20:47 - INFO - root -   Trying to decide if add adapter
+01/08/2022 19:20:47 - INFO - root -   loading task adapter
+https://raw.githubusercontent.com/Adapter-Hub/Hub/master/dist/index_text_task/xlm-roberta-base.json not found in cache or force_download set to True, downloading to /home/abhijeet/.cache/torch/adapters/tmpj4xw3hg5
+Downloading:   0%|          | 0.00/173 [00:00<?, ?B/s]Downloading: 406B [00:00, 141kB/s]                    
+storing https://raw.githubusercontent.com/Adapter-Hub/Hub/master/dist/index_text_task/xlm-roberta-base.json in cache at /home/abhijeet/.cache/torch/adapters/188147ba7cc19b3b2309f8f39551efacc4db9bed91c3e8935fad185acbecb33e.1b478aac8bf6eb1e4619e1f23d195e19690ce6d05069a891bd7050b7d6e6c949
+creating metadata file for /home/abhijeet/.cache/torch/adapters/188147ba7cc19b3b2309f8f39551efacc4db9bed91c3e8935fad185acbecb33e.1b478aac8bf6eb1e4619e1f23d195e19690ce6d05069a891bd7050b7d6e6c949
+Traceback (most recent call last):
+  File "third_party/my_run_squad.py", line 1112, in <module>
+    main()
+  File "third_party/my_run_squad.py", line 1102, in main
+    model, lang_adapter_names, task_name = setup_adapter(args, adapter_args, model, load_adapter=load_adapter, load_lang_adapter=load_lang_adapter)
+  File "third_party/my_run_squad.py", line 793, in setup_adapter
+    load_as=task_name,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 1180, in load_adapter
+    **kwargs,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 999, in load_adapter
+    load_dir, load_name = loader.load(adapter_name_or_path, config, version, model_name, load_as, **kwargs)
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/adapter_model_mixin.py", line 391, in load
+    **kwargs,
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/adapter_utils.py", line 437, in resolve_adapter_path
+    adapter_name_or_path, adapter_type, model_name, adapter_config=adapter_config, version=version, **kwargs
+  File "/home/abhijeet/rohan/cloud-emea-copy/src/transformers/adapter_utils.py", line 367, in pull_from_hub
+    raise EnvironmentError("No adapter with name '{}' was found in the adapter index.".format(specifier))
+OSError: No adapter with name 'output/1/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna' was found in the adapter index.
+PyTorch version 1.10.1+cu102 available.
+01/09/2022 11:53:30 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/09/2022 11:53:30 - INFO - root -   save model
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/09/2022 11:53:41 - INFO - __main__ -   lang2id = None
+01/09/2022 11:53:47 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='xlm-roberta-base', model_type='xlm-roberta', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//xquad', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/', max_seq_length=384, train_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='zh', train_lang='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/09/2022 11:53:47 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/09/2022 11:53:57 - INFO - __main__ -   lang2id = None
+01/09/2022 11:53:57 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/09/2022 11:53:57 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna
+01/09/2022 11:53:57 - INFO - root -   Trying to decide if add adapter
+01/09/2022 11:53:57 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/pytorch_model_head.bin
+01/09/2022 11:53:57 - INFO - root -   loading lang adpater zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/xlm-roberta-base/pfeiffer/zh_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted'
+01/09/2022 11:53:59 - INFO - __main__ -   Language adapter for zh found
+01/09/2022 11:53:59 - INFO - __main__ -   Set active language adapter to zh
+01/09/2022 11:53:59 - INFO - __main__ -   Args Adapter Weight = None
+01/09/2022 11:53:59 - INFO - __main__ -   Adapter Languages = ['zh']
+01/09/2022 11:53:59 - INFO - __main__ -   Predict File = xquad.zh.json
+01/09/2022 11:53:59 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//xquad
+zh zh/wiki@ukp
+  0%|          | 0/48 [00:00<?, ?it/s] 69%|██████▉   | 33/48 [00:00<00:00, 318.53it/s]100%|██████████| 48/48 [00:00<00:00, 338.14it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<03:16,  6.04it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:00<00:00, 1292.02it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:00<00:00, 2755.92it/s]/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 427916.82it/s]
+01/09/2022 11:54:01 - INFO - __main__ -   Local Rank = -1
+01/09/2022 11:54:01 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//xquad/cached_xquad.zh.json_xlm-roberta-base_384_zh
+01/09/2022 11:54:02 - INFO - __main__ -   ***** Running evaluation  *****
+01/09/2022 11:54:02 - INFO - __main__ -     Num examples = 1246
+01/09/2022 11:54:02 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/156 [00:00<?, ?it/s]01/09/2022 11:54:02 - INFO - __main__ -   Batch Number = 1
+Evaluating:   1%|          | 1/156 [00:00<00:47,  3.27it/s]01/09/2022 11:54:02 - INFO - __main__ -   Batch Number = 2
+Evaluating:   1%|▏         | 2/156 [00:00<00:46,  3.35it/s]01/09/2022 11:54:03 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/156 [00:00<00:35,  4.31it/s]01/09/2022 11:54:03 - INFO - __main__ -   Batch Number = 4
+Evaluating:   3%|▎         | 4/156 [00:00<00:35,  4.28it/s]01/09/2022 11:54:03 - INFO - __main__ -   Batch Number = 5
+Evaluating:   3%|▎         | 5/156 [00:01<00:35,  4.24it/s]01/09/2022 11:54:03 - INFO - __main__ -   Batch Number = 6
+Evaluating:   4%|▍         | 6/156 [00:01<00:34,  4.40it/s]01/09/2022 11:54:03 - INFO - __main__ -   Batch Number = 7
+Evaluating:   4%|▍         | 7/156 [00:01<00:38,  3.89it/s]01/09/2022 11:54:04 - INFO - __main__ -   Batch Number = 8
+Evaluating:   5%|▌         | 8/156 [00:02<00:39,  3.72it/s]01/09/2022 11:54:04 - INFO - __main__ -   Batch Number = 9
+Evaluating:   6%|▌         | 9/156 [00:02<00:40,  3.61it/s]01/09/2022 11:54:04 - INFO - __main__ -   Batch Number = 10
+Evaluating:   6%|▋         | 10/156 [00:02<00:41,  3.55it/s]01/09/2022 11:54:05 - INFO - __main__ -   Batch Number = 11
+Evaluating:   7%|▋         | 11/156 [00:02<00:41,  3.50it/s]01/09/2022 11:54:05 - INFO - __main__ -   Batch Number = 12
+Evaluating:   8%|▊         | 12/156 [00:03<00:41,  3.46it/s]01/09/2022 11:54:05 - INFO - __main__ -   Batch Number = 13
+Evaluating:   8%|▊         | 13/156 [00:03<00:44,  3.23it/s]01/09/2022 11:54:06 - INFO - __main__ -   Batch Number = 14
+Evaluating:   9%|▉         | 14/156 [00:03<00:43,  3.28it/s]01/09/2022 11:54:06 - INFO - __main__ -   Batch Number = 15
+Evaluating:  10%|▉         | 15/156 [00:04<00:42,  3.31it/s]01/09/2022 11:54:06 - INFO - __main__ -   Batch Number = 16
+Evaluating:  10%|█         | 16/156 [00:04<00:41,  3.34it/s]01/09/2022 11:54:06 - INFO - __main__ -   Batch Number = 17
+Evaluating:  11%|█         | 17/156 [00:04<00:41,  3.36it/s]01/09/2022 11:54:07 - INFO - __main__ -   Batch Number = 18
+Evaluating:  12%|█▏        | 18/156 [00:05<00:40,  3.37it/s]01/09/2022 11:54:07 - INFO - __main__ -   Batch Number = 19
+Evaluating:  12%|█▏        | 19/156 [00:05<00:40,  3.39it/s]01/09/2022 11:54:07 - INFO - __main__ -   Batch Number = 20
+Evaluating:  13%|█▎        | 20/156 [00:05<00:39,  3.46it/s]01/09/2022 11:54:08 - INFO - __main__ -   Batch Number = 21
+Evaluating:  13%|█▎        | 21/156 [00:05<00:35,  3.78it/s]01/09/2022 11:54:08 - INFO - __main__ -   Batch Number = 22
+Evaluating:  14%|█▍        | 22/156 [00:05<00:30,  4.42it/s]01/09/2022 11:54:08 - INFO - __main__ -   Batch Number = 23
+Evaluating:  15%|█▍        | 23/156 [00:06<00:26,  5.01it/s]01/09/2022 11:54:08 - INFO - __main__ -   Batch Number = 24
+Evaluating:  15%|█▌        | 24/156 [00:06<00:26,  5.01it/s]01/09/2022 11:54:08 - INFO - __main__ -   Batch Number = 25
+Evaluating:  16%|█▌        | 25/156 [00:06<00:28,  4.65it/s]01/09/2022 11:54:09 - INFO - __main__ -   Batch Number = 26
+Evaluating:  17%|█▋        | 26/156 [00:06<00:28,  4.56it/s]01/09/2022 11:54:09 - INFO - __main__ -   Batch Number = 27
+Evaluating:  17%|█▋        | 27/156 [00:06<00:26,  4.79it/s]01/09/2022 11:54:09 - INFO - __main__ -   Batch Number = 28
+Evaluating:  18%|█▊        | 28/156 [00:07<00:35,  3.64it/s]01/09/2022 11:54:09 - INFO - __main__ -   Batch Number = 29
+Evaluating:  19%|█▊        | 29/156 [00:07<00:35,  3.57it/s]01/09/2022 11:54:10 - INFO - __main__ -   Batch Number = 30
+Evaluating:  19%|█▉        | 30/156 [00:07<00:35,  3.51it/s]01/09/2022 11:54:10 - INFO - __main__ -   Batch Number = 31
+Evaluating:  20%|█▉        | 31/156 [00:08<00:35,  3.48it/s]01/09/2022 11:54:10 - INFO - __main__ -   Batch Number = 32
+Evaluating:  21%|██        | 32/156 [00:08<00:35,  3.45it/s]01/09/2022 11:54:11 - INFO - __main__ -   Batch Number = 33
+Evaluating:  21%|██        | 33/156 [00:08<00:35,  3.46it/s]01/09/2022 11:54:11 - INFO - __main__ -   Batch Number = 34
+Evaluating:  22%|██▏       | 34/156 [00:09<00:34,  3.49it/s]01/09/2022 11:54:11 - INFO - __main__ -   Batch Number = 35
+Evaluating:  22%|██▏       | 35/156 [00:09<00:35,  3.41it/s]01/09/2022 11:54:11 - INFO - __main__ -   Batch Number = 36
+Evaluating:  23%|██▎       | 36/156 [00:09<00:35,  3.35it/s]01/09/2022 11:54:12 - INFO - __main__ -   Batch Number = 37
+Evaluating:  24%|██▎       | 37/156 [00:10<00:35,  3.31it/s]01/09/2022 11:54:12 - INFO - __main__ -   Batch Number = 38
+Evaluating:  24%|██▍       | 38/156 [00:10<00:35,  3.29it/s]01/09/2022 11:54:12 - INFO - __main__ -   Batch Number = 39
+Evaluating:  25%|██▌       | 39/156 [00:10<00:35,  3.27it/s]01/09/2022 11:54:13 - INFO - __main__ -   Batch Number = 40
+Evaluating:  26%|██▌       | 40/156 [00:11<00:35,  3.26it/s]01/09/2022 11:54:13 - INFO - __main__ -   Batch Number = 41
+Evaluating:  26%|██▋       | 41/156 [00:11<00:32,  3.59it/s]01/09/2022 11:54:13 - INFO - __main__ -   Batch Number = 42
+Evaluating:  27%|██▋       | 42/156 [00:11<00:26,  4.24it/s]01/09/2022 11:54:13 - INFO - __main__ -   Batch Number = 43
+Evaluating:  28%|██▊       | 43/156 [00:11<00:23,  4.85it/s]01/09/2022 11:54:13 - INFO - __main__ -   Batch Number = 44
+Evaluating:  28%|██▊       | 44/156 [00:11<00:24,  4.53it/s]01/09/2022 11:54:14 - INFO - __main__ -   Batch Number = 45
+Evaluating:  29%|██▉       | 45/156 [00:11<00:25,  4.42it/s]01/09/2022 11:54:14 - INFO - __main__ -   Batch Number = 46
+Evaluating:  29%|██▉       | 46/156 [00:12<00:23,  4.62it/s]01/09/2022 11:54:14 - INFO - __main__ -   Batch Number = 47
+Evaluating:  30%|███       | 47/156 [00:12<00:26,  4.05it/s]01/09/2022 11:54:15 - INFO - __main__ -   Batch Number = 48
+Evaluating:  31%|███       | 48/156 [00:12<00:28,  3.83it/s]01/09/2022 11:54:15 - INFO - __main__ -   Batch Number = 49
+Evaluating:  31%|███▏      | 49/156 [00:13<00:28,  3.69it/s]01/09/2022 11:54:15 - INFO - __main__ -   Batch Number = 50
+Evaluating:  32%|███▏      | 50/156 [00:13<00:29,  3.60it/s]01/09/2022 11:54:15 - INFO - __main__ -   Batch Number = 51
+Evaluating:  33%|███▎      | 51/156 [00:13<00:29,  3.53it/s]01/09/2022 11:54:16 - INFO - __main__ -   Batch Number = 52
+Evaluating:  33%|███▎      | 52/156 [00:13<00:29,  3.49it/s]01/09/2022 11:54:16 - INFO - __main__ -   Batch Number = 53
+Evaluating:  34%|███▍      | 53/156 [00:14<00:29,  3.46it/s]01/09/2022 11:54:16 - INFO - __main__ -   Batch Number = 54
+Evaluating:  35%|███▍      | 54/156 [00:14<00:29,  3.45it/s]01/09/2022 11:54:17 - INFO - __main__ -   Batch Number = 55
+Evaluating:  35%|███▌      | 55/156 [00:14<00:28,  3.50it/s]01/09/2022 11:54:17 - INFO - __main__ -   Batch Number = 56
+Evaluating:  36%|███▌      | 56/156 [00:15<00:29,  3.39it/s]01/09/2022 11:54:17 - INFO - __main__ -   Batch Number = 57
+Evaluating:  37%|███▋      | 57/156 [00:15<00:29,  3.37it/s]01/09/2022 11:54:17 - INFO - __main__ -   Batch Number = 58
+Evaluating:  37%|███▋      | 58/156 [00:15<00:29,  3.32it/s]01/09/2022 11:54:18 - INFO - __main__ -   Batch Number = 59
+Evaluating:  38%|███▊      | 59/156 [00:16<00:29,  3.30it/s]01/09/2022 11:54:18 - INFO - __main__ -   Batch Number = 60
+Evaluating:  38%|███▊      | 60/156 [00:16<00:29,  3.28it/s]01/09/2022 11:54:18 - INFO - __main__ -   Batch Number = 61
+Evaluating:  39%|███▉      | 61/156 [00:16<00:26,  3.62it/s]01/09/2022 11:54:19 - INFO - __main__ -   Batch Number = 62
+Evaluating:  40%|███▉      | 62/156 [00:16<00:22,  4.26it/s]01/09/2022 11:54:19 - INFO - __main__ -   Batch Number = 63
+Evaluating:  40%|████      | 63/156 [00:16<00:21,  4.37it/s]01/09/2022 11:54:19 - INFO - __main__ -   Batch Number = 64
+Evaluating:  41%|████      | 64/156 [00:17<00:21,  4.30it/s]01/09/2022 11:54:19 - INFO - __main__ -   Batch Number = 65
+Evaluating:  42%|████▏     | 65/156 [00:17<00:20,  4.35it/s]01/09/2022 11:54:19 - INFO - __main__ -   Batch Number = 66
+Evaluating:  42%|████▏     | 66/156 [00:17<00:19,  4.58it/s]01/09/2022 11:54:20 - INFO - __main__ -   Batch Number = 67
+Evaluating:  43%|████▎     | 67/156 [00:17<00:21,  4.14it/s]01/09/2022 11:54:20 - INFO - __main__ -   Batch Number = 68
+Evaluating:  44%|████▎     | 68/156 [00:18<00:22,  3.86it/s]01/09/2022 11:54:20 - INFO - __main__ -   Batch Number = 69
+Evaluating:  44%|████▍     | 69/156 [00:18<00:23,  3.69it/s]01/09/2022 11:54:20 - INFO - __main__ -   Batch Number = 70
+Evaluating:  45%|████▍     | 70/156 [00:18<00:23,  3.60it/s]01/09/2022 11:54:21 - INFO - __main__ -   Batch Number = 71
+Evaluating:  46%|████▌     | 71/156 [00:19<00:24,  3.54it/s]01/09/2022 11:54:21 - INFO - __main__ -   Batch Number = 72
+Evaluating:  46%|████▌     | 72/156 [00:19<00:24,  3.49it/s]01/09/2022 11:54:21 - INFO - __main__ -   Batch Number = 73
+Evaluating:  47%|████▋     | 73/156 [00:19<00:23,  3.46it/s]01/09/2022 11:54:22 - INFO - __main__ -   Batch Number = 74
+Evaluating:  47%|████▋     | 74/156 [00:19<00:23,  3.45it/s]01/09/2022 11:54:22 - INFO - __main__ -   Batch Number = 75
+Evaluating:  48%|████▊     | 75/156 [00:20<00:23,  3.43it/s]01/09/2022 11:54:22 - INFO - __main__ -   Batch Number = 76
+Evaluating:  49%|████▊     | 76/156 [00:20<00:23,  3.42it/s]01/09/2022 11:54:23 - INFO - __main__ -   Batch Number = 77
+Evaluating:  49%|████▉     | 77/156 [00:20<00:23,  3.40it/s]01/09/2022 11:54:23 - INFO - __main__ -   Batch Number = 78
+Evaluating:  50%|█████     | 78/156 [00:21<00:22,  3.46it/s]01/09/2022 11:54:23 - INFO - __main__ -   Batch Number = 79
+Evaluating:  51%|█████     | 79/156 [00:21<00:22,  3.39it/s]01/09/2022 11:54:23 - INFO - __main__ -   Batch Number = 80
+Evaluating:  51%|█████▏    | 80/156 [00:21<00:22,  3.35it/s]01/09/2022 11:54:24 - INFO - __main__ -   Batch Number = 81
+Evaluating:  52%|█████▏    | 81/156 [00:21<00:20,  3.67it/s]01/09/2022 11:54:24 - INFO - __main__ -   Batch Number = 82
+Evaluating:  53%|█████▎    | 82/156 [00:22<00:17,  4.31it/s]01/09/2022 11:54:24 - INFO - __main__ -   Batch Number = 83
+Evaluating:  53%|█████▎    | 83/156 [00:22<00:15,  4.69it/s]01/09/2022 11:54:24 - INFO - __main__ -   Batch Number = 84
+Evaluating:  54%|█████▍    | 84/156 [00:22<00:16,  4.37it/s]01/09/2022 11:54:25 - INFO - __main__ -   Batch Number = 85
+Evaluating:  54%|█████▍    | 85/156 [00:22<00:16,  4.32it/s]01/09/2022 11:54:25 - INFO - __main__ -   Batch Number = 86
+Evaluating:  55%|█████▌    | 86/156 [00:22<00:14,  4.67it/s]01/09/2022 11:54:25 - INFO - __main__ -   Batch Number = 87
+Evaluating:  56%|█████▌    | 87/156 [00:23<00:16,  4.06it/s]01/09/2022 11:54:25 - INFO - __main__ -   Batch Number = 88
+Evaluating:  56%|█████▋    | 88/156 [00:23<00:17,  3.80it/s]01/09/2022 11:54:26 - INFO - __main__ -   Batch Number = 89
+Evaluating:  57%|█████▋    | 89/156 [00:23<00:18,  3.55it/s]01/09/2022 11:54:26 - INFO - __main__ -   Batch Number = 90
+Evaluating:  58%|█████▊    | 90/156 [00:24<00:19,  3.44it/s]01/09/2022 11:54:26 - INFO - __main__ -   Batch Number = 91
+Evaluating:  58%|█████▊    | 91/156 [00:24<00:19,  3.38it/s]01/09/2022 11:54:27 - INFO - __main__ -   Batch Number = 92
+Evaluating:  59%|█████▉    | 92/156 [00:24<00:19,  3.33it/s]01/09/2022 11:54:27 - INFO - __main__ -   Batch Number = 93
+Evaluating:  60%|█████▉    | 93/156 [00:25<00:19,  3.30it/s]01/09/2022 11:54:27 - INFO - __main__ -   Batch Number = 94
+Evaluating:  60%|██████    | 94/156 [00:25<00:18,  3.28it/s]01/09/2022 11:54:27 - INFO - __main__ -   Batch Number = 95
+Evaluating:  61%|██████    | 95/156 [00:25<00:18,  3.27it/s]01/09/2022 11:54:28 - INFO - __main__ -   Batch Number = 96
+Evaluating:  62%|██████▏   | 96/156 [00:26<00:18,  3.26it/s]01/09/2022 11:54:28 - INFO - __main__ -   Batch Number = 97
+Evaluating:  62%|██████▏   | 97/156 [00:26<00:18,  3.25it/s]01/09/2022 11:54:28 - INFO - __main__ -   Batch Number = 98
+Evaluating:  63%|██████▎   | 98/156 [00:26<00:17,  3.24it/s]01/09/2022 11:54:29 - INFO - __main__ -   Batch Number = 99
+Evaluating:  63%|██████▎   | 99/156 [00:26<00:17,  3.24it/s]01/09/2022 11:54:29 - INFO - __main__ -   Batch Number = 100
+Evaluating:  64%|██████▍   | 100/156 [00:27<00:15,  3.58it/s]01/09/2022 11:54:29 - INFO - __main__ -   Batch Number = 101
+Evaluating:  65%|██████▍   | 101/156 [00:27<00:13,  4.22it/s]01/09/2022 11:54:29 - INFO - __main__ -   Batch Number = 102
+Evaluating:  65%|██████▌   | 102/156 [00:27<00:13,  4.09it/s]01/09/2022 11:54:30 - INFO - __main__ -   Batch Number = 103
+Evaluating:  66%|██████▌   | 103/156 [00:27<00:12,  4.11it/s]01/09/2022 11:54:30 - INFO - __main__ -   Batch Number = 104
+Evaluating:  67%|██████▋   | 104/156 [00:28<00:11,  4.42it/s]01/09/2022 11:54:30 - INFO - __main__ -   Batch Number = 105
+Evaluating:  67%|██████▋   | 105/156 [00:28<00:12,  3.99it/s]01/09/2022 11:54:30 - INFO - __main__ -   Batch Number = 106
+Evaluating:  68%|██████▊   | 106/156 [00:28<00:13,  3.82it/s]01/09/2022 11:54:31 - INFO - __main__ -   Batch Number = 107
+Evaluating:  69%|██████▊   | 107/156 [00:28<00:13,  3.68it/s]01/09/2022 11:54:31 - INFO - __main__ -   Batch Number = 108
+Evaluating:  69%|██████▉   | 108/156 [00:29<00:13,  3.60it/s]01/09/2022 11:54:31 - INFO - __main__ -   Batch Number = 109
+Evaluating:  70%|██████▉   | 109/156 [00:29<00:13,  3.54it/s]01/09/2022 11:54:31 - INFO - __main__ -   Batch Number = 110
+Evaluating:  71%|███████   | 110/156 [00:29<00:13,  3.50it/s]01/09/2022 11:54:32 - INFO - __main__ -   Batch Number = 111
+Evaluating:  71%|███████   | 111/156 [00:30<00:13,  3.46it/s]01/09/2022 11:54:32 - INFO - __main__ -   Batch Number = 112
+Evaluating:  72%|███████▏  | 112/156 [00:30<00:12,  3.44it/s]01/09/2022 11:54:32 - INFO - __main__ -   Batch Number = 113
+Evaluating:  72%|███████▏  | 113/156 [00:30<00:12,  3.40it/s]01/09/2022 11:54:33 - INFO - __main__ -   Batch Number = 114
+Evaluating:  73%|███████▎  | 114/156 [00:30<00:12,  3.47it/s]01/09/2022 11:54:33 - INFO - __main__ -   Batch Number = 115
+Evaluating:  74%|███████▎  | 115/156 [00:31<00:12,  3.39it/s]01/09/2022 11:54:33 - INFO - __main__ -   Batch Number = 116
+Evaluating:  74%|███████▍  | 116/156 [00:31<00:11,  3.35it/s]01/09/2022 11:54:34 - INFO - __main__ -   Batch Number = 117
+Evaluating:  75%|███████▌  | 117/156 [00:31<00:11,  3.31it/s]01/09/2022 11:54:34 - INFO - __main__ -   Batch Number = 118
+Evaluating:  76%|███████▌  | 118/156 [00:32<00:11,  3.29it/s]01/09/2022 11:54:34 - INFO - __main__ -   Batch Number = 119
+Evaluating:  76%|███████▋  | 119/156 [00:32<00:10,  3.63it/s]01/09/2022 11:54:34 - INFO - __main__ -   Batch Number = 120
+Evaluating:  77%|███████▋  | 120/156 [00:32<00:08,  4.27it/s]01/09/2022 11:54:35 - INFO - __main__ -   Batch Number = 121
+Evaluating:  78%|███████▊  | 121/156 [00:32<00:08,  4.27it/s]01/09/2022 11:54:35 - INFO - __main__ -   Batch Number = 122
+Evaluating:  78%|███████▊  | 122/156 [00:33<00:08,  4.23it/s]01/09/2022 11:54:35 - INFO - __main__ -   Batch Number = 123
+Evaluating:  79%|███████▉  | 123/156 [00:33<00:07,  4.38it/s]01/09/2022 11:54:35 - INFO - __main__ -   Batch Number = 124
+Evaluating:  79%|███████▉  | 124/156 [00:33<00:08,  3.92it/s]01/09/2022 11:54:36 - INFO - __main__ -   Batch Number = 125
+Evaluating:  80%|████████  | 125/156 [00:33<00:08,  3.74it/s]01/09/2022 11:54:36 - INFO - __main__ -   Batch Number = 126
+Evaluating:  81%|████████  | 126/156 [00:34<00:08,  3.42it/s]01/09/2022 11:54:36 - INFO - __main__ -   Batch Number = 127
+Evaluating:  81%|████████▏ | 127/156 [00:34<00:08,  3.36it/s]01/09/2022 11:54:37 - INFO - __main__ -   Batch Number = 128
+Evaluating:  82%|████████▏ | 128/156 [00:34<00:08,  3.32it/s]01/09/2022 11:54:37 - INFO - __main__ -   Batch Number = 129
+Evaluating:  83%|████████▎ | 129/156 [00:35<00:08,  3.29it/s]01/09/2022 11:54:37 - INFO - __main__ -   Batch Number = 130
+Evaluating:  83%|████████▎ | 130/156 [00:35<00:07,  3.27it/s]01/09/2022 11:54:37 - INFO - __main__ -   Batch Number = 131
+Evaluating:  84%|████████▍ | 131/156 [00:35<00:07,  3.26it/s]01/09/2022 11:54:38 - INFO - __main__ -   Batch Number = 132
+Evaluating:  85%|████████▍ | 132/156 [00:36<00:07,  3.25it/s]01/09/2022 11:54:38 - INFO - __main__ -   Batch Number = 133
+Evaluating:  85%|████████▌ | 133/156 [00:36<00:07,  3.24it/s]01/09/2022 11:54:38 - INFO - __main__ -   Batch Number = 134
+Evaluating:  86%|████████▌ | 134/156 [00:36<00:06,  3.24it/s]01/09/2022 11:54:39 - INFO - __main__ -   Batch Number = 135
+Evaluating:  87%|████████▋ | 135/156 [00:36<00:06,  3.24it/s]01/09/2022 11:54:39 - INFO - __main__ -   Batch Number = 136
+Evaluating:  87%|████████▋ | 136/156 [00:37<00:06,  3.23it/s]01/09/2022 11:54:39 - INFO - __main__ -   Batch Number = 137
+Evaluating:  88%|████████▊ | 137/156 [00:37<00:05,  3.58it/s]01/09/2022 11:54:39 - INFO - __main__ -   Batch Number = 138
+Evaluating:  88%|████████▊ | 138/156 [00:37<00:04,  4.23it/s]01/09/2022 11:54:40 - INFO - __main__ -   Batch Number = 139
+Evaluating:  89%|████████▉ | 139/156 [00:37<00:04,  4.24it/s]01/09/2022 11:54:40 - INFO - __main__ -   Batch Number = 140
+Evaluating:  90%|████████▉ | 140/156 [00:38<00:03,  4.21it/s]01/09/2022 11:54:40 - INFO - __main__ -   Batch Number = 141
+Evaluating:  90%|█████████ | 141/156 [00:38<00:03,  4.36it/s]01/09/2022 11:54:40 - INFO - __main__ -   Batch Number = 142
+Evaluating:  91%|█████████ | 142/156 [00:38<00:03,  3.91it/s]01/09/2022 11:54:41 - INFO - __main__ -   Batch Number = 143
+Evaluating:  92%|█████████▏| 143/156 [00:38<00:03,  3.74it/s]01/09/2022 11:54:41 - INFO - __main__ -   Batch Number = 144
+Evaluating:  92%|█████████▏| 144/156 [00:39<00:03,  3.63it/s]01/09/2022 11:54:41 - INFO - __main__ -   Batch Number = 145
+Evaluating:  93%|█████████▎| 145/156 [00:39<00:03,  3.56it/s]01/09/2022 11:54:42 - INFO - __main__ -   Batch Number = 146
+Evaluating:  94%|█████████▎| 146/156 [00:39<00:02,  3.51it/s]01/09/2022 11:54:42 - INFO - __main__ -   Batch Number = 147
+Evaluating:  94%|█████████▍| 147/156 [00:40<00:02,  3.48it/s]01/09/2022 11:54:42 - INFO - __main__ -   Batch Number = 148
+Evaluating:  95%|█████████▍| 148/156 [00:40<00:02,  3.45it/s]01/09/2022 11:54:42 - INFO - __main__ -   Batch Number = 149
+Evaluating:  96%|█████████▌| 149/156 [00:40<00:02,  3.45it/s]01/09/2022 11:54:43 - INFO - __main__ -   Batch Number = 150
+Evaluating:  96%|█████████▌| 150/156 [00:40<00:01,  3.50it/s]01/09/2022 11:54:43 - INFO - __main__ -   Batch Number = 151
+Evaluating:  97%|█████████▋| 151/156 [00:41<00:01,  3.42it/s]01/09/2022 11:54:43 - INFO - __main__ -   Batch Number = 152
+Evaluating:  97%|█████████▋| 152/156 [00:41<00:01,  3.36it/s]01/09/2022 11:54:44 - INFO - __main__ -   Batch Number = 153
+Evaluating:  98%|█████████▊| 153/156 [00:41<00:00,  3.32it/s]01/09/2022 11:54:44 - INFO - __main__ -   Batch Number = 154
+Evaluating:  99%|█████████▊| 154/156 [00:42<00:00,  3.29it/s]01/09/2022 11:54:44 - INFO - __main__ -   Batch Number = 155
+Evaluating:  99%|█████████▉| 155/156 [00:42<00:00,  3.27it/s]01/09/2022 11:54:45 - INFO - __main__ -   Batch Number = 156
+Evaluating: 100%|██████████| 156/156 [00:42<00:00,  3.77it/s]Evaluating: 100%|██████████| 156/156 [00:42<00:00,  3.65it/s]
+01/09/2022 11:54:45 - INFO - __main__ -     Evaluation done in total 42.682477 secs (0.034256 sec per example)
+Writing predictions to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/predictions_zh_.json
+Writing nbest to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/nbest_predictions_zh_.json
+01/09/2022 11:55:13 - INFO - __main__ -   Results = OrderedDict([('exact', 39.32773109243698), ('f1', 50.36654661864745), ('total', 1190), ('HasAns_exact', 39.32773109243698), ('HasAns_f1', 50.36654661864745), ('HasAns_total', 1190), ('best_exact', 39.32773109243698), ('best_exact_thresh', 0.0), ('best_f1', 50.36654661864745), ('best_f1_thresh', 0.0)])
+PyTorch version 1.10.1+cu102 available.
+01/10/2022 00:21:45 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/10/2022 00:21:45 - INFO - root -   save model
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/10/2022 00:21:55 - INFO - __main__ -   lang2id = None
+01/10/2022 00:21:59 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='xlm-roberta-base', model_type='xlm-roberta', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//xquad', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/', max_seq_length=384, train_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='zh', train_lang='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s1/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/10/2022 00:21:59 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/10/2022 00:22:09 - INFO - __main__ -   lang2id = None
+01/10/2022 00:22:09 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/10/2022 00:22:09 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s1/checkpoint-best/qna
+01/10/2022 00:22:09 - INFO - root -   Trying to decide if add adapter
+01/10/2022 00:22:09 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s1/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s1/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s1/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s1/checkpoint-best/qna/pytorch_model_head.bin
+01/10/2022 00:22:09 - INFO - root -   loading lang adpater zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/xlm-roberta-base/pfeiffer/zh_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted'
+01/10/2022 00:22:11 - INFO - __main__ -   Language adapter for zh found
+01/10/2022 00:22:11 - INFO - __main__ -   Set active language adapter to zh
+01/10/2022 00:22:11 - INFO - __main__ -   Args Adapter Weight = None
+01/10/2022 00:22:11 - INFO - __main__ -   Adapter Languages = ['zh']
+01/10/2022 00:22:11 - INFO - __main__ -   Predict File = xquad.zh.json
+01/10/2022 00:22:11 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//xquad
+zh zh/wiki@ukp
+  0%|          | 0/48 [00:00<?, ?it/s] 69%|██████▉   | 33/48 [00:00<00:00, 322.97it/s]100%|██████████| 48/48 [00:00<00:00, 342.91it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<02:15,  8.78it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:00<00:00, 1267.05it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:00<00:00, 2914.65it/s]/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 737582.65it/s]
+01/10/2022 00:22:12 - INFO - __main__ -   Local Rank = -1
+01/10/2022 00:22:12 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//xquad/cached_xquad.zh.json_xlm-roberta-base_384_zh
+01/10/2022 00:22:13 - INFO - __main__ -   ***** Running evaluation  *****
+01/10/2022 00:22:13 - INFO - __main__ -     Num examples = 1246
+01/10/2022 00:22:13 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/156 [00:00<?, ?it/s]01/10/2022 00:22:13 - INFO - __main__ -   Batch Number = 1
+Evaluating:   1%|          | 1/156 [00:00<00:24,  6.30it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 2
+Evaluating:   1%|▏         | 2/156 [00:00<00:21,  7.07it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/156 [00:00<00:20,  7.46it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 4
+Evaluating:   3%|▎         | 4/156 [00:00<00:19,  7.72it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 5
+Evaluating:   3%|▎         | 5/156 [00:00<00:23,  6.47it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 6
+Evaluating:   4%|▍         | 6/156 [00:00<00:21,  6.95it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 7
+Evaluating:   4%|▍         | 7/156 [00:00<00:20,  7.30it/s]01/10/2022 00:22:14 - INFO - __main__ -   Batch Number = 8
+Evaluating:   5%|▌         | 8/156 [00:01<00:19,  7.55it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 9
+Evaluating:   6%|▌         | 9/156 [00:01<00:19,  7.72it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 10
+Evaluating:   6%|▋         | 10/156 [00:01<00:18,  7.85it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 11
+Evaluating:   7%|▋         | 11/156 [00:01<00:18,  7.95it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 12
+Evaluating:   8%|▊         | 12/156 [00:01<00:17,  8.02it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 13
+Evaluating:   8%|▊         | 13/156 [00:01<00:18,  7.80it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 14
+Evaluating:   9%|▉         | 14/156 [00:01<00:17,  7.91it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 15
+Evaluating:  10%|▉         | 15/156 [00:01<00:17,  7.98it/s]01/10/2022 00:22:15 - INFO - __main__ -   Batch Number = 16
+Evaluating:  10%|█         | 16/156 [00:02<00:17,  8.03it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 17
+Evaluating:  11%|█         | 17/156 [00:02<00:17,  8.04it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 18
+Evaluating:  12%|█▏        | 18/156 [00:02<00:17,  8.07it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 19
+Evaluating:  12%|█▏        | 19/156 [00:02<00:16,  8.10it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 20
+Evaluating:  13%|█▎        | 20/156 [00:02<00:16,  8.11it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 21
+Evaluating:  13%|█▎        | 21/156 [00:02<00:16,  8.12it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 22
+Evaluating:  14%|█▍        | 22/156 [00:02<00:16,  8.12it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 23
+Evaluating:  15%|█▍        | 23/156 [00:02<00:16,  8.13it/s]01/10/2022 00:22:16 - INFO - __main__ -   Batch Number = 24
+Evaluating:  15%|█▌        | 24/156 [00:03<00:16,  8.13it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 25
+Evaluating:  16%|█▌        | 25/156 [00:03<00:16,  8.13it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 26
+Evaluating:  17%|█▋        | 26/156 [00:03<00:15,  8.13it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 27
+Evaluating:  17%|█▋        | 27/156 [00:03<00:15,  8.13it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 28
+Evaluating:  18%|█▊        | 28/156 [00:03<00:22,  5.74it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 29
+Evaluating:  19%|█▊        | 29/156 [00:03<00:20,  6.30it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 30
+Evaluating:  19%|█▉        | 30/156 [00:03<00:18,  6.77it/s]01/10/2022 00:22:17 - INFO - __main__ -   Batch Number = 31
+Evaluating:  20%|█▉        | 31/156 [00:04<00:17,  7.14it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 32
+Evaluating:  21%|██        | 32/156 [00:04<00:16,  7.41it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 33
+Evaluating:  21%|██        | 33/156 [00:04<00:16,  7.60it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 34
+Evaluating:  22%|██▏       | 34/156 [00:04<00:15,  7.76it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 35
+Evaluating:  22%|██▏       | 35/156 [00:04<00:15,  7.87it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 36
+Evaluating:  23%|██▎       | 36/156 [00:04<00:15,  7.94it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 37
+Evaluating:  24%|██▎       | 37/156 [00:04<00:14,  8.00it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 38
+Evaluating:  24%|██▍       | 38/156 [00:04<00:14,  8.04it/s]01/10/2022 00:22:18 - INFO - __main__ -   Batch Number = 39
+Evaluating:  25%|██▌       | 39/156 [00:05<00:14,  8.07it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 40
+Evaluating:  26%|██▌       | 40/156 [00:05<00:14,  8.09it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 41
+Evaluating:  26%|██▋       | 41/156 [00:05<00:14,  8.08it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 42
+Evaluating:  27%|██▋       | 42/156 [00:05<00:14,  8.09it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 43
+Evaluating:  28%|██▊       | 43/156 [00:05<00:13,  8.11it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 44
+Evaluating:  28%|██▊       | 44/156 [00:05<00:16,  6.70it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 45
+Evaluating:  29%|██▉       | 45/156 [00:05<00:15,  7.04it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 46
+Evaluating:  29%|██▉       | 46/156 [00:06<00:15,  7.27it/s]01/10/2022 00:22:19 - INFO - __main__ -   Batch Number = 47
+Evaluating:  30%|███       | 47/156 [00:06<00:14,  7.41it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 48
+Evaluating:  31%|███       | 48/156 [00:06<00:14,  7.48it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 49
+Evaluating:  31%|███▏      | 49/156 [00:06<00:14,  7.52it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 50
+Evaluating:  32%|███▏      | 50/156 [00:06<00:14,  7.57it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 51
+Evaluating:  33%|███▎      | 51/156 [00:06<00:13,  7.59it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 52
+Evaluating:  33%|███▎      | 52/156 [00:06<00:13,  7.62it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 53
+Evaluating:  34%|███▍      | 53/156 [00:06<00:13,  7.65it/s]01/10/2022 00:22:20 - INFO - __main__ -   Batch Number = 54
+Evaluating:  35%|███▍      | 54/156 [00:07<00:13,  7.69it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 55
+Evaluating:  35%|███▌      | 55/156 [00:07<00:13,  7.73it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 56
+Evaluating:  36%|███▌      | 56/156 [00:07<00:12,  7.75it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 57
+Evaluating:  37%|███▋      | 57/156 [00:07<00:12,  7.79it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 58
+Evaluating:  37%|███▋      | 58/156 [00:07<00:12,  7.83it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 59
+Evaluating:  38%|███▊      | 59/156 [00:07<00:12,  7.84it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 60
+Evaluating:  38%|███▊      | 60/156 [00:07<00:12,  7.86it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 61
+Evaluating:  39%|███▉      | 61/156 [00:07<00:12,  7.87it/s]01/10/2022 00:22:21 - INFO - __main__ -   Batch Number = 62
+Evaluating:  40%|███▉      | 62/156 [00:08<00:11,  7.88it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 63
+Evaluating:  40%|████      | 63/156 [00:08<00:11,  7.88it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 64
+Evaluating:  41%|████      | 64/156 [00:08<00:11,  7.88it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 65
+Evaluating:  42%|████▏     | 65/156 [00:08<00:11,  7.88it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 66
+Evaluating:  42%|████▏     | 66/156 [00:08<00:11,  7.88it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 67
+Evaluating:  43%|████▎     | 67/156 [00:08<00:11,  7.86it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 68
+Evaluating:  44%|████▎     | 68/156 [00:08<00:11,  7.86it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 69
+Evaluating:  44%|████▍     | 69/156 [00:08<00:11,  7.85it/s]01/10/2022 00:22:22 - INFO - __main__ -   Batch Number = 70
+Evaluating:  45%|████▍     | 70/156 [00:09<00:10,  7.82it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 71
+Evaluating:  46%|████▌     | 71/156 [00:09<00:10,  7.78it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 72
+Evaluating:  46%|████▌     | 72/156 [00:09<00:10,  7.75it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 73
+Evaluating:  47%|████▋     | 73/156 [00:09<00:10,  7.72it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 74
+Evaluating:  47%|████▋     | 74/156 [00:09<00:10,  7.70it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 75
+Evaluating:  48%|████▊     | 75/156 [00:09<00:10,  7.69it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 76
+Evaluating:  49%|████▊     | 76/156 [00:09<00:10,  7.67it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 77
+Evaluating:  49%|████▉     | 77/156 [00:10<00:10,  7.66it/s]01/10/2022 00:22:23 - INFO - __main__ -   Batch Number = 78
+Evaluating:  50%|█████     | 78/156 [00:10<00:10,  7.64it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 79
+Evaluating:  51%|█████     | 79/156 [00:10<00:10,  7.64it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 80
+Evaluating:  51%|█████▏    | 80/156 [00:10<00:09,  7.63it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 81
+Evaluating:  52%|█████▏    | 81/156 [00:10<00:09,  7.63it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 82
+Evaluating:  53%|█████▎    | 82/156 [00:10<00:09,  7.63it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 83
+Evaluating:  53%|█████▎    | 83/156 [00:10<00:11,  6.21it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 84
+Evaluating:  54%|█████▍    | 84/156 [00:11<00:11,  6.48it/s]01/10/2022 00:22:24 - INFO - __main__ -   Batch Number = 85
+Evaluating:  54%|█████▍    | 85/156 [00:11<00:10,  6.70it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 86
+Evaluating:  55%|█████▌    | 86/156 [00:11<00:10,  6.84it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 87
+Evaluating:  56%|█████▌    | 87/156 [00:11<00:09,  6.97it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 88
+Evaluating:  56%|█████▋    | 88/156 [00:11<00:09,  7.05it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 89
+Evaluating:  57%|█████▋    | 89/156 [00:11<00:09,  7.11it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 90
+Evaluating:  58%|█████▊    | 90/156 [00:11<00:09,  7.16it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 91
+Evaluating:  58%|█████▊    | 91/156 [00:12<00:09,  7.19it/s]01/10/2022 00:22:25 - INFO - __main__ -   Batch Number = 92
+Evaluating:  59%|█████▉    | 92/156 [00:12<00:08,  7.22it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 93
+Evaluating:  60%|█████▉    | 93/156 [00:12<00:08,  7.23it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 94
+Evaluating:  60%|██████    | 94/156 [00:12<00:08,  7.24it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 95
+Evaluating:  61%|██████    | 95/156 [00:12<00:08,  7.25it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 96
+Evaluating:  62%|██████▏   | 96/156 [00:12<00:08,  7.26it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 97
+Evaluating:  62%|██████▏   | 97/156 [00:12<00:08,  7.27it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 98
+Evaluating:  63%|██████▎   | 98/156 [00:12<00:07,  7.27it/s]01/10/2022 00:22:26 - INFO - __main__ -   Batch Number = 99
+Evaluating:  63%|██████▎   | 99/156 [00:13<00:07,  7.27it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 100
+Evaluating:  64%|██████▍   | 100/156 [00:13<00:07,  7.27it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 101
+Evaluating:  65%|██████▍   | 101/156 [00:13<00:07,  7.25it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 102
+Evaluating:  65%|██████▌   | 102/156 [00:13<00:07,  7.26it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 103
+Evaluating:  66%|██████▌   | 103/156 [00:13<00:07,  7.26it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 104
+Evaluating:  67%|██████▋   | 104/156 [00:13<00:07,  7.26it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 105
+Evaluating:  67%|██████▋   | 105/156 [00:13<00:07,  7.27it/s]01/10/2022 00:22:27 - INFO - __main__ -   Batch Number = 106
+Evaluating:  68%|██████▊   | 106/156 [00:14<00:06,  7.29it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 107
+Evaluating:  69%|██████▊   | 107/156 [00:14<00:06,  7.31it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 108
+Evaluating:  69%|██████▉   | 108/156 [00:14<00:06,  7.33it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 109
+Evaluating:  70%|██████▉   | 109/156 [00:14<00:06,  7.33it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 110
+Evaluating:  71%|███████   | 110/156 [00:14<00:06,  7.35it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 111
+Evaluating:  71%|███████   | 111/156 [00:14<00:06,  7.35it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 112
+Evaluating:  72%|███████▏  | 112/156 [00:14<00:05,  7.36it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 113
+Evaluating:  72%|███████▏  | 113/156 [00:15<00:05,  7.35it/s]01/10/2022 00:22:28 - INFO - __main__ -   Batch Number = 114
+Evaluating:  73%|███████▎  | 114/156 [00:15<00:05,  7.35it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 115
+Evaluating:  74%|███████▎  | 115/156 [00:15<00:05,  7.35it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 116
+Evaluating:  74%|███████▍  | 116/156 [00:15<00:05,  7.38it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 117
+Evaluating:  75%|███████▌  | 117/156 [00:15<00:05,  7.42it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 118
+Evaluating:  76%|███████▌  | 118/156 [00:15<00:05,  7.44it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 119
+Evaluating:  76%|███████▋  | 119/156 [00:15<00:05,  6.69it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 120
+Evaluating:  77%|███████▋  | 120/156 [00:16<00:05,  7.03it/s]01/10/2022 00:22:29 - INFO - __main__ -   Batch Number = 121
+Evaluating:  78%|███████▊  | 121/156 [00:16<00:04,  7.25it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 122
+Evaluating:  78%|███████▊  | 122/156 [00:16<00:04,  7.42it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 123
+Evaluating:  79%|███████▉  | 123/156 [00:16<00:04,  7.51it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 124
+Evaluating:  79%|███████▉  | 124/156 [00:16<00:04,  7.57it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 125
+Evaluating:  80%|████████  | 125/156 [00:16<00:04,  7.59it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 126
+Evaluating:  81%|████████  | 126/156 [00:16<00:03,  7.61it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 127
+Evaluating:  81%|████████▏ | 127/156 [00:16<00:03,  7.61it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 128
+Evaluating:  82%|████████▏ | 128/156 [00:17<00:03,  7.61it/s]01/10/2022 00:22:30 - INFO - __main__ -   Batch Number = 129
+Evaluating:  83%|████████▎ | 129/156 [00:17<00:03,  7.61it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 130
+Evaluating:  83%|████████▎ | 130/156 [00:17<00:03,  7.56it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 131
+Evaluating:  84%|████████▍ | 131/156 [00:17<00:03,  7.46it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 132
+Evaluating:  85%|████████▍ | 132/156 [00:17<00:03,  7.43it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 133
+Evaluating:  85%|████████▌ | 133/156 [00:17<00:03,  7.38it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 134
+Evaluating:  86%|████████▌ | 134/156 [00:17<00:02,  7.34it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 135
+Evaluating:  87%|████████▋ | 135/156 [00:18<00:02,  7.28it/s]01/10/2022 00:22:31 - INFO - __main__ -   Batch Number = 136
+Evaluating:  87%|████████▋ | 136/156 [00:18<00:02,  7.28it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 137
+Evaluating:  88%|████████▊ | 137/156 [00:18<00:02,  7.27it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 138
+Evaluating:  88%|████████▊ | 138/156 [00:18<00:02,  7.27it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 139
+Evaluating:  89%|████████▉ | 139/156 [00:18<00:02,  7.27it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 140
+Evaluating:  90%|████████▉ | 140/156 [00:18<00:02,  7.27it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 141
+Evaluating:  90%|█████████ | 141/156 [00:18<00:02,  7.27it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 142
+Evaluating:  91%|█████████ | 142/156 [00:18<00:01,  7.27it/s]01/10/2022 00:22:32 - INFO - __main__ -   Batch Number = 143
+Evaluating:  92%|█████████▏| 143/156 [00:19<00:01,  7.27it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 144
+Evaluating:  92%|█████████▏| 144/156 [00:19<00:01,  7.27it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 145
+Evaluating:  93%|█████████▎| 145/156 [00:19<00:01,  7.27it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 146
+Evaluating:  94%|█████████▎| 146/156 [00:19<00:01,  7.26it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 147
+Evaluating:  94%|█████████▍| 147/156 [00:19<00:01,  7.26it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 148
+Evaluating:  95%|█████████▍| 148/156 [00:19<00:01,  7.27it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 149
+Evaluating:  96%|█████████▌| 149/156 [00:19<00:00,  7.28it/s]01/10/2022 00:22:33 - INFO - __main__ -   Batch Number = 150
+Evaluating:  96%|█████████▌| 150/156 [00:20<00:00,  7.30it/s]01/10/2022 00:22:34 - INFO - __main__ -   Batch Number = 151
+Evaluating:  97%|█████████▋| 151/156 [00:20<00:00,  7.28it/s]01/10/2022 00:22:34 - INFO - __main__ -   Batch Number = 152
+Evaluating:  97%|█████████▋| 152/156 [00:20<00:00,  7.28it/s]01/10/2022 00:22:34 - INFO - __main__ -   Batch Number = 153
+Evaluating:  98%|█████████▊| 153/156 [00:20<00:00,  7.28it/s]01/10/2022 00:22:34 - INFO - __main__ -   Batch Number = 154
+Evaluating:  99%|█████████▊| 154/156 [00:20<00:00,  7.28it/s]01/10/2022 00:22:34 - INFO - __main__ -   Batch Number = 155
+Evaluating:  99%|█████████▉| 155/156 [00:20<00:00,  7.28it/s]01/10/2022 00:22:34 - INFO - __main__ -   Batch Number = 156
+Evaluating: 100%|██████████| 156/156 [00:20<00:00,  7.03it/s]Evaluating: 100%|██████████| 156/156 [00:20<00:00,  7.46it/s]
+01/10/2022 00:22:34 - INFO - __main__ -     Evaluation done in total 20.924692 secs (0.016793 sec per example)
+Writing predictions to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/predictions_zh_.json
+Writing nbest to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/nbest_predictions_zh_.json
+01/10/2022 00:23:01 - INFO - __main__ -   Results = OrderedDict([('exact', 40.924369747899156), ('f1', 50.99879951980789), ('precision', 49.364145658263304), ('recall', 55.55682272909164), ('total', 1190), ('HasAns_exact', 40.924369747899156), ('HasAns_f1', 50.99879951980789), ('HasAns_total', 1190), ('best_exact', 40.924369747899156), ('best_exact_thresh', 0.0), ('best_f1', 50.99879951980789), ('best_f1_thresh', 0.0)])
+PyTorch version 1.10.1+cu102 available.
+01/10/2022 00:23:03 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/10/2022 00:23:03 - INFO - root -   save model
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/10/2022 00:23:13 - INFO - __main__ -   lang2id = None
+01/10/2022 00:23:17 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='xlm-roberta-base', model_type='xlm-roberta', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//xquad', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/', max_seq_length=384, train_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='zh', train_lang='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s2/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/10/2022 00:23:17 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/10/2022 00:23:27 - INFO - __main__ -   lang2id = None
+01/10/2022 00:23:27 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/10/2022 00:23:27 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s2/checkpoint-best/qna
+01/10/2022 00:23:27 - INFO - root -   Trying to decide if add adapter
+01/10/2022 00:23:27 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s2/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s2/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s2/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s2/checkpoint-best/qna/pytorch_model_head.bin
+01/10/2022 00:23:27 - INFO - root -   loading lang adpater zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/xlm-roberta-base/pfeiffer/zh_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted'
+01/10/2022 00:23:28 - INFO - __main__ -   Language adapter for zh found
+01/10/2022 00:23:28 - INFO - __main__ -   Set active language adapter to zh
+01/10/2022 00:23:28 - INFO - __main__ -   Args Adapter Weight = None
+01/10/2022 00:23:28 - INFO - __main__ -   Adapter Languages = ['zh']
+01/10/2022 00:23:28 - INFO - __main__ -   Predict File = xquad.zh.json
+01/10/2022 00:23:28 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//xquad
+zh zh/wiki@ukp
+  0%|          | 0/48 [00:00<?, ?it/s] 73%|███████▎  | 35/48 [00:00<00:00, 343.84it/s]100%|██████████| 48/48 [00:00<00:00, 364.37it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<02:13,  8.89it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:00<00:00, 1052.43it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:00<00:00, 2800.23it/s]
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 184839.53it/s]
+01/10/2022 00:23:30 - INFO - __main__ -   Local Rank = -1
+01/10/2022 00:23:30 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//xquad/cached_xquad.zh.json_xlm-roberta-base_384_zh
+01/10/2022 00:23:31 - INFO - __main__ -   ***** Running evaluation  *****
+01/10/2022 00:23:31 - INFO - __main__ -     Num examples = 1246
+01/10/2022 00:23:31 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/156 [00:00<?, ?it/s]01/10/2022 00:23:31 - INFO - __main__ -   Batch Number = 1
+Evaluating:   1%|          | 1/156 [00:00<00:23,  6.72it/s]01/10/2022 00:23:31 - INFO - __main__ -   Batch Number = 2
+Evaluating:   1%|▏         | 2/156 [00:00<00:21,  7.08it/s]01/10/2022 00:23:31 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/156 [00:00<00:20,  7.38it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 4
+Evaluating:   3%|▎         | 4/156 [00:00<00:19,  7.70it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 5
+Evaluating:   3%|▎         | 5/156 [00:00<00:19,  7.91it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 6
+Evaluating:   4%|▍         | 6/156 [00:00<00:18,  8.03it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 7
+Evaluating:   4%|▍         | 7/156 [00:00<00:18,  8.11it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 8
+Evaluating:   5%|▌         | 8/156 [00:01<00:18,  8.16it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 9
+Evaluating:   6%|▌         | 9/156 [00:01<00:17,  8.19it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 10
+Evaluating:   6%|▋         | 10/156 [00:01<00:17,  8.21it/s]01/10/2022 00:23:32 - INFO - __main__ -   Batch Number = 11
+Evaluating:   7%|▋         | 11/156 [00:01<00:17,  8.23it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 12
+Evaluating:   8%|▊         | 12/156 [00:01<00:17,  8.24it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 13
+Evaluating:   8%|▊         | 13/156 [00:01<00:18,  7.88it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 14
+Evaluating:   9%|▉         | 14/156 [00:01<00:17,  8.00it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 15
+Evaluating:  10%|▉         | 15/156 [00:01<00:17,  8.08it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 16
+Evaluating:  10%|█         | 16/156 [00:02<00:17,  8.14it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 17
+Evaluating:  11%|█         | 17/156 [00:02<00:17,  8.17it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 18
+Evaluating:  12%|█▏        | 18/156 [00:02<00:16,  8.19it/s]01/10/2022 00:23:33 - INFO - __main__ -   Batch Number = 19
+Evaluating:  12%|█▏        | 19/156 [00:02<00:16,  8.21it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 20
+Evaluating:  13%|█▎        | 20/156 [00:02<00:16,  8.22it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 21
+Evaluating:  13%|█▎        | 21/156 [00:02<00:16,  8.24it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 22
+Evaluating:  14%|█▍        | 22/156 [00:02<00:16,  8.24it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 23
+Evaluating:  15%|█▍        | 23/156 [00:02<00:16,  8.24it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 24
+Evaluating:  15%|█▌        | 24/156 [00:02<00:16,  8.24it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 25
+Evaluating:  16%|█▌        | 25/156 [00:03<00:15,  8.25it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 26
+Evaluating:  17%|█▋        | 26/156 [00:03<00:15,  8.26it/s]01/10/2022 00:23:34 - INFO - __main__ -   Batch Number = 27
+Evaluating:  17%|█▋        | 27/156 [00:03<00:15,  8.25it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 28
+Evaluating:  18%|█▊        | 28/156 [00:03<00:22,  5.80it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 29
+Evaluating:  19%|█▊        | 29/156 [00:03<00:19,  6.36it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 30
+Evaluating:  19%|█▉        | 30/156 [00:03<00:18,  6.83it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 31
+Evaluating:  20%|█▉        | 31/156 [00:03<00:17,  7.20it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 32
+Evaluating:  21%|██        | 32/156 [00:04<00:16,  7.49it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 33
+Evaluating:  21%|██        | 33/156 [00:04<00:15,  7.70it/s]01/10/2022 00:23:35 - INFO - __main__ -   Batch Number = 34
+Evaluating:  22%|██▏       | 34/156 [00:04<00:15,  7.85it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 35
+Evaluating:  22%|██▏       | 35/156 [00:04<00:15,  7.97it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 36
+Evaluating:  23%|██▎       | 36/156 [00:04<00:14,  8.04it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 37
+Evaluating:  24%|██▎       | 37/156 [00:04<00:14,  8.06it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 38
+Evaluating:  24%|██▍       | 38/156 [00:04<00:14,  8.08it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 39
+Evaluating:  25%|██▌       | 39/156 [00:04<00:14,  8.13it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 40
+Evaluating:  26%|██▌       | 40/156 [00:05<00:14,  8.16it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 41
+Evaluating:  26%|██▋       | 41/156 [00:05<00:14,  8.16it/s]01/10/2022 00:23:36 - INFO - __main__ -   Batch Number = 42
+Evaluating:  27%|██▋       | 42/156 [00:05<00:13,  8.18it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 43
+Evaluating:  28%|██▊       | 43/156 [00:05<00:13,  8.19it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 44
+Evaluating:  28%|██▊       | 44/156 [00:05<00:13,  8.20it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 45
+Evaluating:  29%|██▉       | 45/156 [00:05<00:13,  8.21it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 46
+Evaluating:  29%|██▉       | 46/156 [00:05<00:13,  8.22it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 47
+Evaluating:  30%|███       | 47/156 [00:05<00:13,  8.22it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 48
+Evaluating:  31%|███       | 48/156 [00:06<00:13,  8.23it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 49
+Evaluating:  31%|███▏      | 49/156 [00:06<00:13,  8.23it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 50
+Evaluating:  32%|███▏      | 50/156 [00:06<00:12,  8.22it/s]01/10/2022 00:23:37 - INFO - __main__ -   Batch Number = 51
+Evaluating:  33%|███▎      | 51/156 [00:06<00:12,  8.20it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 52
+Evaluating:  33%|███▎      | 52/156 [00:06<00:12,  8.20it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 53
+Evaluating:  34%|███▍      | 53/156 [00:06<00:12,  8.19it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 54
+Evaluating:  35%|███▍      | 54/156 [00:06<00:12,  8.18it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 55
+Evaluating:  35%|███▌      | 55/156 [00:06<00:12,  8.19it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 56
+Evaluating:  36%|███▌      | 56/156 [00:07<00:12,  8.18it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 57
+Evaluating:  37%|███▋      | 57/156 [00:07<00:12,  8.19it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 58
+Evaluating:  37%|███▋      | 58/156 [00:07<00:11,  8.20it/s]01/10/2022 00:23:38 - INFO - __main__ -   Batch Number = 59
+Evaluating:  38%|███▊      | 59/156 [00:07<00:11,  8.19it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 60
+Evaluating:  38%|███▊      | 60/156 [00:07<00:11,  8.18it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 61
+Evaluating:  39%|███▉      | 61/156 [00:07<00:11,  8.20it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 62
+Evaluating:  40%|███▉      | 62/156 [00:07<00:11,  8.21it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 63
+Evaluating:  40%|████      | 63/156 [00:07<00:11,  8.21it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 64
+Evaluating:  41%|████      | 64/156 [00:08<00:11,  8.20it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 65
+Evaluating:  42%|████▏     | 65/156 [00:08<00:11,  8.20it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 66
+Evaluating:  42%|████▏     | 66/156 [00:08<00:10,  8.21it/s]01/10/2022 00:23:39 - INFO - __main__ -   Batch Number = 67
+Evaluating:  43%|████▎     | 67/156 [00:08<00:10,  8.21it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 68
+Evaluating:  44%|████▎     | 68/156 [00:08<00:10,  8.20it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 69
+Evaluating:  44%|████▍     | 69/156 [00:08<00:11,  7.87it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 70
+Evaluating:  45%|████▍     | 70/156 [00:08<00:10,  7.97it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 71
+Evaluating:  46%|████▌     | 71/156 [00:08<00:10,  8.02it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 72
+Evaluating:  46%|████▌     | 72/156 [00:09<00:10,  8.09it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 73
+Evaluating:  47%|████▋     | 73/156 [00:09<00:10,  8.13it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 74
+Evaluating:  47%|████▋     | 74/156 [00:09<00:10,  8.16it/s]01/10/2022 00:23:40 - INFO - __main__ -   Batch Number = 75
+Evaluating:  48%|████▊     | 75/156 [00:09<00:09,  8.17it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 76
+Evaluating:  49%|████▊     | 76/156 [00:09<00:09,  8.17it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 77
+Evaluating:  49%|████▉     | 77/156 [00:09<00:09,  8.16it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 78
+Evaluating:  50%|█████     | 78/156 [00:09<00:09,  8.15it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 79
+Evaluating:  51%|█████     | 79/156 [00:09<00:09,  8.15it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 80
+Evaluating:  51%|█████▏    | 80/156 [00:09<00:09,  8.13it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 81
+Evaluating:  52%|█████▏    | 81/156 [00:10<00:09,  8.12it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 82
+Evaluating:  53%|█████▎    | 82/156 [00:10<00:09,  8.13it/s]01/10/2022 00:23:41 - INFO - __main__ -   Batch Number = 83
+Evaluating:  53%|█████▎    | 83/156 [00:10<00:09,  8.10it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 84
+Evaluating:  54%|█████▍    | 84/156 [00:10<00:08,  8.12it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 85
+Evaluating:  54%|█████▍    | 85/156 [00:10<00:08,  8.13it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 86
+Evaluating:  55%|█████▌    | 86/156 [00:10<00:08,  8.12it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 87
+Evaluating:  56%|█████▌    | 87/156 [00:10<00:08,  8.13it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 88
+Evaluating:  56%|█████▋    | 88/156 [00:10<00:08,  8.14it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 89
+Evaluating:  57%|█████▋    | 89/156 [00:11<00:08,  8.14it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 90
+Evaluating:  58%|█████▊    | 90/156 [00:11<00:08,  8.16it/s]01/10/2022 00:23:42 - INFO - __main__ -   Batch Number = 91
+Evaluating:  58%|█████▊    | 91/156 [00:11<00:07,  8.16it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 92
+Evaluating:  59%|█████▉    | 92/156 [00:11<00:07,  8.15it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 93
+Evaluating:  60%|█████▉    | 93/156 [00:11<00:07,  8.15it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 94
+Evaluating:  60%|██████    | 94/156 [00:11<00:07,  8.16it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 95
+Evaluating:  61%|██████    | 95/156 [00:11<00:07,  8.15it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 96
+Evaluating:  62%|██████▏   | 96/156 [00:11<00:07,  8.15it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 97
+Evaluating:  62%|██████▏   | 97/156 [00:12<00:07,  8.15it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 98
+Evaluating:  63%|██████▎   | 98/156 [00:12<00:07,  8.15it/s]01/10/2022 00:23:43 - INFO - __main__ -   Batch Number = 99
+Evaluating:  63%|██████▎   | 99/156 [00:12<00:07,  8.14it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 100
+Evaluating:  64%|██████▍   | 100/156 [00:12<00:06,  8.12it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 101
+Evaluating:  65%|██████▍   | 101/156 [00:12<00:06,  8.08it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 102
+Evaluating:  65%|██████▌   | 102/156 [00:12<00:06,  8.10it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 103
+Evaluating:  66%|██████▌   | 103/156 [00:12<00:06,  8.12it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 104
+Evaluating:  67%|██████▋   | 104/156 [00:12<00:06,  8.13it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 105
+Evaluating:  67%|██████▋   | 105/156 [00:13<00:06,  8.12it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 106
+Evaluating:  68%|██████▊   | 106/156 [00:13<00:06,  8.10it/s]01/10/2022 00:23:44 - INFO - __main__ -   Batch Number = 107
+Evaluating:  69%|██████▊   | 107/156 [00:13<00:06,  8.06it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 108
+Evaluating:  69%|██████▉   | 108/156 [00:13<00:05,  8.02it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 109
+Evaluating:  70%|██████▉   | 109/156 [00:13<00:06,  7.29it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 110
+Evaluating:  71%|███████   | 110/156 [00:13<00:06,  7.48it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 111
+Evaluating:  71%|███████   | 111/156 [00:13<00:05,  7.61it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 112
+Evaluating:  72%|███████▏  | 112/156 [00:13<00:05,  7.70it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 113
+Evaluating:  72%|███████▏  | 113/156 [00:14<00:05,  7.74it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 114
+Evaluating:  73%|███████▎  | 114/156 [00:14<00:05,  7.75it/s]01/10/2022 00:23:45 - INFO - __main__ -   Batch Number = 115
+Evaluating:  74%|███████▎  | 115/156 [00:14<00:05,  7.76it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 116
+Evaluating:  74%|███████▍  | 116/156 [00:14<00:05,  7.74it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 117
+Evaluating:  75%|███████▌  | 117/156 [00:14<00:05,  7.74it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 118
+Evaluating:  76%|███████▌  | 118/156 [00:14<00:04,  7.76it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 119
+Evaluating:  76%|███████▋  | 119/156 [00:14<00:04,  7.78it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 120
+Evaluating:  77%|███████▋  | 120/156 [00:15<00:04,  7.78it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 121
+Evaluating:  78%|███████▊  | 121/156 [00:15<00:04,  7.78it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 122
+Evaluating:  78%|███████▊  | 122/156 [00:15<00:04,  7.77it/s]01/10/2022 00:23:46 - INFO - __main__ -   Batch Number = 123
+Evaluating:  79%|███████▉  | 123/156 [00:15<00:04,  7.74it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 124
+Evaluating:  79%|███████▉  | 124/156 [00:15<00:04,  7.68it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 125
+Evaluating:  80%|████████  | 125/156 [00:15<00:04,  7.62it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 126
+Evaluating:  81%|████████  | 126/156 [00:15<00:03,  7.55it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 127
+Evaluating:  81%|████████▏ | 127/156 [00:15<00:03,  7.51it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 128
+Evaluating:  82%|████████▏ | 128/156 [00:16<00:03,  7.48it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 129
+Evaluating:  83%|████████▎ | 129/156 [00:16<00:03,  7.46it/s]01/10/2022 00:23:47 - INFO - __main__ -   Batch Number = 130
+Evaluating:  83%|████████▎ | 130/156 [00:16<00:03,  7.45it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 131
+Evaluating:  84%|████████▍ | 131/156 [00:16<00:03,  7.42it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 132
+Evaluating:  85%|████████▍ | 132/156 [00:16<00:03,  7.44it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 133
+Evaluating:  85%|████████▌ | 133/156 [00:16<00:03,  7.45it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 134
+Evaluating:  86%|████████▌ | 134/156 [00:16<00:02,  7.47it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 135
+Evaluating:  87%|████████▋ | 135/156 [00:17<00:02,  7.48it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 136
+Evaluating:  87%|████████▋ | 136/156 [00:17<00:02,  7.46it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 137
+Evaluating:  88%|████████▊ | 137/156 [00:17<00:02,  7.45it/s]01/10/2022 00:23:48 - INFO - __main__ -   Batch Number = 138
+Evaluating:  88%|████████▊ | 138/156 [00:17<00:02,  7.44it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 139
+Evaluating:  89%|████████▉ | 139/156 [00:17<00:02,  7.41it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 140
+Evaluating:  90%|████████▉ | 140/156 [00:17<00:02,  7.38it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 141
+Evaluating:  90%|█████████ | 141/156 [00:17<00:02,  7.36it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 142
+Evaluating:  91%|█████████ | 142/156 [00:17<00:01,  7.37it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 143
+Evaluating:  92%|█████████▏| 143/156 [00:18<00:01,  7.36it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 144
+Evaluating:  92%|█████████▏| 144/156 [00:18<00:01,  7.33it/s]01/10/2022 00:23:49 - INFO - __main__ -   Batch Number = 145
+Evaluating:  93%|█████████▎| 145/156 [00:18<00:01,  7.33it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 146
+Evaluating:  94%|█████████▎| 146/156 [00:18<00:01,  7.31it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 147
+Evaluating:  94%|█████████▍| 147/156 [00:18<00:01,  7.32it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 148
+Evaluating:  95%|█████████▍| 148/156 [00:18<00:01,  7.32it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 149
+Evaluating:  96%|█████████▌| 149/156 [00:18<00:00,  7.33it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 150
+Evaluating:  96%|█████████▌| 150/156 [00:19<00:00,  7.33it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 151
+Evaluating:  97%|█████████▋| 151/156 [00:19<00:00,  7.34it/s]01/10/2022 00:23:50 - INFO - __main__ -   Batch Number = 152
+Evaluating:  97%|█████████▋| 152/156 [00:19<00:00,  7.34it/s]01/10/2022 00:23:51 - INFO - __main__ -   Batch Number = 153
+Evaluating:  98%|█████████▊| 153/156 [00:19<00:00,  7.34it/s]01/10/2022 00:23:51 - INFO - __main__ -   Batch Number = 154
+Evaluating:  99%|█████████▊| 154/156 [00:19<00:00,  7.34it/s]01/10/2022 00:23:51 - INFO - __main__ -   Batch Number = 155
+Evaluating:  99%|█████████▉| 155/156 [00:19<00:00,  7.34it/s]01/10/2022 00:23:51 - INFO - __main__ -   Batch Number = 156
+Evaluating: 100%|██████████| 156/156 [00:19<00:00,  7.87it/s]
+01/10/2022 00:23:51 - INFO - __main__ -     Evaluation done in total 19.831769 secs (0.015916 sec per example)
+Writing predictions to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/predictions_zh_.json
+Writing nbest to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/nbest_predictions_zh_.json
+01/10/2022 00:24:14 - INFO - __main__ -   Results = OrderedDict([('exact', 43.69747899159664), ('f1', 52.4276013435677), ('precision', 51.37955182072829), ('recall', 55.93437374949979), ('total', 1190), ('HasAns_exact', 43.69747899159664), ('HasAns_f1', 52.4276013435677), ('HasAns_total', 1190), ('best_exact', 43.69747899159664), ('best_exact_thresh', 0.0), ('best_f1', 52.4276013435677), ('best_f1_thresh', 0.0)])
+PyTorch version 1.10.1+cu102 available.
+01/10/2022 00:24:16 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/10/2022 00:24:16 - INFO - root -   save model
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/10/2022 00:24:27 - INFO - __main__ -   lang2id = None
+01/10/2022 00:24:31 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='xlm-roberta-base', model_type='xlm-roberta', config_name=None, tokenizer_name=None, cache_dir=None, data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//xquad', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/', max_seq_length=384, train_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/train-v1.1.json', predict_file='/home/abhijeet/rohan/cloud-emea-copy/data//xquad/dev-v1.1.json', eval_test_set=False, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=4, per_gpu_eval_batch_size=8, gradient_accumulation_steps=4, learning_rate=0.0001, weight_decay=0.0001, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=15.0, max_steps=-1, save_steps=1000, warmup_steps=500, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', eval_lang='en', predict_langs='zh', train_lang='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh//train.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='qna', threads=8, version_2_with_negative=False, verbose_logging=False, n_best_size=20, max_query_length=64, max_answer_length=30, doc_stride=128, null_score_diff_threshold=0.0, predict_task_adapter='output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix=None, en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/10/2022 00:24:31 - INFO - __main__ -   Results: {}
+loading configuration file https://huggingface.co/xlm-roberta-base/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/87683eb92ea383b0475fecf99970e950a03c9ff5e51648d6eee56fb754612465.ab95cf27f9419a99cce4f19d09e655aba382a2bafe2fe26d0cc24c18cf1a1af6
+Model config XLMRobertaConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "XLMRobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "xlm-roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "type_vocab_size": 1,
+  "vocab_size": 250002
+}
+
+loading file https://huggingface.co/xlm-roberta-base/resolve/main/sentencepiece.bpe.model from cache at /home/abhijeet/.cache/torch/transformers/9df9ae4442348b73950203b63d1b8ed2d18eba68921872aee0c3a9d05b9673c6.00628a9eeb8baf4080d44a0abe9fe8057893de20c7cb6e6423cddbf452f7d4d8
+loading weights file https://huggingface.co/xlm-roberta-base/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/97d0ea09f8074264957d062ec20ccb79af7b917d091add8261b26874daf51b5d.f42212747c1c27fcebaa0a89e2a83c38c6d3d4340f21922f892b88d882146ac2
+Some weights of the model checkpoint at xlm-roberta-base were not used when initializing XLMRobertaForQuestionAnswering: ['lm_head.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.layer_norm.bias', 'lm_head.decoder.weight']
+- This IS expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing XLMRobertaForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of XLMRobertaForQuestionAnswering were not initialized from the model checkpoint at xlm-roberta-base and are newly initialized: ['qa_outputs.weight', 'qa_outputs.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/10/2022 00:24:41 - INFO - __main__ -   lang2id = None
+01/10/2022 00:24:42 - INFO - __main__ -   Evaluating the model on the test set of all languages specified
+01/10/2022 00:24:42 - INFO - __main__ -   Adapter will be loaded from this path: output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna
+01/10/2022 00:24:42 - INFO - root -   Trying to decide if add adapter
+01/10/2022 00:24:42 - INFO - root -   loading task adapter
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/adapter_config.json
+Adding adapter 'qna' of type 'text_task'.
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/pytorch_adapter.bin
+Loading module configuration from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/head_config.json
+Loading module weights from output/squad/my_xlm-roberta-base_LR1e-4_EPOCH15_maxlen384_batchsize4_gradacc4_s3/checkpoint-best/qna/pytorch_model_head.bin
+01/10/2022 00:24:42 - INFO - root -   loading lang adpater zh/wiki@ukp
+No exactly matching adapter config found for this specifier, falling back to default.
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/zh/xlm-roberta-base/pfeiffer/zh_relu_2.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/adapter_config.json
+Adding adapter 'zh' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted/pytorch_adapter.bin
+No matching prediction head found in '/home/abhijeet/.cache/torch/adapters/a0062ff69a60af7afaa36710258ebf0e2130259cc999502dce01e7ba44d087f3-28db881b757224796458960a5600431c0298d74f61061f69d4be5b5d72c9da7e-extracted'
+01/10/2022 00:24:43 - INFO - __main__ -   Language adapter for zh found
+01/10/2022 00:24:43 - INFO - __main__ -   Set active language adapter to zh
+01/10/2022 00:24:43 - INFO - __main__ -   Args Adapter Weight = None
+01/10/2022 00:24:43 - INFO - __main__ -   Adapter Languages = ['zh']
+01/10/2022 00:24:43 - INFO - __main__ -   Predict File = xquad.zh.json
+01/10/2022 00:24:43 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//xquad
+zh zh/wiki@ukp
+  0%|          | 0/48 [00:00<?, ?it/s] 69%|██████▉   | 33/48 [00:00<00:00, 319.24it/s]100%|██████████| 48/48 [00:00<00:00, 339.81it/s]
+convert squad examples to features:   0%|          | 0/1190 [00:00<?, ?it/s]convert squad examples to features:   0%|          | 1/1190 [00:00<02:03,  9.63it/s]convert squad examples to features:  32%|███▏      | 385/1190 [00:00<00:00, 1244.36it/s]convert squad examples to features: 100%|██████████| 1190/1190 [00:00<00:00, 2864.93it/s]/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:1423: FutureWarning: The `max_len` attribute has been deprecated and will be removed in a future version, use `model_max_length` instead.
+  FutureWarning,
+/home/abhijeet/rohan/cloud-emea-copy/src/transformers/tokenization_utils_base.py:2022: FutureWarning: The `pad_to_max_length` argument is deprecated and will be removed in a future version, use `padding=True` or `padding='longest'` to pad to the longest sequence in the batch, or use `padding='max_length'` to pad to a max length. In this case, you can give a specific length with `max_length` (e.g. `max_length=45`) or leave max_length to None to pad to the maximal input size of the model (e.g. 512 for Bert).
+  FutureWarning,
+
+add example index and unique id:   0%|          | 0/1190 [00:00<?, ?it/s]add example index and unique id: 100%|██████████| 1190/1190 [00:00<00:00, 424279.31it/s]
+01/10/2022 00:24:44 - INFO - __main__ -   Local Rank = -1
+01/10/2022 00:24:44 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//xquad/cached_xquad.zh.json_xlm-roberta-base_384_zh
+01/10/2022 00:24:46 - INFO - __main__ -   ***** Running evaluation  *****
+01/10/2022 00:24:46 - INFO - __main__ -     Num examples = 1246
+01/10/2022 00:24:46 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/156 [00:00<?, ?it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 1
+Evaluating:   1%|          | 1/156 [00:00<00:25,  6.12it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 2
+Evaluating:   1%|▏         | 2/156 [00:00<00:22,  6.94it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 3
+Evaluating:   2%|▏         | 3/156 [00:00<00:20,  7.36it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 4
+Evaluating:   3%|▎         | 4/156 [00:00<00:19,  7.67it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 5
+Evaluating:   3%|▎         | 5/156 [00:00<00:19,  7.86it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 6
+Evaluating:   4%|▍         | 6/156 [00:00<00:18,  7.98it/s]01/10/2022 00:24:46 - INFO - __main__ -   Batch Number = 7
+Evaluating:   4%|▍         | 7/156 [00:00<00:18,  8.06it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 8
+Evaluating:   5%|▌         | 8/156 [00:01<00:18,  8.10it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 9
+Evaluating:   6%|▌         | 9/156 [00:01<00:18,  8.12it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 10
+Evaluating:   6%|▋         | 10/156 [00:01<00:17,  8.15it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 11
+Evaluating:   7%|▋         | 11/156 [00:01<00:17,  8.17it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 12
+Evaluating:   8%|▊         | 12/156 [00:01<00:17,  8.17it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 13
+Evaluating:   8%|▊         | 13/156 [00:01<00:18,  7.84it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 14
+Evaluating:   9%|▉         | 14/156 [00:01<00:17,  7.94it/s]01/10/2022 00:24:47 - INFO - __main__ -   Batch Number = 15
+Evaluating:  10%|▉         | 15/156 [00:01<00:17,  8.00it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 16
+Evaluating:  10%|█         | 16/156 [00:02<00:17,  8.05it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 17
+Evaluating:  11%|█         | 17/156 [00:02<00:17,  8.10it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 18
+Evaluating:  12%|█▏        | 18/156 [00:02<00:16,  8.12it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 19
+Evaluating:  12%|█▏        | 19/156 [00:02<00:16,  8.13it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 20
+Evaluating:  13%|█▎        | 20/156 [00:02<00:16,  8.11it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 21
+Evaluating:  13%|█▎        | 21/156 [00:02<00:16,  8.14it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 22
+Evaluating:  14%|█▍        | 22/156 [00:02<00:16,  8.15it/s]01/10/2022 00:24:48 - INFO - __main__ -   Batch Number = 23
+Evaluating:  15%|█▍        | 23/156 [00:02<00:16,  8.16it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 24
+Evaluating:  15%|█▌        | 24/156 [00:03<00:16,  8.16it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 25
+Evaluating:  16%|█▌        | 25/156 [00:03<00:16,  8.16it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 26
+Evaluating:  17%|█▋        | 26/156 [00:03<00:15,  8.16it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 27
+Evaluating:  17%|█▋        | 27/156 [00:03<00:15,  8.17it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 28
+Evaluating:  18%|█▊        | 28/156 [00:03<00:22,  5.65it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 29
+Evaluating:  19%|█▊        | 29/156 [00:03<00:20,  6.23it/s]01/10/2022 00:24:49 - INFO - __main__ -   Batch Number = 30
+Evaluating:  19%|█▉        | 30/156 [00:03<00:18,  6.71it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 31
+Evaluating:  20%|█▉        | 31/156 [00:04<00:18,  6.90it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 32
+Evaluating:  21%|██        | 32/156 [00:04<00:18,  6.61it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 33
+Evaluating:  21%|██        | 33/156 [00:04<00:17,  7.01it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 34
+Evaluating:  22%|██▏       | 34/156 [00:04<00:16,  7.32it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 35
+Evaluating:  22%|██▏       | 35/156 [00:04<00:16,  7.55it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 36
+Evaluating:  23%|██▎       | 36/156 [00:04<00:15,  7.73it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 37
+Evaluating:  24%|██▎       | 37/156 [00:04<00:15,  7.86it/s]01/10/2022 00:24:50 - INFO - __main__ -   Batch Number = 38
+Evaluating:  24%|██▍       | 38/156 [00:04<00:14,  7.95it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 39
+Evaluating:  25%|██▌       | 39/156 [00:05<00:14,  8.01it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 40
+Evaluating:  26%|██▌       | 40/156 [00:05<00:14,  8.06it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 41
+Evaluating:  26%|██▋       | 41/156 [00:05<00:14,  8.08it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 42
+Evaluating:  27%|██▋       | 42/156 [00:05<00:14,  8.11it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 43
+Evaluating:  28%|██▊       | 43/156 [00:05<00:13,  8.13it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 44
+Evaluating:  28%|██▊       | 44/156 [00:05<00:13,  8.14it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 45
+Evaluating:  29%|██▉       | 45/156 [00:05<00:13,  8.15it/s]01/10/2022 00:24:51 - INFO - __main__ -   Batch Number = 46
+Evaluating:  29%|██▉       | 46/156 [00:05<00:13,  8.15it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 47
+Evaluating:  30%|███       | 47/156 [00:06<00:13,  8.16it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 48
+Evaluating:  31%|███       | 48/156 [00:06<00:13,  8.16it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 49
+Evaluating:  31%|███▏      | 49/156 [00:06<00:13,  8.16it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 50
+Evaluating:  32%|███▏      | 50/156 [00:06<00:13,  8.14it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 51
+Evaluating:  33%|███▎      | 51/156 [00:06<00:12,  8.14it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 52
+Evaluating:  33%|███▎      | 52/156 [00:06<00:12,  8.14it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 53
+Evaluating:  34%|███▍      | 53/156 [00:06<00:12,  8.13it/s]01/10/2022 00:24:52 - INFO - __main__ -   Batch Number = 54
+Evaluating:  35%|███▍      | 54/156 [00:06<00:12,  8.11it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 55
+Evaluating:  35%|███▌      | 55/156 [00:07<00:12,  8.10it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 56
+Evaluating:  36%|███▌      | 56/156 [00:07<00:12,  8.06it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 57
+Evaluating:  37%|███▋      | 57/156 [00:07<00:12,  8.07it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 58
+Evaluating:  37%|███▋      | 58/156 [00:07<00:12,  8.07it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 59
+Evaluating:  38%|███▊      | 59/156 [00:07<00:12,  8.07it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 60
+Evaluating:  38%|███▊      | 60/156 [00:07<00:11,  8.04it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 61
+Evaluating:  39%|███▉      | 61/156 [00:07<00:11,  8.02it/s]01/10/2022 00:24:53 - INFO - __main__ -   Batch Number = 62
+Evaluating:  40%|███▉      | 62/156 [00:07<00:11,  8.01it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 63
+Evaluating:  40%|████      | 63/156 [00:08<00:11,  8.01it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 64
+Evaluating:  41%|████      | 64/156 [00:08<00:11,  8.02it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 65
+Evaluating:  42%|████▏     | 65/156 [00:08<00:11,  8.03it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 66
+Evaluating:  42%|████▏     | 66/156 [00:08<00:11,  8.04it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 67
+Evaluating:  43%|████▎     | 67/156 [00:08<00:11,  8.03it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 68
+Evaluating:  44%|████▎     | 68/156 [00:08<00:10,  8.03it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 69
+Evaluating:  44%|████▍     | 69/156 [00:08<00:10,  8.03it/s]01/10/2022 00:24:54 - INFO - __main__ -   Batch Number = 70
+Evaluating:  45%|████▍     | 70/156 [00:08<00:10,  8.04it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 71
+Evaluating:  46%|████▌     | 71/156 [00:09<00:10,  8.03it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 72
+Evaluating:  46%|████▌     | 72/156 [00:09<00:12,  6.55it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 73
+Evaluating:  47%|████▋     | 73/156 [00:09<00:12,  6.77it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 74
+Evaluating:  47%|████▋     | 74/156 [00:09<00:11,  6.93it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 75
+Evaluating:  48%|████▊     | 75/156 [00:09<00:11,  7.04it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 76
+Evaluating:  49%|████▊     | 76/156 [00:09<00:11,  7.11it/s]01/10/2022 00:24:55 - INFO - __main__ -   Batch Number = 77
+Evaluating:  49%|████▉     | 77/156 [00:09<00:11,  7.15it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 78
+Evaluating:  50%|█████     | 78/156 [00:10<00:10,  7.18it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 79
+Evaluating:  51%|█████     | 79/156 [00:10<00:10,  7.20it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 80
+Evaluating:  51%|█████▏    | 80/156 [00:10<00:10,  7.21it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 81
+Evaluating:  52%|█████▏    | 81/156 [00:10<00:10,  7.23it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 82
+Evaluating:  53%|█████▎    | 82/156 [00:10<00:10,  7.23it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 83
+Evaluating:  53%|█████▎    | 83/156 [00:10<00:10,  7.24it/s]01/10/2022 00:24:56 - INFO - __main__ -   Batch Number = 84
+Evaluating:  54%|█████▍    | 84/156 [00:10<00:09,  7.26it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 85
+Evaluating:  54%|█████▍    | 85/156 [00:11<00:09,  7.26it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 86
+Evaluating:  55%|█████▌    | 86/156 [00:11<00:09,  7.24it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 87
+Evaluating:  56%|█████▌    | 87/156 [00:11<00:09,  7.24it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 88
+Evaluating:  56%|█████▋    | 88/156 [00:11<00:09,  7.25it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 89
+Evaluating:  57%|█████▋    | 89/156 [00:11<00:09,  7.25it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 90
+Evaluating:  58%|█████▊    | 90/156 [00:11<00:09,  7.25it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 91
+Evaluating:  58%|█████▊    | 91/156 [00:11<00:08,  7.25it/s]01/10/2022 00:24:57 - INFO - __main__ -   Batch Number = 92
+Evaluating:  59%|█████▉    | 92/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 93
+Evaluating:  60%|█████▉    | 93/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 94
+Evaluating:  60%|██████    | 94/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 95
+Evaluating:  61%|██████    | 95/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 96
+Evaluating:  62%|██████▏   | 96/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 97
+Evaluating:  62%|██████▏   | 97/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 98
+Evaluating:  63%|██████▎   | 98/156 [00:12<00:08,  7.25it/s]01/10/2022 00:24:58 - INFO - __main__ -   Batch Number = 99
+Evaluating:  63%|██████▎   | 99/156 [00:12<00:07,  7.25it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 100
+Evaluating:  64%|██████▍   | 100/156 [00:13<00:07,  7.26it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 101
+Evaluating:  65%|██████▍   | 101/156 [00:13<00:07,  7.25it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 102
+Evaluating:  65%|██████▌   | 102/156 [00:13<00:07,  7.24it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 103
+Evaluating:  66%|██████▌   | 103/156 [00:13<00:07,  7.24it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 104
+Evaluating:  67%|██████▋   | 104/156 [00:13<00:07,  7.24it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 105
+Evaluating:  67%|██████▋   | 105/156 [00:13<00:07,  7.24it/s]01/10/2022 00:24:59 - INFO - __main__ -   Batch Number = 106
+Evaluating:  68%|██████▊   | 106/156 [00:13<00:06,  7.26it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 107
+Evaluating:  69%|██████▊   | 107/156 [00:14<00:06,  7.28it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 108
+Evaluating:  69%|██████▉   | 108/156 [00:14<00:06,  6.94it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 109
+Evaluating:  70%|██████▉   | 109/156 [00:14<00:06,  7.13it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 110
+Evaluating:  71%|███████   | 110/156 [00:14<00:06,  7.22it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 111
+Evaluating:  71%|███████   | 111/156 [00:14<00:06,  7.28it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 112
+Evaluating:  72%|███████▏  | 112/156 [00:14<00:06,  7.31it/s]01/10/2022 00:25:00 - INFO - __main__ -   Batch Number = 113
+Evaluating:  72%|███████▏  | 113/156 [00:14<00:05,  7.34it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 114
+Evaluating:  73%|███████▎  | 114/156 [00:15<00:05,  7.35it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 115
+Evaluating:  74%|███████▎  | 115/156 [00:15<00:05,  7.35it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 116
+Evaluating:  74%|███████▍  | 116/156 [00:15<00:05,  7.36it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 117
+Evaluating:  75%|███████▌  | 117/156 [00:15<00:05,  7.38it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 118
+Evaluating:  76%|███████▌  | 118/156 [00:15<00:05,  7.37it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 119
+Evaluating:  76%|███████▋  | 119/156 [00:15<00:05,  7.35it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 120
+Evaluating:  77%|███████▋  | 120/156 [00:15<00:04,  7.31it/s]01/10/2022 00:25:01 - INFO - __main__ -   Batch Number = 121
+Evaluating:  78%|███████▊  | 121/156 [00:15<00:04,  7.30it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 122
+Evaluating:  78%|███████▊  | 122/156 [00:16<00:04,  7.29it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 123
+Evaluating:  79%|███████▉  | 123/156 [00:16<00:04,  7.28it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 124
+Evaluating:  79%|███████▉  | 124/156 [00:16<00:04,  7.27it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 125
+Evaluating:  80%|████████  | 125/156 [00:16<00:04,  7.26it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 126
+Evaluating:  81%|████████  | 126/156 [00:16<00:04,  7.25it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 127
+Evaluating:  81%|████████▏ | 127/156 [00:16<00:03,  7.27it/s]01/10/2022 00:25:02 - INFO - __main__ -   Batch Number = 128
+Evaluating:  82%|████████▏ | 128/156 [00:16<00:03,  7.28it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 129
+Evaluating:  83%|████████▎ | 129/156 [00:17<00:03,  7.27it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 130
+Evaluating:  83%|████████▎ | 130/156 [00:17<00:03,  7.26it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 131
+Evaluating:  84%|████████▍ | 131/156 [00:17<00:03,  7.23it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 132
+Evaluating:  85%|████████▍ | 132/156 [00:17<00:03,  7.24it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 133
+Evaluating:  85%|████████▌ | 133/156 [00:17<00:03,  7.24it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 134
+Evaluating:  86%|████████▌ | 134/156 [00:17<00:03,  7.24it/s]01/10/2022 00:25:03 - INFO - __main__ -   Batch Number = 135
+Evaluating:  87%|████████▋ | 135/156 [00:17<00:02,  7.24it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 136
+Evaluating:  87%|████████▋ | 136/156 [00:18<00:02,  7.24it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 137
+Evaluating:  88%|████████▊ | 137/156 [00:18<00:02,  7.24it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 138
+Evaluating:  88%|████████▊ | 138/156 [00:18<00:02,  7.24it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 139
+Evaluating:  89%|████████▉ | 139/156 [00:18<00:02,  7.24it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 140
+Evaluating:  90%|████████▉ | 140/156 [00:18<00:02,  7.25it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 141
+Evaluating:  90%|█████████ | 141/156 [00:18<00:02,  7.25it/s]01/10/2022 00:25:04 - INFO - __main__ -   Batch Number = 142
+Evaluating:  91%|█████████ | 142/156 [00:18<00:01,  7.25it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 143
+Evaluating:  92%|█████████▏| 143/156 [00:19<00:01,  7.24it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 144
+Evaluating:  92%|█████████▏| 144/156 [00:19<00:01,  6.36it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 145
+Evaluating:  93%|█████████▎| 145/156 [00:19<00:01,  6.60it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 146
+Evaluating:  94%|█████████▎| 146/156 [00:19<00:01,  6.77it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 147
+Evaluating:  94%|█████████▍| 147/156 [00:19<00:01,  6.93it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 148
+Evaluating:  95%|█████████▍| 148/156 [00:19<00:01,  7.04it/s]01/10/2022 00:25:05 - INFO - __main__ -   Batch Number = 149
+Evaluating:  96%|█████████▌| 149/156 [00:19<00:00,  7.12it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 150
+Evaluating:  96%|█████████▌| 150/156 [00:20<00:00,  7.18it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 151
+Evaluating:  97%|█████████▋| 151/156 [00:20<00:00,  7.22it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 152
+Evaluating:  97%|█████████▋| 152/156 [00:20<00:00,  7.25it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 153
+Evaluating:  98%|█████████▊| 153/156 [00:20<00:00,  7.27it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 154
+Evaluating:  99%|█████████▊| 154/156 [00:20<00:00,  7.29it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 155
+Evaluating:  99%|█████████▉| 155/156 [00:20<00:00,  7.27it/s]01/10/2022 00:25:06 - INFO - __main__ -   Batch Number = 156
+Evaluating: 100%|██████████| 156/156 [00:20<00:00,  7.91it/s]Evaluating: 100%|██████████| 156/156 [00:20<00:00,  7.48it/s]
+01/10/2022 00:25:06 - INFO - __main__ -     Evaluation done in total 20.844636 secs (0.016729 sec per example)
+Writing predictions to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/predictions_zh_.json
+Writing nbest to: /home/abhijeet/rohan/cloud-emea-copy/outputs//squad/my-xlm-roberta-base-MaxLen384_qna_zh/nbest_predictions_zh_.json
+01/10/2022 00:25:34 - INFO - __main__ -   Results = OrderedDict([('exact', 39.32773109243698), ('f1', 50.36654661864745), ('precision', 48.25470188075229), ('recall', 55.81312525010004), ('total', 1190), ('HasAns_exact', 39.32773109243698), ('HasAns_f1', 50.36654661864745), ('HasAns_total', 1190), ('best_exact', 39.32773109243698), ('best_exact_thresh', 0.0), ('best_f1', 50.36654661864745), ('best_f1_thresh', 0.0)])

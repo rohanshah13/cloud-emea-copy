@@ -1,0 +1,73 @@
+PyTorch version 1.10.0+cu102 available.
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 40, in <module>
+    from utils_tag import convert_examples_to_features
+  File "/home/abhijeet/rohan/cloud-emea/third_party/utils_tag.py", line 24, in <module>
+    from transformers import XLMTokenizer
+  File "/home/abhijeet/rohan/cloud-emea/src/transformers/__init__.py", line 135, in <module>
+    from .pipelines import (
+  File "/home/abhijeet/rohan/cloud-emea/src/transformers/pipelines.py", line 33, in <module>
+    from transformers.modeling_auto import MODEL_WITH_HEADS_MAPPING
+  File "/home/abhijeet/rohan/cloud-emea/src/transformers/modeling_auto.py", line 62, in <module>
+    from .modeling_albert import (
+  File "/home/abhijeet/rohan/cloud-emea/src/transformers/modeling_albert.py", line 36, in <module>
+    from .modeling_outputs import (
+  File "/home/abhijeet/rohan/cloud-emea/src/transformers/modeling_outputs.py", line 277, in <module>
+    class CausalLMOutput(ModelOutput):
+  File "/usr/lib/python3.7/dataclasses.py", line 1010, in dataclass
+    return wrap(_cls)
+  File "/usr/lib/python3.7/dataclasses.py", line 1002, in wrap
+    return _process_class(cls, init, repr, eq, order, unsafe_hash, frozen)
+  File "/usr/lib/python3.7/dataclasses.py", line 921, in _process_class
+    globals,
+  File "/usr/lib/python3.7/dataclasses.py", line 523, in _init_fn
+    return_type=None)
+  File "/usr/lib/python3.7/dataclasses.py", line 387, in _create_fn
+    exec(txt, globals, ns)
+  File "<string>", line 1, in <module>
+KeyboardInterrupt
+Command terminated by signal 2
+3.66user 3.72system 0:01.69elapsed 436%CPU (0avgtext+0avgdata 290224maxresident)k
+0inputs+16outputs (0major+64574minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/__init__.py", line 150, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/core/__init__.py", line 72, in <module>
+    from . import numeric
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/core/numeric.py", line 30, in <module>
+    from ._ufunc_config import errstate
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/core/_ufunc_config.py", line 10, in <module>
+    from .umath import (
+KeyboardInterrupt
+Command exited with non-zero status 1
+1.73user 2.70system 0:00.16elapsed 2677%CPU (0avgtext+0avgdata 22064maxresident)k
+0inputs+0outputs (0major+3483minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "third_party/my_run_tag.py", line 30, in <module>
+    import numpy as np
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/__init__.py", line 150, in <module>
+    from . import core
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/core/__init__.py", line 102, in <module>
+    from . import _internal
+  File "/home/abhijeet/rohan/venvs/cloud-emea/lib/python3.7/site-packages/numpy/core/_internal.py", line 150, in <module>
+    sep_re = re.compile(r'\s*,\s*')
+  File "/usr/lib/python3.7/re.py", line 236, in compile
+    return _compile(pattern, flags)
+  File "/usr/lib/python3.7/re.py", line 288, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "/usr/lib/python3.7/sre_compile.py", line 768, in compile
+    code = _code(p, flags)
+  File "/usr/lib/python3.7/sre_compile.py", line 607, in _code
+    _compile(code, p.data, flags)
+  File "/usr/lib/python3.7/sre_compile.py", line 148, in _compile
+    _compile(code, av[2], flags)
+  File "/usr/lib/python3.7/sre_compile.py", line 120, in _compile
+    charset, hascased = _optimize_charset(av, iscased, tolower, fixes)
+  File "/usr/lib/python3.7/sre_compile.py", line 316, in _optimize_charset
+    tail.append((op, av))
+KeyboardInterrupt
+Command exited with non-zero status 1
+1.04user 1.51system 0:00.14elapsed 1802%CPU (0avgtext+0avgdata 23480maxresident)k
+0inputs+0outputs (0major+6554minor)pagefaults 0swaps

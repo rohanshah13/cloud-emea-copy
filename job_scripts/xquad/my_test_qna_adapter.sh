@@ -40,8 +40,8 @@ PREDICT_LANGS="en"
 
 TASK_ADAPTER_NAME="qna"
 
-ADAPTER_LANG="en"
-ADAPTER_NAME="en/wiki@ukp"
+ADAPTER_LANG="sw"
+ADAPTER_NAME="sw/wiki@ukp"
 
 OUTPUT_DIR="$OUT_DIR/$TASK/my-${MODEL}-MaxLen${MAXL}_${TASK_ADAPTER_NAME}_${ADAPTER_LANG}/"
 
@@ -59,6 +59,7 @@ fi
 # Model path where trained model should be stored
 MODEL_PATH=output/$SRC/my_${MODEL}_LR${LR}_EPOCH${NUM_EPOCHS}_maxlen${MAXL}_batchsize${BATCH_SIZE}_gradacc${GRAD_ACC}_s${SEED}
 mkdir -p $OUTPUT_DIR
+echo $OUTPUT_DIR
 # Train either on the SQuAD or TyDiQa-GoldP English train file
 if [ $SRC == 'squad' ]; then
   TASK_DATA_DIR=${DATA_DIR}/${TGT}
@@ -73,9 +74,9 @@ fi
 # train
 CUDA_VISIBLE_DEVICES=$GPU
 
-for SEED in 1 2 3
+for SEED in 1 2
 do
-MY_TASK_ADAPTER="output/$SRC/my_${MODEL}_LR${LR}_EPOCH${NUM_EPOCHS}_maxlen${MAXL}_batchsize${BATCH_SIZE}_gradacc${GRAD_ACC}_s${SEED}/checkpoint-best/qna"
+MY_TASK_ADAPTER="output/${SRC}/my_${MODEL}_LR${LR}_EPOCH${NUM_EPOCHS}_maxlen${MAXL}_batchsize${BATCH_SIZE}_gradacc${GRAD_ACC}_s${SEED}/checkpoint-best/qna"
 nohup python third_party/my_run_squad.py \
   --model_type ${MODEL_TYPE} \
   --model_name_or_path ${MODEL} \

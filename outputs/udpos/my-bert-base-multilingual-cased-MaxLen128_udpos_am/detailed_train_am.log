@@ -1,0 +1,1140 @@
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 20:19:52 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 20:19:52 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 20:19:52 - INFO - __main__ -   Seed = 1
+01/13/2022 20:19:52 - INFO - root -   save model
+01/13/2022 20:19:52 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 20:19:52 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 20:19:54 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 20:20:00 - INFO - __main__ -   Using lang2id = None
+01/13/2022 20:20:00 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 20:20:00 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/
+01/13/2022 20:20:00 - INFO - root -   Trying to decide if add adapter
+01/13/2022 20:20:00 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/pytorch_model_head.bin
+01/13/2022 20:20:00 - INFO - root -   loading lang adpater am/wiki@ukp
+01/13/2022 20:20:00 - INFO - __main__ -   Adapter Languages : ['am'], Length : 1
+01/13/2022 20:20:00 - INFO - __main__ -   Adapter Names ['am/wiki@ukp'], Length : 1
+01/13/2022 20:20:00 - INFO - __main__ -   Language = am
+01/13/2022 20:20:00 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_am_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/am/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_am_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/adapter_config.json
+Adding adapter 'am' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/head_config.json
+01/13/2022 20:20:06 - INFO - __main__ -   Language am, split test does not exist
+**********
+16.18user 10.94system 0:16.86elapsed 160%CPU (0avgtext+0avgdata 3918356maxresident)k
+24inputs+56outputs (2major+1333249minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 20:20:08 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 20:20:08 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 20:20:08 - INFO - __main__ -   Seed = 2
+01/13/2022 20:20:08 - INFO - root -   save model
+01/13/2022 20:20:08 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 20:20:08 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 20:20:11 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 20:20:17 - INFO - __main__ -   Using lang2id = None
+01/13/2022 20:20:17 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 20:20:17 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/
+01/13/2022 20:20:17 - INFO - root -   Trying to decide if add adapter
+01/13/2022 20:20:17 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/pytorch_model_head.bin
+01/13/2022 20:20:17 - INFO - root -   loading lang adpater am/wiki@ukp
+01/13/2022 20:20:17 - INFO - __main__ -   Adapter Languages : ['am'], Length : 1
+01/13/2022 20:20:17 - INFO - __main__ -   Adapter Names ['am/wiki@ukp'], Length : 1
+01/13/2022 20:20:17 - INFO - __main__ -   Language = am
+01/13/2022 20:20:17 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_am_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/am/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_am_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/adapter_config.json
+Adding adapter 'am' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/head_config.json
+01/13/2022 20:20:22 - INFO - __main__ -   Language am, split test does not exist
+**********
+16.86user 10.68system 0:15.78elapsed 174%CPU (0avgtext+0avgdata 3913852maxresident)k
+0inputs+48outputs (0major+1141454minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 20:20:24 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 20:20:24 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 20:20:24 - INFO - __main__ -   Seed = 3
+01/13/2022 20:20:24 - INFO - root -   save model
+01/13/2022 20:20:24 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 20:20:24 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 20:20:27 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 20:20:33 - INFO - __main__ -   Using lang2id = None
+01/13/2022 20:20:33 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 20:20:33 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/
+01/13/2022 20:20:33 - INFO - root -   Trying to decide if add adapter
+01/13/2022 20:20:33 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/pytorch_model_head.bin
+01/13/2022 20:20:33 - INFO - root -   loading lang adpater am/wiki@ukp
+01/13/2022 20:20:33 - INFO - __main__ -   Adapter Languages : ['am'], Length : 1
+01/13/2022 20:20:33 - INFO - __main__ -   Adapter Names ['am/wiki@ukp'], Length : 1
+01/13/2022 20:20:33 - INFO - __main__ -   Language = am
+01/13/2022 20:20:33 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_am_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/am/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_am_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/adapter_config.json
+Adding adapter 'am' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/head_config.json
+01/13/2022 20:20:37 - INFO - __main__ -   Language am, split test does not exist
+**********
+16.57user 11.06system 0:15.25elapsed 181%CPU (0avgtext+0avgdata 3914640maxresident)k
+0inputs+48outputs (0major+1309215minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 21:19:10 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 21:19:10 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 21:19:10 - INFO - __main__ -   Seed = 1
+01/13/2022 21:19:10 - INFO - root -   save model
+01/13/2022 21:19:10 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=1, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 21:19:10 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 21:19:13 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 21:19:18 - INFO - __main__ -   Using lang2id = None
+01/13/2022 21:19:18 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 21:19:18 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/
+01/13/2022 21:19:18 - INFO - root -   Trying to decide if add adapter
+01/13/2022 21:19:18 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s1/checkpoint-best/udpos/pytorch_model_head.bin
+01/13/2022 21:19:18 - INFO - root -   loading lang adpater am/wiki@ukp
+01/13/2022 21:19:18 - INFO - __main__ -   Adapter Languages : ['am'], Length : 1
+01/13/2022 21:19:18 - INFO - __main__ -   Adapter Names ['am/wiki@ukp'], Length : 1
+01/13/2022 21:19:18 - INFO - __main__ -   Language = am
+01/13/2022 21:19:18 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_am_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/am/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_am_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/adapter_config.json
+Adding adapter 'am' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/head_config.json
+01/13/2022 21:19:23 - INFO - __main__ -   Language adapter for am found
+01/13/2022 21:19:23 - INFO - __main__ -   Set active language adapter to am
+01/13/2022 21:19:23 - INFO - __main__ -   Args Adapter Weight = None
+01/13/2022 21:19:23 - INFO - __main__ -   Adapter Languages = ['am']
+01/13/2022 21:19:23 - INFO - __main__ -   all languages = am
+01/13/2022 21:19:23 - INFO - __main__ -   Creating features from dataset file at /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/am/test.bert-base-multilingual-cased in language am
+01/13/2022 21:19:23 - INFO - utils_tag -   lang_id=0, lang=am, lang2id=None
+**********
+[<utils_tag.InputExample object at 0x7fab8ddb33c8>, <utils_tag.InputExample object at 0x7fab8ddb3470>, <utils_tag.InputExample object at 0x7fab8ddb35c0>, <utils_tag.InputExample object at 0x7fab8ddb3780>, <utils_tag.InputExample object at 0x7fab8ddb3898>, <utils_tag.InputExample object at 0x7fab8ddb39b0>, <utils_tag.InputExample object at 0x7fab8ddb3b00>, <utils_tag.InputExample object at 0x7fab8ddb3c50>, <utils_tag.InputExample object at 0x7fab8ddb3d68>, <utils_tag.InputExample object at 0x7fab8ddb3e80>, <utils_tag.InputExample object at 0x7fab8ddb3f98>, <utils_tag.InputExample object at 0x7fab8ddcb0f0>, <utils_tag.InputExample object at 0x7fab8ddcb278>, <utils_tag.InputExample object at 0x7fab8ddcb390>, <utils_tag.InputExample object at 0x7fab8ddcb550>, <utils_tag.InputExample object at 0x7fab8ddcb668>, <utils_tag.InputExample object at 0x7fab8ddcb7b8>, <utils_tag.InputExample object at 0x7fab8ddcb908>, <utils_tag.InputExample object at 0x7fab8ddcba20>, <utils_tag.InputExample object at 0x7fab8ddcbba8>, <utils_tag.InputExample object at 0x7fab8ddcbcf8>, <utils_tag.InputExample object at 0x7fab8ddcbe10>, <utils_tag.InputExample object at 0x7fab8ddcbf28>, <utils_tag.InputExample object at 0x7fab8ddcd048>, <utils_tag.InputExample object at 0x7fab8ddcd160>, <utils_tag.InputExample object at 0x7fab8ddcd400>, <utils_tag.InputExample object at 0x7fab8ddcd518>, <utils_tag.InputExample object at 0x7fab8ddcd630>, <utils_tag.InputExample object at 0x7fab8ddcd7b8>, <utils_tag.InputExample object at 0x7fab8ddcd940>, <utils_tag.InputExample object at 0x7fab8ddcdb00>, <utils_tag.InputExample object at 0x7fab8ddcdcc0>, <utils_tag.InputExample object at 0x7fab8ddcdeb8>, <utils_tag.InputExample object at 0x7fab8ddd1080>, <utils_tag.InputExample object at 0x7fab8ddd1208>, <utils_tag.InputExample object at 0x7fab8ddd1438>, <utils_tag.InputExample object at 0x7fab8ddd1630>, <utils_tag.InputExample object at 0x7fab8ddd1898>, <utils_tag.InputExample object at 0x7fab8ddd19e8>, <utils_tag.InputExample object at 0x7fab8ddd1b70>, <utils_tag.InputExample object at 0x7fab8ddd1d68>, <utils_tag.InputExample object at 0x7fab8ddd1f98>, <utils_tag.InputExample object at 0x7fab8ddd0160>, <utils_tag.InputExample object at 0x7fab8ddd02b0>, <utils_tag.InputExample object at 0x7fab8ddd0470>, <utils_tag.InputExample object at 0x7fab8ddd0630>, <utils_tag.InputExample object at 0x7fab8ddd0780>, <utils_tag.InputExample object at 0x7fab8ddd0940>, <utils_tag.InputExample object at 0x7fab8ddd0a90>, <utils_tag.InputExample object at 0x7fab8ddd0c18>, <utils_tag.InputExample object at 0x7fab8ddd0d30>, <utils_tag.InputExample object at 0x7fab8ddd0eb8>, <utils_tag.InputExample object at 0x7fab8ddd0fd0>, <utils_tag.InputExample object at 0x7fab8ddd5198>, <utils_tag.InputExample object at 0x7fab8ddd53c8>, <utils_tag.InputExample object at 0x7fab8ddd5518>, <utils_tag.InputExample object at 0x7fab8ddd5748>, <utils_tag.InputExample object at 0x7fab8ddd58d0>, <utils_tag.InputExample object at 0x7fab8ddd5a90>, <utils_tag.InputExample object at 0x7fab8ddd5c50>, <utils_tag.InputExample object at 0x7fab8ddd5e10>, <utils_tag.InputExample object at 0x7fab8ddd5f98>, <utils_tag.InputExample object at 0x7fab8ddd61d0>, <utils_tag.InputExample object at 0x7fab8ddd6470>, <utils_tag.InputExample object at 0x7fab8ddd65f8>, <utils_tag.InputExample object at 0x7fab8ddd6780>, <utils_tag.InputExample object at 0x7fab8ddd6940>, <utils_tag.InputExample object at 0x7fab8ddd6ac8>, <utils_tag.InputExample object at 0x7fab8ddd6c50>, <utils_tag.InputExample object at 0x7fab8ddd6dd8>, <utils_tag.InputExample object at 0x7fab8ddd6f98>, <utils_tag.InputExample object at 0x7fab8ddda198>, <utils_tag.InputExample object at 0x7fab8ddda320>, <utils_tag.InputExample object at 0x7fab8ddda4a8>, <utils_tag.InputExample object at 0x7fab8ddda630>, <utils_tag.InputExample object at 0x7fab8ddda828>, <utils_tag.InputExample object at 0x7fab8dddaa20>, <utils_tag.InputExample object at 0x7fab8dddab00>, <utils_tag.InputExample object at 0x7fab8dddabe0>, <utils_tag.InputExample object at 0x7fab8dddacf8>, <utils_tag.InputExample object at 0x7fab8dddae10>, <utils_tag.InputExample object at 0x7fab8dddaf28>, <utils_tag.InputExample object at 0x7fab8ddde080>, <utils_tag.InputExample object at 0x7fab8ddde198>, <utils_tag.InputExample object at 0x7fab8ddde278>, <utils_tag.InputExample object at 0x7fab8ddde390>, <utils_tag.InputExample object at 0x7fab8ddde518>, <utils_tag.InputExample object at 0x7fab8ddde6d8>, <utils_tag.InputExample object at 0x7fab8ddde8d0>, <utils_tag.InputExample object at 0x7fab8ddde9b0>, <utils_tag.InputExample object at 0x7fab8dddeb00>, <utils_tag.InputExample object at 0x7fab8dddebe0>, <utils_tag.InputExample object at 0x7fab8ddded68>, <utils_tag.InputExample object at 0x7fab8dddee80>, <utils_tag.InputExample object at 0x7fab8dddefd0>, <utils_tag.InputExample object at 0x7fab8dde10f0>, <utils_tag.InputExample object at 0x7fab8dde11d0>, <utils_tag.InputExample object at 0x7fab8dde12e8>, <utils_tag.InputExample object at 0x7fab8dde1438>, <utils_tag.InputExample object at 0x7fab8dde1588>, <utils_tag.InputExample object at 0x7fab8dde1710>, <utils_tag.InputExample object at 0x7fab8dde1860>, <utils_tag.InputExample object at 0x7fab8dde1a90>, <utils_tag.InputExample object at 0x7fab8dde1cc0>, <utils_tag.InputExample object at 0x7fab8dde1e10>, <utils_tag.InputExample object at 0x7fab8dde1f28>, <utils_tag.InputExample object at 0x7fab8ddc4080>, <utils_tag.InputExample object at 0x7fab8ddc41d0>, <utils_tag.InputExample object at 0x7fab8ddc4320>, <utils_tag.InputExample object at 0x7fab8ddc4438>, <utils_tag.InputExample object at 0x7fab8ddc4588>, <utils_tag.InputExample object at 0x7fab8ddc46d8>, <utils_tag.InputExample object at 0x7fab8ddc4828>, <utils_tag.InputExample object at 0x7fab8ddc49b0>, <utils_tag.InputExample object at 0x7fab8ddc4ac8>, <utils_tag.InputExample object at 0x7fab8ddc4c18>, <utils_tag.InputExample object at 0x7fab8ddc4d30>, <utils_tag.InputExample object at 0x7fab8ddc4eb8>, <utils_tag.InputExample object at 0x7fab8ddc2048>, <utils_tag.InputExample object at 0x7fab8ddc2198>, <utils_tag.InputExample object at 0x7fab8ddc22e8>, <utils_tag.InputExample object at 0x7fab8ddc2438>, <utils_tag.InputExample object at 0x7fab8ddc2588>, <utils_tag.InputExample object at 0x7fab8ddc26a0>, <utils_tag.InputExample object at 0x7fab8ddc27f0>, <utils_tag.InputExample object at 0x7fab8ddc2940>, <utils_tag.InputExample object at 0x7fab8ddc2a90>, <utils_tag.InputExample object at 0x7fab8ddc2be0>, <utils_tag.InputExample object at 0x7fab8ddc2d30>, <utils_tag.InputExample object at 0x7fab8ddc2e48>, <utils_tag.InputExample object at 0x7fab8ddc2f60>, <utils_tag.InputExample object at 0x7fab8dde3160>, <utils_tag.InputExample object at 0x7fab8dde32b0>, <utils_tag.InputExample object at 0x7fab8dde3438>, <utils_tag.InputExample object at 0x7fab8dde35c0>, <utils_tag.InputExample object at 0x7fab8dde3710>, <utils_tag.InputExample object at 0x7fab8dde38d0>, <utils_tag.InputExample object at 0x7fab8dde3a58>, <utils_tag.InputExample object at 0x7fab8dde3be0>, <utils_tag.InputExample object at 0x7fab8dde3da0>, <utils_tag.InputExample object at 0x7fab8dde3f28>, <utils_tag.InputExample object at 0x7fab8dde70b8>, <utils_tag.InputExample object at 0x7fab8dde7208>, <utils_tag.InputExample object at 0x7fab8dde7358>, <utils_tag.InputExample object at 0x7fab8dde74e0>, <utils_tag.InputExample object at 0x7fab8dde7630>, <utils_tag.InputExample object at 0x7fab8dde7748>, <utils_tag.InputExample object at 0x7fab8dde7898>, <utils_tag.InputExample object at 0x7fab8dde7978>, <utils_tag.InputExample object at 0x7fab8dde7b00>, <utils_tag.InputExample object at 0x7fab8dde7c18>, <utils_tag.InputExample object at 0x7fab8dde7d68>, <utils_tag.InputExample object at 0x7fab8dde7eb8>, <utils_tag.InputExample object at 0x7fab8e2ec048>, <utils_tag.InputExample object at 0x7fab8e2ec198>, <utils_tag.InputExample object at 0x7fab8e2ec320>, <utils_tag.InputExample object at 0x7fab8e2ec4a8>, <utils_tag.InputExample object at 0x7fab8e2ec630>, <utils_tag.InputExample object at 0x7fab8e2ec7b8>, <utils_tag.InputExample object at 0x7fab8e2ec940>, <utils_tag.InputExample object at 0x7fab8e2eca90>, <utils_tag.InputExample object at 0x7fab8e2ecbe0>, <utils_tag.InputExample object at 0x7fab8e2ecd68>, <utils_tag.InputExample object at 0x7fab8e2ecef0>, <utils_tag.InputExample object at 0x7fab8e2ef0f0>, <utils_tag.InputExample object at 0x7fab8e2ef278>, <utils_tag.InputExample object at 0x7fab8e2ef400>, <utils_tag.InputExample object at 0x7fab8e2ef588>, <utils_tag.InputExample object at 0x7fab8e2ef780>, <utils_tag.InputExample object at 0x7fab8e2ef8d0>, <utils_tag.InputExample object at 0x7fab8e2ef9e8>, <utils_tag.InputExample object at 0x7fab8e2efb38>, <utils_tag.InputExample object at 0x7fab8e2efcc0>, <utils_tag.InputExample object at 0x7fab8e2efe10>, <utils_tag.InputExample object at 0x7fab8e2eff98>, <utils_tag.InputExample object at 0x7fab8e2f10b8>, <utils_tag.InputExample object at 0x7fab8e2f11d0>, <utils_tag.InputExample object at 0x7fab8e2f12e8>, <utils_tag.InputExample object at 0x7fab8e2f1400>, <utils_tag.InputExample object at 0x7fab8e2f14e0>, <utils_tag.InputExample object at 0x7fab8e2f15f8>, <utils_tag.InputExample object at 0x7fab8e2f1710>, <utils_tag.InputExample object at 0x7fab8e2f1860>, <utils_tag.InputExample object at 0x7fab8e2f19b0>, <utils_tag.InputExample object at 0x7fab8e2f1ac8>, <utils_tag.InputExample object at 0x7fab8e2f1be0>, <utils_tag.InputExample object at 0x7fab8e2f1d30>, <utils_tag.InputExample object at 0x7fab8e2f1e80>, <utils_tag.InputExample object at 0x7fab8e2f1f98>, <utils_tag.InputExample object at 0x7fab8e2f6160>, <utils_tag.InputExample object at 0x7fab8e2f62e8>, <utils_tag.InputExample object at 0x7fab8e2f6400>, <utils_tag.InputExample object at 0x7fab8e2f6518>, <utils_tag.InputExample object at 0x7fab8e2f6668>, <utils_tag.InputExample object at 0x7fab8e2f67b8>, <utils_tag.InputExample object at 0x7fab8e2f68d0>, <utils_tag.InputExample object at 0x7fab8e2f69e8>, <utils_tag.InputExample object at 0x7fab8e2f6b00>, <utils_tag.InputExample object at 0x7fab8e2f6c50>, <utils_tag.InputExample object at 0x7fab8e2f6dd8>, <utils_tag.InputExample object at 0x7fab8e2f6f28>, <utils_tag.InputExample object at 0x7fab8e2f80f0>, <utils_tag.InputExample object at 0x7fab8e2f8278>, <utils_tag.InputExample object at 0x7fab8e2f8390>, <utils_tag.InputExample object at 0x7fab8e2f84a8>, <utils_tag.InputExample object at 0x7fab8e2f85c0>, <utils_tag.InputExample object at 0x7fab8e2f86d8>, <utils_tag.InputExample object at 0x7fab8e2f87f0>, <utils_tag.InputExample object at 0x7fab8e2f8940>, <utils_tag.InputExample object at 0x7fab8e2f8a58>, <utils_tag.InputExample object at 0x7fab8e2f8be0>, <utils_tag.InputExample object at 0x7fab8e2f8d68>, <utils_tag.InputExample object at 0x7fab8e2f8eb8>, <utils_tag.InputExample object at 0x7fab8e2fb0b8>, <utils_tag.InputExample object at 0x7fab8e2fb240>, <utils_tag.InputExample object at 0x7fab8e2fb358>, <utils_tag.InputExample object at 0x7fab8e2fb470>, <utils_tag.InputExample object at 0x7fab8e2fb588>, <utils_tag.InputExample object at 0x7fab8e2fb6a0>, <utils_tag.InputExample object at 0x7fab8e2fb7f0>, <utils_tag.InputExample object at 0x7fab8e2fb9b0>, <utils_tag.InputExample object at 0x7fab8e2fbac8>, <utils_tag.InputExample object at 0x7fab8e2fbc18>, <utils_tag.InputExample object at 0x7fab8e2fbdd8>, <utils_tag.InputExample object at 0x7fab8e2fbef0>, <utils_tag.InputExample object at 0x7fab8e2ff080>, <utils_tag.InputExample object at 0x7fab8e2ff198>, <utils_tag.InputExample object at 0x7fab8e2ff2e8>, <utils_tag.InputExample object at 0x7fab8e2ff400>, <utils_tag.InputExample object at 0x7fab8e2ff518>, <utils_tag.InputExample object at 0x7fab8e2ff668>, <utils_tag.InputExample object at 0x7fab8e2ff7f0>, <utils_tag.InputExample object at 0x7fab8e2ff940>, <utils_tag.InputExample object at 0x7fab8e2ffa90>, <utils_tag.InputExample object at 0x7fab8e2ffc50>, <utils_tag.InputExample object at 0x7fab8e2ffdd8>, <utils_tag.InputExample object at 0x7fab8e2fff28>, <utils_tag.InputExample object at 0x7fab8e3020f0>, <utils_tag.InputExample object at 0x7fab8e3022e8>, <utils_tag.InputExample object at 0x7fab8e302588>, <utils_tag.InputExample object at 0x7fab8e302748>, <utils_tag.InputExample object at 0x7fab8e302940>, <utils_tag.InputExample object at 0x7fab8e302ac8>, <utils_tag.InputExample object at 0x7fab8e302c18>, <utils_tag.InputExample object at 0x7fab8e302dd8>, <utils_tag.InputExample object at 0x7fab8e302f60>, <utils_tag.InputExample object at 0x7fab8e306160>, <utils_tag.InputExample object at 0x7fab8e306278>, <utils_tag.InputExample object at 0x7fab8e306438>, <utils_tag.InputExample object at 0x7fab8e3065f8>, <utils_tag.InputExample object at 0x7fab8e306710>, <utils_tag.InputExample object at 0x7fab8e306898>, <utils_tag.InputExample object at 0x7fab8e3069b0>, <utils_tag.InputExample object at 0x7fab8e306ac8>, <utils_tag.InputExample object at 0x7fab8e306c50>, <utils_tag.InputExample object at 0x7fab8e306da0>, <utils_tag.InputExample object at 0x7fab8e306fd0>, <utils_tag.InputExample object at 0x7fab8e3091d0>, <utils_tag.InputExample object at 0x7fab8e309358>, <utils_tag.InputExample object at 0x7fab8e3094e0>, <utils_tag.InputExample object at 0x7fab8e3095f8>, <utils_tag.InputExample object at 0x7fab8e309780>, <utils_tag.InputExample object at 0x7fab8e3099b0>, <utils_tag.InputExample object at 0x7fab8e309b00>, <utils_tag.InputExample object at 0x7fab8e309c18>, <utils_tag.InputExample object at 0x7fab8e309d68>, <utils_tag.InputExample object at 0x7fab8e309fd0>, <utils_tag.InputExample object at 0x7fab8e30c198>, <utils_tag.InputExample object at 0x7fab8e30c358>, <utils_tag.InputExample object at 0x7fab8e30c518>, <utils_tag.InputExample object at 0x7fab8e30c748>, <utils_tag.InputExample object at 0x7fab8e30c978>, <utils_tag.InputExample object at 0x7fab8e30cba8>, <utils_tag.InputExample object at 0x7fab8e30cd68>, <utils_tag.InputExample object at 0x7fab8e30cef0>, <utils_tag.InputExample object at 0x7fab8e30f0f0>, <utils_tag.InputExample object at 0x7fab8e30f2e8>, <utils_tag.InputExample object at 0x7fab8e30f4a8>, <utils_tag.InputExample object at 0x7fab8e30f6a0>, <utils_tag.InputExample object at 0x7fab8e30f7b8>, <utils_tag.InputExample object at 0x7fab8e30f9b0>, <utils_tag.InputExample object at 0x7fab8e30fba8>, <utils_tag.InputExample object at 0x7fab8e30fdd8>, <utils_tag.InputExample object at 0x7fab8e30fef0>, <utils_tag.InputExample object at 0x7fab8e313080>, <utils_tag.InputExample object at 0x7fab8e313208>, <utils_tag.InputExample object at 0x7fab8e3133c8>, <utils_tag.InputExample object at 0x7fab8e3134e0>, <utils_tag.InputExample object at 0x7fab8e313630>, <utils_tag.InputExample object at 0x7fab8e313748>, <utils_tag.InputExample object at 0x7fab8e3138d0>, <utils_tag.InputExample object at 0x7fab8e313a58>, <utils_tag.InputExample object at 0x7fab8e313be0>, <utils_tag.InputExample object at 0x7fab8e313d30>, <utils_tag.InputExample object at 0x7fab8e313eb8>, <utils_tag.InputExample object at 0x7fab8e312048>, <utils_tag.InputExample object at 0x7fab8e312198>, <utils_tag.InputExample object at 0x7fab8e3122e8>, <utils_tag.InputExample object at 0x7fab8e312470>, <utils_tag.InputExample object at 0x7fab8e3125f8>, <utils_tag.InputExample object at 0x7fab8e312748>, <utils_tag.InputExample object at 0x7fab8e312898>, <utils_tag.InputExample object at 0x7fab8e3129e8>, <utils_tag.InputExample object at 0x7fab8e312b00>, <utils_tag.InputExample object at 0x7fab8e312c18>, <utils_tag.InputExample object at 0x7fab8e312d30>, <utils_tag.InputExample object at 0x7fab8e312e48>, <utils_tag.InputExample object at 0x7fab8e312f60>, <utils_tag.InputExample object at 0x7fab8e3190f0>, <utils_tag.InputExample object at 0x7fab8e319208>, <utils_tag.InputExample object at 0x7fab8e319390>, <utils_tag.InputExample object at 0x7fab8e319550>, <utils_tag.InputExample object at 0x7fab8e3196d8>, <utils_tag.InputExample object at 0x7fab8e319908>, <utils_tag.InputExample object at 0x7fab8e319b00>, <utils_tag.InputExample object at 0x7fab8e319cf8>, <utils_tag.InputExample object at 0x7fab8e319e80>, <utils_tag.InputExample object at 0x7fab8e31c048>, <utils_tag.InputExample object at 0x7fab8e31c198>, <utils_tag.InputExample object at 0x7fab8e31c2e8>, <utils_tag.InputExample object at 0x7fab8e31c438>, <utils_tag.InputExample object at 0x7fab8e31c5c0>, <utils_tag.InputExample object at 0x7fab8e31c7b8>, <utils_tag.InputExample object at 0x7fab8e31c940>, <utils_tag.InputExample object at 0x7fab8e31ca90>, <utils_tag.InputExample object at 0x7fab8e31cba8>, <utils_tag.InputExample object at 0x7fab8e31ccf8>, <utils_tag.InputExample object at 0x7fab8e31ce48>, <utils_tag.InputExample object at 0x7fab8e31cf98>, <utils_tag.InputExample object at 0x7fab8e31f198>, <utils_tag.InputExample object at 0x7fab8e31f358>, <utils_tag.InputExample object at 0x7fab8e31f4a8>, <utils_tag.InputExample object at 0x7fab8e31f6a0>, <utils_tag.InputExample object at 0x7fab8e31f898>, <utils_tag.InputExample object at 0x7fab8e31f9b0>, <utils_tag.InputExample object at 0x7fab8e31fb38>, <utils_tag.InputExample object at 0x7fab8e31fc88>, <utils_tag.InputExample object at 0x7fab8e31fda0>, <utils_tag.InputExample object at 0x7fab8e31fe80>, <utils_tag.InputExample object at 0x7fab8e31ff98>, <utils_tag.InputExample object at 0x7fab8e3210f0>, <utils_tag.InputExample object at 0x7fab8e321208>, <utils_tag.InputExample object at 0x7fab8e321358>, <utils_tag.InputExample object at 0x7fab8e3214e0>, <utils_tag.InputExample object at 0x7fab8e321630>, <utils_tag.InputExample object at 0x7fab8e3217f0>, <utils_tag.InputExample object at 0x7fab8e321908>, <utils_tag.InputExample object at 0x7fab8e321b00>, <utils_tag.InputExample object at 0x7fab8e321c88>, <utils_tag.InputExample object at 0x7fab8e321e80>, <utils_tag.InputExample object at 0x7fab8e325080>, <utils_tag.InputExample object at 0x7fab8e325240>, <utils_tag.InputExample object at 0x7fab8e325438>, <utils_tag.InputExample object at 0x7fab8e325630>, <utils_tag.InputExample object at 0x7fab8e3257f0>, <utils_tag.InputExample object at 0x7fab8e325978>, <utils_tag.InputExample object at 0x7fab8e325b38>, <utils_tag.InputExample object at 0x7fab8e325cc0>, <utils_tag.InputExample object at 0x7fab8e325e80>, <utils_tag.InputExample object at 0x7fab8e2a9048>, <utils_tag.InputExample object at 0x7fab8e2a9208>, <utils_tag.InputExample object at 0x7fab8e2a9358>, <utils_tag.InputExample object at 0x7fab8e2a94e0>, <utils_tag.InputExample object at 0x7fab8e2a96a0>, <utils_tag.InputExample object at 0x7fab8e2a9898>, <utils_tag.InputExample object at 0x7fab8e2a9a20>, <utils_tag.InputExample object at 0x7fab8e2a9c18>, <utils_tag.InputExample object at 0x7fab8e2a9dd8>, <utils_tag.InputExample object at 0x7fab8e2a9f98>, <utils_tag.InputExample object at 0x7fab8e2ab1d0>, <utils_tag.InputExample object at 0x7fab8e2ab438>, <utils_tag.InputExample object at 0x7fab8e2ab588>, <utils_tag.InputExample object at 0x7fab8e2ab710>, <utils_tag.InputExample object at 0x7fab8e2ab908>, <utils_tag.InputExample object at 0x7fab8e2aba20>, <utils_tag.InputExample object at 0x7fab8e2abba8>, <utils_tag.InputExample object at 0x7fab8e2abd30>, <utils_tag.InputExample object at 0x7fab8e2abe48>, <utils_tag.InputExample object at 0x7fab8e2abfd0>, <utils_tag.InputExample object at 0x7fab8e2af128>, <utils_tag.InputExample object at 0x7fab8e2af278>, <utils_tag.InputExample object at 0x7fab8e2af3c8>, <utils_tag.InputExample object at 0x7fab8e2af550>, <utils_tag.InputExample object at 0x7fab8e2af710>, <utils_tag.InputExample object at 0x7fab8e2af860>, <utils_tag.InputExample object at 0x7fab8e2af9b0>, <utils_tag.InputExample object at 0x7fab8e2afb38>, <utils_tag.InputExample object at 0x7fab8e2afdd8>, <utils_tag.InputExample object at 0x7fab8e2aff98>, <utils_tag.InputExample object at 0x7fab8e2b1160>, <utils_tag.InputExample object at 0x7fab8e2b12e8>, <utils_tag.InputExample object at 0x7fab8e2b1400>, <utils_tag.InputExample object at 0x7fab8e2b15c0>, <utils_tag.InputExample object at 0x7fab8e2b1828>, <utils_tag.InputExample object at 0x7fab8e2b1978>, <utils_tag.InputExample object at 0x7fab8e2b1ac8>, <utils_tag.InputExample object at 0x7fab8e2b1c50>, <utils_tag.InputExample object at 0x7fab8e2b1e10>, <utils_tag.InputExample object at 0x7fab8e2b1f60>, <utils_tag.InputExample object at 0x7fab8e2b41d0>, <utils_tag.InputExample object at 0x7fab8e2b4390>, <utils_tag.InputExample object at 0x7fab8e2b44e0>, <utils_tag.InputExample object at 0x7fab8e2b45f8>, <utils_tag.InputExample object at 0x7fab8e2b4780>, <utils_tag.InputExample object at 0x7fab8e2b4978>, <utils_tag.InputExample object at 0x7fab8e2b4a90>, <utils_tag.InputExample object at 0x7fab8e2b4be0>, <utils_tag.InputExample object at 0x7fab8e2b4d30>, <utils_tag.InputExample object at 0x7fab8e2b4e80>, <utils_tag.InputExample object at 0x7fab8e2b80b8>, <utils_tag.InputExample object at 0x7fab8e2b81d0>, <utils_tag.InputExample object at 0x7fab8e2b8390>, <utils_tag.InputExample object at 0x7fab8e2b84e0>, <utils_tag.InputExample object at 0x7fab8e2b8630>, <utils_tag.InputExample object at 0x7fab8e2b87b8>, <utils_tag.InputExample object at 0x7fab8e2b89b0>, <utils_tag.InputExample object at 0x7fab8e2b8ac8>, <utils_tag.InputExample object at 0x7fab8e2b8c18>, <utils_tag.InputExample object at 0x7fab8e2b8d30>, <utils_tag.InputExample object at 0x7fab8e2b8ef0>, <utils_tag.InputExample object at 0x7fab8e2bc0b8>, <utils_tag.InputExample object at 0x7fab8e2bc240>, <utils_tag.InputExample object at 0x7fab8e2bc470>, <utils_tag.InputExample object at 0x7fab8e2bc588>, <utils_tag.InputExample object at 0x7fab8e2bc710>, <utils_tag.InputExample object at 0x7fab8e2bc828>, <utils_tag.InputExample object at 0x7fab8e2bc9b0>, <utils_tag.InputExample object at 0x7fab8e2bcb00>, <utils_tag.InputExample object at 0x7fab8e2bcd30>, <utils_tag.InputExample object at 0x7fab8e2bcef0>, <utils_tag.InputExample object at 0x7fab8e2be0f0>, <utils_tag.InputExample object at 0x7fab8e2be2b0>, <utils_tag.InputExample object at 0x7fab8e2be4a8>, <utils_tag.InputExample object at 0x7fab8e2be5f8>, <utils_tag.InputExample object at 0x7fab8e2be780>, <utils_tag.InputExample object at 0x7fab8e2be908>, <utils_tag.InputExample object at 0x7fab8e2bea58>, <utils_tag.InputExample object at 0x7fab8e2beba8>, <utils_tag.InputExample object at 0x7fab8e2bed68>, <utils_tag.InputExample object at 0x7fab8e2beef0>, <utils_tag.InputExample object at 0x7fab8e2c10b8>, <utils_tag.InputExample object at 0x7fab8e2c1208>, <utils_tag.InputExample object at 0x7fab8e2c1438>, <utils_tag.InputExample object at 0x7fab8e2c1668>, <utils_tag.InputExample object at 0x7fab8e2c1828>, <utils_tag.InputExample object at 0x7fab8e2c19b0>, <utils_tag.InputExample object at 0x7fab8e2c1b70>, <utils_tag.InputExample object at 0x7fab8e2c1cf8>, <utils_tag.InputExample object at 0x7fab8e2c1eb8>, <utils_tag.InputExample object at 0x7fab8e2c50f0>, <utils_tag.InputExample object at 0x7fab8e2c52e8>, <utils_tag.InputExample object at 0x7fab8e2c54e0>, <utils_tag.InputExample object at 0x7fab8e2c56d8>, <utils_tag.InputExample object at 0x7fab8e2c5860>, <utils_tag.InputExample object at 0x7fab8e2c59e8>, <utils_tag.InputExample object at 0x7fab8e2c5b38>, <utils_tag.InputExample object at 0x7fab8e2c5c88>, <utils_tag.InputExample object at 0x7fab8e2c5e48>, <utils_tag.InputExample object at 0x7fab8e2c8048>, <utils_tag.InputExample object at 0x7fab8e2c81d0>, <utils_tag.InputExample object at 0x7fab8e2c8320>, <utils_tag.InputExample object at 0x7fab8e2c8438>, <utils_tag.InputExample object at 0x7fab8e2c85f8>, <utils_tag.InputExample object at 0x7fab8e2c87b8>, <utils_tag.InputExample object at 0x7fab8e2c89b0>, <utils_tag.InputExample object at 0x7fab8e2c8b38>, <utils_tag.InputExample object at 0x7fab8e2c8cc0>, <utils_tag.InputExample object at 0x7fab8e2c8dd8>, <utils_tag.InputExample object at 0x7fab8e2c8fd0>, <utils_tag.InputExample object at 0x7fab8e2cc198>, <utils_tag.InputExample object at 0x7fab8e2cc2e8>, <utils_tag.InputExample object at 0x7fab8e2cc438>, <utils_tag.InputExample object at 0x7fab8e2cc5f8>, <utils_tag.InputExample object at 0x7fab8e2cc748>, <utils_tag.InputExample object at 0x7fab8e2cc898>, <utils_tag.InputExample object at 0x7fab8e2cca20>, <utils_tag.InputExample object at 0x7fab8e2ccbe0>, <utils_tag.InputExample object at 0x7fab8e2ccdd8>, <utils_tag.InputExample object at 0x7fab8e2ccf60>, <utils_tag.InputExample object at 0x7fab8e2ce0f0>, <utils_tag.InputExample object at 0x7fab8e2ce320>, <utils_tag.InputExample object at 0x7fab8e2ce518>, <utils_tag.InputExample object at 0x7fab8e2ce748>, <utils_tag.InputExample object at 0x7fab8e2ce940>, <utils_tag.InputExample object at 0x7fab8e2cea90>, <utils_tag.InputExample object at 0x7fab8e2cebe0>, <utils_tag.InputExample object at 0x7fab8e2cedd8>, <utils_tag.InputExample object at 0x7fab8e2d2080>, <utils_tag.InputExample object at 0x7fab8e2d21d0>, <utils_tag.InputExample object at 0x7fab8e2d2320>, <utils_tag.InputExample object at 0x7fab8e2d2518>, <utils_tag.InputExample object at 0x7fab8e2d26a0>, <utils_tag.InputExample object at 0x7fab8e2d27f0>, <utils_tag.InputExample object at 0x7fab8e2d29b0>, <utils_tag.InputExample object at 0x7fab8e2d2b00>, <utils_tag.InputExample object at 0x7fab8e2d2cf8>, <utils_tag.InputExample object at 0x7fab8e2d2e80>, <utils_tag.InputExample object at 0x7fab8e2d40f0>, <utils_tag.InputExample object at 0x7fab8e2d41d0>, <utils_tag.InputExample object at 0x7fab8e2d42e8>, <utils_tag.InputExample object at 0x7fab8e2d4400>, <utils_tag.InputExample object at 0x7fab8e2d4518>, <utils_tag.InputExample object at 0x7fab8e2d4630>, <utils_tag.InputExample object at 0x7fab8e2d4748>, <utils_tag.InputExample object at 0x7fab8e2d4828>, <utils_tag.InputExample object at 0x7fab8e2d4940>, <utils_tag.InputExample object at 0x7fab8e2d4a20>, <utils_tag.InputExample object at 0x7fab8e2d4be0>, <utils_tag.InputExample object at 0x7fab8e2d4e10>, <utils_tag.InputExample object at 0x7fab8e2d7048>, <utils_tag.InputExample object at 0x7fab8e2d7160>, <utils_tag.InputExample object at 0x7fab8e2d72b0>, <utils_tag.InputExample object at 0x7fab8e2d7390>, <utils_tag.InputExample object at 0x7fab8e2d74a8>, <utils_tag.InputExample object at 0x7fab8e2d75f8>, <utils_tag.InputExample object at 0x7fab8e2d7710>, <utils_tag.InputExample object at 0x7fab8e2d7828>, <utils_tag.InputExample object at 0x7fab8e2d7940>, <utils_tag.InputExample object at 0x7fab8e2d7ac8>, <utils_tag.InputExample object at 0x7fab8e2d7ba8>, <utils_tag.InputExample object at 0x7fab8e2d7d30>, <utils_tag.InputExample object at 0x7fab8e2d7f60>, <utils_tag.InputExample object at 0x7fab8e2da1d0>, <utils_tag.InputExample object at 0x7fab8e2da400>, <utils_tag.InputExample object at 0x7fab8e2da550>, <utils_tag.InputExample object at 0x7fab8e2da668>, <utils_tag.InputExample object at 0x7fab8e2da7b8>, <utils_tag.InputExample object at 0x7fab8e2da940>, <utils_tag.InputExample object at 0x7fab8e2daa90>, <utils_tag.InputExample object at 0x7fab8e2daba8>, <utils_tag.InputExample object at 0x7fab8e2dacf8>, <utils_tag.InputExample object at 0x7fab8e2dae48>, <utils_tag.InputExample object at 0x7fab8e2daf98>, <utils_tag.InputExample object at 0x7fab8e2de128>, <utils_tag.InputExample object at 0x7fab8e2de2b0>, <utils_tag.InputExample object at 0x7fab8e2de400>, <utils_tag.InputExample object at 0x7fab8e2de518>, <utils_tag.InputExample object at 0x7fab8e2de5f8>, <utils_tag.InputExample object at 0x7fab8e2de748>, <utils_tag.InputExample object at 0x7fab8e2de860>, <utils_tag.InputExample object at 0x7fab8e2de9b0>, <utils_tag.InputExample object at 0x7fab8e2deb38>, <utils_tag.InputExample object at 0x7fab8e2dec50>, <utils_tag.InputExample object at 0x7fab8e2dedd8>, <utils_tag.InputExample object at 0x7fab8e2def28>, <utils_tag.InputExample object at 0x7fab8e2e10b8>, <utils_tag.InputExample object at 0x7fab8e2e11d0>, <utils_tag.InputExample object at 0x7fab8e2e1320>, <utils_tag.InputExample object at 0x7fab8e2e1470>, <utils_tag.InputExample object at 0x7fab8e2e1630>, <utils_tag.InputExample object at 0x7fab8e2e17b8>, <utils_tag.InputExample object at 0x7fab8e2e1940>, <utils_tag.InputExample object at 0x7fab8e2e1a90>, <utils_tag.InputExample object at 0x7fab8e2e1c50>, <utils_tag.InputExample object at 0x7fab8e2e1dd8>, <utils_tag.InputExample object at 0x7fab8e2e1ef0>, <utils_tag.InputExample object at 0x7fab8e2e4128>, <utils_tag.InputExample object at 0x7fab8e2e4278>, <utils_tag.InputExample object at 0x7fab8e2e4438>, <utils_tag.InputExample object at 0x7fab8e2e45f8>, <utils_tag.InputExample object at 0x7fab8e2e4780>, <utils_tag.InputExample object at 0x7fab8e2e48d0>, <utils_tag.InputExample object at 0x7fab8e2e4a58>, <utils_tag.InputExample object at 0x7fab8e2e4be0>, <utils_tag.InputExample object at 0x7fab8e2e4d30>, <utils_tag.InputExample object at 0x7fab8e2e4e80>, <utils_tag.InputExample object at 0x7fab8e2e4fd0>, <utils_tag.InputExample object at 0x7fab8e2e70f0>, <utils_tag.InputExample object at 0x7fab8e2e7208>, <utils_tag.InputExample object at 0x7fab8e2e7320>, <utils_tag.InputExample object at 0x7fab8e2e74a8>, <utils_tag.InputExample object at 0x7fab8e2e75c0>, <utils_tag.InputExample object at 0x7fab8e2e7780>, <utils_tag.InputExample object at 0x7fab8e2e78d0>, <utils_tag.InputExample object at 0x7fab8e2e7a90>, <utils_tag.InputExample object at 0x7fab8e2e7be0>, <utils_tag.InputExample object at 0x7fab8e2e7d68>, <utils_tag.InputExample object at 0x7fab8e2e7f28>, <utils_tag.InputExample object at 0x7fab8e26a128>, <utils_tag.InputExample object at 0x7fab8e26a2e8>, <utils_tag.InputExample object at 0x7fab8e26a470>, <utils_tag.InputExample object at 0x7fab8e26a5c0>, <utils_tag.InputExample object at 0x7fab8e26a748>, <utils_tag.InputExample object at 0x7fab8e26a8d0>, <utils_tag.InputExample object at 0x7fab8e26aa58>, <utils_tag.InputExample object at 0x7fab8e26ac18>, <utils_tag.InputExample object at 0x7fab8e26ae10>, <utils_tag.InputExample object at 0x7fab8e26af60>, <utils_tag.InputExample object at 0x7fab8e270198>, <utils_tag.InputExample object at 0x7fab8e270320>, <utils_tag.InputExample object at 0x7fab8e270470>, <utils_tag.InputExample object at 0x7fab8e2705c0>, <utils_tag.InputExample object at 0x7fab8e270710>, <utils_tag.InputExample object at 0x7fab8e270898>, <utils_tag.InputExample object at 0x7fab8e270a90>, <utils_tag.InputExample object at 0x7fab8e270c88>, <utils_tag.InputExample object at 0x7fab8e270da0>, <utils_tag.InputExample object at 0x7fab8e270e80>, <utils_tag.InputExample object at 0x7fab8e270f60>, <utils_tag.InputExample object at 0x7fab8e2720b8>, <utils_tag.InputExample object at 0x7fab8e2721d0>, <utils_tag.InputExample object at 0x7fab8e2722e8>, <utils_tag.InputExample object at 0x7fab8e272400>, <utils_tag.InputExample object at 0x7fab8e272588>, <utils_tag.InputExample object at 0x7fab8e2726a0>, <utils_tag.InputExample object at 0x7fab8e2727b8>, <utils_tag.InputExample object at 0x7fab8e2728d0>, <utils_tag.InputExample object at 0x7fab8e2729e8>, <utils_tag.InputExample object at 0x7fab8e272b00>, <utils_tag.InputExample object at 0x7fab8e272c88>, <utils_tag.InputExample object at 0x7fab8e272e48>, <utils_tag.InputExample object at 0x7fab8e272f60>, <utils_tag.InputExample object at 0x7fab8e2740b8>, <utils_tag.InputExample object at 0x7fab8e2741d0>, <utils_tag.InputExample object at 0x7fab8e274320>, <utils_tag.InputExample object at 0x7fab8e274438>, <utils_tag.InputExample object at 0x7fab8e274588>, <utils_tag.InputExample object at 0x7fab8e2746d8>, <utils_tag.InputExample object at 0x7fab8e2747f0>, <utils_tag.InputExample object at 0x7fab8e274978>, <utils_tag.InputExample object at 0x7fab8e274b70>, <utils_tag.InputExample object at 0x7fab8e274cf8>, <utils_tag.InputExample object at 0x7fab8e274e48>, <utils_tag.InputExample object at 0x7fab8e274fd0>, <utils_tag.InputExample object at 0x7fab8e277128>, <utils_tag.InputExample object at 0x7fab8e277240>, <utils_tag.InputExample object at 0x7fab8e277358>, <utils_tag.InputExample object at 0x7fab8e2774a8>, <utils_tag.InputExample object at 0x7fab8e277630>, <utils_tag.InputExample object at 0x7fab8e277780>, <utils_tag.InputExample object at 0x7fab8e2778d0>, <utils_tag.InputExample object at 0x7fab8e277a58>, <utils_tag.InputExample object at 0x7fab8e277be0>, <utils_tag.InputExample object at 0x7fab8e277d30>, <utils_tag.InputExample object at 0x7fab8e277eb8>, <utils_tag.InputExample object at 0x7fab8e277f98>, <utils_tag.InputExample object at 0x7fab8e27a198>, <utils_tag.InputExample object at 0x7fab8e27a2b0>, <utils_tag.InputExample object at 0x7fab8e27a3c8>, <utils_tag.InputExample object at 0x7fab8e27a4e0>, <utils_tag.InputExample object at 0x7fab8e27a5f8>, <utils_tag.InputExample object at 0x7fab8e27a780>, <utils_tag.InputExample object at 0x7fab8e27a898>, <utils_tag.InputExample object at 0x7fab8e27a9e8>, <utils_tag.InputExample object at 0x7fab8e27ab00>, <utils_tag.InputExample object at 0x7fab8e27ac50>, <utils_tag.InputExample object at 0x7fab8e27ad68>, <utils_tag.InputExample object at 0x7fab8e27ae80>, <utils_tag.InputExample object at 0x7fab8e27f048>, <utils_tag.InputExample object at 0x7fab8e27f208>, <utils_tag.InputExample object at 0x7fab8e27f358>, <utils_tag.InputExample object at 0x7fab8e27f470>, <utils_tag.InputExample object at 0x7fab8e27f588>, <utils_tag.InputExample object at 0x7fab8e27f780>, <utils_tag.InputExample object at 0x7fab8e27f940>, <utils_tag.InputExample object at 0x7fab8e27fa20>, <utils_tag.InputExample object at 0x7fab8e27fb70>, <utils_tag.InputExample object at 0x7fab8e27fc88>, <utils_tag.InputExample object at 0x7fab8e27fe80>, <utils_tag.InputExample object at 0x7fab8e282128>, <utils_tag.InputExample object at 0x7fab8e2822e8>, <utils_tag.InputExample object at 0x7fab8e282470>, <utils_tag.InputExample object at 0x7fab8e282630>, <utils_tag.InputExample object at 0x7fab8e282780>, <utils_tag.InputExample object at 0x7fab8e282978>, <utils_tag.InputExample object at 0x7fab8e282ac8>, <utils_tag.InputExample object at 0x7fab8e282c88>, <utils_tag.InputExample object at 0x7fab8e282da0>, <utils_tag.InputExample object at 0x7fab8e282f60>, <utils_tag.InputExample object at 0x7fab8e2861d0>, <utils_tag.InputExample object at 0x7fab8e286358>, <utils_tag.InputExample object at 0x7fab8e286470>, <utils_tag.InputExample object at 0x7fab8e2865f8>, <utils_tag.InputExample object at 0x7fab8e286710>, <utils_tag.InputExample object at 0x7fab8e2868d0>, <utils_tag.InputExample object at 0x7fab8e286a90>, <utils_tag.InputExample object at 0x7fab8e286be0>, <utils_tag.InputExample object at 0x7fab8e286dd8>, <utils_tag.InputExample object at 0x7fab8e286f98>, <utils_tag.InputExample object at 0x7fab8e288198>, <utils_tag.InputExample object at 0x7fab8e288320>, <utils_tag.InputExample object at 0x7fab8e2884a8>, <utils_tag.InputExample object at 0x7fab8e288748>, <utils_tag.InputExample object at 0x7fab8e288898>, <utils_tag.InputExample object at 0x7fab8e2889b0>, <utils_tag.InputExample object at 0x7fab8e288ac8>, <utils_tag.InputExample object at 0x7fab8e288c88>, <utils_tag.InputExample object at 0x7fab8e288e80>, <utils_tag.InputExample object at 0x7fab8e28d080>, <utils_tag.InputExample object at 0x7fab8e28d208>, <utils_tag.InputExample object at 0x7fab8e28d390>, <utils_tag.InputExample object at 0x7fab8e28d588>, <utils_tag.InputExample object at 0x7fab8e28d7b8>, <utils_tag.InputExample object at 0x7fab8e28da20>, <utils_tag.InputExample object at 0x7fab8e28dc18>, <utils_tag.InputExample object at 0x7fab8e28de10>, <utils_tag.InputExample object at 0x7fab8e28dfd0>, <utils_tag.InputExample object at 0x7fab8e28e160>, <utils_tag.InputExample object at 0x7fab8e28e358>, <utils_tag.InputExample object at 0x7fab8e28e470>, <utils_tag.InputExample object at 0x7fab8e28e5c0>, <utils_tag.InputExample object at 0x7fab8e28e780>, <utils_tag.InputExample object at 0x7fab8e28e978>, <utils_tag.InputExample object at 0x7fab8e28eb00>, <utils_tag.InputExample object at 0x7fab8e28ec50>, <utils_tag.InputExample object at 0x7fab8e28edd8>, <utils_tag.InputExample object at 0x7fab8e28ef28>, <utils_tag.InputExample object at 0x7fab8e292080>, <utils_tag.InputExample object at 0x7fab8e2921d0>, <utils_tag.InputExample object at 0x7fab8e2922e8>, <utils_tag.InputExample object at 0x7fab8e292400>, <utils_tag.InputExample object at 0x7fab8e292588>, <utils_tag.InputExample object at 0x7fab8e292710>, <utils_tag.InputExample object at 0x7fab8e292898>, <utils_tag.InputExample object at 0x7fab8e292a20>, <utils_tag.InputExample object at 0x7fab8e292b38>, <utils_tag.InputExample object at 0x7fab8e292c88>, <utils_tag.InputExample object at 0x7fab8e292dd8>, <utils_tag.InputExample object at 0x7fab8e292f60>, <utils_tag.InputExample object at 0x7fab8e295128>, <utils_tag.InputExample object at 0x7fab8e295278>, <utils_tag.InputExample object at 0x7fab8e2953c8>, <utils_tag.InputExample object at 0x7fab8e295518>, <utils_tag.InputExample object at 0x7fab8e295668>, <utils_tag.InputExample object at 0x7fab8e295780>, <utils_tag.InputExample object at 0x7fab8e295898>, <utils_tag.InputExample object at 0x7fab8e2959b0>, <utils_tag.InputExample object at 0x7fab8e295ac8>, <utils_tag.InputExample object at 0x7fab8e295be0>, <utils_tag.InputExample object at 0x7fab8e295d68>, <utils_tag.InputExample object at 0x7fab8e295ef0>, <utils_tag.InputExample object at 0x7fab8e297160>, <utils_tag.InputExample object at 0x7fab8e2972e8>, <utils_tag.InputExample object at 0x7fab8e297400>, <utils_tag.InputExample object at 0x7fab8e2975f8>, <utils_tag.InputExample object at 0x7fab8e2977f0>, <utils_tag.InputExample object at 0x7fab8e297978>, <utils_tag.InputExample object at 0x7fab8e297b38>, <utils_tag.InputExample object at 0x7fab8e297cc0>, <utils_tag.InputExample object at 0x7fab8e297e10>, <utils_tag.InputExample object at 0x7fab8e297f60>, <utils_tag.InputExample object at 0x7fab8e29a198>, <utils_tag.InputExample object at 0x7fab8e29a390>, <utils_tag.InputExample object at 0x7fab8e29a588>, <utils_tag.InputExample object at 0x7fab8e29a748>, <utils_tag.InputExample object at 0x7fab8e29a898>, <utils_tag.InputExample object at 0x7fab8e29a9e8>, <utils_tag.InputExample object at 0x7fab8e29ab70>, <utils_tag.InputExample object at 0x7fab8e29acc0>, <utils_tag.InputExample object at 0x7fab8e29ae10>, <utils_tag.InputExample object at 0x7fab8e29af60>, <utils_tag.InputExample object at 0x7fab8e29f128>, <utils_tag.InputExample object at 0x7fab8e29f2b0>, <utils_tag.InputExample object at 0x7fab8e29f438>, <utils_tag.InputExample object at 0x7fab8e29f550>, <utils_tag.InputExample object at 0x7fab8e29f630>, <utils_tag.InputExample object at 0x7fab8e29f780>, <utils_tag.InputExample object at 0x7fab8e29f898>, <utils_tag.InputExample object at 0x7fab8e29f9b0>, <utils_tag.InputExample object at 0x7fab8e29fac8>, <utils_tag.InputExample object at 0x7fab8e29fbe0>, <utils_tag.InputExample object at 0x7fab8e29fcf8>, <utils_tag.InputExample object at 0x7fab8e29feb8>, <utils_tag.InputExample object at 0x7fab8e29ffd0>, <utils_tag.InputExample object at 0x7fab8e2a3128>, <utils_tag.InputExample object at 0x7fab8e2a32e8>, <utils_tag.InputExample object at 0x7fab8e2a3400>, <utils_tag.InputExample object at 0x7fab8e2a35c0>, <utils_tag.InputExample object at 0x7fab8e2a3748>, <utils_tag.InputExample object at 0x7fab8e2a3908>, <utils_tag.InputExample object at 0x7fab8e2a3ac8>, <utils_tag.InputExample object at 0x7fab8e2a3c88>, <utils_tag.InputExample object at 0x7fab8e2a3e48>, <utils_tag.InputExample object at 0x7fab8e2a3fd0>, <utils_tag.InputExample object at 0x7fab8e2a51d0>, <utils_tag.InputExample object at 0x7fab8e2a5358>, <utils_tag.InputExample object at 0x7fab8e2a5518>, <utils_tag.InputExample object at 0x7fab8e2a5828>, <utils_tag.InputExample object at 0x7fab8e2a59e8>, <utils_tag.InputExample object at 0x7fab8e2a5be0>, <utils_tag.InputExample object at 0x7fab8e2a5da0>, <utils_tag.InputExample object at 0x7fab8e2a5f28>, <utils_tag.InputExample object at 0x7fab8e2a7198>, <utils_tag.InputExample object at 0x7fab8e2a7390>, <utils_tag.InputExample object at 0x7fab8e2a7518>, <utils_tag.InputExample object at 0x7fab8e2a76a0>, <utils_tag.InputExample object at 0x7fab8e2a7898>, <utils_tag.InputExample object at 0x7fab8e2a7a58>, <utils_tag.InputExample object at 0x7fab8e2a7be0>, <utils_tag.InputExample object at 0x7fab8e2a7da0>, <utils_tag.InputExample object at 0x7fab8e2a7fd0>, <utils_tag.InputExample object at 0x7fab8e22b1d0>, <utils_tag.InputExample object at 0x7fab8e22b390>, <utils_tag.InputExample object at 0x7fab8e22b588>, <utils_tag.InputExample object at 0x7fab8e22b668>, <utils_tag.InputExample object at 0x7fab8e22b7f0>, <utils_tag.InputExample object at 0x7fab8e22b9e8>, <utils_tag.InputExample object at 0x7fab8e22bb00>, <utils_tag.InputExample object at 0x7fab8e22bcf8>, <utils_tag.InputExample object at 0x7fab8e22be80>, <utils_tag.InputExample object at 0x7fab8e22bfd0>, <utils_tag.InputExample object at 0x7fab8e22d198>, <utils_tag.InputExample object at 0x7fab8e22d320>, <utils_tag.InputExample object at 0x7fab8e22d470>, <utils_tag.InputExample object at 0x7fab8e22d5f8>, <utils_tag.InputExample object at 0x7fab8e22d710>, <utils_tag.InputExample object at 0x7fab8e22d940>, <utils_tag.InputExample object at 0x7fab8e22da90>, <utils_tag.InputExample object at 0x7fab8e22dbe0>, <utils_tag.InputExample object at 0x7fab8e22dd68>, <utils_tag.InputExample object at 0x7fab8e22def0>, <utils_tag.InputExample object at 0x7fab8e232048>, <utils_tag.InputExample object at 0x7fab8e232208>, <utils_tag.InputExample object at 0x7fab8e232400>, <utils_tag.InputExample object at 0x7fab8e2325c0>, <utils_tag.InputExample object at 0x7fab8e2327b8>, <utils_tag.InputExample object at 0x7fab8e232940>, <utils_tag.InputExample object at 0x7fab8e232be0>, <utils_tag.InputExample object at 0x7fab8e232cf8>, <utils_tag.InputExample object at 0x7fab8e232ef0>, <utils_tag.InputExample object at 0x7fab8e235080>, <utils_tag.InputExample object at 0x7fab8e235240>, <utils_tag.InputExample object at 0x7fab8e2353c8>, <utils_tag.InputExample object at 0x7fab8e235550>, <utils_tag.InputExample object at 0x7fab8e2356a0>, <utils_tag.InputExample object at 0x7fab8e235860>, <utils_tag.InputExample object at 0x7fab8e2359e8>, <utils_tag.InputExample object at 0x7fab8e235ba8>, <utils_tag.InputExample object at 0x7fab8e235cf8>, <utils_tag.InputExample object at 0x7fab8e235e48>, <utils_tag.InputExample object at 0x7fab8e235f60>, <utils_tag.InputExample object at 0x7fab8e237128>, <utils_tag.InputExample object at 0x7fab8e237278>, <utils_tag.InputExample object at 0x7fab8e237438>, <utils_tag.InputExample object at 0x7fab8e2375c0>, <utils_tag.InputExample object at 0x7fab8e237710>, <utils_tag.InputExample object at 0x7fab8e237828>, <utils_tag.InputExample object at 0x7fab8e237978>, <utils_tag.InputExample object at 0x7fab8e237a90>, <utils_tag.InputExample object at 0x7fab8e237ba8>, <utils_tag.InputExample object at 0x7fab8e237d30>, <utils_tag.InputExample object at 0x7fab8e237e80>, <utils_tag.InputExample object at 0x7fab8e2390f0>, <utils_tag.InputExample object at 0x7fab8e2392e8>, <utils_tag.InputExample object at 0x7fab8e2394a8>, <utils_tag.InputExample object at 0x7fab8e239668>, <utils_tag.InputExample object at 0x7fab8e239898>, <utils_tag.InputExample object at 0x7fab8e239a58>, <utils_tag.InputExample object at 0x7fab8e239be0>, <utils_tag.InputExample object at 0x7fab8e239d68>, <utils_tag.InputExample object at 0x7fab8e239ef0>, <utils_tag.InputExample object at 0x7fab8e23d0b8>, <utils_tag.InputExample object at 0x7fab8e23d278>, <utils_tag.InputExample object at 0x7fab8e23d3c8>, <utils_tag.InputExample object at 0x7fab8e23d518>, <utils_tag.InputExample object at 0x7fab8e23d7b8>, <utils_tag.InputExample object at 0x7fab8e23d9b0>, <utils_tag.InputExample object at 0x7fab8e23db70>, <utils_tag.InputExample object at 0x7fab8e23de10>, <utils_tag.InputExample object at 0x7fab8e23df98>, <utils_tag.InputExample object at 0x7fab8e241128>, <utils_tag.InputExample object at 0x7fab8e2412b0>, <utils_tag.InputExample object at 0x7fab8e241470>, <utils_tag.InputExample object at 0x7fab8e2416a0>, <utils_tag.InputExample object at 0x7fab8e241828>, <utils_tag.InputExample object at 0x7fab8e241978>, <utils_tag.InputExample object at 0x7fab8e241b00>, <utils_tag.InputExample object at 0x7fab8e241c50>, <utils_tag.InputExample object at 0x7fab8e241dd8>, <utils_tag.InputExample object at 0x7fab8e241f28>, <utils_tag.InputExample object at 0x7fab8e2440b8>, <utils_tag.InputExample object at 0x7fab8e2442b0>, <utils_tag.InputExample object at 0x7fab8e244438>, <utils_tag.InputExample object at 0x7fab8e2445f8>, <utils_tag.InputExample object at 0x7fab8e2447b8>, <utils_tag.InputExample object at 0x7fab8e244a20>, <utils_tag.InputExample object at 0x7fab8e244b70>, <utils_tag.InputExample object at 0x7fab8e244cf8>, <utils_tag.InputExample object at 0x7fab8e244f60>, <utils_tag.InputExample object at 0x7fab8e248128>, <utils_tag.InputExample object at 0x7fab8e2482e8>, <utils_tag.InputExample object at 0x7fab8e248470>, <utils_tag.InputExample object at 0x7fab8e248668>, <utils_tag.InputExample object at 0x7fab8e2487b8>, <utils_tag.InputExample object at 0x7fab8e248908>, <utils_tag.InputExample object at 0x7fab8e248b00>, <utils_tag.InputExample object at 0x7fab8e248cf8>, <utils_tag.InputExample object at 0x7fab8e248ef0>, <utils_tag.InputExample object at 0x7fab8e24b0b8>, <utils_tag.InputExample object at 0x7fab8e24b278>, <utils_tag.InputExample object at 0x7fab8e24b400>, <utils_tag.InputExample object at 0x7fab8e24b5f8>, <utils_tag.InputExample object at 0x7fab8e24b860>, <utils_tag.InputExample object at 0x7fab8e24ba58>, <utils_tag.InputExample object at 0x7fab8e24bd68>, <utils_tag.InputExample object at 0x7fab8e24bf28>, <utils_tag.InputExample object at 0x7fab8e24d0f0>, <utils_tag.InputExample object at 0x7fab8e24d2b0>, <utils_tag.InputExample object at 0x7fab8e24d4a8>, <utils_tag.InputExample object at 0x7fab8e24d630>, <utils_tag.InputExample object at 0x7fab8e24d828>, <utils_tag.InputExample object at 0x7fab8e24d9e8>, <utils_tag.InputExample object at 0x7fab8e24db70>, <utils_tag.InputExample object at 0x7fab8e24dcf8>, <utils_tag.InputExample object at 0x7fab8e24deb8>, <utils_tag.InputExample object at 0x7fab8e2510b8>, <utils_tag.InputExample object at 0x7fab8e2512e8>, <utils_tag.InputExample object at 0x7fab8e2514a8>, <utils_tag.InputExample object at 0x7fab8e2516d8>, <utils_tag.InputExample object at 0x7fab8e251828>, <utils_tag.InputExample object at 0x7fab8e2519e8>, <utils_tag.InputExample object at 0x7fab8e251b70>, <utils_tag.InputExample object at 0x7fab8e251cf8>, <utils_tag.InputExample object at 0x7fab8e251eb8>, <utils_tag.InputExample object at 0x7fab8e253128>, <utils_tag.InputExample object at 0x7fab8e2532b0>, <utils_tag.InputExample object at 0x7fab8e253400>, <utils_tag.InputExample object at 0x7fab8e253550>, <utils_tag.InputExample object at 0x7fab8e2536d8>, <utils_tag.InputExample object at 0x7fab8e253898>, <utils_tag.InputExample object at 0x7fab8e253a20>, <utils_tag.InputExample object at 0x7fab8e253b70>, <utils_tag.InputExample object at 0x7fab8e253cc0>, <utils_tag.InputExample object at 0x7fab8e253e48>, <utils_tag.InputExample object at 0x7fab8e253f98>, <utils_tag.InputExample object at 0x7fab8e2580f0>, <utils_tag.InputExample object at 0x7fab8e258278>, <utils_tag.InputExample object at 0x7fab8e258438>, <utils_tag.InputExample object at 0x7fab8e2585f8>, <utils_tag.InputExample object at 0x7fab8e258748>, <utils_tag.InputExample object at 0x7fab8e258940>, <utils_tag.InputExample object at 0x7fab8e258ac8>, <utils_tag.InputExample object at 0x7fab8e258c50>, <utils_tag.InputExample object at 0x7fab8e258da0>, <utils_tag.InputExample object at 0x7fab8e258ef0>, <utils_tag.InputExample object at 0x7fab8e25a0b8>, <utils_tag.InputExample object at 0x7fab8e25a1d0>, <utils_tag.InputExample object at 0x7fab8e25a358>, <utils_tag.InputExample object at 0x7fab8e25a518>, <utils_tag.InputExample object at 0x7fab8e25a6d8>, <utils_tag.InputExample object at 0x7fab8e25a828>, <utils_tag.InputExample object at 0x7fab8e25a978>, <utils_tag.InputExample object at 0x7fab8e25aac8>, <utils_tag.InputExample object at 0x7fab8e25ac88>, <utils_tag.InputExample object at 0x7fab8e25ae80>, <utils_tag.InputExample object at 0x7fab8e25e0b8>, <utils_tag.InputExample object at 0x7fab8e25e240>, <utils_tag.InputExample object at 0x7fab8e25e3c8>, <utils_tag.InputExample object at 0x7fab8e25e550>, <utils_tag.InputExample object at 0x7fab8e25e748>, <utils_tag.InputExample object at 0x7fab8e25e978>, <utils_tag.InputExample object at 0x7fab8e25eb70>, <utils_tag.InputExample object at 0x7fab8e25ecc0>, <utils_tag.InputExample object at 0x7fab8e25eef0>, <utils_tag.InputExample object at 0x7fab8e2600f0>, <utils_tag.InputExample object at 0x7fab8e260278>, <utils_tag.InputExample object at 0x7fab8e2604e0>, <utils_tag.InputExample object at 0x7fab8e260630>, <utils_tag.InputExample object at 0x7fab8e2607b8>, <utils_tag.InputExample object at 0x7fab8e2609b0>, <utils_tag.InputExample object at 0x7fab8e260b38>, <utils_tag.InputExample object at 0x7fab8e260d30>, <utils_tag.InputExample object at 0x7fab8e260f28>, <utils_tag.InputExample object at 0x7fab8e264128>, <utils_tag.InputExample object at 0x7fab8e2642b0>, <utils_tag.InputExample object at 0x7fab8e264470>, <utils_tag.InputExample object at 0x7fab8e264630>, <utils_tag.InputExample object at 0x7fab8e2647b8>, <utils_tag.InputExample object at 0x7fab8e264940>, <utils_tag.InputExample object at 0x7fab8e264a58>, <utils_tag.InputExample object at 0x7fab8e264be0>, <utils_tag.InputExample object at 0x7fab8e264d30>, <utils_tag.InputExample object at 0x7fab8e264e80>, <utils_tag.InputExample object at 0x7fab8e264f98>, <utils_tag.InputExample object at 0x7fab8e2670f0>, <utils_tag.InputExample object at 0x7fab8e267240>, <utils_tag.InputExample object at 0x7fab8e2673c8>, <utils_tag.InputExample object at 0x7fab8e267550>, <utils_tag.InputExample object at 0x7fab8e2676a0>, <utils_tag.InputExample object at 0x7fab8e267860>, <utils_tag.InputExample object at 0x7fab8e267a90>, <utils_tag.InputExample object at 0x7fab8e267cc0>, <utils_tag.InputExample object at 0x7fab8e267e80>, <utils_tag.InputExample object at 0x7fab8e1ec080>, <utils_tag.InputExample object at 0x7fab8e1ec240>, <utils_tag.InputExample object at 0x7fab8e1ec390>, <utils_tag.InputExample object at 0x7fab8e1ec518>, <utils_tag.InputExample object at 0x7fab8e1ec6a0>, <utils_tag.InputExample object at 0x7fab8e1ec7f0>, <utils_tag.InputExample object at 0x7fab8e1ec978>, <utils_tag.InputExample object at 0x7fab8e1ecac8>, <utils_tag.InputExample object at 0x7fab8e1ecc50>, <utils_tag.InputExample object at 0x7fab8e1ece10>, <utils_tag.InputExample object at 0x7fab8e1ecf98>, <utils_tag.InputExample object at 0x7fab8e1ed0f0>, <utils_tag.InputExample object at 0x7fab8e1ed2b0>, <utils_tag.InputExample object at 0x7fab8e1ed3c8>, <utils_tag.InputExample object at 0x7fab8e1ed518>, <utils_tag.InputExample object at 0x7fab8e1ed6d8>, <utils_tag.InputExample object at 0x7fab8e1ed828>, <utils_tag.InputExample object at 0x7fab8e1ed9e8>, <utils_tag.InputExample object at 0x7fab8e1edb70>, <utils_tag.InputExample object at 0x7fab8e1edd30>, <utils_tag.InputExample object at 0x7fab8e1ede48>, <utils_tag.InputExample object at 0x7fab8e1edfd0>, <utils_tag.InputExample object at 0x7fab8e1f01d0>, <utils_tag.InputExample object at 0x7fab8e1f0400>, <utils_tag.InputExample object at 0x7fab8e1f05f8>, <utils_tag.InputExample object at 0x7fab8e1f0710>, <utils_tag.InputExample object at 0x7fab8e1f0860>, <utils_tag.InputExample object at 0x7fab8e1f0978>, <utils_tag.InputExample object at 0x7fab8e1f0ac8>, <utils_tag.InputExample object at 0x7fab8e1f0c88>, <utils_tag.InputExample object at 0x7fab8e1f0e10>, <utils_tag.InputExample object at 0x7fab8e1f0f98>, <utils_tag.InputExample object at 0x7fab8e1f20f0>, <utils_tag.InputExample object at 0x7fab8e1f22b0>, <utils_tag.InputExample object at 0x7fab8e1f2470>, <utils_tag.InputExample object at 0x7fab8e1f2668>, <utils_tag.InputExample object at 0x7fab8e1f27f0>, <utils_tag.InputExample object at 0x7fab8e1f2908>, <utils_tag.InputExample object at 0x7fab8e1f2a90>, <utils_tag.InputExample object at 0x7fab8e1f2be0>, <utils_tag.InputExample object at 0x7fab8e1f2da0>, <utils_tag.InputExample object at 0x7fab8e1f2f28>, <utils_tag.InputExample object at 0x7fab8e1f60b8>, <utils_tag.InputExample object at 0x7fab8e1f6208>, <utils_tag.InputExample object at 0x7fab8e1f6358>, <utils_tag.InputExample object at 0x7fab8e1f6470>, <utils_tag.InputExample object at 0x7fab8e1f65f8>, <utils_tag.InputExample object at 0x7fab8e1f67b8>, <utils_tag.InputExample object at 0x7fab8e1f6940>, <utils_tag.InputExample object at 0x7fab8e1f6a90>, <utils_tag.InputExample object at 0x7fab8e1f6ba8>, <utils_tag.InputExample object at 0x7fab8e1f6d30>, <utils_tag.InputExample object at 0x7fab8e1f6f28>, <utils_tag.InputExample object at 0x7fab8e1fb0b8>, <utils_tag.InputExample object at 0x7fab8e1fb1d0>, <utils_tag.InputExample object at 0x7fab8e1fb2e8>, <utils_tag.InputExample object at 0x7fab8e1fb400>, <utils_tag.InputExample object at 0x7fab8e1fb518>, <utils_tag.InputExample object at 0x7fab8e1fb668>, <utils_tag.InputExample object at 0x7fab8e1fb7b8>, <utils_tag.InputExample object at 0x7fab8e1fb908>, <utils_tag.InputExample object at 0x7fab8e1fbba8>, <utils_tag.InputExample object at 0x7fab8e1fbdd8>, <utils_tag.InputExample object at 0x7fab8e1fbf98>, <utils_tag.InputExample object at 0x7fab8e1fd128>, <utils_tag.InputExample object at 0x7fab8e1fd2e8>, <utils_tag.InputExample object at 0x7fab8e1fd4e0>, <utils_tag.InputExample object at 0x7fab8e1fd780>, <utils_tag.InputExample object at 0x7fab8e1fd8d0>, <utils_tag.InputExample object at 0x7fab8e1fda90>, <utils_tag.InputExample object at 0x7fab8e1fdc18>, <utils_tag.InputExample object at 0x7fab8e1fddd8>, <utils_tag.InputExample object at 0x7fab8e1fdf60>, <utils_tag.InputExample object at 0x7fab8e202128>, <utils_tag.InputExample object at 0x7fab8e2022e8>, <utils_tag.InputExample object at 0x7fab8e2024a8>, <utils_tag.InputExample object at 0x7fab8e202710>, <utils_tag.InputExample object at 0x7fab8e202898>, <utils_tag.InputExample object at 0x7fab8e2029e8>, <utils_tag.InputExample object at 0x7fab8e202b38>, <utils_tag.InputExample object at 0x7fab8e202cc0>, <utils_tag.InputExample object at 0x7fab8e202e10>, <utils_tag.InputExample object at 0x7fab8e202f98>, <utils_tag.InputExample object at 0x7fab8e2041d0>, <utils_tag.InputExample object at 0x7fab8e204320>, <utils_tag.InputExample object at 0x7fab8e2044e0>, <utils_tag.InputExample object at 0x7fab8e204668>, <utils_tag.InputExample object at 0x7fab8e204898>, <utils_tag.InputExample object at 0x7fab8e204a20>, <utils_tag.InputExample object at 0x7fab8e204b70>, <utils_tag.InputExample object at 0x7fab8e204c88>]01/13/2022 21:19:23 - INFO - utils_tag -   Writing example 0 of 1074
+01/13/2022 21:19:23 - INFO - utils_tag -   *** Example ***
+01/13/2022 21:19:23 - INFO - utils_tag -   guid: am-1
+01/13/2022 21:19:23 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [SEP]
+01/13/2022 21:19:23 - INFO - utils_tag -   input_ids: 101 100 100 100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   input_mask: 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   label_ids: -100 8 16 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/13/2022 21:19:23 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/13/2022 21:19:23 - INFO - utils_tag -   *** Example ***
+01/13/2022 21:19:23 - INFO - utils_tag -   guid: am-2
+01/13/2022 21:19:23 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] [SEP]
+01/13/2022 21:19:23 - INFO - utils_tag -   input_ids: 101 100 100 100 100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   label_ids: -100 8 8 16 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/13/2022 21:19:23 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/13/2022 21:19:23 - INFO - utils_tag -   *** Example ***
+01/13/2022 21:19:23 - INFO - utils_tag -   guid: am-3
+01/13/2022 21:19:23 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] [SEP]
+01/13/2022 21:19:23 - INFO - utils_tag -   input_ids: 101 100 100 100 100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   label_ids: -100 12 8 16 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/13/2022 21:19:23 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/13/2022 21:19:23 - INFO - utils_tag -   *** Example ***
+01/13/2022 21:19:23 - INFO - utils_tag -   guid: am-4
+01/13/2022 21:19:23 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [UNK] [UNK] [UNK] [SEP]
+01/13/2022 21:19:23 - INFO - utils_tag -   input_ids: 101 100 100 100 100 100 100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   input_mask: 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   label_ids: -100 8 16 8 8 16 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/13/2022 21:19:23 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/13/2022 21:19:23 - INFO - utils_tag -   *** Example ***
+01/13/2022 21:19:23 - INFO - utils_tag -   guid: am-5
+01/13/2022 21:19:23 - INFO - utils_tag -   tokens: [CLS] [UNK] [UNK] [UNK] [SEP]
+01/13/2022 21:19:23 - INFO - utils_tag -   input_ids: 101 100 100 100 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   input_mask: 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+01/13/2022 21:19:23 - INFO - utils_tag -   label_ids: -100 8 16 13 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100 -100
+01/13/2022 21:19:23 - INFO - utils_tag -   langs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+01/13/2022 21:19:23 - INFO - __main__ -   Saving features into cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_am_bert-base-multilingual-cased_128, len(features)=1074
+01/13/2022 21:19:23 - INFO - __main__ -   ***** Running evaluation  in am *****
+01/13/2022 21:19:23 - INFO - __main__ -     Num examples = 1074
+01/13/2022 21:19:23 - INFO - __main__ -     Batch size = 32
+
+Evaluating:   0%|          | 0/34 [00:00<?, ?it/s]01/13/2022 21:19:23 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/34 [00:00<00:04,  6.79it/s]01/13/2022 21:19:23 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▌         | 2/34 [00:00<00:04,  7.09it/s]01/13/2022 21:19:23 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/34 [00:00<00:04,  7.35it/s]01/13/2022 21:19:23 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▏        | 4/34 [00:00<00:03,  7.57it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 5
+Evaluating:  15%|█▍        | 5/34 [00:00<00:03,  7.66it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 6
+Evaluating:  18%|█▊        | 6/34 [00:00<00:03,  7.72it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 7
+Evaluating:  21%|██        | 7/34 [00:00<00:03,  7.75it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 8
+Evaluating:  24%|██▎       | 8/34 [00:01<00:03,  7.78it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 9
+Evaluating:  26%|██▋       | 9/34 [00:01<00:03,  7.80it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 10
+Evaluating:  29%|██▉       | 10/34 [00:01<00:03,  7.81it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 11
+Evaluating:  32%|███▏      | 11/34 [00:01<00:02,  7.78it/s]01/13/2022 21:19:24 - INFO - __main__ -   Batch number = 12
+Evaluating:  35%|███▌      | 12/34 [00:01<00:02,  7.80it/s]01/13/2022 21:19:25 - INFO - __main__ -   Batch number = 13
+Evaluating:  38%|███▊      | 13/34 [00:01<00:02,  7.79it/s]01/13/2022 21:19:25 - INFO - __main__ -   Batch number = 14
+Evaluating:  41%|████      | 14/34 [00:01<00:02,  7.79it/s]01/13/2022 21:19:25 - INFO - __main__ -   Batch number = 15
+Evaluating:  44%|████▍     | 15/34 [00:01<00:02,  7.77it/s]01/13/2022 21:19:25 - INFO - __main__ -   Batch number = 16
+Evaluating:  47%|████▋     | 16/34 [00:02<00:02,  7.76it/s]01/13/2022 21:19:25 - INFO - __main__ -   Batch number = 17
+Evaluating:  50%|█████     | 17/34 [00:02<00:03,  4.54it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 18
+Evaluating:  53%|█████▎    | 18/34 [00:02<00:03,  5.19it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 19
+Evaluating:  56%|█████▌    | 19/34 [00:02<00:02,  5.76it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 20
+Evaluating:  59%|█████▉    | 20/34 [00:02<00:02,  6.26it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 21
+Evaluating:  62%|██████▏   | 21/34 [00:03<00:01,  6.66it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 22
+Evaluating:  65%|██████▍   | 22/34 [00:03<00:01,  6.94it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 23
+Evaluating:  68%|██████▊   | 23/34 [00:03<00:01,  7.17it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 24
+Evaluating:  71%|███████   | 24/34 [00:03<00:01,  7.34it/s]01/13/2022 21:19:26 - INFO - __main__ -   Batch number = 25
+Evaluating:  74%|███████▎  | 25/34 [00:03<00:01,  7.43it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 26
+Evaluating:  76%|███████▋  | 26/34 [00:03<00:01,  7.48it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 27
+Evaluating:  79%|███████▉  | 27/34 [00:03<00:00,  7.55it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 28
+Evaluating:  82%|████████▏ | 28/34 [00:03<00:00,  7.60it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 29
+Evaluating:  85%|████████▌ | 29/34 [00:04<00:00,  7.66it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 30
+Evaluating:  88%|████████▊ | 30/34 [00:04<00:00,  7.68it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 31
+Evaluating:  91%|█████████ | 31/34 [00:04<00:00,  7.67it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 32
+Evaluating:  94%|█████████▍| 32/34 [00:04<00:00,  7.68it/s]01/13/2022 21:19:27 - INFO - __main__ -   Batch number = 33
+Evaluating:  97%|█████████▋| 33/34 [00:04<00:00,  7.69it/s]01/13/2022 21:19:28 - INFO - __main__ -   Batch number = 34
+Evaluating: 100%|██████████| 34/34 [00:04<00:00,  7.30it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/13/2022 21:19:28 - INFO - __main__ -   ***** Evaluation result  in am *****
+01/13/2022 21:19:28 - INFO - __main__ -     f1 = 0.1173037642252699
+01/13/2022 21:19:28 - INFO - __main__ -     loss = 2.941526356865378
+01/13/2022 21:19:28 - INFO - __main__ -     precision = 0.1720890410958904
+01/13/2022 21:19:28 - INFO - __main__ -     recall = 0.08897742363877822
+20.01user 11.42system 0:20.33elapsed 154%CPU (0avgtext+0avgdata 3920164maxresident)k
+0inputs+3944outputs (0major+1416542minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 21:19:30 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 21:19:30 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 21:19:30 - INFO - __main__ -   Seed = 2
+01/13/2022 21:19:30 - INFO - root -   save model
+01/13/2022 21:19:30 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=2, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 21:19:30 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 21:19:33 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 21:19:39 - INFO - __main__ -   Using lang2id = None
+01/13/2022 21:19:39 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 21:19:39 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/
+01/13/2022 21:19:39 - INFO - root -   Trying to decide if add adapter
+01/13/2022 21:19:39 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s2/checkpoint-best/udpos/pytorch_model_head.bin
+01/13/2022 21:19:39 - INFO - root -   loading lang adpater am/wiki@ukp
+01/13/2022 21:19:39 - INFO - __main__ -   Adapter Languages : ['am'], Length : 1
+01/13/2022 21:19:39 - INFO - __main__ -   Adapter Names ['am/wiki@ukp'], Length : 1
+01/13/2022 21:19:39 - INFO - __main__ -   Language = am
+01/13/2022 21:19:39 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_am_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/am/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_am_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/adapter_config.json
+Adding adapter 'am' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/head_config.json
+01/13/2022 21:19:50 - INFO - __main__ -   Language adapter for am found
+01/13/2022 21:19:50 - INFO - __main__ -   Set active language adapter to am
+01/13/2022 21:19:50 - INFO - __main__ -   Args Adapter Weight = None
+01/13/2022 21:19:50 - INFO - __main__ -   Adapter Languages = ['am']
+01/13/2022 21:19:50 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_am_bert-base-multilingual-cased_128
+01/13/2022 21:19:50 - INFO - __main__ -   ***** Running evaluation  in am *****
+01/13/2022 21:19:50 - INFO - __main__ -     Num examples = 1074
+01/13/2022 21:19:50 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/34 [00:00<?, ?it/s]01/13/2022 21:19:50 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/34 [00:00<00:04,  6.72it/s]01/13/2022 21:19:50 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▌         | 2/34 [00:00<00:04,  7.06it/s]01/13/2022 21:19:50 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/34 [00:00<00:04,  7.34it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▏        | 4/34 [00:00<00:03,  7.53it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 5
+Evaluating:  15%|█▍        | 5/34 [00:00<00:03,  7.59it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 6
+Evaluating:  18%|█▊        | 6/34 [00:00<00:03,  7.66it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 7
+Evaluating:  21%|██        | 7/34 [00:00<00:03,  7.69it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 8
+Evaluating:  24%|██▎       | 8/34 [00:01<00:03,  7.72it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 9
+Evaluating:  26%|██▋       | 9/34 [00:01<00:03,  7.71it/s]01/13/2022 21:19:51 - INFO - __main__ -   Batch number = 10
+Evaluating:  29%|██▉       | 10/34 [00:01<00:03,  7.73it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 11
+Evaluating:  32%|███▏      | 11/34 [00:01<00:02,  7.72it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 12
+Evaluating:  35%|███▌      | 12/34 [00:01<00:02,  7.74it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 13
+Evaluating:  38%|███▊      | 13/34 [00:01<00:02,  7.76it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 14
+Evaluating:  41%|████      | 14/34 [00:01<00:02,  7.73it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 15
+Evaluating:  44%|████▍     | 15/34 [00:01<00:02,  7.75it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 16
+Evaluating:  47%|████▋     | 16/34 [00:02<00:02,  7.75it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 17
+Evaluating:  50%|█████     | 17/34 [00:02<00:02,  7.73it/s]01/13/2022 21:19:52 - INFO - __main__ -   Batch number = 18
+Evaluating:  53%|█████▎    | 18/34 [00:02<00:02,  7.74it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 19
+Evaluating:  56%|█████▌    | 19/34 [00:02<00:01,  7.74it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 20
+Evaluating:  59%|█████▉    | 20/34 [00:02<00:01,  7.70it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 21
+Evaluating:  62%|██████▏   | 21/34 [00:02<00:01,  7.72it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 22
+Evaluating:  65%|██████▍   | 22/34 [00:02<00:01,  7.71it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 23
+Evaluating:  68%|██████▊   | 23/34 [00:03<00:01,  7.49it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 24
+Evaluating:  71%|███████   | 24/34 [00:03<00:01,  7.46it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 25
+Evaluating:  74%|███████▎  | 25/34 [00:03<00:01,  7.49it/s]01/13/2022 21:19:53 - INFO - __main__ -   Batch number = 26
+Evaluating:  76%|███████▋  | 26/34 [00:03<00:01,  7.53it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 27
+Evaluating:  79%|███████▉  | 27/34 [00:03<00:00,  7.59it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 28
+Evaluating:  82%|████████▏ | 28/34 [00:03<00:00,  7.62it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 29
+Evaluating:  85%|████████▌ | 29/34 [00:03<00:00,  7.62it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 30
+Evaluating:  88%|████████▊ | 30/34 [00:03<00:00,  7.64it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 31
+Evaluating:  91%|█████████ | 31/34 [00:04<00:00,  7.65it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 32
+Evaluating:  94%|█████████▍| 32/34 [00:04<00:00,  7.66it/s]01/13/2022 21:19:54 - INFO - __main__ -   Batch number = 33
+Evaluating:  97%|█████████▋| 33/34 [00:04<00:00,  7.67it/s]01/13/2022 21:19:55 - INFO - __main__ -   Batch number = 34
+Evaluating: 100%|██████████| 34/34 [00:04<00:00,  7.73it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/13/2022 21:19:55 - INFO - __main__ -   ***** Evaluation result  in am *****
+01/13/2022 21:19:55 - INFO - __main__ -     f1 = 0.08334510524085324
+01/13/2022 21:19:55 - INFO - __main__ -     loss = 3.4571324446622063
+01/13/2022 21:19:55 - INFO - __main__ -     precision = 0.11518937914877002
+01/13/2022 21:19:55 - INFO - __main__ -     recall = 0.06529437804338203
+19.93user 10.56system 0:26.84elapsed 113%CPU (0avgtext+0avgdata 3916944maxresident)k
+0inputs+168outputs (0major+1191430minor)pagefaults 0swaps
+PyTorch version 1.10.1+cu102 available.
+01/13/2022 21:19:57 - INFO - root -   Input args: ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 21:19:57 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+01/13/2022 21:19:57 - INFO - __main__ -   Seed = 3
+01/13/2022 21:19:57 - INFO - root -   save model
+01/13/2022 21:19:57 - INFO - __main__ -   Training/evaluation parameters ModelArguments(model_name_or_path='bert-base-multilingual-cased', model_type='bert', config_name=None, tokenizer_name=None, cache_dir=None, labels='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128//labels.txt', data_dir='/home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/', output_dir='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am/', max_seq_length=128, do_train=False, do_eval=False, do_predict=True, do_adapter_predict=False, do_predict_dev=False, do_predict_train=False, init_checkpoint=None, evaluate_during_training=False, do_lower_case=False, few_shot=-1, per_gpu_train_batch_size=8, per_gpu_eval_batch_size=32, gradient_accumulation_steps=4, learning_rate=5e-05, weight_decay=0.0, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=50.0, max_steps=-1, save_steps=1000, warmup_steps=0, logging_steps=50, save_only_best_checkpoint=True, eval_all_checkpoints=True, no_cuda=False, overwrite_output_dir=True, overwrite_cache=False, seed=3, fp16=False, fp16_opt_level='O1', local_rank=-1, server_ip='', server_port='', predict_langs='am', train_langs='en', log_file='/home/abhijeet/rohan/cloud-emea-copy/outputs//udpos/my-bert-base-multilingual-cased-MaxLen128_udpos_am//train_am.log', eval_patience=-1, bpe_dropout=0, do_save_adapter_fusions=False, task_name='udpos', predict_task_adapter='output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/', predict_lang_adapter=None, test_adapter=True, adapter_weight=None, lang_to_vec=None, calc_weight_step=0, predict_save_prefix='', en_weight=None, temperature=1.0, get_attr=False, topk=1, task='udpos')
+01/13/2022 21:19:57 - INFO - __main__ -   Loading pretrained model and tokenizer
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2",
+    "3": "LABEL_3",
+    "4": "LABEL_4",
+    "5": "LABEL_5",
+    "6": "LABEL_6",
+    "7": "LABEL_7",
+    "8": "LABEL_8",
+    "9": "LABEL_9",
+    "10": "LABEL_10",
+    "11": "LABEL_11",
+    "12": "LABEL_12",
+    "13": "LABEL_13",
+    "14": "LABEL_14",
+    "15": "LABEL_15",
+    "16": "LABEL_16",
+    "17": "LABEL_17"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_10": 10,
+    "LABEL_11": 11,
+    "LABEL_12": 12,
+    "LABEL_13": 13,
+    "LABEL_14": 14,
+    "LABEL_15": 15,
+    "LABEL_16": 16,
+    "LABEL_17": 17,
+    "LABEL_2": 2,
+    "LABEL_3": 3,
+    "LABEL_4": 4,
+    "LABEL_5": 5,
+    "LABEL_6": 6,
+    "LABEL_7": 7,
+    "LABEL_8": 8,
+    "LABEL_9": 9
+  },
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading configuration file https://huggingface.co/bert-base-multilingual-cased/resolve/main/config.json from cache at /home/abhijeet/.cache/torch/transformers/6c4a5d81a58c9791cdf76a09bce1b5abfb9cf958aebada51200f4515403e5d08.0fe59f3f4f1335dadeb4bce8b8146199d9083512b50d07323c1c319f96df450c
+Model config BertConfig {
+  "adapters": {
+    "adapters": {},
+    "config_map": {}
+  },
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "directionality": "bidi",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "pooler_fc_size": 768,
+  "pooler_num_attention_heads": 12,
+  "pooler_num_fc_layers": 3,
+  "pooler_size_per_head": 128,
+  "pooler_type": "first_token_transform",
+  "type_vocab_size": 2,
+  "vocab_size": 119547
+}
+
+loading file https://huggingface.co/bert-base-multilingual-cased/resolve/main/vocab.txt from cache at /home/abhijeet/.cache/torch/transformers/eff018e45de5364a8368df1f2df3461d506e2a111e9dd50af1fae061cd460ead.6c5b6600e968f4b5e08c86d8891ea99e51537fc2bf251435fb46922e8f7a7b29
+01/13/2022 21:20:00 - INFO - __main__ -   loading from existing model bert-base-multilingual-cased
+loading weights file https://huggingface.co/bert-base-multilingual-cased/resolve/main/pytorch_model.bin from cache at /home/abhijeet/.cache/torch/transformers/0a3fd51713dcbb4def175c7f85bddc995d5976ce1dde327f99104e4d33069f17.aa7be4c79d76f4066d9b354496ea477c9ee39c5d889156dd1efb680643c2b052
+Some weights of the model checkpoint at bert-base-multilingual-cased were not used when initializing BertForTokenClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+- This IS expected if you are initializing BertForTokenClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForTokenClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of BertForTokenClassification were not initialized from the model checkpoint at bert-base-multilingual-cased and are newly initialized: ['classifier.weight', 'classifier.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+01/13/2022 21:20:06 - INFO - __main__ -   Using lang2id = None
+01/13/2022 21:20:06 - INFO - __main__ -   Evaluating the model on test set of all the languages specified
+01/13/2022 21:20:06 - INFO - __main__ -   Task Adapter will be loaded from this path output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/
+01/13/2022 21:20:06 - INFO - root -   Trying to decide if add adapter
+01/13/2022 21:20:06 - INFO - root -   loading task adapter
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/adapter_config.json
+Adding adapter 'udpos' of type 'text_task'.
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/pytorch_adapter.bin
+Loading module configuration from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/head_config.json
+Loading module weights from output/udpos/my-bert-base-multilingual-cased-LR1e-4-epoch50-MaxLen128-TrainLangen_en_s3/checkpoint-best/udpos/pytorch_model_head.bin
+01/13/2022 21:20:06 - INFO - root -   loading lang adpater am/wiki@ukp
+01/13/2022 21:20:06 - INFO - __main__ -   Adapter Languages : ['am'], Length : 1
+01/13/2022 21:20:06 - INFO - __main__ -   Adapter Names ['am/wiki@ukp'], Length : 1
+01/13/2022 21:20:06 - INFO - __main__ -   Language = am
+01/13/2022 21:20:06 - INFO - __main__ -   Adapter Name = am/wiki@ukp
+Found matching adapter at: adapters/ukp/bert-base-multilingual-cased_am_wiki_pfeiffer.json
+Resolved adapter files at https://public.ukp.informatik.tu-darmstadt.de/AdapterHub/text_lang/am/bert-base-multilingual-cased/pfeiffer/bert-base-multilingual-cased_am_wiki_pfeiffer.zip.
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/adapter_config.json
+Adding adapter 'am' of type 'text_lang'.
+Loading module weights from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/pytorch_adapter.bin
+Loading module configuration from /home/abhijeet/.cache/torch/adapters/8d40e9aeb008a8b24a99bd46c92e538c8c8a31c9a43aeb5a1dc1ca985bb739ba-e113dbeaa603232ffe5d897a971e7f491f72ba6850a9ad2c0242a8fdc941eb52-extracted/head_config.json
+01/13/2022 21:20:10 - INFO - __main__ -   Language adapter for am found
+01/13/2022 21:20:10 - INFO - __main__ -   Set active language adapter to am
+01/13/2022 21:20:10 - INFO - __main__ -   Args Adapter Weight = None
+01/13/2022 21:20:10 - INFO - __main__ -   Adapter Languages = ['am']
+01/13/2022 21:20:10 - INFO - __main__ -   Loading features from cached file /home/abhijeet/rohan/cloud-emea-copy/data//udpos/udpos_processed_maxlen128/cached_test_am_bert-base-multilingual-cased_128
+01/13/2022 21:20:10 - INFO - __main__ -   ***** Running evaluation  in am *****
+01/13/2022 21:20:10 - INFO - __main__ -     Num examples = 1074
+01/13/2022 21:20:10 - INFO - __main__ -     Batch size = 32
+**********
+Evaluating:   0%|          | 0/34 [00:00<?, ?it/s]01/13/2022 21:20:10 - INFO - __main__ -   Batch number = 1
+Evaluating:   3%|▎         | 1/34 [00:00<00:04,  7.61it/s]01/13/2022 21:20:10 - INFO - __main__ -   Batch number = 2
+Evaluating:   6%|▌         | 2/34 [00:00<00:08,  3.77it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 3
+Evaluating:   9%|▉         | 3/34 [00:00<00:06,  4.93it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 4
+Evaluating:  12%|█▏        | 4/34 [00:00<00:05,  5.78it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 5
+Evaluating:  15%|█▍        | 5/34 [00:00<00:04,  6.36it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 6
+Evaluating:  18%|█▊        | 6/34 [00:01<00:04,  6.80it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 7
+Evaluating:  21%|██        | 7/34 [00:01<00:03,  7.10it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 8
+Evaluating:  24%|██▎       | 8/34 [00:01<00:03,  7.30it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 9
+Evaluating:  26%|██▋       | 9/34 [00:01<00:03,  7.42it/s]01/13/2022 21:20:11 - INFO - __main__ -   Batch number = 10
+Evaluating:  29%|██▉       | 10/34 [00:01<00:03,  7.52it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 11
+Evaluating:  32%|███▏      | 11/34 [00:01<00:03,  7.59it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 12
+Evaluating:  35%|███▌      | 12/34 [00:01<00:02,  7.66it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 13
+Evaluating:  38%|███▊      | 13/34 [00:01<00:02,  7.70it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 14
+Evaluating:  41%|████      | 14/34 [00:02<00:02,  7.69it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 15
+Evaluating:  44%|████▍     | 15/34 [00:02<00:02,  7.72it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 16
+Evaluating:  47%|████▋     | 16/34 [00:02<00:02,  7.73it/s]01/13/2022 21:20:12 - INFO - __main__ -   Batch number = 17
+Evaluating:  50%|█████     | 17/34 [00:02<00:02,  7.73it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 18
+Evaluating:  53%|█████▎    | 18/34 [00:02<00:02,  7.75it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 19
+Evaluating:  56%|█████▌    | 19/34 [00:02<00:01,  7.75it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 20
+Evaluating:  59%|█████▉    | 20/34 [00:02<00:01,  7.72it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 21
+Evaluating:  62%|██████▏   | 21/34 [00:02<00:01,  7.72it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 22
+Evaluating:  65%|██████▍   | 22/34 [00:03<00:01,  7.72it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 23
+Evaluating:  68%|██████▊   | 23/34 [00:03<00:01,  7.70it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 24
+Evaluating:  71%|███████   | 24/34 [00:03<00:01,  7.71it/s]01/13/2022 21:20:13 - INFO - __main__ -   Batch number = 25
+Evaluating:  74%|███████▎  | 25/34 [00:03<00:01,  7.71it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 26
+Evaluating:  76%|███████▋  | 26/34 [00:03<00:01,  7.67it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 27
+Evaluating:  79%|███████▉  | 27/34 [00:03<00:00,  7.66it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 28
+Evaluating:  82%|████████▏ | 28/34 [00:03<00:00,  7.67it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 29
+Evaluating:  85%|████████▌ | 29/34 [00:03<00:00,  7.67it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 30
+Evaluating:  88%|████████▊ | 30/34 [00:04<00:00,  7.67it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 31
+Evaluating:  91%|█████████ | 31/34 [00:04<00:00,  7.66it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 32
+Evaluating:  94%|█████████▍| 32/34 [00:04<00:00,  7.64it/s]01/13/2022 21:20:14 - INFO - __main__ -   Batch number = 33
+Evaluating:  97%|█████████▋| 33/34 [00:04<00:00,  7.64it/s]01/13/2022 21:20:15 - INFO - __main__ -   Batch number = 34
+Evaluating: 100%|██████████| 34/34 [00:04<00:00,  7.42it/s]
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NOUN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: VERB seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PUNCT seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PROPN seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: DET seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADP seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADV seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PRON seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: AUX seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: SCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: CCONJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: ADJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: NUM seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: INTJ seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+/home/abhijeet/rohan/venvs/cloud-emea-copy/lib/python3.6/site-packages/seqeval/metrics/sequence_labeling.py:171: UserWarning: PART seems not to be NE tag.
+  warnings.warn('{} seems not to be NE tag.'.format(chunk))
+01/13/2022 21:20:15 - INFO - __main__ -   ***** Evaluation result  in am *****
+01/13/2022 21:20:15 - INFO - __main__ -     f1 = 0.13774241670810541
+01/13/2022 21:20:15 - INFO - __main__ -     loss = 2.4584014696233414
+01/13/2022 21:20:15 - INFO - __main__ -     precision = 0.15711854792966534
+01/13/2022 21:20:15 - INFO - __main__ -     recall = 0.12262062859672422
+20.14user 11.19system 0:20.07elapsed 156%CPU (0avgtext+0avgdata 3915732maxresident)k
+0inputs+144outputs (0major+1338607minor)pagefaults 0swaps

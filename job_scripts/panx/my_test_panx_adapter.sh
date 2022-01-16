@@ -21,7 +21,7 @@ OUT_DIR=${4:-"$REPO/outputs/"}
 
 export CUDA_VISIBLE_DEVICES=$GPU
 TASK='panx'
-LANGS="af,yo"
+LANGS="rw"
 ALL_LANGS="ar,bn,mr,ta,bh,hi,is,fo,no,da,ru,bg,uk,be"
 REM_LANGS="be"
 TRAIN_LANGS="en"
